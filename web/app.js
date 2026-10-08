@@ -7,17 +7,23 @@ map.on('load',async()=>{
   const response=await fetch('data/gauges.geojson',{cache:'no-store'});
   if(!response.ok)throw new Error('Run python scripts/fetch_gauges.py first');
   const data=await response.json();
-  const mix=(a,b,t)=>'#'+a.match(/\\w\\w/g).map((v,i)=>Math.round(parseInt(v,16)*(1-t)+parseInt(b.match(/\\w\\w/g)[i],16)*t).toString(16).padStart(2,'0')).join('');
-  const blend=(a,b,t)=>mix(a.slice(1),b.slice(1),Math.max(0,Math.min(1,t)));
+  const blend=(a,b,t)=>{
+   t=Math.max(0,Math.min(1,t));
+   const x=a.slice(1).match(/../g), y=b.slice(1).match(/../g);
+   return '#'+x.map((v,i)=>Math.round(parseInt(v,16)*(1-t)+parseInt(y[i],16)*t).toString(16).padStart(2,'0')).join('');
+  };
+  // Visual stage scale only; not a depth measurement or paddling safety rating.
   const palette=p=>{
-   const stage=p.stage, min=p.reference_stage_ft, flood=p.flood_stage_ft;
-   if(!Number.isFinite(stage)||!Number.isFinite(min)||!Number.isFinite(flood)||flood<=min+2)return '#88929b';
-   if(stage<=min)return '#80502f';
-   if(stage<min+2)return blend('#80502f','#168ed0',(stage-min)/2);
-   if(stage<=min+2.001)return '#168ed0';
-   const fraction=Math.max(0,Math.min(1,(stage-(min+2))/(flood-(min+2))));
-   if(fraction<0.5)return blend('#299b59','#e8cf44',fraction*2);
-   return blend('#e8cf44','#d93b32',(fraction-0.5)*2);
+   const stage=p.stage, low=3, mean=p.mean_stage_12mo_ft, flood=p.flood_stage_ft;
+   if(!Number.isFinite(stage))return '#88929b';
+   if(stage<=low)return '#80502f';
+   if(!Number.isFinite(mean)||mean<=low)return '#88929b';
+   if(stage<=mean)return blend('#80502f','#168ed0',(stage-low)/(mean-low));
+   if(!Number.isFinite(flood)||flood<=mean)return '#88929b';
+   const t=Math.max(0,Math.min(1,(stage-mean)/(flood-mean)));
+   if(t<=0.45)return blend('#168ed0','#299b59',t/0.45);
+   if(t<=0.75)return blend('#299b59','#e8cf44',(t-0.45)/0.30);
+   return blend('#e8cf44','#d93b32',(t-0.75)/0.25);
   };
   data.features.forEach(f=>{f.properties.level_color=palette(f.properties)});
   map.addSource('gauges',{type:'geojson',data});
@@ -31,7 +37,11 @@ map.on('load',async()=>{
    const description=[p.name,'Stage: '+(p.stage??'unknown')+' ft',
     'Flood stage: '+(p.flood_stage_ft??'unknown')+' ft',
     'Action stage: '+(p.action_stage_ft??'unknown')+' ft',
-    'Provisional low reference: '+(p.reference_stage_ft??'unknown')+' ft',
+    'Provisional low reference: 3 ft',
+    '12-month mean: '+(p.mean_stage_12mo_ft??'unknown')+' ft',
+    '12-month minimum: '+(p.min_stage_12mo_ft??'unknown')+' ft',
+    '12-month maximum: '+(p.max_stage_12mo_ft??'unknown')+' ft',
+    'Daily mean coverage: '+(p.stage_coverage_days??0)+' days',
     'Above reference: '+(p.feet_above_minimum??'unknown')+' ft',
     'Flood category: '+(p.status??'unknown'),
     'Discharge: '+(p.discharge??'unknown')+' cfs',
@@ -39,6 +49,6 @@ map.on('load',async()=>{
     'Not a paddling safety rating'].join('\n');
    new maplibregl.Popup().setLngLat(event.lngLat).setText(description).addTo(map);
   });
-  status.textContent=data.features.length+' gauges; brown = 3 ft gauge height, blue = 5 ft, green/yellow/red = rising toward flood, gray = insufficient reference data. NOT a paddling safety rating.';
+  status.textContent=data.features.length+' gauges; brown = 3 ft gauge height, blue = 12-month mean, green/yellow/red = rising toward flood, gray = insufficient reference data. NOT a paddling safety rating.';
  }catch(error){status.textContent=error.message;}
 });
