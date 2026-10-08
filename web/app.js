@@ -10,18 +10,20 @@ map.on('load',async()=>{
   map.addSource('gauges',{type:'geojson',data});
   map.addLayer({id:'gauges',type:'circle',source:'gauges',paint:{
    'circle-radius':7,
-   'circle-color':['match',['get','status'],'at_or_above_flood','#b73c36','below_flood','#29865b','#88929b'],
+   'circle-color':['match',['get','status'],'major_flood','#8e1647','moderate_flood','#d13b39','at_or_above_flood','#e97730','action','#e6ae37','below_flood','#29865b','#88929b'],
    'circle-stroke-color':'white','circle-stroke-width':1.5
   }});
   map.on('click','gauges',event=>{
    const p=event.features[0].properties;
    const description=[p.name,'Stage: '+(p.stage??'unknown')+' ft',
     'Flood stage: '+(p.flood_stage_ft??'unknown')+' ft',
+    'Action stage: '+(p.action_stage_ft??'unknown')+' ft',
+    'Status: '+(p.status??'unknown'),
     'Discharge: '+(p.discharge??'unknown')+' cfs',
     'Reading: '+(p.stage_time??'unknown'),
     'Not a paddling safety rating'].join('\n');
    new maplibregl.Popup().setLngLat(event.lngLat).setText(description).addTo(map);
   });
-  status.textContent=data.features.length+' gauges loaded; green = below flood stage, red = at/above flood stage, gray = no threshold. NOT paddling safety ratings.';
+  status.textContent=data.features.length+' gauges loaded; green = below action/flood threshold, yellow = action, orange = minor flood, red = moderate, purple = major, gray = unknown. NOT paddling safety ratings.';
  }catch(error){status.textContent=error.message;}
 });
