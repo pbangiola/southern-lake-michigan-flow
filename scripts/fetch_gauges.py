@@ -91,9 +91,22 @@ def main():
             if flood is not None and "stage" in props else None
         )
         # Stage relative to flood stage is not a paddling-safety classification.
-        props["status"] = "at_or_above_flood" if props["feet_below_flood"] is not None and props["feet_below_flood"] <= 0 else (
-            "below_flood" if props["feet_below_flood"] is not None else "unknown"
-        )
+        stage = props.get("stage")
+        props["action_stage_ft"] = config.get("action_stage_ft")
+        props["moderate_stage_ft"] = config.get("moderate_stage_ft")
+        props["major_stage_ft"] = config.get("major_stage_ft")
+        if stage is None or flood is None:
+            props["status"] = "unknown"
+        elif stage >= float(config.get("major_stage_ft") or float("inf")):
+            props["status"] = "major_flood"
+        elif stage >= float(config.get("moderate_stage_ft") or float("inf")):
+            props["status"] = "moderate_flood"
+        elif stage >= float(flood):
+            props["status"] = "at_or_above_flood"
+        elif config.get("action_stage_ft") is not None and stage >= float(config["action_stage_ft"]):
+            props["status"] = "action"
+        else:
+            props["status"] = "below_flood"
     print("Writing {}...".format(OUTPUT), flush=True)
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps({
