@@ -17,10 +17,12 @@ URL = "https://waterservices.usgs.gov/nwis/iv/"
 BBOX = "-88.7,40.9,-85.4,43.2"
 OUTPUT = Path("data/gauges.geojson")
 THRESHOLDS = Path("data/flood_stages.json")
+MINIMA = Path("data/stage_minima.json")
 
 
 def main():
     thresholds = json.loads(THRESHOLDS.read_text()) if THRESHOLDS.exists() else {}
+    minima = json.loads(MINIMA.read_text()).get("minima", {}) if MINIMA.exists() else {}
     params = {
         "format": "json",
         "bBox": BBOX,
@@ -85,6 +87,9 @@ def main():
         config = thresholds.get(site, {})
         flood = config.get("flood_stage_ft")
         props["flood_stage_ft"] = flood
+        minimum = minima.get(site)
+        props["min_stage_12mo_ft"] = minimum
+        props["feet_above_minimum"] = round(props["stage"] - minimum, 3) if minimum is not None and props.get("stage") is not None else None
         props["flood_source"] = config.get("source")
         props["feet_below_flood"] = (
             round(float(flood) - props["stage"], 2)
@@ -107,6 +112,7 @@ def main():
             props["status"] = "action"
         else:
             props["status"] = "below_flood"
+    print("12-month minima available for {} gauges.".format(sum(1 for f in stations.values() if f["properties"]["min_stage_12mo_ft"] is not None)), flush=True)
     print("Writing {}...".format(OUTPUT), flush=True)
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps({
