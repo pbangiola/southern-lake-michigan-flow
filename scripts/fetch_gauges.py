@@ -17,11 +17,13 @@ URL = "https://waterservices.usgs.gov/nwis/iv/"
 BBOX = "-88.7,40.9,-85.4,43.2"
 OUTPUT = Path("data/gauges.geojson")
 THRESHOLDS = Path("data/flood_stages.json")
+STATS = Path("data/stage_stats.json")
 PROVISIONAL_LOW_STAGE_FT = 3.0
 
 
 def main():
     thresholds = json.loads(THRESHOLDS.read_text()) if THRESHOLDS.exists() else {}
+    stats = json.loads(STATS.read_text()).get("stations", {}) if STATS.exists() else {}
     params = {
         "format": "json",
         "bBox": BBOX,
@@ -86,12 +88,20 @@ def main():
         config = thresholds.get(site, {})
         flood = config.get("flood_stage_ft")
         props["flood_stage_ft"] = flood
+        annual = stats.get(site, {})
+        props["mean_stage_12mo_ft"] = annual.get("mean_ft")
+        props["min_stage_12mo_ft"] = annual.get("minimum_ft")
+        props["max_stage_12mo_ft"] = annual.get("maximum_ft")
+        props["stage_coverage_days"] = annual.get("mean_coverage_days", 0)
         minimum = PROVISIONAL_LOW_STAGE_FT
-        props["min_stage_12mo_ft"] = None
         props["reference_stage_ft"] = minimum
         props["reference_type"] = "provisional_fixed_gauge_height"
         props["feet_above_minimum"] = round(props["stage"] - minimum, 3) if minimum is not None and props.get("stage") is not None else None
         props["flood_source"] = config.get("source")
+        # NOAA elevation-datum thresholds must not be compared to local gauge height.
+        if flood is not None and float(flood) > 100:
+            props["flood_stage_ft"] = None
+            flood = None
         props["feet_below_flood"] = (
             round(float(flood) - props["stage"], 2)
             if flood is not None and "stage" in props else None
