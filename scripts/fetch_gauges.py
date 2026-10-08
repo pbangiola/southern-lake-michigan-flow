@@ -22,7 +22,8 @@ MINIMA = Path("data/stage_minima.json")
 
 def main():
     thresholds = json.loads(THRESHOLDS.read_text()) if THRESHOLDS.exists() else {}
-    minima = json.loads(MINIMA.read_text()).get("minima", {}) if MINIMA.exists() else {}
+    minima_data = json.loads(MINIMA.read_text()) if MINIMA.exists() else {}
+    minima = minima_data.get("stations", {})
     params = {
         "format": "json",
         "bBox": BBOX,
@@ -87,8 +88,13 @@ def main():
         config = thresholds.get(site, {})
         flood = config.get("flood_stage_ft")
         props["flood_stage_ft"] = flood
-        minimum = minima.get(site)
+        history = minima.get(site, {})
+        minimum = history.get("minimum_ft") if history.get("complete_year") else None
         props["min_stage_12mo_ft"] = minimum
+        props["historical_minimum_ft"] = history.get("minimum_ft")
+        props["historical_coverage_days"] = history.get("coverage_days", 0)
+        props["historical_coverage_fraction"] = history.get("coverage_fraction", 0)
+        props["historical_complete_year"] = history.get("complete_year", False)
         props["feet_above_minimum"] = round(props["stage"] - minimum, 3) if minimum is not None and props.get("stage") is not None else None
         props["flood_source"] = config.get("source")
         props["feet_below_flood"] = (
