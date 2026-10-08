@@ -17,13 +17,11 @@ URL = "https://waterservices.usgs.gov/nwis/iv/"
 BBOX = "-88.7,40.9,-85.4,43.2"
 OUTPUT = Path("data/gauges.geojson")
 THRESHOLDS = Path("data/flood_stages.json")
-MINIMA = Path("data/stage_minima.json")
+PROVISIONAL_LOW_STAGE_FT = 3.0
 
 
 def main():
     thresholds = json.loads(THRESHOLDS.read_text()) if THRESHOLDS.exists() else {}
-    minima_data = json.loads(MINIMA.read_text()) if MINIMA.exists() else {}
-    minima = minima_data.get("stations", {})
     params = {
         "format": "json",
         "bBox": BBOX,
@@ -88,13 +86,10 @@ def main():
         config = thresholds.get(site, {})
         flood = config.get("flood_stage_ft")
         props["flood_stage_ft"] = flood
-        history = minima.get(site, {})
-        minimum = history.get("minimum_ft") if history.get("complete_year") else None
-        props["min_stage_12mo_ft"] = minimum
-        props["historical_minimum_ft"] = history.get("minimum_ft")
-        props["historical_coverage_days"] = history.get("coverage_days", 0)
-        props["historical_coverage_fraction"] = history.get("coverage_fraction", 0)
-        props["historical_complete_year"] = history.get("complete_year", False)
+        minimum = PROVISIONAL_LOW_STAGE_FT
+        props["min_stage_12mo_ft"] = None
+        props["reference_stage_ft"] = minimum
+        props["reference_type"] = "provisional_fixed_gauge_height"
         props["feet_above_minimum"] = round(props["stage"] - minimum, 3) if minimum is not None and props.get("stage") is not None else None
         props["flood_source"] = config.get("source")
         props["feet_below_flood"] = (
@@ -118,14 +113,14 @@ def main():
             props["status"] = "action"
         else:
             props["status"] = "below_flood"
-    print("12-month minima available for {} gauges.".format(sum(1 for f in stations.values() if f["properties"]["min_stage_12mo_ft"] is not None)), flush=True)
+    print("Using provisional {:.1f} ft gauge-height reference for all gauges.".format(PROVISIONAL_LOW_STAGE_FT), flush=True)
     print("Writing {}...".format(OUTPUT), flush=True)
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps({
         "type": "FeatureCollection",
         "metadata": {"retrieved_at": datetime.now(timezone.utc).isoformat(),
                      "source": "USGS NWIS instantaneous values",
-                     "warning": "Flood stage is not a paddling safety threshold."},
+                     "warning": "Fixed 3 ft gauge-height reference is provisional, not water depth or a paddling safety threshold."},
         "features": list(stations.values()),
     }, indent=2))
     print("Saved {} gauge locations to {} in {:.1f}s".format(len(stations), OUTPUT, time.monotonic() - started), flush=True)
