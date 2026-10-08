@@ -12,6 +12,7 @@ from pathlib import Path
 import requests
 
 API = "https://api.water.noaa.gov/nwps/v1/gauges"
+BBOX = {"bbox.xmin": -88.7, "bbox.ymin": 40.9, "bbox.xmax": -85.4, "bbox.ymax": 43.2, "srid": "EPSG_4326"}
 GAUGES = Path("data/gauges.geojson")
 OUT = Path("data/flood_stages.json")
 REVIEW = Path("data/flood_stage_review.json")
@@ -77,13 +78,13 @@ def main():
     features = json.loads(GAUGES.read_text())["features"]
     usgs_ids = {str(f["properties"]["site"]).strip() for f in features}
     print("Loaded {} USGS gauge IDs".format(len(usgs_ids)), flush=True)
-    print("Downloading NOAA gauge directory...", flush=True)
+    print("Requesting NOAA gauges within regional bounding box (not nationwide)...", flush=True)
     with requests.Session() as session:
-        directory = get_json(session, API)
+        directory = get_json(session, API, params=BBOX)
         if isinstance(directory, list):
             entries = directory
         elif isinstance(directory, dict):
-            entries = directory.get("gauges", [])
+            entries = directory.get("gauges", directory.get("features", []))
         else:
             entries = []
         if not isinstance(entries, list):
@@ -98,6 +99,10 @@ def main():
             if usgs_id in usgs_ids and identifier:
                 matched[usgs_id] = identifier
         print("Matched {} gauges by exact USGS ID".format(len(matched)), flush=True)
+        if not matched:
+            print("Sample NOAA record keys: {}".format(list(entries[0]) if entries else []), flush=True)
+            print("No exact matches. STOP: inspect response schema before proceeding.", flush=True)
+            return
         existing = json.loads(OUT.read_text()) if OUT.exists() else {}
         review = {}
         for index, (usgs_id, lid) in enumerate(sorted(matched.items()), 1):
