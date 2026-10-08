@@ -10,7 +10,7 @@ map.on('load',async()=>{
   const mix=(a,b,t)=>'#'+a.match(/\\w\\w/g).map((v,i)=>Math.round(parseInt(v,16)*(1-t)+parseInt(b.match(/\\w\\w/g)[i],16)*t).toString(16).padStart(2,'0')).join('');
   const blend=(a,b,t)=>mix(a.slice(1),b.slice(1),Math.max(0,Math.min(1,t)));
   const palette=p=>{
-   const stage=p.stage, min=p.min_stage_12mo_ft, flood=p.flood_stage_ft;
+   const stage=p.stage, min=p.reference_stage_ft, flood=p.flood_stage_ft;
    if(!Number.isFinite(stage)||!Number.isFinite(min)||!Number.isFinite(flood)||flood<=min+2)return '#88929b';
    if(stage<=min)return '#80502f';
    if(stage<min+2)return blend('#80502f','#168ed0',(stage-min)/2);
@@ -31,14 +31,14 @@ map.on('load',async()=>{
    const description=[p.name,'Stage: '+(p.stage??'unknown')+' ft',
     'Flood stage: '+(p.flood_stage_ft??'unknown')+' ft',
     'Action stage: '+(p.action_stage_ft??'unknown')+' ft',
-    '12-month minimum: '+(p.min_stage_12mo_ft??'unknown')+' ft',
-    'Above minimum: '+(p.feet_above_minimum??'unknown')+' ft',
+    'Provisional low reference: '+(p.reference_stage_ft??'unknown')+' ft',
+    'Above reference: '+(p.feet_above_minimum??'unknown')+' ft',
     'Flood category: '+(p.status??'unknown'),
     'Discharge: '+(p.discharge??'unknown')+' cfs',
     'Reading: '+(p.stage_time??'unknown'),
     'Not a paddling safety rating'].join('\n');
    new maplibregl.Popup().setLngLat(event.lngLat).setText(description).addTo(map);
   });
-  status.textContent=data.features.length+' gauges; brown = annual low, blue = low +2 ft, green/yellow/red = rising toward flood, gray = insufficient reference data. NOT a paddling safety rating.';
+  status.textContent=data.features.length+' gauges; brown = 3 ft gauge height, blue = 5 ft, green/yellow/red = rising toward flood, gray = insufficient reference data. NOT a paddling safety rating.';
  }catch(error){status.textContent=error.message;}
 });
