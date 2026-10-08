@@ -1,7 +1,7 @@
 """Calculate trailing-365-day gauge-height minima from USGS observations.
 
-Continuous readings are primary; daily minimum (statistic 00002) is a fallback
-for dates without continuous readings. Partial coverage is clearly marked.
+Published daily minimum (statistic 00002) is primary; continuous readings are
+used only when daily coverage is insufficient. Partial coverage is clearly marked.
 Uses modern USGS OGC APIs, paginates responses and checkpoints per station.
 Run: python -u scripts/fetch_stage_minima.py
 """
@@ -19,13 +19,34 @@ OUT = Path("data/stage_minima.json")
 CACHE = Path("data/cache/stage_minima")
 MAX_PAGES = 100
 PAGE_SIZE = 10000
+MIN_INTERVAL_SECONDS = 1.5
+_last_request = [0.0]
+
+
+class RateLimited(Exception):
+    pass
 
 
 def request_json(session, url, params=None):
     for attempt in range(1, 4):
+        elapsed = time.monotonic() - _last_request[0]
+        if elapsed < MIN_INTERVAL_SECONDS:
+            time.sleep(MIN_INTERVAL_SECONDS - elapsed)
         start = time.monotonic()
         try:
             response = session.get(url, params=params, timeout=(12, 40))
+            _last_request[0] = time.monotonic()
+            if response.status_code == 429:
+                retry = response.headers.get("Retry-After")
+                try:
+                    delay = min(300, max(60, int(retry)))
+                except (ValueError, TypeError):
+                    delay = min(300, 60 * attempt)
+                print("    USGS rate limit (429). Cooling down {} seconds...".format(delay), flush=True)
+                time.sleep(delay)
+                if attempt == 3:
+                    raise RateLimited("USGS rate limiting persists; stop and resume later")
+                continue
             response.raise_for_status()
             return response.json()
         except (requests.RequestException, ValueError) as exc:
@@ -33,7 +54,8 @@ def request_json(session, url, params=None):
                 attempt, time.monotonic() - start, exc), flush=True)
             if attempt == 3:
                 raise
-            time.sleep(2 ** attempt)
+            time.sleep(min(60, 5 * 2 ** attempt))
+    raise RateLimited("USGS rate limiting persists; stop and resume later")
 
 
 def collect(session, kind, site, start, end, stat=None):
@@ -76,9 +98,15 @@ def collect(session, kind, site, start, end, stat=None):
 
 
 def calculate(session, site, start, end):
-    continuous = collect(session, "continuous", site, start, end)
-    # Always consult daily minima to cover older gaps and short IV histories.
     daily = collect(session, "daily", site, start, end, stat="00002")
+    dates_daily = {date for date, _ in daily}
+    days = (datetime.fromisoformat(end[:10]) - datetime.fromisoformat(start[:10])).days + 1
+    if len(dates_daily) / days >= .95:
+        print("    Daily coverage {:.0%}; skipping continuous downloads".format(len(dates_daily)/days), flush=True)
+        continuous = []
+    else:
+        print("    Daily coverage {:.0%}; supplementing with continuous readings".format(len(dates_daily)/days), flush=True)
+        continuous = collect(session, "continuous", site, start, end)
     # Daily values are daily minima, NOT daily means (00003).
     combined = continuous + daily
     if not combined:
@@ -117,6 +145,7 @@ def main():
     CACHE.mkdir(parents=True, exist_ok=True)
     records = {}
     failures = {}
+    stopped_for_limit = False
     with requests.Session() as session:
         for index, site in enumerate(sites, 1):
             path = CACHE / ("{}_{}_{}.json".format(site, start_s, end_s))
@@ -132,14 +161,20 @@ def main():
                 print("    minimum={} ft; {} observed days; full-year={}".format(
                     record["minimum_ft"], record["coverage_days"],
                     record["complete_year"]), flush=True)
+            except RateLimited as exc:
+                failures[site] = str(exc)
+                print("    STOPPING after rate limit; cached results are safe.", flush=True)
+                stopped_for_limit = True
             except (requests.RequestException, ValueError, RuntimeError, KeyError) as exc:
                 failures[site] = str(exc)
                 print("    FAILED: {}".format(exc), flush=True)
             save(OUT, {"metadata": {"retrieved_at": datetime.now(timezone.utc).isoformat(),
                 "start_date": start_s, "end_date": end_s,
-                "method": "USGS continuous readings + daily minimum statistic 00002",
+                "method": "USGS daily minimum statistic 00002; continuous readings where needed",
                 "coverage_note": "Full year means >=95% calendar-day coverage, not continuous sampling."},
                 "stations": records, "failures": failures})
+            if stopped_for_limit:
+                break
     print("Saved {} station minima ({} full-year); {} errors to {}".format(
         len(records), sum(r["complete_year"] for r in records.values()),
         len(failures), OUT), flush=True)
