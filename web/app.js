@@ -52,3 +52,64 @@ map.on('load',async()=>{
   status.textContent=data.features.length+' gauges; brown = 3 ft gauge height, blue = 12-month mean, green/yellow/red = rising toward flood, gray = insufficient reference data. NOT a paddling safety rating.';
  }catch(error){status.textContent=error.message;}
 });
+
+// Community observations are submitted as GitHub issues, never mixed into USGS measurements.
+const reportButton=document.getElementById('report-condition');
+const reportDialog=document.getElementById('report-dialog');
+const reportForm=document.getElementById('report-form');
+let reportPoint=null;
+const fmt=n=>Number(n).toFixed(6);
+function beginReport(lngLat,gauge=null){
+ reportPoint={longitude:lngLat.lng,latitude:lngLat.lat,gauge};
+ document.getElementById('report-location').textContent=
+  (gauge?'Gauge: '+(gauge.name||gauge.site_no||'unknown')+' · ':'')+
+  fmt(lngLat.lat)+', '+fmt(lngLat.lng);
+ reportForm.reset();
+ reportDialog.showModal();
+}
+reportButton.addEventListener('click',()=>{
+ reportButton.setAttribute('aria-pressed','true');
+ map.getCanvas().style.cursor='crosshair';
+ document.getElementById('status').textContent='Click a river location or gauge to report a condition. Press Escape to cancel.';
+});
+map.on('click',event=>{
+ if(reportButton.getAttribute('aria-pressed')!=='true')return;
+ reportButton.setAttribute('aria-pressed','false');
+ map.getCanvas().style.cursor='';
+ const hit=map.queryRenderedFeatures(event.point,{layers:map.getLayer('gauges')?['gauges']:[]})
+  .find(f=>f.layer.id==='gauges');
+ beginReport(event.lngLat,hit?hit.properties:null);
+});
+document.addEventListener('keydown',event=>{
+ if(event.key==='Escape'&&reportButton.getAttribute('aria-pressed')==='true'){
+  reportButton.setAttribute('aria-pressed','false');map.getCanvas().style.cursor='';
+ }
+});
+document.getElementById('cancel-report').addEventListener('click',()=>reportDialog.close());
+reportForm.addEventListener('submit',event=>{
+ event.preventDefault();
+ if(!reportPoint)return;
+ const type=document.getElementById('report-type').value;
+ const observed=document.getElementById('report-observed').value;
+ const notes=document.getElementById('report-notes').value.trim();
+ const {latitude,longitude,gauge}=reportPoint;
+ const location=fmt(latitude)+', '+fmt(longitude);
+ const body=[
+  'Community-submitted observation — NOT verified; not a safety assessment.',
+  '',
+  '**Condition:** '+type,
+  '**Coordinates:** '+location,
+  '**Map:** https://www.openstreetmap.org/?mlat='+latitude+'&mlon='+longitude+'#map=15/'+latitude+'/'+longitude,
+  '**USGS gauge:** '+(gauge?(gauge.name||'unknown')+' ('+(gauge.site_no||gauge.id||'ID unavailable')+')':'Not selected'),
+  '**Observed:** '+(observed||'Not specified'),
+  '**Submitted (UTC):** '+new Date().toISOString(),
+  '',
+  '**Details:**',notes||'No additional details.',
+  '',
+  'Please review before displaying publicly. River conditions change quickly.'
+ ].join('\n');
+ const url='https://github.com/pbangiola/southern-lake-michigan-flow/issues/new?'+
+  new URLSearchParams({title:'River report: '+type+' — '+location,body}).toString();
+ window.open(url,'_blank','noopener,noreferrer');
+ reportDialog.close();
+});
