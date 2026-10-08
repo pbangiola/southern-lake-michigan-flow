@@ -1,9 +1,9 @@
-"""Fetch NOAA NWPS flood-stage thresholds matched by exact USGS site ID.
+"""Match NOAA NWPS flood-stage thresholds to USGS gauges.
 
-Run: python -u scripts/fetch_flood_stages.py
-Requires data/gauges.geojson from fetch_gauges.py.
-Writes data/flood_stages.json and data/flood_stage_review.json.
-Only accepts explicit stage units (feet) and exact USGS ID matches.
+Run after fetch_gauges.py: python -u scripts/fetch_flood_stages.py
+Queries a small regional NOAA directory, then fetches detail records sequentially.
+Caches every successful detail response so reruns resume without re-downloading.
+Only exact USGS site ID matches are accepted; no coordinate guessing.
 """
 import json
 import time
@@ -12,120 +12,123 @@ from pathlib import Path
 import requests
 
 API = "https://api.water.noaa.gov/nwps/v1/gauges"
-BBOX = {"bbox.xmin": -88.7, "bbox.ymin": 40.9, "bbox.xmax": -85.4, "bbox.ymax": 43.2, "srid": "EPSG_4326"}
+BBOX = {"bbox.xmin": -88.7, "bbox.ymin": 40.9, "bbox.xmax": -85.4,
+        "bbox.ymax": 43.2, "srid": "EPSG_4326"}
 GAUGES = Path("data/gauges.geojson")
 OUT = Path("data/flood_stages.json")
 REVIEW = Path("data/flood_stage_review.json")
+CACHE = Path("data/cache/noaa")
+MISSING = {-9999, -999, -99999}
 
 
-def get_json(session, url, params=None):
+def fetch(session, url, params=None):
     for attempt in range(1, 4):
+        start = time.monotonic()
         try:
-            response = session.get(url, params=params, timeout=(12, 35))
+            response = session.get(url, params=params, timeout=(10, 20))
             response.raise_for_status()
-            data = response.json()
-            if not isinstance(data, (dict, list)):
+            result = response.json()
+            if not isinstance(result, (dict, list)):
                 raise ValueError("Unexpected JSON response")
-            return data
+            return result
         except (requests.RequestException, ValueError) as exc:
-            print("  Attempt {}/3 failed: {}".format(attempt, exc), flush=True)
+            print("  Request {}/3 failed after {:.1f}s: {}".format(
+                attempt, time.monotonic() - start, exc), flush=True)
             if attempt == 3:
                 raise
             time.sleep(2 ** attempt)
 
 
-def as_number(value):
+def number(value):
     if isinstance(value, dict):
-        value = value.get("value")
+        value = value.get("stage")
     try:
-        return float(value)
+        result = float(value)
+        return None if result in MISSING else result
     except (TypeError, ValueError):
         return None
 
 
-def stage_categories(gauge):
-    # NOAA publishes separate stage and flow flood-category sets.
+def extract_stages(gauge):
     flood = gauge.get("flood") or {}
     if not isinstance(flood, dict):
-        return None
+        return {}
+    unit = str(flood.get("stageUnits") or "").lower()
+    if unit not in ("ft", "feet"):
+        return {}
     categories = flood.get("categories") or {}
     if not isinstance(categories, dict):
-        return None
-    stage = categories.get("stage") or {}
-    if not isinstance(stage, dict):
-        return None
-    units = str(stage.get("units") or stage.get("unit") or "ft").lower()
-    if units not in ("ft", "feet"):
-        return None
-    values = {}
-    for field, names in {
-        "action_stage_ft": ("action",),
-        "flood_stage_ft": ("minor", "flood"),
-        "moderate_stage_ft": ("moderate",),
-        "major_stage_ft": ("major",),
-    }.items():
-        for name in names:
-            number = as_number(stage.get(name))
-            if number is not None:
-                values[field] = number
-                break
-    return values or None
+        return {}
+    result = {}
+    for key, field in (("action", "action_stage_ft"),
+                       ("minor", "flood_stage_ft"),
+                       ("moderate", "moderate_stage_ft"),
+                       ("major", "major_stage_ft")):
+        val = number(categories.get(key))
+        if val is not None:
+            result[field] = val
+    return result
+
+
+def save_json(path, obj):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temp = path.with_suffix(".tmp")
+    temp.write_text(json.dumps(obj, indent=2, sort_keys=True))
+    temp.replace(path)
 
 
 def main():
     if not GAUGES.exists():
         raise RuntimeError("Run python -u scripts/fetch_gauges.py first")
-    features = json.loads(GAUGES.read_text())["features"]
-    usgs_ids = {str(f["properties"]["site"]).strip() for f in features}
-    print("Loaded {} USGS gauge IDs".format(len(usgs_ids)), flush=True)
-    print("Requesting NOAA gauges within regional bounding box (not nationwide)...", flush=True)
+    usgs_ids = {str(f["properties"]["site"]).strip()
+                for f in json.loads(GAUGES.read_text())["features"]}
+    print("Loaded {} USGS station IDs".format(len(usgs_ids)), flush=True)
+    CACHE.mkdir(parents=True, exist_ok=True)
+    existing = json.loads(OUT.read_text()) if OUT.exists() else {}
+    review = json.loads(REVIEW.read_text()) if REVIEW.exists() else {}
     with requests.Session() as session:
-        directory = get_json(session, API, params=BBOX)
-        if isinstance(directory, list):
-            entries = directory
-        elif isinstance(directory, dict):
-            entries = directory.get("gauges", directory.get("features", []))
-        else:
-            entries = []
+        print("Requesting regional NOAA gauge directory...", flush=True)
+        directory = fetch(session, API, BBOX)
+        entries = directory if isinstance(directory, list) else directory.get("gauges", [])
         if not isinstance(entries, list):
-            raise RuntimeError("Unexpected NOAA gauge directory structure")
-        print("NOAA directory returned {} entries".format(len(entries)), flush=True)
-        matched = {}
-        for item in entries:
-            if not isinstance(item, dict):
-                continue
-            usgs_id = str(item.get("usgsId") or "").strip()
-            identifier = item.get("lid") or item.get("identifier")
-            if usgs_id in usgs_ids and identifier:
-                matched[usgs_id] = identifier
-        print("Matched {} gauges by exact USGS ID".format(len(matched)), flush=True)
-        if not matched:
-            print("Sample NOAA record keys: {}".format(list(entries[0]) if entries else []), flush=True)
-            print("No exact matches. STOP: inspect response schema before proceeding.", flush=True)
-            return
-        existing = json.loads(OUT.read_text()) if OUT.exists() else {}
-        review = {}
-        for index, (usgs_id, lid) in enumerate(sorted(matched.items()), 1):
-            print("[{}/{}] NOAA {} / USGS {}".format(index, len(matched), lid, usgs_id), flush=True)
+            raise RuntimeError("Unexpected NOAA directory structure")
+        lids = sorted({str(g["lid"]) for g in entries if isinstance(g, dict) and g.get("lid")})
+        print("Found {} NOAA locations; fetching detail records one at a time.".format(len(lids)), flush=True)
+        matched = 0
+        failed = 0
+        for index, lid in enumerate(lids, 1):
+            path = CACHE / (lid + ".json")
+            print("[{}/{}] {}: ".format(index, len(lids), lid), end="", flush=True)
             try:
-                record = get_json(session, API + "/" + str(lid))
-                stages = stage_categories(record)
-                if stages:
-                    existing[usgs_id] = dict(stages, source=API + "/" + str(lid),
-                                             noaa_lid=lid)
-                    print("  Thresholds: {}".format(stages), flush=True)
+                if path.exists():
+                    detail = json.loads(path.read_text())
+                    print("cached", end="; ", flush=True)
                 else:
-                    review[usgs_id] = {"lid": lid, "reason": "No recognized stage thresholds",
-                                       "flood": record.get("flood")}
-                    print("  No usable stage thresholds", flush=True)
-            except (requests.RequestException, ValueError) as exc:
-                review[usgs_id] = {"lid": lid, "reason": str(exc)}
-            # Save after every station to support interruption and resumption.
-            OUT.parent.mkdir(parents=True, exist_ok=True)
-            OUT.write_text(json.dumps(existing, indent=2, sort_keys=True))
-            REVIEW.write_text(json.dumps(review, indent=2, sort_keys=True))
-        print("Done. {} threshold records; {} need review.".format(len(existing), len(review)), flush=True)
-        print("Run python -u scripts/fetch_gauges.py to apply thresholds.", flush=True)
+                    detail = fetch(session, API + "/" + lid)
+                    save_json(path, detail)
+                    print("downloaded", end="; ", flush=True)
+                usgs_id = str(detail.get("usgsId") or "").strip()
+                if not usgs_id or usgs_id not in usgs_ids:
+                    print("no exact USGS match", flush=True)
+                    continue
+                matched += 1
+                stages = extract_stages(detail)
+                if stages and "flood_stage_ft" in stages:
+                    existing[usgs_id] = dict(stages, noaa_lid=lid, source=API + "/" + lid)
+                    review.pop(usgs_id, None)
+                    print("matched USGS {}; thresholds {}".format(usgs_id, stages), flush=True)
+                else:
+                    review[usgs_id] = {"noaa_lid": lid, "reason": "Missing usable minor flood stage",
+                                       "stage_units": (detail.get("flood") or {}).get("stageUnits")}
+                    print("matched USGS {}, but no usable flood stage".format(usgs_id), flush=True)
+            except (requests.RequestException, ValueError, KeyError) as exc:
+                failed += 1
+                print("FAILED: {}".format(exc), flush=True)
+            save_json(OUT, existing)
+            save_json(REVIEW, review)
+        print("Finished: {} exact USGS matches; {} configured flood stages; {} request errors.".format(
+            matched, sum(1 for site in usgs_ids if site in existing), failed), flush=True)
+        print("Run python -u scripts/fetch_gauges.py to refresh map classifications.", flush=True)
 
 
 if __name__ == "__main__":
