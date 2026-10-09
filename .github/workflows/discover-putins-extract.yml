@@ -1,0 +1,48 @@
+name: Discover put-ins from OSM extracts
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/discover_putins_extract.py'
+      - '.github/workflows/discover-putins-extract.yml'
+permissions:
+  contents: write
+concurrency:
+  group: discover-putins-extract
+  cancel-in-progress: false
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install streaming OSM parser
+        run: python3 -m pip install --user osmium
+      - name: Download four state extracts
+        run: |
+          set -euo pipefail
+          for state in illinois indiana michigan wisconsin; do
+            echo "Downloading $state"
+            curl --fail --location --retry 3 --retry-delay 10 --output "/tmp/${state}-latest.osm.pbf" "https://download.geofabrik.de/north-america/us/${state}-latest.osm.pbf"
+            ls -lh "/tmp/${state}-latest.osm.pbf"
+          done
+      - name: Extract launch coordinates
+        run: python3 -u scripts/discover_putins_extract.py
+      - name: Upload extraction report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: putin-extract-report
+          path: data/putins_extract_report.json
+          if-no-files-found: warn
+      - name: Commit discovered put-ins
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/putins_osm_candidates.geojson data/putins_extract_report.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Discover put-ins from regional OSM extracts"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
