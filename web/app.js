@@ -46,6 +46,7 @@ function applyMinima(data,atlas){
   const adequate=rec?.observed_adequate_75pct_distributed===true ||
    (rec?.daily_adequate_75pct_distributed===true&&rec?.coverage_fraction>=0.75);
   p.atlas_minimum_ft=adequate?finite(rec.minimum_ft):null;
+  p.atlas_mean_ft=adequate?finite(rec.mean_stage_12mo_ft):null;
   p.atlas_minimum_adequate=Boolean(adequate&&p.atlas_minimum_ft!==null);
   p.atlas_observed_days=rec?.coverage_days??0;
  }
@@ -73,10 +74,11 @@ function palette(p){
  const stage=finite(p.stage),minimum=finite(p.atlas_minimum_ft);
  if(stage===null||!p.atlas_minimum_adequate||minimum===null)return '#88929b';
  const low=finite(p.paddling_low_ft)??minimum;
- const mean=finite(p.mean_stage_12mo_ft),high=finite(p.paddling_high_ft)??finite(p.flood_stage_ft);
+ const mean=finite(p.atlas_mean_ft),high=finite(p.paddling_high_ft)??finite(p.flood_stage_ft);
  if(stage<=low)return '#80502f';
  if(mean===null||mean<=low){
-  return high!==null&&high>low?blend('#80502f','#d93b32',(stage-low)/(high-low)):'#168ed0';
+  // Without an observed annual mean, don't invent a flood-risk color gradient.
+  return '#88929b';
  }
  if(stage<=mean)return blend('#80502f','#168ed0',(stage-low)/(mean-low));
  if(high===null||high<=mean)return '#168ed0';
@@ -114,7 +116,7 @@ map.on('load',async()=>{
     'Community paddling low: '+(p.paddling_low_ft??'not calibrated')+' ft',
     'Community paddling high: '+(p.paddling_high_ft??'not calibrated')+' ft',
     'Community reports: '+(p.community_report_count??0),
-    '12-month mean: '+(p.mean_stage_12mo_ft??'unknown')+' ft',
+    'Observed 12-month mean: '+(p.atlas_mean_ft??'not calculated')+' ft',
     'Official flood stage: '+(p.flood_stage_ft??'unknown')+' ft',
     'Discharge: '+(p.discharge??'unknown')+' cfs',
     'Reading: '+(p.stage_time??'unknown'),
