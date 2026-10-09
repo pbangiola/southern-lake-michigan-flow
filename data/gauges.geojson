@@ -1,0 +1,5886 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "retrieved_at": "2026-10-08T15:13:34.576093+00:00",
+    "source": "USGS NWIS instantaneous values",
+    "warning": "Flood stage is not a paddling safety threshold."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.7825833,
+          40.99455556
+        ]
+      },
+      "properties": {
+        "site": "03328000",
+        "name": "EEL RIVER AT NORTH MANCHESTER, IN",
+        "discharge": 144.0,
+        "discharge_time": "2026-10-08T10:30:00.000-04:00",
+        "stage": 3.12,
+        "stage_time": "2026-10-08T10:30:00.000-04:00",
+        "flood_stage_ft": 11.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/NMCI3",
+        "feet_below_flood": 7.88,
+        "action_stage_ft": 9.0,
+        "moderate_stage_ft": 14.0,
+        "major_stage_ft": 16.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.6922222,
+          41.31638889
+        ]
+      },
+      "properties": {
+        "site": "03330241",
+        "name": "TIPPECANOE RIVER AT NORTH WEBSTER, IN",
+        "discharge": 15.5,
+        "discharge_time": "2026-10-08T10:45:00.000-04:00",
+        "stage": 3.61,
+        "stage_time": "2026-10-08T10:45:00.000-04:00",
+        "flood_stage_ft": 6.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/NWTI3",
+        "feet_below_flood": 2.39,
+        "action_stage_ft": 5.0,
+        "moderate_stage_ft": 6.5,
+        "major_stage_ft": 7.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.7891216,
+          41.32057424
+        ]
+      },
+      "properties": {
+        "site": "03330500",
+        "name": "TIPPECANOE RIVER AT OSWEGO, IN",
+        "discharge": 47.7,
+        "discharge_time": "2026-10-08T10:45:00.000-04:00",
+        "stage": 5.52,
+        "stage_time": "2026-10-08T10:45:00.000-04:00",
+        "flood_stage_ft": 7.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/OWGI3",
+        "feet_below_flood": 1.98,
+        "action_stage_ft": 7.0,
+        "moderate_stage_ft": 8.0,
+        "major_stage_ft": 9.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.8499914,
+          41.26226699
+        ]
+      },
+      "properties": {
+        "site": "03331040",
+        "name": "PIKE LAKE AT WARSAW, IN",
+        "stage": 5.88,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.4166732,
+          41.19670886
+        ]
+      },
+      "properties": {
+        "site": "03331440",
+        "name": "LAKE MAXINKUCKEE AT CULVER, IN",
+        "stage": 3.53,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.56359199,
+          41.15724265
+        ]
+      },
+      "properties": {
+        "site": "03331500",
+        "name": "TIPPECANOE RIVER NEAR ORA, IN",
+        "discharge": 762.0,
+        "discharge_time": "2026-10-08T10:45:00.000-04:00",
+        "stage": 7.32,
+        "stage_time": "2026-10-08T10:45:00.000-04:00",
+        "flood_stage_ft": 12.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/ORAI3",
+        "feet_below_flood": 4.68,
+        "action_stage_ft": 9.0,
+        "moderate_stage_ft": 13.0,
+        "major_stage_ft": 14.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.5991488,
+          41.04974369
+        ]
+      },
+      "properties": {
+        "site": "03331753",
+        "name": "TIPPECANOE RIVER AT WINAMAC, IN",
+        "discharge": 1010.0,
+        "discharge_time": "2026-10-08T11:00:00.000-04:00",
+        "stage": 5.73,
+        "stage_time": "2026-10-08T11:00:00.000-04:00",
+        "flood_stage_ft": 10.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/WMCI3",
+        "feet_below_flood": 4.27,
+        "action_stage_ft": 8.0,
+        "moderate_stage_ft": 11.0,
+        "major_stage_ft": 13.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.786,
+          41.08513889
+        ]
+      },
+      "properties": {
+        "site": "03332349",
+        "name": "BIG MONON DITCH AT CR200N NEAR MEDARYVILLE, IN",
+        "discharge": 163.0,
+        "discharge_time": "2026-10-08T10:00:00.000-04:00",
+        "stage": 7.89,
+        "stage_time": "2026-10-08T10:00:00.000-04:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.96725,
+          43.09713889
+        ]
+      },
+      "properties": {
+        "site": "040869416",
+        "name": "LINCOLN CREEK @ SHERMAN BOULEVARD AT MILWAUKEE, WI",
+        "discharge": 1.97,
+        "discharge_time": "2026-10-08T10:00:00.000-05:00",
+        "stage": 3.57,
+        "stage_time": "2026-10-08T10:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9089745,
+          43.10001159
+        ]
+      },
+      "properties": {
+        "site": "04087000",
+        "name": "MILWAUKEE RIVER AT MILWAUKEE, WI",
+        "discharge": 499.0,
+        "discharge_time": "2026-10-08T09:00:00.000-05:00",
+        "stage": 1.13,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": 7.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/MEEW3",
+        "feet_below_flood": 5.87,
+        "action_stage_ft": 6.0,
+        "moderate_stage_ft": 8.0,
+        "major_stage_ft": 9.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.10388889,
+          43.17277778
+        ]
+      },
+      "properties": {
+        "site": "04087030",
+        "name": "MENOMONEE RIVER AT MENOMONEE FALLS, WI",
+        "discharge": 29.6,
+        "discharge_time": "2026-10-08T09:05:00.000-05:00",
+        "stage": 3.47,
+        "stage_time": "2026-10-08T09:05:00.000-05:00",
+        "flood_stage_ft": 7.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/MFSW3",
+        "feet_below_flood": 4.03,
+        "action_stage_ft": 6.5,
+        "moderate_stage_ft": 8.5,
+        "major_stage_ft": 10.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.0436111,
+          43.1236111
+        ]
+      },
+      "properties": {
+        "site": "04087070",
+        "name": "LITTLE MENOMONEE RIVER AT MILWAUKEE, WI",
+        "discharge": 2.87,
+        "discharge_time": "2026-10-08T09:00:00.000-05:00",
+        "stage": 3.3,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.0461111,
+          43.0547222
+        ]
+      },
+      "properties": {
+        "site": "04087088",
+        "name": "UNDERWOOD CREEK AT WAUWATOSA, WI",
+        "discharge": 7.31,
+        "discharge_time": "2026-10-08T09:00:00.000-05:00",
+        "stage": 8.41,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.0051111,
+          43.0438333
+        ]
+      },
+      "properties": {
+        "site": "04087119",
+        "name": "HONEY CREEK AT WAUWATOSA, WI",
+        "discharge": 2.49,
+        "discharge_time": "2026-10-08T10:00:00.000-05:00",
+        "stage": 9.28,
+        "stage_time": "2026-10-08T10:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9997222,
+          43.04555556
+        ]
+      },
+      "properties": {
+        "site": "04087120",
+        "name": "MENOMONEE RIVER AT WAUWATOSA, WI",
+        "discharge": 66.2,
+        "discharge_time": "2026-10-08T09:00:00.000-05:00",
+        "stage": 1.96,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": 11.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/WWTW3",
+        "feet_below_flood": 9.04,
+        "action_stage_ft": 8.0,
+        "moderate_stage_ft": 15.0,
+        "major_stage_ft": 18.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.934194,
+          43.03389487
+        ]
+      },
+      "properties": {
+        "site": "04087142",
+        "name": "MENOMONEE RIVER AT 16TH STREET AT MILWAUKEE, WI",
+        "discharge": 286.0,
+        "discharge_time": "2026-10-08T09:00:00.000-05:00",
+        "stage": 12.92,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.8862222,
+          42.9457222
+        ]
+      },
+      "properties": {
+        "site": "040871473",
+        "name": "WILSON PARK CREEK AT GMIA INFALL AT MILWAUKEE, WI",
+        "discharge": 0.41,
+        "discharge_time": "2026-10-08T09:31:00.000-05:00",
+        "stage": 10.66,
+        "stage_time": "2026-10-08T09:31:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9073056,
+          42.95702778
+        ]
+      },
+      "properties": {
+        "site": "040871475",
+        "name": "WILSON PARK CREEK @ GMIA OUTFALL 7 @ MILWAUKEE,WI",
+        "discharge": 0.88,
+        "discharge_time": "2026-10-08T09:00:00.000-05:00",
+        "stage": 10.89,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9110556,
+          42.94516667
+        ]
+      },
+      "properties": {
+        "site": "040871476",
+        "name": "HOLMES AVE CRK TRIB @ GMIA OUTFALL 1 AT MILWAUKEE",
+        "discharge": 0.0,
+        "discharge_time": "2026-10-08T09:35:00.000-05:00",
+        "stage": 0.1,
+        "stage_time": "2026-10-08T09:35:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.92638889,
+          42.9975
+        ]
+      },
+      "properties": {
+        "site": "04087159",
+        "name": "KINNICKINNIC RIVER @ S. 11TH STREET @ MILWAUKEE,WI",
+        "discharge": 6.02,
+        "discharge_time": "2026-10-08T10:00:00.000-05:00",
+        "stage": 6.08,
+        "stage_time": "2026-10-08T10:00:00.000-05:00",
+        "flood_stage_ft": 16.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/KINW3",
+        "feet_below_flood": 9.92,
+        "action_stage_ft": 14.0,
+        "moderate_stage_ft": 17.0,
+        "major_stage_ft": 18.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.8983333,
+          43.02444444
+        ]
+      },
+      "properties": {
+        "site": "04087170",
+        "name": "MILWAUKEE RIVER AT MOUTH AT MILWAUKEE, WI",
+        "stage": 8.47,
+        "stage_time": "2026-10-08T10:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.87,
+          42.925
+        ]
+      },
+      "properties": {
+        "site": "04087204",
+        "name": "OAK CREEK AT SOUTH MILWAUKEE, WI",
+        "discharge": 30.0,
+        "discharge_time": "2026-10-08T09:00:00.000-05:00",
+        "stage": 2.6,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": 8.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/OAKW3",
+        "feet_below_flood": 5.4,
+        "action_stage_ft": 5.5,
+        "moderate_stage_ft": 10.0,
+        "major_stage_ft": 11.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.0141667,
+          42.945
+        ]
+      },
+      "properties": {
+        "site": "04087214",
+        "name": "ROOT RIVER AT GRANGE AVENUE AT GREENDALE, WI",
+        "discharge": 7.05,
+        "discharge_time": "2026-10-08T09:00:00.000-05:00",
+        "stage": 10.9,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9958333,
+          42.8736111
+        ]
+      },
+      "properties": {
+        "site": "04087220",
+        "name": "ROOT RIVER NEAR FRANKLIN, WI",
+        "discharge": 34.0,
+        "discharge_time": "2026-10-08T10:00:00.000-05:00",
+        "stage": 2.52,
+        "stage_time": "2026-10-08T10:00:00.000-05:00",
+        "flood_stage_ft": 8.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/FRKW3",
+        "feet_below_flood": 5.48,
+        "action_stage_ft": 7.0,
+        "moderate_stage_ft": 10.0,
+        "major_stage_ft": 12.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9947222,
+          42.81555556
+        ]
+      },
+      "properties": {
+        "site": "04087233",
+        "name": "ROOT RIVER CANAL NEAR FRANKLIN, WI",
+        "discharge": 40.5,
+        "discharge_time": "2026-10-08T10:00:00.000-05:00",
+        "stage": 2.95,
+        "stage_time": "2026-10-08T10:00:00.000-05:00",
+        "flood_stage_ft": 9.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/RAYW3",
+        "feet_below_flood": 6.05,
+        "action_stage_ft": 7.0,
+        "moderate_stage_ft": 11.0,
+        "major_stage_ft": 12.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.97575,
+          42.843667
+        ]
+      },
+      "properties": {
+        "site": "040872342",
+        "name": "Root River at W. Eight Mile Rd near Caledonia, WI",
+        "discharge": 68.3,
+        "discharge_time": "2026-10-08T09:00:00.000-05:00",
+        "stage": 6.07,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.823611,
+          42.751389
+        ]
+      },
+      "properties": {
+        "site": "04087240",
+        "name": "ROOT RIVER AT RACINE, WI",
+        "discharge": 183.0,
+        "discharge_time": "2026-10-08T10:00:00.000-05:00",
+        "stage": 3.07,
+        "stage_time": "2026-10-08T10:00:00.000-05:00",
+        "flood_stage_ft": 7.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/RACW3",
+        "feet_below_flood": 3.93,
+        "action_stage_ft": 6.0,
+        "moderate_stage_ft": 7.5,
+        "major_stage_ft": 8.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.8605556,
+          42.64694444
+        ]
+      },
+      "properties": {
+        "site": "04087257",
+        "name": "PIKE RIVER NEAR RACINE, WI",
+        "discharge": 41.0,
+        "discharge_time": "2026-10-08T09:00:00.000-05:00",
+        "stage": 1.67,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6079444,
+          41.88927778
+        ]
+      },
+      "properties": {
+        "site": "04087440",
+        "name": "LAKE MICHIGAN AT CHICAGO LOCK AT CHICAGO, IL",
+        "stage": 0.53,
+        "stage_time": "2026-10-08T08:57:00.000-06:00",
+        "flood_stage_ft": 4.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/LCRI2",
+        "feet_below_flood": 3.47,
+        "action_stage_ft": 2.5,
+        "moderate_stage_ft": 6.0,
+        "major_stage_ft": 7.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.3936197,
+          41.60779416
+        ]
+      },
+      "properties": {
+        "site": "04092677",
+        "name": "GRAND CALUMET RIVER AT INDUSTRIAL HWY AT GARY, IN",
+        "discharge": 367.0,
+        "discharge_time": "2026-10-08T10:30:00.000-04:00",
+        "stage": 1.78,
+        "stage_time": "2026-10-08T10:30:00.000-04:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.4686222,
+          41.64918269
+        ]
+      },
+      "properties": {
+        "site": "04092750",
+        "name": "INDIANA HARBOR CANAL AT EAST CHICAGO, IN",
+        "discharge": 122.0,
+        "discharge_time": "2026-10-08T11:00:00.000-04:00",
+        "stage": 9.91,
+        "stage_time": "2026-10-08T11:00:00.000-04:00",
+        "flood_stage_ft": 13.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/IHCI3",
+        "feet_below_flood": 3.09,
+        "action_stage_ft": 11.5,
+        "moderate_stage_ft": 14.5,
+        "major_stage_ft": 15.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.2583056,
+          41.4524722
+        ]
+      },
+      "properties": {
+        "site": "04092944",
+        "name": "DEEP RIVER AT GRAND BLVD AT MERRILLVILLE, IN",
+        "stage": 3.57,
+        "stage_time": "2026-10-08T10:15:00.000-04:00",
+        "flood_stage_ft": 8.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/MDRI3",
+        "feet_below_flood": 4.93,
+        "action_stage_ft": 7.5,
+        "moderate_stage_ft": 10.5,
+        "major_stage_ft": 13.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.433,
+          41.49238889
+        ]
+      },
+      "properties": {
+        "site": "04092964",
+        "name": "TURKEY CREEK AT JOLIET ST AT SCHERERVILLE, IN",
+        "stage": 3.8,
+        "stage_time": "2026-10-08T10:15:00.000-04:00",
+        "flood_stage_ft": 7.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/TCSI3",
+        "feet_below_flood": 3.7,
+        "action_stage_ft": 7.0,
+        "moderate_stage_ft": 8.5,
+        "major_stage_ft": 9.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.32375,
+          41.50744444
+        ]
+      },
+      "properties": {
+        "site": "04092977",
+        "name": "TURKEY CREEK AT 61ST AV AT MERRILLVILLE, IN",
+        "stage": 5.69,
+        "stage_time": "2026-10-08T10:15:00.000-04:00",
+        "flood_stage_ft": 11.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/MTCI3",
+        "feet_below_flood": 5.31,
+        "action_stage_ft": 9.0,
+        "moderate_stage_ft": 14.5,
+        "major_stage_ft": 17.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.2569484,
+          41.5361281
+        ]
+      },
+      "properties": {
+        "site": "04093000",
+        "name": "DEEP RIVER AT LAKE GEORGE OUTLET AT HOBART, IN",
+        "discharge": 71.5,
+        "discharge_time": "2026-10-08T10:30:00.000-04:00",
+        "stage": 4.88,
+        "stage_time": "2026-10-08T10:30:00.000-04:00",
+        "flood_stage_ft": 13.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/HLGI3",
+        "feet_below_flood": 8.12,
+        "action_stage_ft": 11.0,
+        "moderate_stage_ft": 17.0,
+        "major_stage_ft": 21.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.2929167,
+          41.5695
+        ]
+      },
+      "properties": {
+        "site": "04093100",
+        "name": "DEEP RIVER NEAR LIVERPOOL, IN",
+        "stage": 6.48,
+        "stage_time": "2026-10-08T10:15:00.000-04:00",
+        "flood_stage_ft": 17.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/LIVI3",
+        "feet_below_flood": 11.02,
+        "action_stage_ft": 14.0,
+        "moderate_stage_ft": 18.5,
+        "major_stage_ft": 21.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.3558333,
+          41.56610556
+        ]
+      },
+      "properties": {
+        "site": "04093176",
+        "name": "LITTLE CALUMET RIVER AT GRANT ST AT GARY, IN",
+        "stage": 6.74,
+        "stage_time": "2026-10-08T10:15:00.000-04:00",
+        "flood_stage_ft": 11.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/GRGI3",
+        "feet_below_flood": 4.26,
+        "action_stage_ft": 8.5,
+        "moderate_stage_ft": 13.0,
+        "major_stage_ft": 18.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.2994444,
+          41.5725
+        ]
+      },
+      "properties": {
+        "site": "04093250",
+        "name": "LITTLE CALUMET RIVER NEAR LAKE STATION, IN",
+        "stage": 3.9,
+        "stage_time": "2026-10-08T10:15:00.000-04:00",
+        "flood_stage_ft": 13.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/LAKI3",
+        "feet_below_flood": 9.1,
+        "action_stage_ft": 8.0,
+        "moderate_stage_ft": 15.0,
+        "major_stage_ft": 17.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.2205,
+          41.5938333
+        ]
+      },
+      "properties": {
+        "site": "04093503",
+        "name": "BURNS DITCH AT USHWY 20 AT LAKE STATION, IN",
+        "stage": 7.45,
+        "stage_time": "2026-10-08T10:15:00.000-04:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.0874428,
+          41.62223849
+        ]
+      },
+      "properties": {
+        "site": "04094000",
+        "name": "LITTLE CALUMET RIVER AT PORTER, IN",
+        "discharge": 56.9,
+        "discharge_time": "2026-10-08T10:45:00.000-04:00",
+        "stage": 3.5,
+        "stage_time": "2026-10-08T10:45:00.000-04:00",
+        "flood_stage_ft": 8.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/PRTI3",
+        "feet_below_flood": 4.5,
+        "action_stage_ft": 7.0,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.0705556,
+          41.4647222
+        ]
+      },
+      "properties": {
+        "site": "04094400",
+        "name": "SALT CREEK AT VALPARAISO, IN",
+        "discharge": 10.2,
+        "discharge_time": "2026-10-08T11:00:00.000-04:00",
+        "stage": 3.21,
+        "stage_time": "2026-10-08T11:00:00.000-04:00",
+        "flood_stage_ft": 8.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/SCRI3",
+        "feet_below_flood": 4.79,
+        "action_stage_ft": 7.0,
+        "moderate_stage_ft": 11.0,
+        "major_stage_ft": 12.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.1758346,
+          41.62223849
+        ]
+      },
+      "properties": {
+        "site": "04095090",
+        "name": "PORTAGE-BURNS WATERWAY AT PORTAGE, IN",
+        "discharge": 347.0,
+        "discharge_time": "2026-10-08T10:30:00.000-04:00",
+        "stage": 5.22,
+        "stage_time": "2026-10-08T10:30:00.000-04:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.8597129,
+          41.7166821
+        ]
+      },
+      "properties": {
+        "site": "04095300",
+        "name": "TRAIL CREEK AT MICHIGAN CITY, IN",
+        "discharge": 49.3,
+        "discharge_time": "2026-10-08T10:30:00.000-04:00",
+        "stage": 2.06,
+        "stage_time": "2026-10-08T10:30:00.000-04:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.9041588,
+          41.72279319
+        ]
+      },
+      "properties": {
+        "site": "04095380",
+        "name": "TRAIL CREEK AT MICHIGAN CITY HARBOR, IN",
+        "discharge": -300.0,
+        "discharge_time": "2026-10-08T10:40:00.000-04:00",
+        "stage": 6.21,
+        "stage_time": "2026-10-08T10:40:00.000-04:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.5750216,
+          41.87365438
+        ]
+      },
+      "properties": {
+        "site": "04096015",
+        "name": "GALIEN RIVER NEAR SAWYER, MI",
+        "discharge": 35.0,
+        "discharge_time": "2026-10-08T09:15:00.000-05:00",
+        "stage": 6.43,
+        "stage_time": "2026-10-08T09:15:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.4572167,
+          42.01109444
+        ]
+      },
+      "properties": {
+        "site": "040970647",
+        "name": "LITTLE PORTAGE CR AT LANE ST AT MENDON, MI",
+        "discharge": 20.4,
+        "discharge_time": "2026-10-08T09:45:00.000-05:00",
+        "stage": 1.73,
+        "stage_time": "2026-10-08T09:45:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.5507796,
+          42.19084466
+        ]
+      },
+      "properties": {
+        "site": "04097188",
+        "name": "AUSTIN LAKE NEAR KALAMAZOO, MI",
+        "stage": 5.85,
+        "stage_time": "2026-10-08T09:45:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.6285602,
+          41.94695769
+        ]
+      },
+      "properties": {
+        "site": "04097345",
+        "name": "PORTAGE RIVER AT FIFTH AVENUE AT THREE RIVERS, MI",
+        "discharge": 111.0,
+        "discharge_time": "2026-10-08T09:00:00.000-05:00",
+        "stage": 2.56,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.7181861,
+          42.02440556
+        ]
+      },
+      "properties": {
+        "site": "04097349",
+        "name": "ROCKY RIVER AT BENT RD AT HOWARDSVILLE, MI",
+        "stage": 3.45,
+        "stage_time": "2026-10-08T09:15:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.6327707,
+          41.94032575
+        ]
+      },
+      "properties": {
+        "site": "04097500",
+        "name": "ST. JOSEPH RIVER AT THREE RIVERS, MI",
+        "discharge": 1010.0,
+        "discharge_time": "2026-10-08T09:45:00.000-05:00",
+        "stage": 3.84,
+        "stage_time": "2026-10-08T09:45:00.000-05:00",
+        "flood_stage_ft": 7.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/TRVM4",
+        "feet_below_flood": 3.16,
+        "action_stage_ft": 6.0,
+        "moderate_stage_ft": 9.0,
+        "major_stage_ft": 11.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.409428,
+          41.88838304
+        ]
+      },
+      "properties": {
+        "site": "04097540",
+        "name": "PRAIRIE RIVER NEAR NOTTAWA, MI",
+        "discharge": 57.8,
+        "discharge_time": "2026-10-08T09:00:00.000-05:00",
+        "stage": 3.34,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.4880439,
+          41.9431051
+        ]
+      },
+      "properties": {
+        "site": "0409754132",
+        "name": "SPRING CREEK AT RAMBADT ROAD NEAR CENTREVILLE, MI",
+        "discharge": 9.84,
+        "discharge_time": "2026-10-08T09:45:00.000-05:00",
+        "stage": 1.71,
+        "stage_time": "2026-10-08T09:45:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.74304939,
+          41.83060445
+        ]
+      },
+      "properties": {
+        "site": "04098980",
+        "name": "MILL CREEK AT QUAKER STREET NEAR MOTTVILLE, MI",
+        "discharge": 14.3,
+        "discharge_time": "2026-10-08T09:15:00.000-05:00",
+        "stage": 4.42,
+        "stage_time": "2026-10-08T09:15:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.7561047,
+          41.80088279
+        ]
+      },
+      "properties": {
+        "site": "04099000",
+        "name": "ST. JOSEPH RIVER AT MOTTVILLE, MI",
+        "discharge": 1270.0,
+        "discharge_time": "2026-10-08T09:15:00.000-05:00",
+        "stage": 3.13,
+        "stage_time": "2026-10-08T09:15:00.000-05:00",
+        "flood_stage_ft": 8.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/MOTM4",
+        "feet_below_flood": 4.87,
+        "action_stage_ft": 7.0,
+        "moderate_stage_ft": 9.0,
+        "major_stage_ft": 10.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.5763364,
+          41.7489037
+        ]
+      },
+      "properties": {
+        "site": "04099750",
+        "name": "PIGEON RIVER NEAR SCOTT, IN",
+        "discharge": 305.0,
+        "discharge_time": "2026-10-08T10:15:00.000-04:00",
+        "stage": 3.92,
+        "stage_time": "2026-10-08T10:15:00.000-04:00",
+        "flood_stage_ft": 6.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/SCOI3",
+        "feet_below_flood": 2.08,
+        "action_stage_ft": 5.0,
+        "moderate_stage_ft": 8.0,
+        "major_stage_ft": 10.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.4485919,
+          41.49282747
+        ]
+      },
+      "properties": {
+        "site": "04100220",
+        "name": "WALDRON LAKE NEAR COSPERVILLE, IN",
+        "stage": 7.15,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.4754999,
+          41.48168376
+        ]
+      },
+      "properties": {
+        "site": "04100222",
+        "name": "NB ELKHART RIVER AT COSPERVILLE, IN",
+        "discharge": 155.0,
+        "discharge_time": "2026-10-08T10:30:00.000-04:00",
+        "stage": 4.79,
+        "stage_time": "2026-10-08T10:30:00.000-04:00",
+        "flood_stage_ft": 6.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/CPEI3",
+        "feet_below_flood": 1.21,
+        "action_stage_ft": 5.0,
+        "moderate_stage_ft": 7.0,
+        "major_stage_ft": 8.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.84856789,
+          41.5933496
+        ]
+      },
+      "properties": {
+        "site": "04100500",
+        "name": "ELKHART RIVER AT GOSHEN, IN",
+        "discharge": 120.0,
+        "discharge_time": "2026-10-08T10:45:00.000-04:00",
+        "stage": 2.94,
+        "stage_time": "2026-10-08T10:45:00.000-04:00",
+        "flood_stage_ft": 7.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/GSHI3",
+        "feet_below_flood": 4.06,
+        "action_stage_ft": 6.0,
+        "moderate_stage_ft": 9.0,
+        "major_stage_ft": 11.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.974961,
+          41.69168215
+        ]
+      },
+      "properties": {
+        "site": "04101000",
+        "name": "ST. JOSEPH RIVER AT ELKHART, IN",
+        "discharge": 2460.0,
+        "discharge_time": "2026-10-08T10:30:00.000-04:00",
+        "stage": 19.42,
+        "stage_time": "2026-10-08T10:30:00.000-04:00",
+        "flood_stage_ft": 24.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/EKMI3",
+        "feet_below_flood": 4.58,
+        "action_stage_ft": 23.0,
+        "moderate_stage_ft": 25.0,
+        "major_stage_ft": 27.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.2678333,
+          41.72027778
+        ]
+      },
+      "properties": {
+        "site": "04101225",
+        "name": "ST. JOSEPH RIVER AT SOUTH BEND, IN",
+        "discharge": 3880.0,
+        "discharge_time": "2026-10-08T10:15:00.000-04:00",
+        "stage": 1.6,
+        "stage_time": "2026-10-08T10:15:00.000-04:00",
+        "flood_stage_ft": 5.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/SBNI3",
+        "feet_below_flood": 3.9,
+        "action_stage_ft": 4.5,
+        "moderate_stage_ft": 8.0,
+        "major_stage_ft": 9.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.2627484,
+          41.72862637
+        ]
+      },
+      "properties": {
+        "site": "04101370",
+        "name": "JUDY CREEK NEAR SOUTH BEND, IN",
+        "discharge": 11.4,
+        "discharge_time": "2026-10-08T10:30:00.000-04:00",
+        "stage": 2.34,
+        "stage_time": "2026-10-08T10:30:00.000-04:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.267222,
+          41.774444
+        ]
+      },
+      "properties": {
+        "site": "04101400",
+        "name": "ST. JOSEPH RIVER AT BERTRAND, MICH.",
+        "stage": 9.73,
+        "stage_time": "2026-10-08T10:15:00.000-04:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.2597325,
+          41.8292138
+        ]
+      },
+      "properties": {
+        "site": "04101500",
+        "name": "ST. JOSEPH RIVER AT NILES, MI",
+        "discharge": 3090.0,
+        "discharge_time": "2026-10-08T09:15:00.000-05:00",
+        "stage": 5.8,
+        "stage_time": "2026-10-08T09:45:00.000-05:00",
+        "flood_stage_ft": 11.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/NILM4",
+        "feet_below_flood": 5.2,
+        "action_stage_ft": 7.0,
+        "moderate_stage_ft": 14.0,
+        "major_stage_ft": 15.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.0689021,
+          42.05587699
+        ]
+      },
+      "properties": {
+        "site": "041015313",
+        "name": "OSBORN DRAIN AT DEWEY LAKE ST NR GLENWOOD, MI",
+        "discharge": 8.34,
+        "discharge_time": "2026-10-08T09:45:00.000-05:00",
+        "stage": 2.29,
+        "stage_time": "2026-10-08T09:45:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.1075,
+          42.02777778
+        ]
+      },
+      "properties": {
+        "site": "04101535",
+        "name": "DOWAGIAC RIVER AT STATE HWY 51 NEAR DOWAGIAC, MI",
+        "discharge": 73.6,
+        "discharge_time": "2026-10-08T09:15:00.000-05:00",
+        "stage": 2.79,
+        "stage_time": "2026-10-08T09:15:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.0027778,
+          41.9836111
+        ]
+      },
+      "properties": {
+        "site": "04101590",
+        "name": "DOWAGIAC CREEK AT DUTCH SETTLEMENT RD NR DOWAGIAC,",
+        "discharge": 35.8,
+        "discharge_time": "2026-10-08T09:45:00.000-05:00",
+        "stage": 3.2,
+        "stage_time": "2026-10-08T09:45:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.2130676,
+          41.9133797
+        ]
+      },
+      "properties": {
+        "site": "04101800",
+        "name": "DOWAGIAC RIVER AT SUMNERVILLE, MI",
+        "discharge": 230.0,
+        "discharge_time": "2026-10-08T09:45:00.000-05:00",
+        "stage": 5.38,
+        "stage_time": "2026-10-08T09:45:00.000-05:00",
+        "flood_stage_ft": 8.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/SNMM4",
+        "feet_below_flood": 2.62,
+        "action_stage_ft": 6.0,
+        "moderate_stage_ft": 9.0,
+        "major_stage_ft": 14.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.9014021,
+          42.2005953
+        ]
+      },
+      "properties": {
+        "site": "04102148",
+        "name": "SOUTH BRANCH PAW PAW RIVER NEAR PAW PAW, MI",
+        "discharge": 70.9,
+        "discharge_time": "2026-10-08T09:30:00.000-05:00",
+        "stage": 4.38,
+        "stage_time": "2026-10-08T09:30:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.3689124,
+          42.18642675
+        ]
+      },
+      "properties": {
+        "site": "04102500",
+        "name": "PAW PAW RIVER AT RIVERSIDE, MI",
+        "discharge": 423.0,
+        "discharge_time": "2026-10-08T09:45:00.000-05:00",
+        "stage": 6.67,
+        "stage_time": "2026-10-08T09:45:00.000-05:00",
+        "flood_stage_ft": 11.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/RIVM4",
+        "feet_below_flood": 4.33,
+        "action_stage_ft": 10.0,
+        "moderate_stage_ft": 15.0,
+        "major_stage_ft": 22.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.1875265,
+          42.35420009
+        ]
+      },
+      "properties": {
+        "site": "04102700",
+        "name": "SOUTH BRANCH BLACK RIVER NEAR BANGOR, MI",
+        "discharge": 59.6,
+        "discharge_time": "2026-10-08T09:45:00.000-05:00",
+        "stage": 3.19,
+        "stage_time": "2026-10-08T09:45:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.513893,
+          42.28559716
+        ]
+      },
+      "properties": {
+        "site": "04106000",
+        "name": "KALAMAZOO RIVER AT COMSTOCK, MI",
+        "discharge": 715.0,
+        "discharge_time": "2026-10-08T09:15:00.000-05:00",
+        "stage": 4.27,
+        "stage_time": "2026-10-08T09:15:00.000-05:00",
+        "flood_stage_ft": 9.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/CMSM4",
+        "feet_below_flood": 4.73,
+        "action_stage_ft": 7.0,
+        "moderate_stage_ft": 10.0,
+        "major_stage_ft": 11.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.6483389,
+          42.23531839
+        ]
+      },
+      "properties": {
+        "site": "04106320",
+        "name": "WEST FORK PORTAGE CREEK NEAR OSHTEMO, MI",
+        "discharge": 10.7,
+        "discharge_time": "2026-10-08T09:15:00.000-05:00",
+        "stage": 1.71,
+        "stage_time": "2026-10-08T09:15:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.6144495,
+          42.2444854
+        ]
+      },
+      "properties": {
+        "site": "04106400",
+        "name": "WEST FORK PORTAGE CREEK AT KALAMAZOO, MI",
+        "discharge": 9.46,
+        "discharge_time": "2026-10-08T09:45:00.000-05:00",
+        "stage": 2.46,
+        "stage_time": "2026-10-08T09:45:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.5763942,
+          42.2742075
+        ]
+      },
+      "properties": {
+        "site": "04106500",
+        "name": "PORTAGE CREEK AT KALAMAZOO, MI",
+        "discharge": 40.6,
+        "discharge_time": "2026-10-08T10:00:00.000-05:00",
+        "stage": 2.24,
+        "stage_time": "2026-10-08T10:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.798355,
+          42.48225575
+        ]
+      },
+      "properties": {
+        "site": "04107850",
+        "name": "KALAMAZOO RIVER NEAR ALLEGAN, MI",
+        "discharge": 1210.0,
+        "discharge_time": "2026-10-08T09:00:00.000-05:00",
+        "stage": 7.58,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.7219681,
+          42.6422537
+        ]
+      },
+      "properties": {
+        "site": "04108600",
+        "name": "RABBIT RIVER NEAR HOPKINS, MI",
+        "discharge": 31.0,
+        "discharge_time": "2026-10-08T09:00:00.000-05:00",
+        "stage": 3.0,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.106703,
+          42.65085976
+        ]
+      },
+      "properties": {
+        "site": "04108660",
+        "name": "KALAMAZOO RIVER AT NEW RICHMOND, MI",
+        "discharge": 1450.0,
+        "discharge_time": "2026-10-08T09:00:00.000-05:00",
+        "stage": 10.87,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": 17.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/RCMM4",
+        "feet_below_flood": 6.13,
+        "action_stage_ft": 15.0,
+        "moderate_stage_ft": 19.0,
+        "major_stage_ft": 21.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.0183722,
+          42.77919167
+        ]
+      },
+      "properties": {
+        "site": "04108800",
+        "name": "MACATAWA RIVER AT STATE ROAD NEAR ZEELAND, MI",
+        "discharge": 14.3,
+        "discharge_time": "2026-10-08T09:45:00.000-05:00",
+        "stage": 2.47,
+        "stage_time": "2026-10-08T09:45:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.08198959,
+          42.93279984
+        ]
+      },
+      "properties": {
+        "site": "04108862",
+        "name": "PIGEON RIVER AT 120TH AVENUE NR OLIVE CENTER, MI",
+        "discharge": 7.22,
+        "discharge_time": "2026-10-08T09:00:00.000-05:00",
+        "stage": 2.24,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.4833523,
+          42.8111429
+        ]
+      },
+      "properties": {
+        "site": "04118000",
+        "name": "THORNAPPLE RIVER NEAR CALEDONIA, MI",
+        "stage": 3.76,
+        "stage_time": "2026-10-08T09:45:00.000-05:00",
+        "flood_stage_ft": 10.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/CLDM4",
+        "feet_below_flood": 6.24,
+        "action_stage_ft": 8.0,
+        "moderate_stage_ft": 12.0,
+        "major_stage_ft": 14.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.4775228,
+          42.9569741
+        ]
+      },
+      "properties": {
+        "site": "04118105",
+        "name": "GRAND RIVER AT ADA, MI",
+        "stage": 7.73,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": 20.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/ADAM4",
+        "feet_below_flood": 12.27,
+        "action_stage_ft": 17.0,
+        "moderate_stage_ft": 22.0,
+        "major_stage_ft": 25.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.5908648,
+          43.0822491
+        ]
+      },
+      "properties": {
+        "site": "04118500",
+        "name": "ROGUE RIVER NEAR ROCKFORD, MI",
+        "discharge": 137.0,
+        "discharge_time": "2026-10-08T09:00:00.000-05:00",
+        "stage": 3.86,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": 8.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/ROCM4",
+        "feet_below_flood": 4.14,
+        "action_stage_ft": 7.0,
+        "moderate_stage_ft": 10.0,
+        "major_stage_ft": 11.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.6608333,
+          43.02277778
+        ]
+      },
+      "properties": {
+        "site": "04118564",
+        "name": "GRAND RIVER AT N PARK ST NE AT GRAND RAPIDS, MI",
+        "stage": 3.83,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.6772533,
+          42.963082
+        ]
+      },
+      "properties": {
+        "site": "04119000",
+        "name": "GRAND RIVER AT GRAND RAPIDS, MI",
+        "discharge": 2490.0,
+        "discharge_time": "2026-10-08T09:00:00.000-05:00",
+        "stage": 2.49,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": 18.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/GDRM4",
+        "feet_below_flood": 15.51,
+        "action_stage_ft": 12.0,
+        "moderate_stage_ft": 21.0,
+        "major_stage_ft": 23.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.650584,
+          42.91280557
+        ]
+      },
+      "properties": {
+        "site": "04119055",
+        "name": "PLASTER CREEK AT 28TH STREET AT GRAND RAPIDS, MI",
+        "discharge": 19.7,
+        "discharge_time": "2026-10-08T09:00:00.000-05:00",
+        "stage": 3.27,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.7672555,
+          42.9153038
+        ]
+      },
+      "properties": {
+        "site": "04119070",
+        "name": "GRAND RIVER AT STATE HWY M-11 AT GRANDVILLE, MI",
+        "discharge": 2660.0,
+        "discharge_time": "2026-10-08T09:45:00.000-05:00",
+        "stage": 4.53,
+        "stage_time": "2026-10-08T09:45:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.7628105,
+          42.9025263
+        ]
+      },
+      "properties": {
+        "site": "04119160",
+        "name": "BUCK CREEK AT WILSON AVENUE AT GRANDVILLE, MI",
+        "discharge": 36.8,
+        "discharge_time": "2026-10-08T10:00:00.000-05:00",
+        "stage": 4.73,
+        "stage_time": "2026-10-08T10:00:00.000-05:00",
+        "flood_stage_ft": 9.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/BUCM4",
+        "feet_below_flood": 4.27,
+        "action_stage_ft": 7.5,
+        "moderate_stage_ft": 10.5,
+        "major_stage_ft": 12.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.0264354,
+          43.0241884
+        ]
+      },
+      "properties": {
+        "site": "04119400",
+        "name": "GRAND RIVER NEAR EASTMANVILLE, MI",
+        "discharge": 2390.0,
+        "discharge_time": "2026-10-08T09:00:00.000-05:00",
+        "stage": 10.69,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.3761111,
+          43.08777778
+        ]
+      },
+      "properties": {
+        "site": "05426067",
+        "name": "BARK RIVER AT NAGAWICKA ROAD AT DELAFIELD, WI",
+        "discharge": 35.9,
+        "discharge_time": "2026-10-08T10:00:00.000-05:00",
+        "stage": 12.69,
+        "stage_time": "2026-10-08T10:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.6705556,
+          42.96027778
+        ]
+      },
+      "properties": {
+        "site": "05426250",
+        "name": "BARK RIVER NEAR ROME, WI",
+        "discharge": 125.0,
+        "discharge_time": "2026-10-08T09:00:00.000-05:00",
+        "stage": 2.29,
+        "stage_time": "2026-10-08T09:00:00.000-05:00",
+        "flood_stage_ft": 4.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/ROMW3",
+        "feet_below_flood": 1.71,
+        "action_stage_ft": 3.0,
+        "moderate_stage_ft": 5.0,
+        "major_stage_ft": 6.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.5608333,
+          42.6408333
+        ]
+      },
+      "properties": {
+        "site": "05431016",
+        "name": "JACKSON CREEK AT MOUND ROAD NEAR ELKHORN, WI",
+        "discharge": 16.9,
+        "discharge_time": "2026-10-08T10:00:00.000-05:00",
+        "stage": 8.6,
+        "stage_time": "2026-10-08T10:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.62477289,
+          42.61473059
+        ]
+      },
+      "properties": {
+        "site": "05431022",
+        "name": "DELAVAN LAKE OUTLET AT BORG ROAD NEAR DELAVAN, WI",
+        "discharge": 51.7,
+        "discharge_time": "2026-10-08T10:00:00.000-05:00",
+        "stage": 6.14,
+        "stage_time": "2026-10-08T10:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.60848889,
+          42.26535
+        ]
+      },
+      "properties": {
+        "site": "05438170",
+        "name": "KISHWAUKEE RIVER AT MARENGO, IL",
+        "discharge": 130.0,
+        "discharge_time": "2026-10-08T08:15:00.000-06:00",
+        "stage": 8.04,
+        "stage_time": "2026-10-08T08:15:00.000-06:00",
+        "flood_stage_ft": 12.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/MRGI2",
+        "feet_below_flood": 3.96,
+        "action_stage_ft": 11.5,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.6608333,
+          42.52166667
+        ]
+      },
+      "properties": {
+        "site": "05438283",
+        "name": "PISCASAW CREEK NEAR WALWORTH, WI",
+        "discharge": 2.68,
+        "discharge_time": "2026-10-08T10:00:00.000-05:00",
+        "stage": 6.09,
+        "stage_time": "2026-10-08T10:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.7061667,
+          41.38963889
+        ]
+      },
+      "properties": {
+        "site": "05515500",
+        "name": "KANKAKEE RIVER AT DAVIS, IN",
+        "discharge": 625.0,
+        "discharge_time": "2026-10-08T11:00:00.000-04:00",
+        "stage": 6.61,
+        "stage_time": "2026-10-08T11:00:00.000-04:00",
+        "flood_stage_ft": 10.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/DAVI3",
+        "feet_below_flood": 3.39,
+        "action_stage_ft": 9.0,
+        "moderate_stage_ft": 12.0,
+        "major_stage_ft": 13.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.3044166,
+          41.34029645
+        ]
+      },
+      "properties": {
+        "site": "05516500",
+        "name": "YELLOW RIVER AT PLYMOUTH, IN",
+        "discharge": 240.0,
+        "discharge_time": "2026-10-08T10:45:00.000-04:00",
+        "stage": 5.52,
+        "stage_time": "2026-10-08T10:45:00.000-04:00",
+        "flood_stage_ft": 13.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/PYMI3",
+        "feet_below_flood": 7.48,
+        "action_stage_ft": 11.0,
+        "moderate_stage_ft": 14.0,
+        "major_stage_ft": 15.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.4666667,
+          41.27138889
+        ]
+      },
+      "properties": {
+        "site": "05516665",
+        "name": "YELLOW RIVER NEAR OAK GROVE, IN",
+        "discharge": 352.0,
+        "discharge_time": "2026-10-08T10:15:00.000-04:00",
+        "stage": 4.8,
+        "stage_time": "2026-10-08T10:15:00.000-04:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.62053829,
+          41.30279685
+        ]
+      },
+      "properties": {
+        "site": "05517000",
+        "name": "YELLOW RIVER AT KNOX, IN",
+        "discharge": 433.0,
+        "discharge_time": "2026-10-08T10:45:00.000-04:00",
+        "stage": 5.66,
+        "stage_time": "2026-10-08T10:45:00.000-04:00",
+        "flood_stage_ft": 10.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/KNXI3",
+        "feet_below_flood": 4.34,
+        "action_stage_ft": 9.0,
+        "moderate_stage_ft": 12.0,
+        "major_stage_ft": 13.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.7375,
+          41.30666667
+        ]
+      },
+      "properties": {
+        "site": "05517010",
+        "name": "YELLOW RIVER NEAR BREMS, IN",
+        "stage": 4.36,
+        "stage_time": "2026-10-08T10:45:00.000-04:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.96832769,
+          41.22001988
+        ]
+      },
+      "properties": {
+        "site": "05517500",
+        "name": "KANKAKEE RIVER AT DUNNS BRIDGE, IN",
+        "discharge": 1600.0,
+        "discharge_time": "2026-10-08T11:00:00.000-04:00",
+        "stage": 5.71,
+        "stage_time": "2026-10-08T11:00:00.000-04:00",
+        "flood_stage_ft": 10.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/DBRI3",
+        "feet_below_flood": 4.29,
+        "action_stage_ft": 9.5,
+        "moderate_stage_ft": 12.0,
+        "major_stage_ft": 13.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.0338854,
+          41.25390845
+        ]
+      },
+      "properties": {
+        "site": "05517530",
+        "name": "KANKAKEE RIVER NR KOUTS, IN",
+        "discharge": 1720.0,
+        "discharge_time": "2026-10-08T11:00:00.000-04:00",
+        "stage": 6.64,
+        "stage_time": "2026-10-08T11:00:00.000-04:00",
+        "flood_stage_ft": 11.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/KTSI3",
+        "feet_below_flood": 4.36,
+        "action_stage_ft": 10.5,
+        "moderate_stage_ft": 13.0,
+        "major_stage_ft": 14.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.3403096,
+          41.1828134
+        ]
+      },
+      "properties": {
+        "site": "05518000",
+        "name": "KANKAKEE RIVER AT SHELBY, IN",
+        "discharge": 2200.0,
+        "discharge_time": "2026-10-08T10:45:00.000-04:00",
+        "stage": 7.22,
+        "stage_time": "2026-10-08T10:45:00.000-04:00",
+        "flood_stage_ft": 10.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/SLBI3",
+        "feet_below_flood": 3.28,
+        "action_stage_ft": 9.5,
+        "moderate_stage_ft": 11.5,
+        "major_stage_ft": 12.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.66875,
+          41.15994444
+        ]
+      },
+      "properties": {
+        "site": "05520500",
+        "name": "KANKAKEE RIVER AT MOMENCE, IL",
+        "discharge": 2550.0,
+        "discharge_time": "2026-10-08T08:45:00.000-06:00",
+        "stage": 2.62,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 5.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/MOMI2",
+        "feet_below_flood": 2.38,
+        "action_stage_ft": 4.5,
+        "moderate_stage_ft": 6.5,
+        "major_stage_ft": 9.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.2431944,
+          41.01275
+        ]
+      },
+      "properties": {
+        "site": "05520980",
+        "name": "IROQUOIS RIVER NEAR PARR, IN",
+        "discharge": 0.7,
+        "discharge_time": "2026-10-08T10:15:00.000-04:00",
+        "stage": 3.28,
+        "stage_time": "2026-10-08T10:15:00.000-04:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.1288886,
+          40.93335598
+        ]
+      },
+      "properties": {
+        "site": "05522500",
+        "name": "IROQUOIS RIVER AT RENSSELAER, IN",
+        "discharge": 119.0,
+        "discharge_time": "2026-10-08T10:30:00.000-04:00",
+        "stage": 4.61,
+        "stage_time": "2026-10-08T10:30:00.000-04:00",
+        "flood_stage_ft": 12.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/RZLI3",
+        "feet_below_flood": 7.39,
+        "action_stage_ft": 11.0,
+        "moderate_stage_ft": 14.0,
+        "major_stage_ft": 15.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.8240556,
+          41.0092222
+        ]
+      },
+      "properties": {
+        "site": "05526000",
+        "name": "IROQUOIS RIVER NEAR CHEBANSE, IL",
+        "discharge": 506.0,
+        "discharge_time": "2026-10-08T08:45:00.000-06:00",
+        "stage": 3.57,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 16.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/CHBI2",
+        "feet_below_flood": 12.43,
+        "action_stage_ft": 15.0,
+        "moderate_stage_ft": 18.0,
+        "major_stage_ft": 20.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1867222,
+          41.3463333
+        ]
+      },
+      "properties": {
+        "site": "05527500",
+        "name": "KANKAKEE RIVER NEAR WILMINGTON, IL",
+        "discharge": 3550.0,
+        "discharge_time": "2026-10-08T08:45:00.000-06:00",
+        "stage": 1.95,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 6.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/WLMI2",
+        "feet_below_flood": 4.55,
+        "action_stage_ft": 5.0,
+        "moderate_stage_ft": 8.0,
+        "major_stage_ft": 10.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9259167,
+          42.4893861
+        ]
+      },
+      "properties": {
+        "site": "05527800",
+        "name": "DES PLAINES RIVER AT RUSSELL, IL",
+        "discharge": 339.0,
+        "discharge_time": "2026-10-08T08:30:00.000-06:00",
+        "stage": 6.67,
+        "stage_time": "2026-10-08T08:30:00.000-06:00",
+        "flood_stage_ft": 7.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/RUSI2",
+        "feet_below_flood": 0.33,
+        "action_stage_ft": 6.5,
+        "moderate_stage_ft": 9.0,
+        "major_stage_ft": 10.0,
+        "status": "action"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9691667,
+          42.41527778
+        ]
+      },
+      "properties": {
+        "site": "05527950",
+        "name": "MILL CREEK AT OLD MILL CREEK, IL",
+        "discharge": 82.3,
+        "discharge_time": "2026-10-08T08:00:00.000-06:00",
+        "stage": 7.3,
+        "stage_time": "2026-10-08T08:00:00.000-06:00",
+        "flood_stage_ft": 11.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/OMCI2",
+        "feet_below_flood": 3.7,
+        "action_stage_ft": 10.0,
+        "moderate_stage_ft": 12.0,
+        "major_stage_ft": 15.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9411111,
+          42.34388889
+        ]
+      },
+      "properties": {
+        "site": "05528000",
+        "name": "DES PLAINES RIVER NEAR GURNEE, IL",
+        "discharge": 491.0,
+        "discharge_time": "2026-10-08T08:30:00.000-06:00",
+        "stage": 5.08,
+        "stage_time": "2026-10-08T08:30:00.000-06:00",
+        "flood_stage_ft": 7.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/GUNI2",
+        "feet_below_flood": 1.92,
+        "action_stage_ft": 6.5,
+        "moderate_stage_ft": 9.0,
+        "major_stage_ft": 11.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9186111,
+          42.20055556
+        ]
+      },
+      "properties": {
+        "site": "05528100",
+        "name": "DES PLAINES RIVER AT LINCOLNSHIRE, IL",
+        "discharge": 668.0,
+        "discharge_time": "2026-10-08T08:45:00.000-06:00",
+        "stage": 9.4,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 12.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/LDRI2",
+        "feet_below_flood": 3.1,
+        "action_stage_ft": 11.5,
+        "moderate_stage_ft": 14.0,
+        "major_stage_ft": 15.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9577778,
+          42.15194444
+        ]
+      },
+      "properties": {
+        "site": "05528500",
+        "name": "BUFFALO CREEK NEAR WHEELING, IL",
+        "discharge": 3.6,
+        "discharge_time": "2026-10-08T08:15:00.000-06:00",
+        "stage": 1.65,
+        "stage_time": "2026-10-08T08:15:00.000-06:00",
+        "flood_stage_ft": 5.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/WHEI2",
+        "feet_below_flood": 3.35,
+        "action_stage_ft": 4.5,
+        "moderate_stage_ft": 6.5,
+        "major_stage_ft": 7.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.8872222,
+          42.0872222
+        ]
+      },
+      "properties": {
+        "site": "05529000",
+        "name": "DES PLAINES RIVER NEAR DES PLAINES, IL",
+        "discharge": 627.0,
+        "discharge_time": "2026-10-08T08:45:00.000-06:00",
+        "stage": 11.1,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 15.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/DSPI2",
+        "feet_below_flood": 3.9,
+        "action_stage_ft": 13.5,
+        "moderate_stage_ft": 18.0,
+        "major_stage_ft": 19.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9128462,
+          42.09530499
+        ]
+      },
+      "properties": {
+        "site": "05529500",
+        "name": "MC DONALD CREEK NEAR MOUNT PROSPECT, IL",
+        "discharge": 2.53,
+        "discharge_time": "2026-10-08T08:45:00.000-06:00",
+        "stage": 0.89,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 5.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/MCDI2",
+        "feet_below_flood": 4.11,
+        "action_stage_ft": 3.0,
+        "moderate_stage_ft": 7.0,
+        "major_stage_ft": 8.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.918123,
+          42.04947275
+        ]
+      },
+      "properties": {
+        "site": "05530000",
+        "name": "WELLER CREEK AT DES PLAINES, IL",
+        "discharge": 1.65,
+        "discharge_time": "2026-10-08T09:00:00.000-06:00",
+        "stage": 0.72,
+        "stage_time": "2026-10-08T09:00:00.000-06:00",
+        "flood_stage_ft": 9.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/WLRI2",
+        "feet_below_flood": 8.28,
+        "action_stage_ft": 7.5,
+        "moderate_stage_ft": 11.5,
+        "major_stage_ft": 12.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.8780556,
+          42.03166667
+        ]
+      },
+      "properties": {
+        "site": "05530100",
+        "name": "DES PLAINES R AT ALGONQUIN RD AT DES PLAINES, IL",
+        "discharge": 768.0,
+        "discharge_time": "2026-10-08T09:00:00.000-06:00",
+        "stage": 10.96,
+        "stage_time": "2026-10-08T09:00:00.000-06:00",
+        "flood_stage_ft": 13.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/DMPI2",
+        "feet_below_flood": 2.04,
+        "action_stage_ft": 12.5,
+        "moderate_stage_ft": 18.0,
+        "major_stage_ft": 20.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.8327778,
+          41.8883333
+        ]
+      },
+      "properties": {
+        "site": "05530750",
+        "name": "DES PLAINES RIVER AT RIVER FOREST, IL",
+        "stage": 6.96,
+        "stage_time": "2026-10-08T08:00:00.000-06:00",
+        "flood_stage_ft": 16.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/RVFI2",
+        "feet_below_flood": 9.04,
+        "action_stage_ft": 13.0,
+        "moderate_stage_ft": 17.5,
+        "major_stage_ft": 18.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.0166583,
+          42.06039167
+        ]
+      },
+      "properties": {
+        "site": "05530990",
+        "name": "SALT CREEK AT ROLLING MEADOWS, IL",
+        "discharge": 7.41,
+        "discharge_time": "2026-10-08T08:45:00.000-06:00",
+        "stage": 2.44,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 8.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/ROLI2",
+        "feet_below_flood": 6.06,
+        "action_stage_ft": 7.5,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.0112333,
+          42.0314083
+        ]
+      },
+      "properties": {
+        "site": "05531015",
+        "name": "SALT CREEK AT HIGGINS RD NR ELK GROVE VILLAGE, IL",
+        "stage": 5.4,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.001,
+          42.0120833
+        ]
+      },
+      "properties": {
+        "site": "05531045",
+        "name": "SALT CREEK AT ELK GROVE VILLAGE, IL",
+        "discharge": 39.3,
+        "discharge_time": "2026-10-08T09:00:00.000-06:00",
+        "stage": 12.23,
+        "stage_time": "2026-10-08T09:00:00.000-06:00",
+        "flood_stage_ft": 17.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/EVGI2",
+        "feet_below_flood": 4.77,
+        "action_stage_ft": 15.0,
+        "moderate_stage_ft": 20.0,
+        "major_stage_ft": 23.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9841667,
+          41.96413889
+        ]
+      },
+      "properties": {
+        "site": "05531175",
+        "name": "SALT CREEK AT WOOD DALE, IL",
+        "stage": 6.92,
+        "stage_time": "2026-10-08T08:00:00.000-06:00",
+        "flood_stage_ft": 12.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/WDSI2",
+        "feet_below_flood": 5.58,
+        "action_stage_ft": 11.0,
+        "moderate_stage_ft": 13.5,
+        "major_stage_ft": 15.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9595556,
+          41.88616667
+        ]
+      },
+      "properties": {
+        "site": "05531300",
+        "name": "SALT CREEK AT ELMHURST, IL",
+        "discharge": 52.2,
+        "discharge_time": "2026-10-08T08:20:00.000-06:00",
+        "stage": 5.22,
+        "stage_time": "2026-10-08T08:20:00.000-06:00",
+        "flood_stage_ft": 11.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/EMHI2",
+        "feet_below_flood": 5.78,
+        "action_stage_ft": 10.0,
+        "moderate_stage_ft": 12.0,
+        "major_stage_ft": 14.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9365917,
+          41.84733056
+        ]
+      },
+      "properties": {
+        "site": "05531410",
+        "name": "SALT CREEK AT 22ND STREET AT OAK BROOK, IL",
+        "stage": 48.1,
+        "stage_time": "2026-10-08T09:00:00.000-06:00",
+        "flood_stage_ft": 54.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/OBKI2",
+        "feet_below_flood": 5.9,
+        "action_stage_ft": 53.0,
+        "moderate_stage_ft": 56.0,
+        "major_stage_ft": 58.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9002778,
+          41.8258333
+        ]
+      },
+      "properties": {
+        "site": "05531500",
+        "name": "SALT CREEK AT WESTERN SPRINGS, IL",
+        "discharge": 40.0,
+        "discharge_time": "2026-10-08T08:50:00.000-06:00",
+        "stage": 1.97,
+        "stage_time": "2026-10-08T08:50:00.000-06:00",
+        "flood_stage_ft": 7.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/WSPI2",
+        "feet_below_flood": 5.53,
+        "action_stage_ft": 7.0,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.8689333,
+          41.88185556
+        ]
+      },
+      "properties": {
+        "site": "05532000",
+        "name": "ADDISON CREEK AT BELLWOOD, IL",
+        "discharge": 27.7,
+        "discharge_time": "2026-10-08T08:15:00.000-06:00",
+        "stage": 1.76,
+        "stage_time": "2026-10-08T08:15:00.000-06:00",
+        "flood_stage_ft": 9.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/BWDI2",
+        "feet_below_flood": 7.24,
+        "action_stage_ft": 8.0,
+        "moderate_stage_ft": 11.0,
+        "major_stage_ft": 12.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.8220361,
+          41.82149167
+        ]
+      },
+      "properties": {
+        "site": "05532500",
+        "name": "DES PLAINES RIVER AT RIVERSIDE, IL",
+        "discharge": 1060.0,
+        "discharge_time": "2026-10-08T08:45:00.000-06:00",
+        "stage": 3.51,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 7.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/RVRI2",
+        "feet_below_flood": 3.99,
+        "action_stage_ft": 7.0,
+        "moderate_stage_ft": 8.0,
+        "major_stage_ft": 9.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.8112222,
+          41.8060833
+        ]
+      },
+      "properties": {
+        "site": "05532600",
+        "name": "DES PLAINES RIVER AT LYONS, IL",
+        "stage": 12.6,
+        "stage_time": "2026-10-08T08:00:00.000-06:00",
+        "flood_stage_ft": 18.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/LYNI2",
+        "feet_below_flood": 5.4,
+        "action_stage_ft": 16.0,
+        "moderate_stage_ft": 19.0,
+        "major_stage_ft": 22.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.8968611,
+          41.73894444
+        ]
+      },
+      "properties": {
+        "site": "05533000",
+        "name": "FLAG CREEK NEAR WILLOW SPRINGS, IL",
+        "discharge": 15.0,
+        "discharge_time": "2026-10-08T08:15:00.000-06:00",
+        "stage": 3.28,
+        "stage_time": "2026-10-08T08:15:00.000-06:00",
+        "flood_stage_ft": 10.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/WLSI2",
+        "feet_below_flood": 6.72,
+        "action_stage_ft": 9.0,
+        "moderate_stage_ft": 12.0,
+        "major_stage_ft": 13.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9627778,
+          41.70777778
+        ]
+      },
+      "properties": {
+        "site": "05533400",
+        "name": "SAWMILL CREEK NEAR LEMONT, IL",
+        "discharge": 6.14,
+        "discharge_time": "2026-10-08T08:00:00.000-06:00",
+        "stage": 8.57,
+        "stage_time": "2026-10-08T08:00:00.000-06:00",
+        "flood_stage_ft": 14.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/LMTI2",
+        "feet_below_flood": 5.43,
+        "action_stage_ft": 12.5,
+        "moderate_stage_ft": 16.0,
+        "major_stage_ft": 20.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.0285278,
+          41.67238889
+        ]
+      },
+      "properties": {
+        "site": "05533600",
+        "name": "DES PLAINES RIVER NEAR LEMONT, IL",
+        "discharge": 1170.0,
+        "discharge_time": "2026-10-08T08:00:00.000-06:00",
+        "stage": 7.32,
+        "stage_time": "2026-10-08T08:00:00.000-06:00",
+        "flood_stage_ft": 10.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/LEMI2",
+        "feet_below_flood": 2.68,
+        "action_stage_ft": 9.5,
+        "moderate_stage_ft": 13.0,
+        "major_stage_ft": 15.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.8184028,
+          42.15264167
+        ]
+      },
+      "properties": {
+        "site": "05534500",
+        "name": "NORTH BRANCH CHICAGO RIVER AT DEERFIELD, IL",
+        "discharge": 6.76,
+        "discharge_time": "2026-10-08T08:55:00.000-06:00",
+        "stage": 4.7,
+        "stage_time": "2026-10-08T08:55:00.000-06:00",
+        "flood_stage_ft": 9.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/DRFI2",
+        "feet_below_flood": 4.8,
+        "action_stage_ft": 8.5,
+        "moderate_stage_ft": 11.5,
+        "major_stage_ft": 13.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.8452778,
+          42.2325
+        ]
+      },
+      "properties": {
+        "site": "05535000",
+        "name": "SKOKIE RIVER AT LAKE FOREST, IL",
+        "discharge": 4.13,
+        "discharge_time": "2026-10-08T08:55:00.000-06:00",
+        "stage": 2.05,
+        "stage_time": "2026-10-08T08:55:00.000-06:00",
+        "flood_stage_ft": 6.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/LAFI2",
+        "feet_below_flood": 3.95,
+        "action_stage_ft": 4.0,
+        "moderate_stage_ft": 8.5,
+        "major_stage_ft": 10.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7980556,
+          42.1597222
+        ]
+      },
+      "properties": {
+        "site": "05535070",
+        "name": "SKOKIE RIVER NEAR HIGHLAND PARK, IL",
+        "discharge": 6.14,
+        "discharge_time": "2026-10-08T08:55:00.000-06:00",
+        "stage": 2.76,
+        "stage_time": "2026-10-08T08:55:00.000-06:00",
+        "flood_stage_ft": 9.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/HIPI2",
+        "feet_below_flood": 6.24,
+        "action_stage_ft": 8.5,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.8570222,
+          42.16733889
+        ]
+      },
+      "properties": {
+        "site": "05535400",
+        "name": "WF OF NB CHICAGO RIVER AT DEERFIELD, IL",
+        "stage": 7.26,
+        "stage_time": "2026-10-08T08:55:00.000-06:00",
+        "flood_stage_ft": 13.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/DRWI2",
+        "feet_below_flood": 5.74,
+        "action_stage_ft": 11.0,
+        "moderate_stage_ft": 14.0,
+        "major_stage_ft": 16.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.8347222,
+          42.1383333
+        ]
+      },
+      "properties": {
+        "site": "05535500",
+        "name": "WF OF NB CHICAGO RIVER AT NORTHBROOK IL",
+        "discharge": 5.83,
+        "discharge_time": "2026-10-08T08:00:00.000-06:00",
+        "stage": 0.97,
+        "stage_time": "2026-10-08T08:00:00.000-06:00",
+        "flood_stage_ft": 7.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/NBRI2",
+        "feet_below_flood": 6.03,
+        "action_stage_ft": 6.0,
+        "moderate_stage_ft": 8.0,
+        "major_stage_ft": 8.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7958333,
+          42.0122222
+        ]
+      },
+      "properties": {
+        "site": "05536000",
+        "name": "NORTH BRANCH CHICAGO RIVER AT NILES, IL",
+        "discharge": 64.7,
+        "discharge_time": "2026-10-08T08:30:00.000-06:00",
+        "stage": 1.21,
+        "stage_time": "2026-10-08T08:30:00.000-06:00",
+        "flood_stage_ft": 10.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/NILI2",
+        "feet_below_flood": 8.79,
+        "action_stage_ft": 7.0,
+        "moderate_stage_ft": 11.0,
+        "major_stage_ft": 12.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7283333,
+          41.9747222
+        ]
+      },
+      "properties": {
+        "site": "05536085",
+        "name": "NB CHICAGO RIVER AT N PULASKI ROAD AT CHICAGO, IL",
+        "discharge": 61.6,
+        "discharge_time": "2026-10-08T09:00:00.000-06:00",
+        "stage": 11.1,
+        "stage_time": "2026-10-08T09:00:00.000-06:00",
+        "flood_stage_ft": 18.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/NBPI2",
+        "feet_below_flood": 6.9,
+        "action_stage_ft": 16.5,
+        "moderate_stage_ft": 20.0,
+        "major_stage_ft": 21.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6423611,
+          41.8923333
+        ]
+      },
+      "properties": {
+        "site": "05536118",
+        "name": "NB CHICAGO RIVER AT GRAND AVENUE AT CHICAGO, IL",
+        "stage": -2.04,
+        "stage_time": "2026-10-08T06:00:00.000-06:00",
+        "flood_stage_ft": 3.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/NBGI2",
+        "feet_below_flood": 5.04,
+        "action_stage_ft": 1.0,
+        "moderate_stage_ft": 4.0,
+        "major_stage_ft": 5.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6079444,
+          41.88927778
+        ]
+      },
+      "properties": {
+        "site": "05536121",
+        "name": "CHICAGO RIVER AT CHICAGO LOCK AT CHICAGO, IL",
+        "stage": -2.08,
+        "stage_time": "2026-10-08T08:57:00.000-06:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6211634,
+          41.88836628
+        ]
+      },
+      "properties": {
+        "site": "05536123",
+        "name": "CHICAGO RIVER AT COLUMBUS DRIVE AT CHICAGO, IL",
+        "stage": -2.06,
+        "stage_time": "2026-10-08T08:56:00.000-06:00",
+        "flood_stage_ft": 3.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/NBCI2",
+        "feet_below_flood": 5.06,
+        "action_stage_ft": 1.0,
+        "moderate_stage_ft": 4.0,
+        "major_stage_ft": 5.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6854167,
+          41.83719444
+        ]
+      },
+      "properties": {
+        "site": "05536137",
+        "name": "CHICAGO S & S CANAL AT WESTERN AVE AT CHICAGO, IL",
+        "stage": -2.01,
+        "stage_time": "2026-10-08T08:30:00.000-06:00",
+        "flood_stage_ft": 4.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/CSWI2",
+        "feet_below_flood": 6.01,
+        "action_stage_ft": 2.0,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7534722,
+          41.8167222
+        ]
+      },
+      "properties": {
+        "site": "05536140",
+        "name": "CHICAGO SANITARY AND SHIP CANAL AT STICKNEY, IL",
+        "stage": -2.08,
+        "stage_time": "2026-10-08T08:00:00.000-06:00",
+        "flood_stage_ft": 6.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/STII2",
+        "feet_below_flood": 8.58,
+        "action_stage_ft": 6.0,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.4744557,
+          41.56835005
+        ]
+      },
+      "properties": {
+        "site": "05536160",
+        "name": "LITTLE CALUMET RIVER NEAR HAMMOND, IN",
+        "stage": 6.17,
+        "stage_time": "2026-10-08T10:30:00.000-04:00",
+        "flood_stage_ft": 14.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/HMMI3",
+        "feet_below_flood": 7.83,
+        "action_stage_ft": 9.0,
+        "moderate_stage_ft": 17.0,
+        "major_stage_ft": 18.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.5715833,
+          41.43569444
+        ]
+      },
+      "properties": {
+        "site": "05536162",
+        "name": "PLUM CREEK NEAR CRETE, IL",
+        "discharge": 3.1,
+        "discharge_time": "2026-10-08T08:45:00.000-06:00",
+        "stage": 7.71,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 14.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/CPCI2",
+        "feet_below_flood": 6.29,
+        "action_stage_ft": 13.5,
+        "moderate_stage_ft": 17.0,
+        "major_stage_ft": 19.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.460983,
+          41.5696556
+        ]
+      },
+      "properties": {
+        "site": "05536165",
+        "name": "LITTLE CALUMET RIVER AT HIGHLAND, IN",
+        "stage": 8.13,
+        "stage_time": "2026-10-08T10:15:00.000-04:00",
+        "flood_stage_ft": 15.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/HGLI3",
+        "feet_below_flood": 6.87,
+        "action_stage_ft": 11.0,
+        "moderate_stage_ft": 17.0,
+        "major_stage_ft": 20.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.5100125,
+          41.507795
+        ]
+      },
+      "properties": {
+        "site": "05536179",
+        "name": "HART DITCH AT DYER, IN",
+        "discharge": 19.0,
+        "discharge_time": "2026-10-08T11:00:00.000-04:00",
+        "stage": 2.27,
+        "stage_time": "2026-10-08T11:00:00.000-04:00",
+        "flood_stage_ft": 12.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/HDDI3",
+        "feet_below_flood": 9.73,
+        "action_stage_ft": 11.0,
+        "moderate_stage_ft": 13.0,
+        "major_stage_ft": 14.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.480567,
+          41.56112789
+        ]
+      },
+      "properties": {
+        "site": "05536190",
+        "name": "HART DITCH AT MUNSTER, IN",
+        "discharge": 43.5,
+        "discharge_time": "2026-10-08T11:00:00.000-04:00",
+        "stage": 0.78,
+        "stage_time": "2026-10-08T11:00:00.000-04:00",
+        "flood_stage_ft": 6.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/MNTI3",
+        "feet_below_flood": 5.22,
+        "action_stage_ft": 5.0,
+        "moderate_stage_ft": 7.5,
+        "major_stage_ft": 8.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.4857778,
+          41.5665833
+        ]
+      },
+      "properties": {
+        "site": "05536191",
+        "name": "LITTLE CALUMET R AT NORTHCOTE AV AT MUNSTER, IN",
+        "stage": 10.08,
+        "stage_time": "2026-10-08T11:00:00.000-04:00",
+        "flood_stage_ft": 18.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/LCNI3",
+        "feet_below_flood": 7.92,
+        "action_stage_ft": 15.0,
+        "moderate_stage_ft": 20.0,
+        "major_stage_ft": 21.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.5222222,
+          41.5775
+        ]
+      },
+      "properties": {
+        "site": "05536195",
+        "name": "LITTLE CALUMET RIVER AT MUNSTER, IN",
+        "discharge": 18.1,
+        "discharge_time": "2026-10-08T11:00:00.000-04:00",
+        "stage": 5.52,
+        "stage_time": "2026-10-08T11:00:00.000-04:00",
+        "flood_stage_ft": 12.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/LCMI3",
+        "feet_below_flood": 6.48,
+        "action_stage_ft": 11.5,
+        "moderate_stage_ft": 14.0,
+        "major_stage_ft": 17.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6225833,
+          41.5302222
+        ]
+      },
+      "properties": {
+        "site": "05536215",
+        "name": "THORN CREEK AT GLENWOOD, IL",
+        "discharge": 23.1,
+        "discharge_time": "2026-10-08T08:15:00.000-06:00",
+        "stage": 2.57,
+        "stage_time": "2026-10-08T08:15:00.000-06:00",
+        "flood_stage_ft": 8.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/GLWI2",
+        "feet_below_flood": 5.93,
+        "action_stage_ft": 7.0,
+        "moderate_stage_ft": 11.0,
+        "major_stage_ft": 12.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.59013889,
+          41.5208611
+        ]
+      },
+      "properties": {
+        "site": "05536235",
+        "name": "DEER CREEK NEAR CHICAGO HEIGHTS, IL",
+        "discharge": 9.3,
+        "discharge_time": "2026-10-08T09:00:00.000-06:00",
+        "stage": 3.41,
+        "stage_time": "2026-10-08T09:00:00.000-06:00",
+        "flood_stage_ft": 10.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/CDCI2",
+        "feet_below_flood": 6.59,
+        "action_stage_ft": 9.0,
+        "moderate_stage_ft": 11.5,
+        "major_stage_ft": 13.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6494444,
+          41.5398611
+        ]
+      },
+      "properties": {
+        "site": "05536255",
+        "name": "BUTTERFIELD CREEK AT FLOSSMOOR, IL",
+        "discharge": 8.41,
+        "discharge_time": "2026-10-08T08:30:00.000-06:00",
+        "stage": 4.14,
+        "stage_time": "2026-10-08T08:30:00.000-06:00",
+        "flood_stage_ft": 9.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/FLSI2",
+        "feet_below_flood": 4.86,
+        "action_stage_ft": 8.0,
+        "moderate_stage_ft": 11.0,
+        "major_stage_ft": 15.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.5294444,
+          41.5283611
+        ]
+      },
+      "properties": {
+        "site": "05536265",
+        "name": "LANSING DITCH NEAR LANSING, IL",
+        "discharge": 18.1,
+        "discharge_time": "2026-10-08T08:15:00.000-06:00",
+        "stage": 4.94,
+        "stage_time": "2026-10-08T08:15:00.000-06:00",
+        "flood_stage_ft": 7.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/LDLI2",
+        "feet_below_flood": 2.06,
+        "action_stage_ft": 6.5,
+        "moderate_stage_ft": 8.5,
+        "major_stage_ft": 10.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6083333,
+          41.56816667
+        ]
+      },
+      "properties": {
+        "site": "05536275",
+        "name": "THORN CREEK AT THORNTON, IL",
+        "discharge": 69.7,
+        "discharge_time": "2026-10-08T09:00:00.000-06:00",
+        "stage": 3.05,
+        "stage_time": "2026-10-08T09:00:00.000-06:00",
+        "flood_stage_ft": 9.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/THNI2",
+        "feet_below_flood": 5.95,
+        "action_stage_ft": 7.5,
+        "moderate_stage_ft": 14.0,
+        "major_stage_ft": 15.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.5975833,
+          41.60702778
+        ]
+      },
+      "properties": {
+        "site": "05536290",
+        "name": "LITTLE CALUMET RIVER AT SOUTH HOLLAND, IL",
+        "discharge": 101.0,
+        "discharge_time": "2026-10-08T08:45:00.000-06:00",
+        "stage": 5.98,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 16.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/SHLI2",
+        "feet_below_flood": 10.02,
+        "action_stage_ft": 12.0,
+        "moderate_stage_ft": 17.5,
+        "major_stage_ft": 19.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6657222,
+          41.597
+        ]
+      },
+      "properties": {
+        "site": "05536310",
+        "name": "CALUMET UNION DRAINAGE CANAL NEAR MARKHAM, IL",
+        "discharge": 9.05,
+        "discharge_time": "2026-10-08T09:00:00.000-06:00",
+        "stage": 2.49,
+        "stage_time": "2026-10-08T09:00:00.000-06:00",
+        "flood_stage_ft": 10.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/MKHI2",
+        "feet_below_flood": 7.51,
+        "action_stage_ft": 9.0,
+        "moderate_stage_ft": 10.5,
+        "major_stage_ft": 11.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7294556,
+          41.6141111
+        ]
+      },
+      "properties": {
+        "site": "05536340",
+        "name": "MIDLOTHIAN CREEK AT OAK FOREST, IL",
+        "discharge": 3.66,
+        "discharge_time": "2026-10-08T08:30:00.000-06:00",
+        "stage": 1.62,
+        "stage_time": "2026-10-08T08:30:00.000-06:00",
+        "flood_stage_ft": 6.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/OAKI2",
+        "feet_below_flood": 4.38,
+        "action_stage_ft": 5.5,
+        "moderate_stage_ft": 7.0,
+        "major_stage_ft": 8.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7333333,
+          41.62166667
+        ]
+      },
+      "properties": {
+        "site": "05536343",
+        "name": "NATALIE CREEK AT MIDLOTHIAN, IL",
+        "discharge": 0.28,
+        "discharge_time": "2026-10-08T08:45:00.000-06:00",
+        "stage": 5.14,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 8.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/MDNI2",
+        "feet_below_flood": 3.36,
+        "action_stage_ft": 8.0,
+        "moderate_stage_ft": 10.0,
+        "major_stage_ft": 11.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.4998333,
+          41.6186111
+        ]
+      },
+      "properties": {
+        "site": "05536356",
+        "name": "GRAND CALUMET RIVER AT COLUMBIA AV AT HAMMOND, IN",
+        "discharge": 36.8,
+        "discharge_time": "2026-10-08T10:00:00.000-04:00",
+        "stage": 6.09,
+        "stage_time": "2026-10-08T10:00:00.000-04:00",
+        "flood_stage_ft": 9.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/HGCI3",
+        "feet_below_flood": 3.41,
+        "action_stage_ft": 8.0,
+        "moderate_stage_ft": 12.0,
+        "major_stage_ft": 13.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7664444,
+          41.64663889
+        ]
+      },
+      "properties": {
+        "site": "05536500",
+        "name": "TINLEY CREEK NEAR PALOS PARK, IL",
+        "discharge": 10.3,
+        "discharge_time": "2026-10-08T08:45:00.000-06:00",
+        "stage": 2.63,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 9.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/PSPI2",
+        "feet_below_flood": 6.37,
+        "action_stage_ft": 6.5,
+        "moderate_stage_ft": 10.5,
+        "major_stage_ft": 12.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.8299444,
+          41.68902778
+        ]
+      },
+      "properties": {
+        "site": "05536580",
+        "name": "STONY CREEK (WEST) NEAR WORTH, IL",
+        "discharge": 11.5,
+        "discharge_time": "2026-10-08T09:00:00.000-06:00",
+        "stage": 25.55,
+        "stage_time": "2026-10-08T09:00:00.000-06:00",
+        "flood_stage_ft": 31.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/STCI2",
+        "feet_below_flood": 5.45,
+        "action_stage_ft": 29.0,
+        "moderate_stage_ft": 32.0,
+        "major_stage_ft": 34.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9637778,
+          41.69116667
+        ]
+      },
+      "properties": {
+        "site": "05536890",
+        "name": "CHICAGO SANITARY AND SHIP CANAL NR LEMONT, IL",
+        "discharge": 1810.0,
+        "discharge_time": "2026-10-08T08:40:00.000-06:00",
+        "stage": 25.35,
+        "stage_time": "2026-10-08T08:47:00.000-06:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.000967,
+          41.67891099
+        ]
+      },
+      "properties": {
+        "site": "05536900",
+        "name": "CHICAGO SANITARY AND SHIP CANAL AT LEMONT, IL",
+        "stage": 25.13,
+        "stage_time": "2026-10-08T08:40:00.000-06:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9993611,
+          41.6426111
+        ]
+      },
+      "properties": {
+        "site": "05537500",
+        "name": "LONG RUN NEAR LEMONT, IL",
+        "discharge": 17.0,
+        "discharge_time": "2026-10-08T08:00:00.000-06:00",
+        "stage": 1.24,
+        "stage_time": "2026-10-08T08:00:00.000-06:00",
+        "flood_stage_ft": 6.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/LLCI2",
+        "feet_below_flood": 4.76,
+        "action_stage_ft": 5.0,
+        "moderate_stage_ft": 8.0,
+        "major_stage_ft": 10.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.0836944,
+          41.5364722
+        ]
+      },
+      "properties": {
+        "site": "05537980",
+        "name": "DES PLAINES RIVER AT ROUTE 53 AT JOLIET, IL",
+        "discharge": 3610.0,
+        "discharge_time": "2026-10-08T04:45:00.000-06:00",
+        "stage": 538.82,
+        "stage_time": "2026-10-08T08:30:00.000-06:00",
+        "flood_stage_ft": 541.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/JRSI2",
+        "feet_below_flood": 2.18,
+        "action_stage_ft": 540.5,
+        "moderate_stage_ft": 543.0,
+        "major_stage_ft": 544.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.0733333,
+          41.5147222
+        ]
+      },
+      "properties": {
+        "site": "05539000",
+        "name": "HICKORY CREEK AT JOLIET, IL",
+        "discharge": 95.9,
+        "discharge_time": "2026-10-08T08:15:00.000-06:00",
+        "stage": 11.13,
+        "stage_time": "2026-10-08T08:15:00.000-06:00",
+        "flood_stage_ft": 16.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/JHCI2",
+        "feet_below_flood": 5.37,
+        "action_stage_ft": 16.0,
+        "moderate_stage_ft": 19.0,
+        "major_stage_ft": 24.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1791417,
+          41.9109722
+        ]
+      },
+      "properties": {
+        "site": "05539900",
+        "name": "WEST BRANCH DU PAGE RIVER NEAR WEST CHICAGO, IL",
+        "discharge": 30.9,
+        "discharge_time": "2026-10-08T08:55:00.000-06:00",
+        "stage": 4.06,
+        "stage_time": "2026-10-08T08:55:00.000-06:00",
+        "flood_stage_ft": 7.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/WBDI2",
+        "feet_below_flood": 2.94,
+        "action_stage_ft": 6.0,
+        "moderate_stage_ft": 9.0,
+        "major_stage_ft": 11.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.2041611,
+          41.8564083
+        ]
+      },
+      "properties": {
+        "site": "05540060",
+        "name": "KRESS CREEK AT WEST CHICAGO, IL",
+        "discharge": 18.8,
+        "discharge_time": "2026-10-08T08:20:00.000-06:00",
+        "stage": 4.38,
+        "stage_time": "2026-10-08T08:20:00.000-06:00",
+        "flood_stage_ft": 6.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/WSCI2",
+        "feet_below_flood": 2.12,
+        "action_stage_ft": 6.0,
+        "moderate_stage_ft": 8.5,
+        "major_stage_ft": 9.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.17138889,
+          41.8175
+        ]
+      },
+      "properties": {
+        "site": "05540095",
+        "name": "WEST BRANCH DU PAGE RIVER NEAR WARRENVILLE, IL",
+        "discharge": 83.3,
+        "discharge_time": "2026-10-08T08:15:00.000-06:00",
+        "stage": 7.94,
+        "stage_time": "2026-10-08T08:15:00.000-06:00",
+        "flood_stage_ft": 12.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/WRNI2",
+        "feet_below_flood": 4.56,
+        "action_stage_ft": 11.0,
+        "moderate_stage_ft": 14.5,
+        "major_stage_ft": 17.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1319333,
+          41.7202583
+        ]
+      },
+      "properties": {
+        "site": "05540130",
+        "name": "WEST BRANCH DU PAGE RIVER NEAR NAPERVILLE, IL",
+        "discharge": 167.0,
+        "discharge_time": "2026-10-08T08:15:00.000-06:00",
+        "stage": 4.62,
+        "stage_time": "2026-10-08T08:15:00.000-06:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.0477778,
+          41.83166667
+        ]
+      },
+      "properties": {
+        "site": "05540160",
+        "name": "EAST BRANCH DU PAGE RIVER NEAR DOWNERS GROVE, IL",
+        "discharge": 28.2,
+        "discharge_time": "2026-10-08T08:20:00.000-06:00",
+        "stage": 12.13,
+        "stage_time": "2026-10-08T08:20:00.000-06:00",
+        "flood_stage_ft": 14.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/DEBI2",
+        "feet_below_flood": 2.37,
+        "action_stage_ft": 14.0,
+        "moderate_stage_ft": 16.0,
+        "major_stage_ft": 17.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.06888889,
+          41.80194444
+        ]
+      },
+      "properties": {
+        "site": "05540195",
+        "name": "ST. JOSEPH CREEK AT ROUTE 34 AT LISLE, IL",
+        "discharge": 6.66,
+        "discharge_time": "2026-10-08T08:35:00.000-06:00",
+        "stage": 4.38,
+        "stage_time": "2026-10-08T08:35:00.000-06:00",
+        "flood_stage_ft": 11.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/LISI2",
+        "feet_below_flood": 6.62,
+        "action_stage_ft": 10.5,
+        "moderate_stage_ft": 13.0,
+        "major_stage_ft": 14.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.0789722,
+          41.79280556
+        ]
+      },
+      "properties": {
+        "site": "05540228",
+        "name": "EAST BRANCH DUPAGE RIVER AT SHORT ST AT LISLE, IL",
+        "discharge": 72.9,
+        "discharge_time": "2026-10-08T08:45:00.000-06:00",
+        "stage": 5.84,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 13.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/EBDI2",
+        "feet_below_flood": 7.16,
+        "action_stage_ft": 11.0,
+        "moderate_stage_ft": 15.0,
+        "major_stage_ft": 16.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.0705556,
+          41.71805556
+        ]
+      },
+      "properties": {
+        "site": "05540250",
+        "name": "EAST BRANCH DU PAGE RIVER AT BOLINGBROOK, IL",
+        "discharge": 129.0,
+        "discharge_time": "2026-10-08T08:40:00.000-06:00",
+        "stage": 15.13,
+        "stage_time": "2026-10-08T08:40:00.000-06:00",
+        "flood_stage_ft": 20.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/BOLI2",
+        "feet_below_flood": 4.87,
+        "action_stage_ft": 18.0,
+        "moderate_stage_ft": 22.0,
+        "major_stage_ft": 24.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1631611,
+          41.7258972
+        ]
+      },
+      "properties": {
+        "site": "05540275",
+        "name": "SPRING BROOK AT 87TH STREET NEAR NAPERVILLE, IL",
+        "discharge": 5.01,
+        "discharge_time": "2026-10-08T08:45:00.000-06:00",
+        "stage": 3.19,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1664444,
+          41.69044444
+        ]
+      },
+      "properties": {
+        "site": "05540290",
+        "name": "DU PAGE RIVER NEAR PLAINFIELD, IL",
+        "discharge": 351.0,
+        "discharge_time": "2026-10-08T08:45:00.000-06:00",
+        "stage": 7.27,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 12.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/NDRI2",
+        "feet_below_flood": 4.73,
+        "action_stage_ft": 10.0,
+        "moderate_stage_ft": 14.0,
+        "major_stage_ft": 15.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1928694,
+          41.52230278
+        ]
+      },
+      "properties": {
+        "site": "05540500",
+        "name": "DU PAGE RIVER AT SHOREWOOD, IL",
+        "discharge": 622.0,
+        "discharge_time": "2026-10-08T08:45:00.000-06:00",
+        "stage": 10.99,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 15.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/SORI2",
+        "feet_below_flood": 4.51,
+        "action_stage_ft": 15.0,
+        "moderate_stage_ft": 17.5,
+        "major_stage_ft": 19.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.3477778,
+          41.41694444
+        ]
+      },
+      "properties": {
+        "site": "05541710",
+        "name": "AUX SABLE CREEK NEAR MORRIS, IL",
+        "discharge": 216.0,
+        "discharge_time": "2026-10-08T09:00:00.000-06:00",
+        "stage": 4.07,
+        "stage_time": "2026-10-08T09:00:00.000-06:00",
+        "flood_stage_ft": 11.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/MOXI2",
+        "feet_below_flood": 6.93,
+        "action_stage_ft": 9.0,
+        "moderate_stage_ft": 13.0,
+        "major_stage_ft": 14.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.3598611,
+          41.28619444
+        ]
+      },
+      "properties": {
+        "site": "05542000",
+        "name": "MAZON RIVER NEAR COAL CITY, IL",
+        "discharge": 81.9,
+        "discharge_time": "2026-10-08T08:45:00.000-06:00",
+        "stage": 1.72,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 12.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/COLI2",
+        "feet_below_flood": 10.28,
+        "action_stage_ft": 10.0,
+        "moderate_stage_ft": 16.0,
+        "major_stage_ft": 19.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.4285,
+          41.3545833
+        ]
+      },
+      "properties": {
+        "site": "05542500",
+        "name": "ILLINOIS RIVER AT MORRIS, IL",
+        "discharge": 9070.0,
+        "discharge_time": "2026-10-08T08:45:00.000-06:00",
+        "stage": 6.16,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 16.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/MORI2",
+        "feet_below_flood": 9.84,
+        "action_stage_ft": 13.0,
+        "moderate_stage_ft": 18.0,
+        "major_stage_ft": 22.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.6141944,
+          41.29988889
+        ]
+      },
+      "properties": {
+        "site": "05543010",
+        "name": "ILLINOIS RIVER AT SENECA, IL",
+        "stage": 20.86,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.2436111,
+          43.0047222
+        ]
+      },
+      "properties": {
+        "site": "05543830",
+        "name": "FOX RIVER AT WAUKESHA, WI",
+        "discharge": 153.0,
+        "discharge_time": "2026-10-08T10:00:00.000-05:00",
+        "stage": 3.21,
+        "stage_time": "2026-10-08T10:00:00.000-05:00",
+        "flood_stage_ft": 6.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/WKEW3",
+        "feet_below_flood": 2.79,
+        "action_stage_ft": 5.0,
+        "moderate_stage_ft": 8.0,
+        "major_stage_ft": 10.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.3277778,
+          42.85666667
+        ]
+      },
+      "properties": {
+        "site": "05544200",
+        "name": "MUKWONAGO RIVER AT MUKWONAGO, WI",
+        "discharge": 52.7,
+        "discharge_time": "2026-10-08T10:00:00.000-05:00",
+        "stage": 2.45,
+        "stage_time": "2026-10-08T10:00:00.000-05:00",
+        "flood_stage_ft": 5.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/MUKW3",
+        "feet_below_flood": 2.55,
+        "action_stage_ft": 3.5,
+        "moderate_stage_ft": 6.0,
+        "major_stage_ft": 7.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.2133333,
+          42.76527778
+        ]
+      },
+      "properties": {
+        "site": "05544348",
+        "name": "FOX RIVER AT WATERFORD DAM, AT WATERFORD, WI",
+        "stage": 1.67,
+        "stage_time": "2026-10-08T10:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1305556,
+          42.8525
+        ]
+      },
+      "properties": {
+        "site": "05544385",
+        "name": "MUSKEGO (BIG MUSKEGO) LAKE OUTLET NR WIND LAKE, WI",
+        "stage": 11.88,
+        "stage_time": "2026-10-08T09:45:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.2245,
+          42.74119444
+        ]
+      },
+      "properties": {
+        "site": "05544475",
+        "name": "FOX RIVER AT ROCHESTER, WI",
+        "stage": 4.31,
+        "stage_time": "2026-10-08T10:00:00.000-05:00",
+        "flood_stage_ft": 6.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/RSRW3",
+        "feet_below_flood": 1.69,
+        "action_stage_ft": 5.0,
+        "moderate_stage_ft": 7.0,
+        "major_stage_ft": 8.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.629167,
+          42.743889
+        ]
+      },
+      "properties": {
+        "site": "05545000",
+        "name": "NORTH LAKE NEAR ELKHORN, WI",
+        "stage": 12.33,
+        "stage_time": "2026-10-08T10:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.225923,
+          42.61085116
+        ]
+      },
+      "properties": {
+        "site": "05545750",
+        "name": "FOX RIVER NEAR NEW MUNSTER, WI",
+        "discharge": 1220.0,
+        "discharge_time": "2026-10-08T10:00:00.000-05:00",
+        "stage": 8.48,
+        "stage_time": "2026-10-08T10:00:00.000-05:00",
+        "flood_stage_ft": 11.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/NMSW3",
+        "feet_below_flood": 2.52,
+        "action_stage_ft": 10.0,
+        "moderate_stage_ft": 13.0,
+        "major_stage_ft": 14.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1469556,
+          42.4718611
+        ]
+      },
+      "properties": {
+        "site": "05547000",
+        "name": "CHANNEL LAKE NEAR ANTIOCH, IL",
+        "stage": 4.6,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 6.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/ANCI2",
+        "feet_below_flood": 1.4,
+        "action_stage_ft": 5.0,
+        "moderate_stage_ft": 7.0,
+        "major_stage_ft": 7.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1259172,
+          42.41918715
+        ]
+      },
+      "properties": {
+        "site": "05547500",
+        "name": "FOX LAKE NEAR LAKE VILLA, IL",
+        "stage": 4.55,
+        "stage_time": "2026-10-08T08:30:00.000-06:00",
+        "flood_stage_ft": 6.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/FLVI2",
+        "feet_below_flood": 1.45,
+        "action_stage_ft": 5.0,
+        "moderate_stage_ft": 7.0,
+        "major_stage_ft": 7.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1826194,
+          42.40310556
+        ]
+      },
+      "properties": {
+        "site": "05548000",
+        "name": "NIPPERSINK LAKE AT FOX LAKE, IL",
+        "stage": 4.51,
+        "stage_time": "2026-10-08T08:00:00.000-06:00",
+        "flood_stage_ft": 6.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/NFLI2",
+        "feet_below_flood": 1.49,
+        "action_stage_ft": 5.0,
+        "moderate_stage_ft": 7.0,
+        "major_stage_ft": 7.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.3697083,
+          42.3853472
+        ]
+      },
+      "properties": {
+        "site": "05548105",
+        "name": "NIPPERSINK CREEK ABOVE WONDER LAKE, IL",
+        "discharge": 66.4,
+        "discharge_time": "2026-10-08T08:45:00.000-06:00",
+        "stage": 5.19,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 9.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/WNNI2",
+        "feet_below_flood": 3.81,
+        "action_stage_ft": 8.5,
+        "moderate_stage_ft": 11.0,
+        "major_stage_ft": 13.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.2835833,
+          42.48613889
+        ]
+      },
+      "properties": {
+        "site": "05548185",
+        "name": "ELIZABETH LAKE DRAIN NR TWIN LAKES, WI-IL",
+        "stage": 794.02,
+        "stage_time": "2026-10-08T08:30:00.000-06:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.247425,
+          42.44373056
+        ]
+      },
+      "properties": {
+        "site": "05548280",
+        "name": "NIPPERSINK CREEK NEAR SPRING GROVE, IL",
+        "discharge": 184.0,
+        "discharge_time": "2026-10-08T09:00:00.000-06:00",
+        "stage": 4.83,
+        "stage_time": "2026-10-08T09:00:00.000-06:00",
+        "flood_stage_ft": 11.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/NIPI2",
+        "feet_below_flood": 6.17,
+        "action_stage_ft": 8.0,
+        "moderate_stage_ft": 13.0,
+        "major_stage_ft": 15.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.23673889,
+          42.376325
+        ]
+      },
+      "properties": {
+        "site": "05548500",
+        "name": "FOX RIVER AT JOHNSBURG, IL",
+        "stage": 4.29,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 6.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/JHNI2",
+        "feet_below_flood": 2.21,
+        "action_stage_ft": 6.0,
+        "moderate_stage_ft": 7.0,
+        "major_stage_ft": 7.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.31263889,
+          42.32069444
+        ]
+      },
+      "properties": {
+        "site": "05549000",
+        "name": "BOONE CREEK NEAR MC HENRY, IL",
+        "discharge": 13.4,
+        "discharge_time": "2026-10-08T08:45:00.000-06:00",
+        "stage": 1.09,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 7.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/MBNI2",
+        "feet_below_flood": 5.91,
+        "action_stage_ft": 6.0,
+        "moderate_stage_ft": 9.0,
+        "major_stage_ft": 11.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.2514745,
+          42.3100222
+        ]
+      },
+      "properties": {
+        "site": "05549500",
+        "name": "FOX RIVER NEAR MCHENRY, IL",
+        "stage": 3.77,
+        "stage_time": "2026-10-08T08:15:00.000-06:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.2514745,
+          42.3091889
+        ]
+      },
+      "properties": {
+        "site": "05549501",
+        "name": "FOX RIVER (TAILWATER) NEAR MCHENRY, IL",
+        "stage": 3.08,
+        "stage_time": "2026-10-08T08:15:00.000-06:00",
+        "flood_stage_ft": 4.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/MHYI2",
+        "feet_below_flood": 0.92,
+        "action_stage_ft": 3.0,
+        "moderate_stage_ft": 6.0,
+        "major_stage_ft": 7.0,
+        "status": "action"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.2903333,
+          42.16630556
+        ]
+      },
+      "properties": {
+        "site": "05550000",
+        "name": "FOX RIVER AT ALGONQUIN, IL",
+        "stage": 1.3,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 3.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/ALGI2",
+        "feet_below_flood": 1.7,
+        "action_stage_ft": 2.8,
+        "moderate_stage_ft": 3.3,
+        "major_stage_ft": 4.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.29388889,
+          42.16194444
+        ]
+      },
+      "properties": {
+        "site": "05550001",
+        "name": "FOX RIVER (TAILWATER) AT ALGONQUIN, IL",
+        "discharge": 2630.0,
+        "discharge_time": "2026-10-08T08:30:00.000-06:00",
+        "stage": 8.15,
+        "stage_time": "2026-10-08T08:30:00.000-06:00",
+        "flood_stage_ft": 9.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/AFBI2",
+        "feet_below_flood": 1.35,
+        "action_stage_ft": 9.0,
+        "moderate_stage_ft": 10.5,
+        "major_stage_ft": 12.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.3040667,
+          42.05866667
+        ]
+      },
+      "properties": {
+        "site": "05550300",
+        "name": "TYLER CREEK AT ELGIN, IL",
+        "discharge": 31.8,
+        "discharge_time": "2026-10-08T08:45:00.000-06:00",
+        "stage": 6.01,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 8.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/ETCI2",
+        "feet_below_flood": 1.99,
+        "action_stage_ft": 7.5,
+        "moderate_stage_ft": 9.5,
+        "major_stage_ft": 10.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.2556667,
+          42.02586944
+        ]
+      },
+      "properties": {
+        "site": "05550500",
+        "name": "POPLAR CREEK AT ELGIN, IL",
+        "discharge": 14.4,
+        "discharge_time": "2026-10-08T09:00:00.000-06:00",
+        "stage": 1.35,
+        "stage_time": "2026-10-08T09:00:00.000-06:00",
+        "flood_stage_ft": 5.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/EPCI2",
+        "feet_below_flood": 4.15,
+        "action_stage_ft": 5.0,
+        "moderate_stage_ft": 6.5,
+        "major_stage_ft": 8.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.2949972,
+          41.9961861
+        ]
+      },
+      "properties": {
+        "site": "05551000",
+        "name": "FOX RIVER AT SOUTH ELGIN, IL",
+        "discharge": 2720.0,
+        "discharge_time": "2026-10-08T08:45:00.000-06:00",
+        "stage": 13.35,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 14.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/SELI2",
+        "feet_below_flood": 1.15,
+        "action_stage_ft": 14.0,
+        "moderate_stage_ft": 15.0,
+        "major_stage_ft": 17.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.2949972,
+          41.9961861
+        ]
+      },
+      "properties": {
+        "site": "05551001",
+        "name": "FOX RIVER AT SOUTH ELGIN, IL (TAILWATER)",
+        "stage": 7.48,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.3411056,
+          41.9332
+        ]
+      },
+      "properties": {
+        "site": "05551200",
+        "name": "FERSON CREEK NEAR ST. CHARLES, IL",
+        "discharge": 32.9,
+        "discharge_time": "2026-10-08T08:15:00.000-06:00",
+        "stage": 1.87,
+        "stage_time": "2026-10-08T08:15:00.000-06:00",
+        "flood_stage_ft": 6.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/SCHI2",
+        "feet_below_flood": 4.13,
+        "action_stage_ft": 5.0,
+        "moderate_stage_ft": 9.0,
+        "major_stage_ft": 10.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.3491667,
+          41.8458333
+        ]
+      },
+      "properties": {
+        "site": "05551330",
+        "name": "MILL CREEK NEAR BATAVIA, IL",
+        "discharge": 15.7,
+        "discharge_time": "2026-10-08T09:00:00.000-06:00",
+        "stage": 2.49,
+        "stage_time": "2026-10-08T09:00:00.000-06:00",
+        "flood_stage_ft": 6.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/BMCI2",
+        "feet_below_flood": 4.01,
+        "action_stage_ft": 5.0,
+        "moderate_stage_ft": 9.5,
+        "major_stage_ft": 11.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.3333361,
+          41.73355
+        ]
+      },
+      "properties": {
+        "site": "05551540",
+        "name": "FOX RIVER AT MONTGOMERY, IL",
+        "discharge": 2710.0,
+        "discharge_time": "2026-10-08T08:00:00.000-06:00",
+        "stage": 12.28,
+        "stage_time": "2026-10-08T08:00:00.000-06:00",
+        "flood_stage_ft": 13.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/MNGI2",
+        "feet_below_flood": 1.22,
+        "action_stage_ft": 13.0,
+        "moderate_stage_ft": 15.0,
+        "major_stage_ft": 16.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.3270417,
+          41.70131389
+        ]
+      },
+      "properties": {
+        "site": "05551545",
+        "name": "WAUBONSEE CREEK NEAR OSWEGO, IL",
+        "discharge": 39.5,
+        "discharge_time": "2026-10-08T08:15:00.000-06:00",
+        "stage": 8.25,
+        "stage_time": "2026-10-08T08:15:00.000-06:00",
+        "flood_stage_ft": 12.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/WBOI2",
+        "feet_below_flood": 3.75,
+        "action_stage_ft": 10.0,
+        "moderate_stage_ft": 15.0,
+        "major_stage_ft": 19.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.4433806,
+          41.64283889
+        ]
+      },
+      "properties": {
+        "site": "05551580",
+        "name": "FOX RIVER AT YORKVILLE, IL",
+        "discharge": 2790.0,
+        "discharge_time": "2026-10-08T08:45:00.000-06:00",
+        "stage": 13.42,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": 15.5,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/YKVI2",
+        "feet_below_flood": 2.08,
+        "action_stage_ft": 14.5,
+        "moderate_stage_ft": 17.0,
+        "major_stage_ft": 19.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.4433806,
+          41.64283889
+        ]
+      },
+      "properties": {
+        "site": "05551581",
+        "name": "FOX RIVER TAILWATER AT YORKVILLE, IL",
+        "stage": 8.57,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.4433806,
+          41.64283889
+        ]
+      },
+      "properties": {
+        "site": "05551582",
+        "name": "FOX RIVER BYPASS AT YORKVILLE, IL",
+        "stage": 10.02,
+        "stage_time": "2026-10-08T08:45:00.000-06:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.3833333,
+          41.7408333
+        ]
+      },
+      "properties": {
+        "site": "05551675",
+        "name": "BLACKBERRY CREEK NEAR MONTGOMERY, IL",
+        "discharge": 76.8,
+        "discharge_time": "2026-10-08T08:30:00.000-06:00",
+        "stage": 4.2,
+        "stage_time": "2026-10-08T08:30:00.000-06:00",
+        "flood_stage_ft": 10.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/BBMI2",
+        "feet_below_flood": 5.8,
+        "action_stage_ft": 8.0,
+        "moderate_stage_ft": 11.5,
+        "major_stage_ft": 12.5,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.4414861,
+          41.6718722
+        ]
+      },
+      "properties": {
+        "site": "05551700",
+        "name": "BLACKBERRY CREEK NEAR YORKVILLE, IL",
+        "discharge": 101.0,
+        "discharge_time": "2026-10-08T08:30:00.000-06:00",
+        "stage": 4.33,
+        "stage_time": "2026-10-08T08:30:00.000-06:00",
+        "flood_stage_ft": 7.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/YRKI2",
+        "feet_below_flood": 2.67,
+        "action_stage_ft": 6.5,
+        "moderate_stage_ft": 12.0,
+        "major_stage_ft": 14.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.2615833,
+          41.38877778
+        ]
+      },
+      "properties": {
+        "site": "412320088154101",
+        "name": "KANKAKEE R AT INFLOW OF POWER PLANT NR LORENZO, IL",
+        "stage": 504.53,
+        "stage_time": "2026-10-08T08:00:00.000-06:00",
+        "flood_stage_ft": 508.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/KRDI2",
+        "feet_below_flood": 3.47,
+        "action_stage_ft": 507.0,
+        "moderate_stage_ft": 509.0,
+        "major_stage_ft": 510.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.7026944,
+          41.3985833
+        ]
+      },
+      "properties": {
+        "site": "412355086421001",
+        "name": "KANKAKEE RIVER BELOW USHWY 30 NEAR HANNA, IN",
+        "stage": 2.23,
+        "stage_time": "2026-10-08T10:00:00.000-04:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.51004,
+          41.5078132
+        ]
+      },
+      "properties": {
+        "site": "413028087303601",
+        "name": "HART DITCH AT DYER, IN (LCRDAN)",
+        "stage": 2.26,
+        "stage_time": "2026-10-08T10:15:00.000-04:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.4019832,
+          41.56059159
+        ]
+      },
+      "properties": {
+        "site": "413339087223001",
+        "name": "LITTLE CALUMET RIVER AT BURR STREET AT GARY, IN",
+        "stage": 5.09,
+        "stage_time": "2026-10-08T10:15:00.000-04:00",
+        "flood_stage_ft": 11.0,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": "https://api.water.noaa.gov/nwps/v1/gauges/GBSI3",
+        "feet_below_flood": 5.91,
+        "action_stage_ft": 7.5,
+        "moderate_stage_ft": 13.0,
+        "major_stage_ft": 16.0,
+        "status": "below_flood"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.4805959,
+          41.5611467
+        ]
+      },
+      "properties": {
+        "site": "413340087285001",
+        "name": "HART DITCH AT MUNSTER, IN (LCRDAN)",
+        "stage": 0.87,
+        "stage_time": "2026-10-08T10:30:00.000-04:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.2788056,
+          42.4999722
+        ]
+      },
+      "properties": {
+        "site": "423000088164401",
+        "name": "ELIZABETH LAKE AT TWIN LAKES, WI-IL",
+        "stage": 794.15,
+        "stage_time": "2026-10-08T08:30:00.000-06:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.4344444,
+          42.59027778
+        ]
+      },
+      "properties": {
+        "site": "423525088260400",
+        "name": "GENEVA LAKE AT LAKE GENEVA, WI",
+        "stage": 2.57,
+        "stage_time": "2026-10-08T10:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1420325,
+          42.81334964
+        ]
+      },
+      "properties": {
+        "site": "424848088083100",
+        "name": "WIND LAKE AT OUTLET AT WIND LAKE, WI",
+        "stage": 8.03,
+        "stage_time": "2026-10-08T10:00:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.014619,
+          42.9992
+        ]
+      },
+      "properties": {
+        "site": "425957088005201",
+        "name": "Honey Creek nr McCarty Pk at West Allis, WI",
+        "stage": 0.0,
+        "stage_time": "2026-10-08T10:07:00.000-05:00",
+        "flood_stage_ft": null,
+        "min_stage_12mo_ft": null,
+        "feet_above_minimum": null,
+        "flood_source": null,
+        "feet_below_flood": null,
+        "action_stage_ft": null,
+        "moderate_stage_ft": null,
+        "major_stage_ft": null,
+        "status": "unknown"
+      }
+    }
+  ]
+}
