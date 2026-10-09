@@ -109,7 +109,9 @@ def main():
         cuts.sort(key=lambda x:x[0])
         for k,(left,right) in enumerate(zip(cuts,cuts[1:])):
             begin,from_node,_=left;finish,to_node,_=right
-            if finish-begin<1e-9:continue
+            if finish-begin<1e-9:
+                link(from_node,to_node,0.0)
+                continue
             link(from_node,to_node,finish-begin)
             part=substring(p,begin,finish)
             if part.geom_type!='LineString':continue
