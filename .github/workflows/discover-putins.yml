@@ -5,13 +5,9 @@ on:
     paths:
       - 'scripts/discover_putins.py'
       - '.github/workflows/discover-putins.yml'
+  schedule:
+    - cron: '17 */3 * * *'
   workflow_dispatch:
-    inputs:
-      batch:
-        description: 'Stream rectangle batch (0, 1, 2, ...)'
-        required: true
-        default: '0'
-        type: string
 permissions:
   contents: write
 concurrency:
@@ -22,11 +18,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      DISCOVERY_BATCH: ${{ inputs.batch || '0' }}
       DISCOVERY_BATCH_SIZE: '20'
     steps:
       - uses: actions/checkout@v4
       - name: Discover launches in stream rectangles
+        id: scan
+        continue-on-error: true
         run: python3 -u scripts/discover_putins.py
       - name: Upload coverage report
         if: always()
@@ -39,9 +36,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/putins_osm_candidates.geojson data/putins_discovery_coverage.json
+          git add data/putins_osm_candidates.geojson data/putins_discovery_coverage.json data/putins_discovery_progress.json
           if ! git diff --cached --quiet; then
             git commit -m "Discover put-ins in stream rectangle batch"
             git pull --rebase origin main
             git push origin HEAD:main
           fi
+      - name: Report scan failures
+        if: steps.scan.outcome == 'failure'
+        run: exit 1
