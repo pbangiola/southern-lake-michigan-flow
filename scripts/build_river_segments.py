@@ -108,36 +108,43 @@ def main():
                 components_with_gauges.add(find(i))
     # Trace maximal unbranched chains; each chain stops at an endpoint or junction.
     visited=set();chains=[]
-    def trace(first):
-        chain=[];current=first
+    def walk(start,entry):
+        chain=[];current=start;incoming=entry
         while current not in visited:
-            visited.add(current);chain.append(current)
+            visited.add(current)
             u,v=ends[current]
-            # Walk forward only through degree-2 junctions.
-            terminal=v
-            if len(chain)>1:
-                previous=chain[-2]
-                common=set(ends[previous]) & {u,v}
-                if common:terminal=v if u in common else u
-            if len(incidence.get(terminal,[]))!=2:break
-            nxt=next((j for j in incidence[terminal] if j!=current),None)
-            if nxt is None or nxt in visited:break
-            current=nxt
+            forward=(incoming==u)
+            chain.append((current,forward))
+            exit_node=v if forward else u
+            if len(incidence[exit_node])!=2:break
+            next_candidates=[j for j in incidence[exit_node] if j!=current]
+            if not next_candidates or next_candidates[0] in visited:break
+            current=next_candidates[0];incoming=exit_node
         return chain
+    # Begin at endpoints and junctions, then handle closed loops.
     for i in range(len(lines)):
         if i in visited or find(i) not in components_with_gauges:continue
         u,v=ends[i]
-        if len(incidence[u])!=2 and len(incidence[v])==2:
-            # Reverse the first line so tracing starts from the branch/endpoint.
-            lines[i]=(LineString(list(lines[i][0].coords)[::-1]),lines[i][1])
-            ends[i]=(v,u)
-        chains.append(trace(i))
+        if len(incidence[u])!=2:chains.append(walk(i,u))
+        elif len(incidence[v])!=2:chains.append(walk(i,v))
+    for i in range(len(lines)):
+        if i not in visited and find(i) in components_with_gauges:
+            chains.append(walk(i,ends[i][0]))
     output=[];matched_chains=0
     for chain_number,indices in enumerate(chains):
         # Merge only chains whose adjacent coordinates really connect.
-        parts=[lines[i][0] for i in indices]
-        merged=linemerge(parts) if len(parts)>1 else parts[0]
-        segments=list(merged.geoms) if merged.geom_type=='MultiLineString' else [merged]
+        coordinates=[]
+        for i,forward in indices:
+            pts=list(lines[i][0].coords)
+            if not forward:pts.reverse()
+            if coordinates:
+                # Endpoints may be slightly offset due to source precision.
+                # Snap to the previous end rather than inserting an artificial gap.
+                pts[0]=coordinates[-1]
+                coordinates.extend(pts[1:])
+            else:coordinates.extend(pts)
+        if len(coordinates)<2:continue
+        segments=[LineString(coordinates)]
         for line in segments:
             projected=LineString([metric(c,lat) for c in line.coords])
             if projected.length==0:continue
@@ -170,7 +177,7 @@ def main():
                     'from_gauge':upstream[1] if upstream else None,
                     'to_gauge':downstream[1] if downstream else None,
                     'association':'projected onto connected unbranched stream chain',
-                    'condition':'unclassified','source_kmz':lines[indices[0]][1],
+                    'condition':'unclassified','source_kmz':lines[indices[0][0]][1],
                     'segment_id':f'network-{chain_number}-{k}'}})
     result={'type':'FeatureCollection','metadata':{
         'note':'Connected endpoint topology; unverified navigability and hydraulic conditions',
