@@ -8,7 +8,9 @@ import json, time, urllib.parse, urllib.request
 from pathlib import Path
 
 BBOX=(-88.7,40.9,-85.4,43.2)  # same coverage as fetch_gauges.py
-URL='https://overpass.kumi.systems/api/interpreter'
+URLS=('https://overpass-api.de/api/interpreter',
+      'https://overpass.private.coffee/api/interpreter',
+      'https://overpass.kumi.systems/api/interpreter')
 # Explicit launches, ramps, canoe/kayak access, and named water-access features.
 FILTERS='''["leisure"="slipway"];
 ["waterway"="access_point"];
@@ -16,17 +18,32 @@ FILTERS='''["leisure"="slipway"];
 ["kayak"="yes"];
 ["sport"~"^(canoe|kayak|canoeing|kayaking)$"];
 ["name"~"(canoe|kayak|paddle|boat launch|boat ramp|landing)",i]'''
-def query(south,west,north,east):
+def query(south,west,north,east,depth=0):
     clauses=''.join(f'nwr{tag}({south},{west},{north},{east});' for tag in FILTERS.split(';') if tag.strip())
-    q='[out:json][timeout:120];('+clauses+');out center tags;'
+    q='[out:json][timeout:60];('+clauses+');out center tags;'
     data=urllib.parse.urlencode({'data':q}).encode()
-    req=urllib.request.Request(URL,data=data,headers={'User-Agent':'SouthernLakeMichiganFlowAtlas/0.2 (GitHub Actions)','Accept':'application/json'})
-    for attempt in range(4):
+    errors=[]
+    for url in URLS:
+        req=urllib.request.Request(url,data=data,headers={
+            'User-Agent':'SouthernLakeMichiganFlowAtlas/0.2 (GitHub Actions)',
+            'Accept':'application/json'})
         try:
-            with urllib.request.urlopen(req,timeout=150) as response:return json.load(response)['elements']
+            with urllib.request.urlopen(req,timeout=85) as response:
+                payload=json.load(response)
+                if 'elements' not in payload:raise ValueError('No elements in Overpass response')
+                return payload['elements']
         except Exception as exc:
-            if attempt==3:raise RuntimeError(f'Overpass tile {south},{west},{north},{east}: {exc}') from exc
-            time.sleep(5*(attempt+1))
+            errors.append(f'{url}: {exc}')
+            print(f'Overpass attempt failed: {errors[-1]}',flush=True)
+            time.sleep(2)
+    if depth<2:
+        mid_lat=(south+north)/2;mid_lon=(west+east)/2
+        print(f'Splitting failed tile at depth {depth+1}',flush=True)
+        return (query(south,west,mid_lat,mid_lon,depth+1)
+                +query(south,mid_lon,mid_lat,east,depth+1)
+                +query(mid_lat,west,north,mid_lon,depth+1)
+                +query(mid_lat,mid_lon,north,east,depth+1))
+    raise RuntimeError(f'Overpass failed for tile {south},{west},{north},{east}: '+'; '.join(errors))
 def main():
     west,south,east,north=BBOX
     found={}
