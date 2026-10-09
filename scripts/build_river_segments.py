@@ -11,7 +11,7 @@ import argparse, json, math, zipfile
 from pathlib import Path
 from lxml import etree
 from shapely.geometry import LineString, Point, box, mapping
-from shapely.ops import substring
+from shapely.ops import substring, linemerge
 from shapely.strtree import STRtree
 
 BBOX=(-88.7,40.9,-85.4,43.2)
@@ -63,43 +63,122 @@ def main():
     gauge_points=[Point(metric(pt,lat)) for _,pt,_ in stations]
     tree=STRtree(gauge_points)
     bbox=box(*BBOX)
-    output=[];raw_count=0;matched=0
+    # Build a topological graph of source lines. Shared endpoints are snapped to a
+    # small tolerance; branch junctions (degree != 2) remain explicit boundaries.
+    # Only lines near at least one gauge are retained, then their connected
+    # components are expanded through all source lines in the atlas bounds.
+    snap_m=15.0
+    def node(xy):
+        x,y=metric(xy,lat)
+        return (round(x*1000/snap_m),round(y*1000/snap_m))
+    lines=[];ends=[];incidence={}
     for kmz in a.kmz:
+        count=0
         for line in streams(kmz,bbox):
-            raw_count+=1
+            if line.length==0:continue
+            i=len(lines);lines.append((line,kmz.name))
+            u,v=node(line.coords[0]),node(line.coords[-1])
+            ends.append((u,v))
+            incidence.setdefault(u,[]).append(i)
+            incidence.setdefault(v,[]).append(i)
+            count+=1
+        print(f'{kmz.name}: loaded {count} clipped stream lines',flush=True)
+    print(f'Building connected components from {len(lines)} source lines',flush=True)
+    # Union-find groups lines sharing endpoints, without crossing tributary junctions
+    # when building individual chains.
+    parent=list(range(len(lines)))
+    def find(i):
+        while parent[i]!=i:
+            parent[i]=parent[parent[i]]
+            i=parent[i]
+        return i
+    def union(i,j):
+        a,b=find(i),find(j)
+        if a!=b:parent[b]=a
+    for members in incidence.values():
+        for i in members[1:]:union(members[0],i)
+    # Locate gauges by perpendicular distance to complete source lines.
+    projected_lines=[LineString([metric(c,lat) for c in line.coords]) for line,_ in lines]
+    stream_tree=STRtree(projected_lines)
+    components_with_gauges=set()
+    for gauge in gauge_points:
+        for index in stream_tree.query(gauge.buffer(a.max_distance_m/1000)):
+            i=int(index)
+            if projected_lines[i].distance(gauge)*1000<=a.max_distance_m:
+                components_with_gauges.add(find(i))
+    # Trace maximal unbranched chains; each chain stops at an endpoint or junction.
+    visited=set();chains=[]
+    def trace(first):
+        chain=[];current=first
+        while current not in visited:
+            visited.add(current);chain.append(current)
+            u,v=ends[current]
+            # Walk forward only through degree-2 junctions.
+            terminal=v
+            if len(chain)>1:
+                previous=chain[-2]
+                common=set(ends[previous]) & {u,v}
+                if common:terminal=v if u in common else u
+            if len(incidence.get(terminal,[]))!=2:break
+            nxt=next((j for j in incidence[terminal] if j!=current),None)
+            if nxt is None or nxt in visited:break
+            current=nxt
+        return chain
+    for i in range(len(lines)):
+        if i in visited or find(i) not in components_with_gauges:continue
+        u,v=ends[i]
+        if len(incidence[u])!=2 and len(incidence[v])==2:
+            # Reverse the first line so tracing starts from the branch/endpoint.
+            lines[i]=(LineString(list(lines[i][0].coords)[::-1]),lines[i][1])
+            ends[i]=(v,u)
+        chains.append(trace(i))
+    output=[];matched_chains=0
+    for chain_number,indices in enumerate(chains):
+        # Merge only chains whose adjacent coordinates really connect.
+        parts=[lines[i][0] for i in indices]
+        merged=linemerge(parts) if len(parts)>1 else parts[0]
+        segments=list(merged.geoms) if merged.geom_type=='MultiLineString' else [merged]
+        for line in segments:
             projected=LineString([metric(c,lat) for c in line.coords])
-            candidates=tree.query(projected.buffer(a.max_distance_m/1000))
+            if projected.length==0:continue
             hits=[]
-            for i in candidates:
-                station_id,point,name=stations[int(i)]
-                gauge=gauge_points[int(i)]
+            for index in tree.query(projected.buffer(a.max_distance_m/1000)):
+                i=int(index);gauge=gauge_points[i]
                 distance=projected.distance(gauge)*1000
                 if distance<=a.max_distance_m:
-                    along=projected.project(gauge)
-                    hits.append((along,station_id,round(distance,1),name))
+                    sid,_,name=stations[i]
+                    hits.append((projected.project(gauge),sid,round(distance,1),name))
             if not hits:continue
-            matched+=1
+            matched_chains+=1
             hits.sort()
-            # Split at projected gauge positions, preserving the original geometry.
             cuts=[0]+sorted(set(h[0] for h in hits if 0<h[0]<projected.length))+[projected.length]
-            for k,(start,end) in enumerate(zip(cuts,cuts[1:])):
-                if end-start<0.001:continue
-                # Associate each piece with its closest on-line gauge. This is a
-                # geographic attribution, not a verified hydrologic connection.
-                center=(start+end)/2
-                nearest=min(hits,key=lambda h:abs(h[0]-center))
-                part=substring(line,start/projected.length*line.length,end/projected.length*line.length)
+            for k,(begin,finish) in enumerate(zip(cuts,cuts[1:])):
+                if finish-begin<0.001:continue
+                part=substring(projected,begin,finish)
                 if part.geom_type!='LineString':continue
-                output.append({'type':'Feature','geometry':mapping(part),'properties':{
-                    'site':nearest[1],'gauge_name':nearest[3],
-                    'gauge_distance_m':nearest[2],
-                    'association':'nearest gauge on source stream line (unverified)',
-                    'condition':'unclassified','source_kmz':kmz.name,
-                    'segment_id':f'{kmz.stem}-{raw_count}-{k}'}})
-        print(f'{kmz.name}: scanned {raw_count} lines, matched {matched}',flush=True)
-    result={'type':'FeatureCollection','metadata':{'note':'Gauge proximity only; not a navigation or safety rating','max_distance_m':a.max_distance_m,'source_files':[p.name for p in a.kmz]},'features':output}
+                # Convert the cut coordinates back from projected kilometers to lon/lat.
+                coords=[(x/(KM_PER_DEG_LAT*math.cos(math.radians(lat))),y/KM_PER_DEG_LAT) for x,y in part.coords]
+                center=(begin+finish)/2
+                closest=min(hits,key=lambda h:abs(h[0]-center))
+                before=[h for h in hits if h[0]<=begin+1e-9]
+                after=[h for h in hits if h[0]>=finish-1e-9]
+                upstream=before[-1] if before else None
+                downstream=after[0] if after else None
+                output.append({'type':'Feature','geometry':mapping(LineString(coords)),'properties':{
+                    'site':closest[1],'gauge_name':closest[3],
+                    'gauge_distance_m':closest[2],
+                    'from_gauge':upstream[1] if upstream else None,
+                    'to_gauge':downstream[1] if downstream else None,
+                    'association':'projected onto connected unbranched stream chain',
+                    'condition':'unclassified','source_kmz':lines[indices[0]][1],
+                    'segment_id':f'network-{chain_number}-{k}'}})
+    result={'type':'FeatureCollection','metadata':{
+        'note':'Connected endpoint topology; unverified navigability and hydraulic conditions',
+        'max_distance_m':a.max_distance_m,'endpoint_snap_m':snap_m,
+        'source_files':[p.name for p in a.kmz],
+        'source_lines':len(lines),'matched_chains':matched_chains},'features':output}
     a.output.parent.mkdir(parents=True,exist_ok=True)
     a.output.write_text(json.dumps(result,separators=(',',':')))
-    print(f'Wrote {len(output)} gauge-associated segments to {a.output}')
+    print(f'Wrote {len(output)} segments across {matched_chains} gauge-linked chains to {a.output}')
 
 if __name__=='__main__':main()
