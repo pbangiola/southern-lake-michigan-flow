@@ -7,6 +7,7 @@ from pathlib import Path
 RIVERS=Path('data/river_segments.geojson')
 OUT=Path('data/putins_osm_candidates.geojson')
 REPORT=Path('data/putins_discovery_coverage.json')
+PROGRESS=Path('data/putins_discovery_progress.json')
 CELL=0.04
 BATCH=int(os.environ.get('DISCOVERY_BATCH','0'))
 BATCH_SIZE=int(os.environ.get('DISCOVERY_BATCH_SIZE','20'))
@@ -30,7 +31,8 @@ def cells():
                     x=a[0]+(b[0]-a[0])*i/steps
                     y=a[1]+(b[1]-a[1])*i/steps
                     selected.add((math.floor(x/CELL),math.floor(y/CELL)))
-    return sorted(selected,key=lambda p:(p[1],p[0]))
+    # Start near the validated Des Plaines launch, then expand outward.
+    return sorted(selected,key=lambda p:((p[0]*CELL-GOWE_COORD[0])**2+(p[1]*CELL-GOWE_COORD[1])**2,p[1],p[0]))
 def query(cell):
     x,y=cell
     # Small padding includes nearby launches without requesting a whole county.
@@ -70,45 +72,54 @@ def query(cell):
     return found,len(payload)
 def main():
     tiles=cells()
-    start=BATCH*BATCH_SIZE
-    subset=tiles[start:start+BATCH_SIZE]
-    if VALIDATE_GOWE:
-        gowe_cell=(math.floor(GOWE_COORD[0]/CELL),math.floor(GOWE_COORD[1]/CELL))
-        if gowe_cell not in subset:subset=[gowe_cell]+subset
-        print('Validating known Gowe Park launch in rectangle',gowe_cell,flush=True)
-    if not subset:raise SystemExit(f'Batch {BATCH} beyond {len(tiles)} stream rectangles')
+    progress=json.loads(PROGRESS.read_text()) if PROGRESS.exists() else {'completed':[],'failures':{}}
+    completed={tuple(c) for c in progress.get('completed',[])}
+    failures=dict(progress.get('failures',{}))
     previous={}
     if OUT.exists():
         for f in json.loads(OUT.read_text()).get('features',[]):
             previous[f['properties']['id']]=f
-    failures=[];bytes_downloaded=0
-    gowe_found=False
-    for idx,cell in enumerate(subset,start+1):
+    gowe_cell=(math.floor(GOWE_COORD[0]/CELL),math.floor(GOWE_COORD[1]/CELL))
+    # Revalidate the known launch at the start of every run.
+    pending=[gowe_cell]+[c for c in tiles if c not in completed and c!=gowe_cell]
+    subset=pending[:BATCH_SIZE+1]
+    if not subset:
+        print('All stream rectangles already completed',flush=True)
+        return
+    attempted=[];failed_now=[];bytes_downloaded=0;gowe_found=False
+    for cell in subset:
+        key=f'{cell[0]},{cell[1]}'
+        attempted.append(cell)
         try:
             found,size=query(cell)
-            previous.update(found);bytes_downloaded+=size
+            if cell==gowe_cell and GOWE_ID not in found:
+                raise ValueError('Known Gowe Park launch not found')
             if GOWE_ID in found:gowe_found=True
-            print(f'OK rectangle {idx}/{len(tiles)}: {len(found)} candidates, {size} bytes',flush=True)
+            previous.update(found)
+            completed.add(cell)
+            failures.pop(key,None)
+            bytes_downloaded+=size
+            print(f'OK rectangle {cell}: {len(found)} candidates, {size} bytes',flush=True)
         except (urllib.error.URLError,ValueError,ET.ParseError,TimeoutError) as exc:
-            failures.append({'rectangle':cell,'error':str(exc)})
-            print(f'FAILED rectangle {idx}/{len(tiles)}: {exc}',flush=True)
+            failures[key]=str(exc)
+            failed_now.append({'rectangle':cell,'error':str(exc)})
+            print(f'FAILED rectangle {cell}: {exc}',flush=True)
         time.sleep(1)
-    REPORT.parent.mkdir(exist_ok=True)
+    PROGRESS.parent.mkdir(exist_ok=True)
+    PROGRESS.write_text(json.dumps({'completed':[list(c) for c in sorted(completed)],
+        'failures':failures,'total_rectangles':len(tiles)},indent=2)+'\\n')
     REPORT.write_text(json.dumps({'method':'OSM map API stream corridor rectangles',
-        'batch':BATCH,'batch_size':BATCH_SIZE,'total_rectangles':len(tiles),
-        'attempted_rectangles':len(subset),'failed_rectangles':failures,
-        'complete_batch':not failures and (not VALIDATE_GOWE or gowe_found),
-        'gowe_validation_enabled':VALIDATE_GOWE,'gowe_found_in_current_run':gowe_found,
-        'bytes_downloaded':bytes_downloaded,
-        'candidate_count':len(previous),
-        'warning':'Candidates are not verified public or navigable access. Entire region is not complete until all batches are run.'},indent=2)+'\n')
-    if failures:raise SystemExit('Some rectangles failed; existing candidates preserved; see coverage report')
-    if VALIDATE_GOWE and not gowe_found:
-        raise SystemExit('VALIDATION FAILED: Gowe Park canoe launch not discovered; existing candidates preserved')
-    if VALIDATE_GOWE:print('PASS: Gowe Park launch discovered by production rectangle parser',flush=True)
+        'total_rectangles':len(tiles),'completed_rectangles':len(completed),
+        'remaining_rectangles':len(set(tiles)-completed),
+        'attempted_this_run':len(attempted),'failed_this_run':failed_now,
+        'unresolved_failures':len(failures),'gowe_found_in_current_run':gowe_found,
+        'bytes_downloaded':bytes_downloaded,'candidate_count':len(previous),
+        'complete_region':set(tiles)<=completed,
+        'warning':'Unverified OSM access candidates; river navigability and public access not established'},indent=2)+'\\n')
     OUT.write_text(json.dumps({'type':'FeatureCollection','metadata':{
         'source':'OSM map API stream corridor rectangles',
-        'note':'Incremental unverified launch candidates; regional coverage incomplete'},
-        'features':list(previous.values())},indent=2)+'\n')
-    print(f'Batch {BATCH} complete: {len(previous)} cumulative candidates',flush=True)
+        'note':'Incremental unverified candidates'},
+        'features':list(previous.values())},indent=2)+'\\n')
+    if failed_now:raise SystemExit(f'{len(failed_now)} rectangle(s) failed; progress preserved for retry')
+    print(f'Progress: {len(completed)}/{len(tiles)} rectangles, {len(previous)} candidates',flush=True)
 if __name__=='__main__':main()
