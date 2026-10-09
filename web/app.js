@@ -5,6 +5,13 @@ const REPO='pbangiola/southern-lake-michigan-flow';
 const reportTypes=['Too shallow','Too high / strong current','Navigable'];
 const status=document.getElementById('status');
 const gaugeToggle=document.getElementById('show-gauges');
+const riverToggle=document.getElementById('show-rivers');
+const routeToggle=document.getElementById('show-routes');
+const legend=document.getElementById('map-legend');
+function setLayerVisibility(id,visible){if(map.getLayer(id))map.setLayoutProperty(id,'visibility',visible?'visible':'none');}
+riverToggle.addEventListener('change',()=>setLayerVisibility('river-segments',riverToggle.checked));
+routeToggle.addEventListener('change',()=>setLayerVisibility('paddling-routes',routeToggle.checked));
+window.addEventListener('resize',()=>map.resize());
 gaugeToggle.addEventListener('change',()=>{
  if(map.getLayer('gauges'))map.setLayoutProperty('gauges','visibility',gaugeToggle.checked?'visible':'none');
 });
@@ -98,7 +105,9 @@ function colorRiverNetwork(segments,gauges){
  for(const feature of segments.features){
   const p=feature.properties||(feature.properties={});
   const a=siteId(p.from_gauge||p.site),b=siteId(p.to_gauge||p.site);
-  p.stage_color=a===b?colorFor(a):blend(colorFor(a),colorFor(b),0.5);
+  const ca=colorFor(a),cb=colorFor(b);
+  // Never interpolate an unknown reading into a seemingly meaningful stage color.
+  p.stage_color=ca==='#88929b'||cb==='#88929b'?'#88929b':a===b?ca:blend(ca,cb,0.5);
   p.stage_gauge_a=a;p.stage_gauge_b=b;
  }
  return segments;
@@ -135,6 +144,7 @@ map.on('load',async()=>{
      'line-color':['get','stage_color'],'line-width':['interpolate',['linear'],['zoom'],6,1.5,10,3,13,5],
      'line-opacity':0.8
     }},'gauges');
+    setLayerVisibility('river-segments',riverToggle.checked);
     map.on('click','river-segments',e=>{
      if(reportButton.getAttribute('aria-pressed')==='true')return;
      const p=e.features[0].properties;
@@ -181,6 +191,7 @@ map.on('load',async()=>{
     'line-width':['interpolate',['linear'],['zoom'],6,3.5,10,6,13,8],
     'line-opacity':0.95,
    }},'gauges');
+   setLayerVisibility('paddling-routes',routeToggle.checked);
    map.on('click','paddling-routes',e=>{
     if(reportButton.getAttribute('aria-pressed')==='true')return;
     const p=e.features[0].properties;
