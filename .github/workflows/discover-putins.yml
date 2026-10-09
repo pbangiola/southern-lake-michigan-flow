@@ -6,16 +6,23 @@ permissions:
 jobs:
   discover:
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - name: Discover candidate access points from OSM
         run: python3 scripts/discover_putins.py
+      - name: Upload discovery coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: putin-discovery-coverage
+          path: data/putins_discovery_coverage.json
+          if-no-files-found: warn
       - name: Commit review dataset
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/putins_osm_candidates.geojson
+          git add data/putins_osm_candidates.geojson data/putins_discovery_coverage.json
           if ! git diff --cached --quiet; then
             git commit -m "Update regional put-in candidates"
             git push
