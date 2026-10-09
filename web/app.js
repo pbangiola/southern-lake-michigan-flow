@@ -105,6 +105,33 @@ map.on('load',async()=>{
   map.addLayer({id:'gauges',type:'circle',source:'gauges',paint:{
    'circle-radius':7,'circle-color':['get','level_color'],'circle-stroke-color':'white','circle-stroke-width':1.5
   }});
+  // Routes traced from the user's KML; not independently verified for navigation.
+  try {
+   const routesResponse=await fetch('data/paddling_routes.geojson',{cache:'no-store'});
+   if(!routesResponse.ok)throw new Error('HTTP '+routesResponse.status);
+   const routes=await routesResponse.json();
+   if(routes.type!=='FeatureCollection'||!Array.isArray(routes.features))throw new Error('Invalid route GeoJSON');
+   map.addSource('paddling-routes',{type:'geojson',data:routes});
+   map.addLayer({id:'paddling-routes',type:'line',source:'paddling-routes',paint:{
+    'line-color':'#7b4cb0',
+    'line-width':['interpolate',['linear'],['zoom'],6,2,10,4,13,6],
+    'line-opacity':0.78,
+    'line-dasharray':[2,1.5]
+   }},'gauges');
+   map.on('click','paddling-routes',e=>{
+    if(reportButton.getAttribute('aria-pressed')==='true')return;
+    const p=e.features[0].properties;
+    new maplibregl.Popup().setLngLat(e.lngLat)
+     .setText((p.name||'Mapped river route')+'\\nMapped route only; navigability has not been verified.')
+     .addTo(map);
+   });
+   map.on('mouseenter','paddling-routes',()=>{
+    if(reportButton.getAttribute('aria-pressed')!=='true')map.getCanvas().style.cursor='pointer';
+   });
+   map.on('mouseleave','paddling-routes',()=>{
+    if(reportButton.getAttribute('aria-pressed')!=='true')map.getCanvas().style.cursor='';
+   });
+  }catch(e){console.warn('River routes could not load:',e);}
   map.on('click','gauges',event=>{
    if(reportButton.getAttribute('aria-pressed')==='true')return;
    const p=event.features[0].properties;
