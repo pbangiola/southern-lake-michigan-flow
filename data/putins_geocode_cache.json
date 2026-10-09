@@ -1,0 +1,1312 @@
+{
+  "Hennepin Canal Lock #2": [
+    {
+      "place_id": 370767177,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 1036143891,
+      "lat": "41.2846582",
+      "lon": "-89.3652868",
+      "category": "lock",
+      "type": "yes",
+      "place_rank": 30,
+      "importance": 5.2751201647928854e-05,
+      "addresstype": "lock",
+      "name": "Lock Number 2",
+      "display_name": "Lock Number 2, Hennepin Canal Parkway, Bureau Junction, Bureau County, Illinois, 61315, United States",
+      "address": {
+        "lock": "Lock Number 2",
+        "road": "Hennepin Canal Parkway",
+        "village": "Bureau Junction",
+        "county": "Bureau County",
+        "state": "Illinois",
+        "ISO3166-2-lvl4": "US-IL",
+        "postcode": "61315",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "41.2845560",
+        "41.2847603",
+        "-89.3656255",
+        "-89.3649481"
+      ]
+    }
+  ],
+  "Spring Valley Barto Boat Landing": [],
+  "Vermillion River Boat Launch": [],
+  "Seneca Boat Launch": [
+    {
+      "place_id": 350410406,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 673171244,
+      "lat": "42.8999770",
+      "lon": "-76.7503173",
+      "category": "highway",
+      "type": "service",
+      "place_rank": 27,
+      "importance": 0.040044389257648576,
+      "addresstype": "road",
+      "name": "Boat Launch Drive",
+      "display_name": "Boat Launch Drive, Town of Seneca Falls, Seneca County, New York, 13148, United States",
+      "address": {
+        "road": "Boat Launch Drive",
+        "town": "Town of Seneca Falls",
+        "county": "Seneca County",
+        "state": "New York",
+        "ISO3166-2-lvl4": "US-NY",
+        "postcode": "13148",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "42.8999384",
+        "42.9000155",
+        "-76.7505687",
+        "-76.7500659"
+      ]
+    },
+    {
+      "place_id": 350420869,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2882396417,
+      "lat": "42.9015713",
+      "lon": "-76.8661228",
+      "category": "leisure",
+      "type": "slipway",
+      "place_rank": 30,
+      "importance": 4.986266880288422e-05,
+      "addresstype": "leisure",
+      "name": "Oak Island Boat Launch",
+      "display_name": "Oak Island Boat Launch, Vern's Way, Village of Waterloo, Town of Waterloo, Seneca County, New York, 13165, United States",
+      "address": {
+        "leisure": "Oak Island Boat Launch",
+        "road": "Vern's Way",
+        "town": "Village of Waterloo",
+        "county": "Seneca County",
+        "state": "New York",
+        "ISO3166-2-lvl4": "US-NY",
+        "postcode": "13165",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "42.9015213",
+        "42.9016213",
+        "-76.8661728",
+        "-76.8660728"
+      ]
+    },
+    {
+      "place_id": 351923590,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 6774897548,
+      "lat": "42.6178656",
+      "lon": "-76.8769448",
+      "category": "leisure",
+      "type": "slipway",
+      "place_rank": 30,
+      "importance": 4.904478522922129e-05,
+      "addresstype": "leisure",
+      "name": "Lodi Point State Park Boat Launch",
+      "display_name": "Lodi Point State Park Boat Launch, Lodi Point Road, Town of Lodi, Seneca County, New York, 14860, United States",
+      "address": {
+        "leisure": "Lodi Point State Park Boat Launch",
+        "road": "Lodi Point Road",
+        "hamlet": "Town of Lodi",
+        "county": "Seneca County",
+        "state": "New York",
+        "ISO3166-2-lvl4": "US-NY",
+        "postcode": "14860",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "42.6178156",
+        "42.6179156",
+        "-76.8769948",
+        "-76.8768948"
+      ]
+    },
+    {
+      "place_id": 354662312,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 8417137473,
+      "lat": "42.9002538",
+      "lon": "-76.7495040",
+      "category": "leisure",
+      "type": "slipway",
+      "place_rank": 30,
+      "importance": 4.4389257648539214e-05,
+      "addresstype": "leisure",
+      "name": "Cayuga Lake State Park Boat Launch",
+      "display_name": "Cayuga Lake State Park Boat Launch, Boat Launch Drive, Town of Seneca Falls, Seneca County, New York, 13148, United States",
+      "address": {
+        "leisure": "Cayuga Lake State Park Boat Launch",
+        "road": "Boat Launch Drive",
+        "town": "Town of Seneca Falls",
+        "county": "Seneca County",
+        "state": "New York",
+        "ISO3166-2-lvl4": "US-NY",
+        "postcode": "13148",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "42.9002038",
+        "42.9003038",
+        "-76.7495540",
+        "-76.7494540"
+      ]
+    },
+    {
+      "place_id": 351909375,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 439546401,
+      "lat": "42.7445134",
+      "lon": "-76.7687492",
+      "category": "leisure",
+      "type": "marina",
+      "place_rank": 30,
+      "importance": 3.965896086056332e-05,
+      "addresstype": "leisure",
+      "name": "Deans Cove Boat Launch",
+      "display_name": "Deans Cove Boat Launch, State Highway 89, Town of Romulus, Town of Fayette, Seneca County, New York, 13146, United States",
+      "address": {
+        "leisure": "Deans Cove Boat Launch",
+        "road": "State Highway 89",
+        "hamlet": "Town of Romulus",
+        "village": "Town of Fayette",
+        "county": "Seneca County",
+        "state": "New York",
+        "ISO3166-2-lvl4": "US-NY",
+        "postcode": "13146",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "42.7432886",
+        "42.7456919",
+        "-76.7700246",
+        "-76.7672932"
+      ]
+    }
+  ],
+  "Ruby St. Canoe Launch": [],
+  "Boy Scout Island Park Boat Ramp": [],
+  "South Street Canoe Launch": [],
+  "Lake Atwood Boat Launch": [],
+  "Miller Riverfront Park & Boat Launch": [],
+  "Fox River Canoe Launch": [],
+  "Busse Lake North Pool Boat Ramp": [],
+  "Living Canoe Launch": [],
+  "Canoe, Kayak, and Boat Launch": [],
+  "Canoe Launch": [
+    {
+      "place_id": 372547468,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 691309541,
+      "lat": "42.2597380",
+      "lon": "-87.9634692",
+      "category": "highway",
+      "type": "service",
+      "place_rank": 27,
+      "importance": 0.04005440680552375,
+      "addresstype": "road",
+      "name": "Canoe Launch",
+      "display_name": "Canoe Launch, Gregg's Landing North, Vernon Hills, Lake County, Illinois, 60061, United States",
+      "address": {
+        "road": "Canoe Launch",
+        "residential": "Gregg's Landing North",
+        "town": "Vernon Hills",
+        "county": "Lake County",
+        "state": "Illinois",
+        "ISO3166-2-lvl4": "US-IL",
+        "postcode": "60061",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "42.2597199",
+        "42.2597560",
+        "-87.9635103",
+        "-87.9634282"
+      ]
+    },
+    {
+      "place_id": 373132128,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 3327220101,
+      "lat": "42.1145504",
+      "lon": "-88.2936091",
+      "category": "leisure",
+      "type": "slipway",
+      "place_rank": 30,
+      "importance": 5.975967040508152e-05,
+      "addresstype": "leisure",
+      "name": "Canoe Launch",
+      "display_name": "Canoe Launch, Brunner Trail, Carpentersville, Dundee Township, Kane County, Illinois, 60110, United States",
+      "address": {
+        "leisure": "Canoe Launch",
+        "road": "Brunner Trail",
+        "town": "Carpentersville",
+        "municipality": "Dundee Township",
+        "county": "Kane County",
+        "state": "Illinois",
+        "ISO3166-2-lvl4": "US-IL",
+        "postcode": "60110",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "42.1145004",
+        "42.1146004",
+        "-88.2936591",
+        "-88.2935591"
+      ]
+    },
+    {
+      "place_id": 368535558,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 10914600139,
+      "lat": "41.2473943",
+      "lon": "-85.9077779",
+      "category": "leisure",
+      "type": "slipway",
+      "place_rank": 30,
+      "importance": 2.6000610360830357e-05,
+      "addresstype": "leisure",
+      "name": "Canoe Launch",
+      "display_name": "Canoe Launch, West Old Road 30, Kosciusko County, Indiana, 46580, United States",
+      "address": {
+        "leisure": "Canoe Launch",
+        "road": "West Old Road 30",
+        "county": "Kosciusko County",
+        "state": "Indiana",
+        "ISO3166-2-lvl4": "US-IN",
+        "postcode": "46580",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "41.2473443",
+        "41.2474443",
+        "-85.9078279",
+        "-85.9077279"
+      ]
+    },
+    {
+      "place_id": 339356890,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 3566749447,
+      "lat": "39.9464809",
+      "lon": "-87.0590412",
+      "category": "waterway",
+      "type": "access_point",
+      "place_rank": 20,
+      "importance": 0.1333686694132906,
+      "addresstype": "access_point",
+      "name": "Canoe Launch",
+      "display_name": "Canoe Launch, Montgomery County, Indiana, 47916, United States",
+      "address": {
+        "access_point": "Canoe Launch",
+        "county": "Montgomery County",
+        "state": "Indiana",
+        "ISO3166-2-lvl4": "US-IN",
+        "postcode": "47916",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "39.9464309",
+        "39.9465309",
+        "-87.0590912",
+        "-87.0589912"
+      ]
+    }
+  ],
+  "Northwestern Woods Canoe Landing": [
+    {
+      "place_id": 370749321,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 12023314691,
+      "lat": "42.0369724",
+      "lon": "-87.8819160",
+      "category": "leisure",
+      "type": "slipway",
+      "place_rank": 30,
+      "importance": 6.136339360642432e-05,
+      "addresstype": "leisure",
+      "name": "Northwestern Woods Canoe Landing",
+      "display_name": "Northwestern Woods Canoe Landing, South Des Plaines River Road, Des Plaines, Maine Township, Cook County, Illinois, 60016, United States",
+      "address": {
+        "leisure": "Northwestern Woods Canoe Landing",
+        "road": "South Des Plaines River Road",
+        "town": "Des Plaines",
+        "municipality": "Maine Township",
+        "county": "Cook County",
+        "state": "Illinois",
+        "ISO3166-2-lvl4": "US-IL",
+        "postcode": "60016",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "42.0369224",
+        "42.0370224",
+        "-87.8819660",
+        "-87.8818660"
+      ]
+    }
+  ],
+  "Rivershire Park Des Plaines River Access": [],
+  "Lake Park Boating & Sailing": [],
+  "Beck Lake Boat Launch": [
+    {
+      "place_id": 370751789,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 378374520,
+      "lat": "42.0716587",
+      "lon": "-87.8734532",
+      "category": "man_made",
+      "type": "pier",
+      "place_rank": 30,
+      "importance": 5.000152590214416e-05,
+      "addresstype": "man_made",
+      "name": "Beck Lake Boat Launch",
+      "display_name": "Beck Lake Boat Launch, Beck Lake Access Road, Northfield Township, Cook County, Illinois, 60026, United States",
+      "address": {
+        "man_made": "Beck Lake Boat Launch",
+        "road": "Beck Lake Access Road",
+        "municipality": "Northfield Township",
+        "county": "Cook County",
+        "state": "Illinois",
+        "ISO3166-2-lvl4": "US-IL",
+        "postcode": "60026",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "42.0715987",
+        "42.0717196",
+        "-87.8735334",
+        "-87.8733718"
+      ]
+    },
+    {
+      "place_id": 371821997,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 287190635,
+      "lat": "42.0716311",
+      "lon": "-87.8735511",
+      "category": "leisure",
+      "type": "slipway",
+      "place_rank": 30,
+      "importance": 5.000152590214416e-05,
+      "addresstype": "leisure",
+      "name": "Beck Lake Boat Launch",
+      "display_name": "Beck Lake Boat Launch, Beck Lake Access Road, Northfield Township, Cook County, Illinois, 60026, United States",
+      "address": {
+        "leisure": "Beck Lake Boat Launch",
+        "road": "Beck Lake Access Road",
+        "municipality": "Northfield Township",
+        "county": "Cook County",
+        "state": "Illinois",
+        "ISO3166-2-lvl4": "US-IL",
+        "postcode": "60026",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "42.0715811",
+        "42.0716811",
+        "-87.8736011",
+        "-87.8735011"
+      ]
+    }
+  ],
+  "Allison Woods Canoe Landing": [
+    {
+      "place_id": 371047349,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 12096138040,
+      "lat": "42.1009465",
+      "lon": "-87.8858851",
+      "category": "leisure",
+      "type": "slipway",
+      "place_rank": 30,
+      "importance": 5.343633173109052e-05,
+      "addresstype": "leisure",
+      "name": "Allison Woods Canoe Landing",
+      "display_name": "Allison Woods Canoe Landing, Allison Woods Access Road, Northfield Township, Cook County, Illinois, 60070, United States",
+      "address": {
+        "leisure": "Allison Woods Canoe Landing",
+        "road": "Allison Woods Access Road",
+        "municipality": "Northfield Township",
+        "county": "Cook County",
+        "state": "Illinois",
+        "ISO3166-2-lvl4": "US-IL",
+        "postcode": "60070",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "42.1008965",
+        "42.1009965",
+        "-87.8859351",
+        "-87.8858351"
+      ]
+    }
+  ],
+  "Long Lake Public Access Site": [],
+  "St. Joe County Park Boat Launch": [
+    {
+      "place_id": 367198690,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 479527575,
+      "lat": "41.6717286",
+      "lon": "-86.0713114",
+      "category": "leisure",
+      "type": "park",
+      "place_rank": 24,
+      "importance": 0.08003523537041272,
+      "addresstype": "park",
+      "name": "St. Joe County Park Boat Launch",
+      "display_name": "St. Joe County Park Boat Launch, Saint Joseph County, Indiana, United States",
+      "address": {
+        "park": "St. Joe County Park Boat Launch",
+        "county": "Saint Joseph County",
+        "state": "Indiana",
+        "ISO3166-2-lvl4": "US-IN",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "41.6715041",
+        "41.6718780",
+        "-86.0717530",
+        "-86.0708681"
+      ]
+    }
+  ],
+  "Veterans Memorial Boat Ramp": [
+    {
+      "place_id": 309133549,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 3010026111,
+      "lat": "26.6074863",
+      "lon": "-81.9135685",
+      "category": "leisure",
+      "type": "slipway",
+      "place_rank": 30,
+      "importance": 4.5925841153536545e-05,
+      "addresstype": "leisure",
+      "name": "Boat Ramp Herman Horton Park",
+      "display_name": "Boat Ramp Herman Horton Park, Veterans Memorial Parkway, Cape Coral, Lee County, Florida, 33990, United States",
+      "address": {
+        "leisure": "Boat Ramp Herman Horton Park",
+        "road": "Veterans Memorial Parkway",
+        "city": "Cape Coral",
+        "county": "Lee County",
+        "state": "Florida",
+        "ISO3166-2-lvl4": "US-FL",
+        "postcode": "33990",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "26.6074363",
+        "26.6075363",
+        "-81.9136185",
+        "-81.9135185"
+      ]
+    },
+    {
+      "place_id": 337590142,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 189933747,
+      "lat": "38.9358883",
+      "lon": "-92.9439729",
+      "category": "leisure",
+      "type": "slipway",
+      "place_rank": 30,
+      "importance": 9.99999999995449e-06,
+      "addresstype": "leisure",
+      "name": "Harriman Hill Boat Ramp",
+      "display_name": "Harriman Hill Boat Ramp, U.S. Submarine Veterans' Memorial Highway, Marshall Junction, Cooper County, Missouri, 65347, United States",
+      "address": {
+        "leisure": "Harriman Hill Boat Ramp",
+        "road": "U.S. Submarine Veterans' Memorial Highway",
+        "hamlet": "Marshall Junction",
+        "county": "Cooper County",
+        "state": "Missouri",
+        "ISO3166-2-lvl4": "US-MO",
+        "postcode": "65347",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "38.9358383",
+        "38.9359383",
+        "-92.9440229",
+        "-92.9439229"
+      ]
+    }
+  ],
+  "St. Patrick's County Park": [
+    {
+      "place_id": 370086393,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 425974977,
+      "lat": "41.7527403",
+      "lon": "-86.2685678",
+      "category": "leisure",
+      "type": "park",
+      "place_rank": 24,
+      "importance": 0.08005324559395739,
+      "addresstype": "park",
+      "name": "St. Patrick's County Park",
+      "display_name": "St. Patrick's County Park, Dreamwold Heights, Saint Joseph County, Indiana, United States",
+      "address": {
+        "park": "St. Patrick's County Park",
+        "hamlet": "Dreamwold Heights",
+        "county": "Saint Joseph County",
+        "state": "Indiana",
+        "ISO3166-2-lvl4": "US-IN",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "41.7450450",
+        "41.7604561",
+        "-86.2719201",
+        "-86.2558893"
+      ]
+    }
+  ],
+  "Public Boat launch": [
+    {
+      "place_id": 372568415,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 467542182,
+      "lat": "43.0784627",
+      "lon": "-88.4864849",
+      "category": "leisure",
+      "type": "park",
+      "place_rank": 24,
+      "importance": 0.08005135194934002,
+      "addresstype": "park",
+      "name": "Public Boat Launch",
+      "display_name": "Public Boat Launch, Summit, Waukesha County, Wisconsin, United States",
+      "address": {
+        "park": "Public Boat Launch",
+        "village": "Summit",
+        "county": "Waukesha County",
+        "state": "Wisconsin",
+        "ISO3166-2-lvl4": "US-WI",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "43.0779068",
+        "43.0790274",
+        "-88.4868181",
+        "-88.4856341"
+      ]
+    }
+  ],
+  "Thousand Trails Bear Cave": [],
+  "Paw Paw River Access @ Stevens Street": [],
+  "Jasper Dairy Launch": [
+    {
+      "place_id": 371041549,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 10147311554,
+      "lat": "42.0111101",
+      "lon": "-86.3911144",
+      "category": "leisure",
+      "type": "slipway",
+      "place_rank": 30,
+      "importance": 5.425726710913279e-05,
+      "addresstype": "leisure",
+      "name": "Jasper Dairy Road Boat Launch",
+      "display_name": "Jasper Dairy Road Boat Launch, Jasper Dairy Road, Buckhorn, Royalton Township, Berrien County, Michigan, 49085, United States",
+      "address": {
+        "leisure": "Jasper Dairy Road Boat Launch",
+        "road": "Jasper Dairy Road",
+        "hamlet": "Buckhorn",
+        "city": "Royalton Township",
+        "county": "Berrien County",
+        "state": "Michigan",
+        "ISO3166-2-lvl4": "US-MI",
+        "postcode": "49085",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "42.0110601",
+        "42.0111601",
+        "-86.3911644",
+        "-86.3910644"
+      ]
+    }
+  ],
+  "City of St. Joseph Boat Launch": [],
+  "Winding Creek Cove Park": [
+    {
+      "place_id": 369972862,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 770115056,
+      "lat": "41.7190789",
+      "lon": "-86.8798240",
+      "category": "leisure",
+      "type": "park",
+      "place_rank": 24,
+      "importance": 0.0800571732661936,
+      "addresstype": "park",
+      "name": "Winding Creek Cove Park",
+      "display_name": "Winding Creek Cove Park, Michigan City, LaPorte County, Indiana, United States",
+      "address": {
+        "park": "Winding Creek Cove Park",
+        "city": "Michigan City",
+        "county": "LaPorte County",
+        "state": "Indiana",
+        "ISO3166-2-lvl4": "US-IN",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "41.7180260",
+        "41.7200566",
+        "-86.8827291",
+        "-86.8780715"
+      ]
+    }
+  ],
+  "Kankakee River State Park Boat Ramp": [],
+  "New Buffalo,MI Boat Ramp": [],
+  "Stone Lake Public Boat Launch": [
+    {
+      "place_id": 369996548,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 11007679629,
+      "lat": "41.9022478",
+      "lon": "-86.0125813",
+      "category": "leisure",
+      "type": "slipway",
+      "place_rank": 30,
+      "importance": 5.413519493395922e-05,
+      "addresstype": "leisure",
+      "name": "Stone Lake Public Boat Launch",
+      "display_name": "Stone Lake Public Boat Launch, Lake Shore Drive, Cassopolis, Cass County, Michigan, 49031, United States",
+      "address": {
+        "leisure": "Stone Lake Public Boat Launch",
+        "road": "Lake Shore Drive",
+        "village": "Cassopolis",
+        "county": "Cass County",
+        "state": "Michigan",
+        "ISO3166-2-lvl4": "US-MI",
+        "postcode": "49031",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "41.9021978",
+        "41.9022978",
+        "-86.0126313",
+        "-86.0125313"
+      ]
+    }
+  ],
+  "Riverside Canoe Launch": [
+    {
+      "place_id": 23558741,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 2641710635,
+      "lat": "-33.7906695",
+      "lon": "151.1467540",
+      "category": "leisure",
+      "type": "slipway",
+      "place_rank": 30,
+      "importance": 8.246051728079679e-05,
+      "addresstype": "leisure",
+      "name": "Canoe Launch",
+      "display_name": "Canoe Launch, Riverside Walking Track, Macquarie Park, Sydney, New South Wales, 2113, Australia",
+      "address": {
+        "leisure": "Canoe Launch",
+        "road": "Riverside Walking Track",
+        "suburb": "Macquarie Park",
+        "city": "Sydney",
+        "state": "New South Wales",
+        "ISO3166-2-lvl4": "AU-NSW",
+        "postcode": "2113",
+        "country": "Australia",
+        "country_code": "au"
+      },
+      "boundingbox": [
+        "-33.7907195",
+        "-33.7906195",
+        "151.1467040",
+        "151.1468040"
+      ]
+    },
+    {
+      "place_id": 367980438,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 11918303316,
+      "lat": "43.7285585",
+      "lon": "-87.7649360",
+      "category": "leisure",
+      "type": "slipway",
+      "place_rank": 30,
+      "importance": 4.57976653696043e-05,
+      "addresstype": "leisure",
+      "name": "Canoe/Kayak Launch",
+      "display_name": "Canoe/Kayak Launch, 1111, West Riverside Drive, Kohler, Sheboygan County, Wisconsin, 53044, United States",
+      "address": {
+        "leisure": "Canoe/Kayak Launch",
+        "house_number": "1111",
+        "road": "West Riverside Drive",
+        "village": "Kohler",
+        "county": "Sheboygan County",
+        "state": "Wisconsin",
+        "ISO3166-2-lvl4": "US-WI",
+        "postcode": "53044",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "43.7285085",
+        "43.7286085",
+        "-87.7649860",
+        "-87.7648860"
+      ]
+    }
+  ],
+  "McEvilly Rd Canoe & Kayak Launch": [],
+  "Kankakee Conservation Area- Boat Launch": [],
+  "Boat Launch": [
+    {
+      "place_id": 370858279,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 356087711,
+      "lat": "40.0951705",
+      "lon": "-85.6339843",
+      "category": "highway",
+      "type": "track",
+      "place_rank": 26,
+      "importance": 0.05339182497901881,
+      "addresstype": "road",
+      "name": "Boat launch",
+      "display_name": "Boat launch, Anderson, Madison County, Indiana, 46017, United States",
+      "address": {
+        "road": "Boat launch",
+        "city": "Anderson",
+        "county": "Madison County",
+        "state": "Indiana",
+        "ISO3166-2-lvl4": "US-IN",
+        "postcode": "46017",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "40.0951527",
+        "40.0951883",
+        "-85.6340946",
+        "-85.6338741"
+      ]
+    },
+    {
+      "place_id": 366472467,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 483449533,
+      "lat": "44.0292271",
+      "lon": "-84.7898861",
+      "category": "highway",
+      "type": "service",
+      "place_rank": 27,
+      "importance": 0.040054135194934,
+      "addresstype": "road",
+      "name": "Boat Launch (Concrete, Public)",
+      "display_name": "Boat Launch (Concrete, Public), Harrison, Clare County, Michigan, 48625, United States",
+      "address": {
+        "road": "Boat Launch (Concrete, Public)",
+        "town": "Harrison",
+        "county": "Clare County",
+        "state": "Michigan",
+        "ISO3166-2-lvl4": "US-MI",
+        "postcode": "48625",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "44.0291921",
+        "44.0292620",
+        "-84.7898871",
+        "-84.7898851"
+      ]
+    },
+    {
+      "place_id": 420012782,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 12255476259,
+      "lat": "41.8583010",
+      "lon": "-87.6346458",
+      "category": "waterway",
+      "type": "access_point",
+      "place_rank": 20,
+      "importance": 0.13341848706797893,
+      "addresstype": "access_point",
+      "name": "Ping Tom Boat Launch",
+      "display_name": "Ping Tom Boat Launch, Chicago, South Chicago Township, Cook County, Illinois, 60605, United States",
+      "address": {
+        "access_point": "Ping Tom Boat Launch",
+        "city": "Chicago",
+        "municipality": "South Chicago Township",
+        "county": "Cook County",
+        "state": "Illinois",
+        "ISO3166-2-lvl4": "US-IL",
+        "postcode": "60605",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "41.8582510",
+        "41.8583510",
+        "-87.6346958",
+        "-87.6345958"
+      ]
+    },
+    {
+      "place_id": 373251758,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 690781641,
+      "lat": "42.3925181",
+      "lon": "-88.0437317",
+      "category": "waterway",
+      "type": "dock",
+      "place_rank": 20,
+      "importance": 0.13337693064774547,
+      "addresstype": "dock",
+      "name": "Lake Miltmore Boat Launch",
+      "display_name": "Lake Miltmore Boat Launch, Venetian Village, Lake County, Illinois, United States",
+      "address": {
+        "dock": "Lake Miltmore Boat Launch",
+        "hamlet": "Venetian Village",
+        "county": "Lake County",
+        "state": "Illinois",
+        "ISO3166-2-lvl4": "US-IL",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "42.3923314",
+        "42.3927078",
+        "-88.0438711",
+        "-88.0435863"
+      ]
+    },
+    {
+      "place_id": 372458615,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 10910802929,
+      "lat": "42.1159252",
+      "lon": "-87.7748921",
+      "category": "leisure",
+      "type": "nature_reserve",
+      "place_rank": 24,
+      "importance": 0.08005892957961391,
+      "addresstype": "nature_reserve",
+      "name": "Tower Road Boat Launch",
+      "display_name": "Tower Road Boat Launch, Northfield Township, Cook County, Illinois, 60093, United States",
+      "address": {
+        "nature_reserve": "Tower Road Boat Launch",
+        "municipality": "Northfield Township",
+        "county": "Cook County",
+        "state": "Illinois",
+        "ISO3166-2-lvl4": "US-IL",
+        "postcode": "60093",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "42.1158752",
+        "42.1159752",
+        "-87.7749421",
+        "-87.7748421"
+      ]
+    }
+  ],
+  "Burnham Harbor": [
+    {
+      "place_id": 371921773,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "relation",
+      "osm_id": 17767650,
+      "lat": "41.8604202",
+      "lon": "-87.6116779",
+      "category": "leisure",
+      "type": "marina",
+      "place_rank": 30,
+      "importance": 8.51537346455637e-05,
+      "addresstype": "leisure",
+      "name": "Burnham Harbor",
+      "display_name": "Burnham Harbor, 1559, South Lake Shore Drive, Indian Village, Kenwood, Chicago, Hyde Park Township, Cook County, Illinois, 60605, United States",
+      "address": {
+        "leisure": "Burnham Harbor",
+        "house_number": "1559",
+        "road": "South Lake Shore Drive",
+        "neighbourhood": "Indian Village",
+        "suburb": "Kenwood",
+        "city": "Chicago",
+        "municipality": "Hyde Park Township",
+        "county": "Cook County",
+        "state": "Illinois",
+        "ISO3166-2-lvl4": "US-IL",
+        "postcode": "60605",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "41.8549392",
+        "41.8659017",
+        "-87.6137371",
+        "-87.6091353"
+      ]
+    },
+    {
+      "place_id": 372083589,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 5104210421,
+      "lat": "41.8565215",
+      "lon": "-87.6132323",
+      "category": "amenity",
+      "type": "bicycle_rental",
+      "place_rank": 30,
+      "importance": 8.51537346455637e-05,
+      "addresstype": "amenity",
+      "name": "Burnham Harbor",
+      "display_name": "Burnham Harbor, 1559, Lakefront Trail, Near South Side, Chicago, South Chicago Township, Cook County, Illinois, 60605, United States",
+      "address": {
+        "amenity": "Burnham Harbor",
+        "house_number": "1559",
+        "road": "Lakefront Trail",
+        "suburb": "Near South Side",
+        "city": "Chicago",
+        "municipality": "South Chicago Township",
+        "county": "Cook County",
+        "state": "Illinois",
+        "ISO3166-2-lvl4": "US-IL",
+        "postcode": "60605",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "41.8564715",
+        "41.8565715",
+        "-87.6132823",
+        "-87.6131823"
+      ]
+    }
+  ],
+  "Ping Tom Boathouse": [],
+  "Richard J. Daley Park Boat Launch": [
+    {
+      "place_id": 370844008,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 1935801119,
+      "lat": "41.8369380",
+      "lon": "-87.6865648",
+      "category": "leisure",
+      "type": "slipway",
+      "place_rank": 30,
+      "importance": 8.51537346455637e-05,
+      "addresstype": "leisure",
+      "name": "Richard J. Daley Park Boat Launch",
+      "display_name": "Richard J. Daley Park Boat Launch, South Western Avenue, Lower West Side, Chicago, West Chicago Township, Cook County, Illinois, 60608, United States",
+      "address": {
+        "leisure": "Richard J. Daley Park Boat Launch",
+        "road": "South Western Avenue",
+        "suburb": "Lower West Side",
+        "city": "Chicago",
+        "municipality": "West Chicago Township",
+        "county": "Cook County",
+        "state": "Illinois",
+        "ISO3166-2-lvl4": "US-IL",
+        "postcode": "60608",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "41.8368880",
+        "41.8369880",
+        "-87.6866148",
+        "-87.6865148"
+      ]
+    },
+    {
+      "place_id": 370412572,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 12255823664,
+      "lat": "41.8367874",
+      "lon": "-87.6871772",
+      "category": "leisure",
+      "type": "slipway",
+      "place_rank": 30,
+      "importance": 8.51537346455637e-05,
+      "addresstype": "leisure",
+      "name": "Richard J. Daley Park Boat Launch",
+      "display_name": "Richard J. Daley Park Boat Launch, West 31st Boulevard, Lower West Side, Chicago, West Chicago Township, Cook County, Illinois, 60608, United States",
+      "address": {
+        "leisure": "Richard J. Daley Park Boat Launch",
+        "road": "West 31st Boulevard",
+        "suburb": "Lower West Side",
+        "city": "Chicago",
+        "municipality": "West Chicago Township",
+        "county": "Cook County",
+        "state": "Illinois",
+        "ISO3166-2-lvl4": "US-IL",
+        "postcode": "60608",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "41.8367374",
+        "41.8368374",
+        "-87.6872272",
+        "-87.6871272"
+      ]
+    }
+  ],
+  "Lincoln Park Boat Club - Eleanor Boathouse": [],
+  "Chicago River Canoe and Kayak at Clark Park": [],
+  "Paddle Launch": [
+    {
+      "place_id": 363724242,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 11110361890,
+      "lat": "43.3156497",
+      "lon": "-70.9862161",
+      "category": "waterway",
+      "type": "access_point",
+      "place_rank": 20,
+      "importance": 0.133389171435111,
+      "addresstype": "access_point",
+      "name": "Cocheco River Paddle Launch",
+      "display_name": "Cocheco River Paddle Launch, Rochester, Strafford County, New Hampshire, 03867, United States",
+      "address": {
+        "access_point": "Cocheco River Paddle Launch",
+        "city": "Rochester",
+        "county": "Strafford County",
+        "state": "New Hampshire",
+        "ISO3166-2-lvl4": "US-NH",
+        "postcode": "03867",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "43.3155997",
+        "43.3156997",
+        "-70.9862661",
+        "-70.9861661"
+      ]
+    },
+    {
+      "place_id": 425115376,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 5525540208,
+      "lat": "49.6456649",
+      "lon": "-114.6999800",
+      "category": "waterway",
+      "type": "access_point",
+      "place_rank": 20,
+      "importance": 0.13336960631723505,
+      "addresstype": "access_point",
+      "name": "Paddle boat launch",
+      "display_name": "Paddle boat launch, Sparwood, Regional District of East Kootenay, British Columbia, Canada",
+      "address": {
+        "access_point": "Paddle boat launch",
+        "town": "Sparwood",
+        "county": "Regional District of East Kootenay",
+        "state": "British Columbia",
+        "ISO3166-2-lvl4": "CA-BC",
+        "country": "Canada",
+        "country_code": "ca"
+      },
+      "boundingbox": [
+        "49.6456149",
+        "49.6457149",
+        "-114.7000300",
+        "-114.6999300"
+      ]
+    },
+    {
+      "place_id": 325024472,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 749902012,
+      "lat": "45.4499795",
+      "lon": "-122.9485740",
+      "category": "leisure",
+      "type": "park",
+      "place_rank": 24,
+      "importance": 0.08005865949492634,
+      "addresstype": "park",
+      "name": "Farmington Paddle Launch",
+      "display_name": "Farmington Paddle Launch, 9665, Farmington, Washington County, Oregon, 97123, United States",
+      "address": {
+        "park": "Farmington Paddle Launch",
+        "house_number": "9665",
+        "hamlet": "Farmington",
+        "county": "Washington County",
+        "state": "Oregon",
+        "ISO3166-2-lvl4": "US-OR",
+        "postcode": "97123",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "45.4490971",
+        "45.4507416",
+        "-122.9505088",
+        "-122.9470835"
+      ]
+    },
+    {
+      "place_id": 377639548,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 13468818696,
+      "lat": "49.6316998",
+      "lon": "-114.6156430",
+      "category": "leisure",
+      "type": "park",
+      "place_rank": 24,
+      "importance": 0.08005450141145949,
+      "addresstype": "park",
+      "name": "Paddle craft launch",
+      "display_name": "Paddle craft launch, Municipality of Crowsnest Pass, Alberta, Canada",
+      "address": {
+        "park": "Paddle craft launch",
+        "municipality": "Municipality of Crowsnest Pass",
+        "state": "Alberta",
+        "ISO3166-2-lvl4": "CA-AB",
+        "country": "Canada",
+        "country_code": "ca"
+      },
+      "boundingbox": [
+        "49.6316498",
+        "49.6317498",
+        "-114.6156930",
+        "-114.6155930"
+      ]
+    },
+    {
+      "place_id": 327093693,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "way",
+      "osm_id": 1101524074,
+      "lat": "45.5649597",
+      "lon": "-122.5483466",
+      "category": "man_made",
+      "type": "pier",
+      "place_rank": 30,
+      "importance": 7.53574425878846e-05,
+      "addresstype": "man_made",
+      "name": "11198 NE Simpson Paddle Launch",
+      "display_name": "11198 NE Simpson Paddle Launch, Northeast Simpson Street, Parkrose, Portland, Multnomah County, Oregon, 97200, United States",
+      "address": {
+        "man_made": "11198 NE Simpson Paddle Launch",
+        "road": "Northeast Simpson Street",
+        "suburb": "Parkrose",
+        "city": "Portland",
+        "county": "Multnomah County",
+        "state": "Oregon",
+        "ISO3166-2-lvl4": "US-OR",
+        "postcode": "97200",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "45.5649382",
+        "45.5649728",
+        "-122.5483547",
+        "-122.5483163"
+      ]
+    }
+  ],
+  "River Park Kayak/Canoe Boat Launch": [],
+  "Wilmette Park Sailing": [],
+  "River Park Canoe and Kayak Launch": [],
+  "Maywood Picnic Grove": [],
+  "Irving Park Road Canoe Landing": [
+    {
+      "place_id": 371717756,
+      "licence": "Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 12134689725,
+      "lat": "41.9540915",
+      "lon": "-87.8567371",
+      "category": "leisure",
+      "type": "nature_reserve",
+      "place_rank": 24,
+      "importance": 0.08006065079728386,
+      "addresstype": "nature_reserve",
+      "name": "Irving Park Road Canoe Landing",
+      "display_name": "Irving Park Road Canoe Landing, Schiller Park, Leyden Township, Cook County, Illinois, 60176, United States",
+      "address": {
+        "nature_reserve": "Irving Park Road Canoe Landing",
+        "town": "Schiller Park",
+        "municipality": "Leyden Township",
+        "county": "Cook County",
+        "state": "Illinois",
+        "ISO3166-2-lvl4": "US-IL",
+        "postcode": "60176",
+        "country": "United States",
+        "country_code": "us"
+      },
+      "boundingbox": [
+        "41.9540415",
+        "41.9541415",
+        "-87.8567871",
+        "-87.8566871"
+      ]
+    }
+  ],
+  "Plank Road Meadow Boat Launch": [],
+  "Stone Park North Chicago River Kayak Launch": [],
+  "Stony Ford Canoe Landing": []
+}

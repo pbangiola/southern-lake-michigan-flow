@@ -1,0 +1,498 @@
+[
+  {
+    "id": "kml-001",
+    "name": "Hennepin Canal Lock #2",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-002",
+    "name": "Spring Valley Barto Boat Landing",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-003",
+    "name": "Vermillion River Boat Launch",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-004",
+    "name": "Seneca Boat Launch",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-005",
+    "name": "Ruby St. Canoe Launch",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-006",
+    "name": "Boy Scout Island Park Boat Ramp",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-007",
+    "name": "South Street Canoe Launch",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-008",
+    "name": "Lake Atwood Boat Launch",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-009",
+    "name": "Miller Riverfront Park & Boat Launch",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-010",
+    "name": "Fox River Canoe Launch",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-011",
+    "name": "Busse Lake North Pool Boat Ramp",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-012",
+    "name": "Living Canoe Launch",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-013",
+    "name": "Canoe, Kayak, and Boat Launch",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-014",
+    "name": "Canoe Launch",
+    "status": "candidate_review",
+    "coordinates": [
+      -87.9634692,
+      42.259738
+    ],
+    "candidates": [
+      {
+        "name": "Canoe Launch, Gregg's Landing North, Vernon Hills, Lake County, Illinois, 60061, United States",
+        "score": 1.0,
+        "osm_type": "way",
+        "osm_id": 691309541
+      },
+      {
+        "name": "Canoe Launch, Brunner Trail, Carpentersville, Dundee Township, Kane County, Illinois, 60110, United States",
+        "score": 1.0,
+        "osm_type": "node",
+        "osm_id": 3327220101
+      },
+      {
+        "name": "Canoe Launch, West Old Road 30, Kosciusko County, Indiana, 46580, United States",
+        "score": 1.0,
+        "osm_type": "node",
+        "osm_id": 10914600139
+      }
+    ]
+  },
+  {
+    "id": "kml-015",
+    "name": "Northwestern Woods Canoe Landing",
+    "status": "candidate_high",
+    "coordinates": [
+      -87.881916,
+      42.0369724
+    ],
+    "candidates": [
+      {
+        "name": "Northwestern Woods Canoe Landing, South Des Plaines River Road, Des Plaines, Maine Township, Cook County, Illinois, 60016, United States",
+        "score": 1.0,
+        "osm_type": "node",
+        "osm_id": 12023314691
+      }
+    ]
+  },
+  {
+    "id": "kml-016",
+    "name": "Rivershire Park Des Plaines River Access",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-017",
+    "name": "Lake Park Boating & Sailing",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-018",
+    "name": "Beck Lake Boat Launch",
+    "status": "candidate_review",
+    "coordinates": [
+      -87.8734532,
+      42.0716587
+    ],
+    "candidates": [
+      {
+        "name": "Beck Lake Boat Launch, Beck Lake Access Road, Northfield Township, Cook County, Illinois, 60026, United States",
+        "score": 1.0,
+        "osm_type": "way",
+        "osm_id": 378374520
+      },
+      {
+        "name": "Beck Lake Boat Launch, Beck Lake Access Road, Northfield Township, Cook County, Illinois, 60026, United States",
+        "score": 1.0,
+        "osm_type": "node",
+        "osm_id": 287190635
+      }
+    ]
+  },
+  {
+    "id": "kml-019",
+    "name": "Allison Woods Canoe Landing",
+    "status": "candidate_high",
+    "coordinates": [
+      -87.8858851,
+      42.1009465
+    ],
+    "candidates": [
+      {
+        "name": "Allison Woods Canoe Landing, Allison Woods Access Road, Northfield Township, Cook County, Illinois, 60070, United States",
+        "score": 1.0,
+        "osm_type": "node",
+        "osm_id": 12096138040
+      }
+    ]
+  },
+  {
+    "id": "kml-020",
+    "name": "Long Lake Public Access Site",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-021",
+    "name": "St. Joe County Park Boat Launch",
+    "status": "candidate_high",
+    "coordinates": [
+      -86.0713114,
+      41.6717286
+    ],
+    "candidates": [
+      {
+        "name": "St. Joe County Park Boat Launch, Saint Joseph County, Indiana, United States",
+        "score": 1.0,
+        "osm_type": "way",
+        "osm_id": 479527575
+      }
+    ]
+  },
+  {
+    "id": "kml-022",
+    "name": "Veterans Memorial Boat Ramp",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-023",
+    "name": "St. Patrick's County Park",
+    "status": "candidate_high",
+    "coordinates": [
+      -86.2685678,
+      41.7527403
+    ],
+    "candidates": [
+      {
+        "name": "St. Patrick's County Park, Dreamwold Heights, Saint Joseph County, Indiana, United States",
+        "score": 1.0,
+        "osm_type": "way",
+        "osm_id": 425974977
+      }
+    ]
+  },
+  {
+    "id": "kml-024",
+    "name": "Public Boat launch",
+    "status": "candidate_high",
+    "coordinates": [
+      -88.4864849,
+      43.0784627
+    ],
+    "candidates": [
+      {
+        "name": "Public Boat Launch, Summit, Waukesha County, Wisconsin, United States",
+        "score": 1.0,
+        "osm_type": "way",
+        "osm_id": 467542182
+      }
+    ]
+  },
+  {
+    "id": "kml-025",
+    "name": "Thousand Trails Bear Cave",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-026",
+    "name": "Paw Paw River Access @ Stevens Street",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-027",
+    "name": "Jasper Dairy Launch",
+    "status": "candidate_review",
+    "coordinates": [
+      -86.3911144,
+      42.0111101
+    ],
+    "candidates": [
+      {
+        "name": "Jasper Dairy Road Boat Launch, Jasper Dairy Road, Buckhorn, Royalton Township, Berrien County, Michigan, 49085, United States",
+        "score": 0.792,
+        "osm_type": "node",
+        "osm_id": 10147311554
+      }
+    ]
+  },
+  {
+    "id": "kml-028",
+    "name": "City of St. Joseph Boat Launch",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-029",
+    "name": "Winding Creek Cove Park",
+    "status": "candidate_high",
+    "coordinates": [
+      -86.879824,
+      41.7190789
+    ],
+    "candidates": [
+      {
+        "name": "Winding Creek Cove Park, Michigan City, LaPorte County, Indiana, United States",
+        "score": 1.0,
+        "osm_type": "way",
+        "osm_id": 770115056
+      }
+    ]
+  },
+  {
+    "id": "kml-030",
+    "name": "Kankakee River State Park Boat Ramp",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-031",
+    "name": "New Buffalo,MI Boat Ramp",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-032",
+    "name": "Stone Lake Public Boat Launch",
+    "status": "candidate_high",
+    "coordinates": [
+      -86.0125813,
+      41.9022478
+    ],
+    "candidates": [
+      {
+        "name": "Stone Lake Public Boat Launch, Lake Shore Drive, Cassopolis, Cass County, Michigan, 49031, United States",
+        "score": 1.0,
+        "osm_type": "node",
+        "osm_id": 11007679629
+      }
+    ]
+  },
+  {
+    "id": "kml-033",
+    "name": "Riverside Canoe Launch",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-034",
+    "name": "McEvilly Rd Canoe & Kayak Launch",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-035",
+    "name": "Kankakee Conservation Area- Boat Launch",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-036",
+    "name": "Boat Launch",
+    "status": "candidate_review",
+    "coordinates": [
+      -87.6346458,
+      41.858301
+    ],
+    "candidates": [
+      {
+        "name": "Ping Tom Boat Launch, Chicago, South Chicago Township, Cook County, Illinois, 60605, United States",
+        "score": 0.71,
+        "osm_type": "node",
+        "osm_id": 12255476259
+      },
+      {
+        "name": "Tower Road Boat Launch, Northfield Township, Cook County, Illinois, 60093, United States",
+        "score": 0.667,
+        "osm_type": "node",
+        "osm_id": 10910802929
+      },
+      {
+        "name": "Lake Miltmore Boat Launch, Venetian Village, Lake County, Illinois, United States",
+        "score": 0.611,
+        "osm_type": "way",
+        "osm_id": 690781641
+      }
+    ]
+  },
+  {
+    "id": "kml-037",
+    "name": "Burnham Harbor",
+    "status": "candidate_review",
+    "coordinates": [
+      -87.6116779,
+      41.8604202
+    ],
+    "candidates": [
+      {
+        "name": "Burnham Harbor, 1559, South Lake Shore Drive, Indian Village, Kenwood, Chicago, Hyde Park Township, Cook County, Illinois, 60605, United States",
+        "score": 1.0,
+        "osm_type": "relation",
+        "osm_id": 17767650
+      },
+      {
+        "name": "Burnham Harbor, 1559, Lakefront Trail, Near South Side, Chicago, South Chicago Township, Cook County, Illinois, 60605, United States",
+        "score": 1.0,
+        "osm_type": "node",
+        "osm_id": 5104210421
+      }
+    ]
+  },
+  {
+    "id": "kml-038",
+    "name": "Ping Tom Boathouse",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-039",
+    "name": "Richard J. Daley Park Boat Launch",
+    "status": "candidate_review",
+    "coordinates": [
+      -87.6865648,
+      41.836938
+    ],
+    "candidates": [
+      {
+        "name": "Richard J. Daley Park Boat Launch, South Western Avenue, Lower West Side, Chicago, West Chicago Township, Cook County, Illinois, 60608, United States",
+        "score": 1.0,
+        "osm_type": "node",
+        "osm_id": 1935801119
+      },
+      {
+        "name": "Richard J. Daley Park Boat Launch, West 31st Boulevard, Lower West Side, Chicago, West Chicago Township, Cook County, Illinois, 60608, United States",
+        "score": 1.0,
+        "osm_type": "node",
+        "osm_id": 12255823664
+      }
+    ]
+  },
+  {
+    "id": "kml-040",
+    "name": "Lincoln Park Boat Club - Eleanor Boathouse",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-041",
+    "name": "Chicago River Canoe and Kayak at Clark Park",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-042",
+    "name": "Paddle Launch",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-043",
+    "name": "River Park Kayak/Canoe Boat Launch",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-044",
+    "name": "Wilmette Park Sailing",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-045",
+    "name": "River Park Canoe and Kayak Launch",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-046",
+    "name": "Maywood Picnic Grove",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-047",
+    "name": "Irving Park Road Canoe Landing",
+    "status": "candidate_high",
+    "coordinates": [
+      -87.8567371,
+      41.9540915
+    ],
+    "candidates": [
+      {
+        "name": "Irving Park Road Canoe Landing, Schiller Park, Leyden Township, Cook County, Illinois, 60176, United States",
+        "score": 1.0,
+        "osm_type": "node",
+        "osm_id": 12134689725
+      }
+    ]
+  },
+  {
+    "id": "kml-048",
+    "name": "Plank Road Meadow Boat Launch",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-049",
+    "name": "Stone Park North Chicago River Kayak Launch",
+    "status": "not_found",
+    "candidates": []
+  },
+  {
+    "id": "kml-050",
+    "name": "Stony Ford Canoe Landing",
+    "status": "not_found",
+    "candidates": []
+  }
+]
