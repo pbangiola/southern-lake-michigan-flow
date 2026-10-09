@@ -1,5 +1,10 @@
 name: Discover regional put-ins
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/discover_putins.py'
+      - '.github/workflows/discover-putins.yml'
   workflow_dispatch:
     inputs:
       extract_version:
@@ -25,7 +30,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: tmp/osm
-          key: osm-geofabrik-four-states-${{ inputs.extract_version }}
+          key: osm-geofabrik-four-states-${{ inputs.extract_version || 'v1' }}
       - name: Download regional state extracts
         if: steps.osm-cache.outputs.cache-hit != 'true'
         run: |
