@@ -4,5 +4,31 @@
     "source": "OSM map API stream corridor rectangles",
     "note": "Incremental unverified launch candidates; regional coverage incomplete"
   },
-  "features": []
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9177405,
+          42.3686995
+        ]
+      },
+      "properties": {
+        "id": "osm-node-12396073908",
+        "name": "Des Plaines River Canoe Launch at Gowe Park",
+        "source": "OpenStreetMap",
+        "source_url": "https://www.openstreetmap.org/node/12396073908",
+        "verification": "candidate_review",
+        "access": "yes",
+        "waterway": null,
+        "leisure": "slipway",
+        "canoe": "yes",
+        "kayak": null,
+        "sport": null,
+        "description": null,
+        "match_type": "launch_name"
+      }
+    }
+  ]
 }
