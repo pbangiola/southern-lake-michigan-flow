@@ -57,7 +57,20 @@ def main():
     if today < last:
         sys.exit('Local clock predates dataset. Check system date.')
     if start > today:
-        print('Already current through today; nothing to fetch.')
+        print('No newer dates to fetch. Rebuilding statistics from existing downloaded observations...', flush=True)
+        subprocess.run([sys.executable, str(ROOT / 'consolidate_usgs.py'),
+                        '--end', today.isoformat(), '--downloads', str(args.downloads)],
+                       cwd=ROOT, check=True)
+        if args.publish:
+            git('add', 'data/stage_minima.json', 'data/stage_minima_audit.csv')
+            if git('diff', '--cached', '--name-only'):
+                git('commit', '-m', 'Recalculate USGS annual stage statistics through %s' % today)
+                git('push', 'origin', 'main')
+                print('Published recalculated dataset.')
+            else:
+                print('No dataset changes to publish.')
+        else:
+            print('Rebuild complete. Review and commit updated dataset files.')
         return
     ids = sorted({line.strip().replace('USGS-', '', 1)
                   for line in (ROOT / 'usgs_gauge_ids.txt').read_text().splitlines()
