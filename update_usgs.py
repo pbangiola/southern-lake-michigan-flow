@@ -35,8 +35,15 @@ def main():
     args = p.parse_args()
     if not 1 <= args.batch_size <= 30:
         p.error('--batch-size must be between 1 and 30')
-    if git('status', '--porcelain'):
-        sys.exit('Working tree has uncommitted changes. Commit or stash them first.')
+    # Only block changes to files this updater overwrites; unrelated local work is safe.
+    protected = {'data/stage_minima.json', 'data/stage_minima_audit.csv'}
+    changed = set()
+    for line in git('status', '--porcelain', '--untracked-files=all').splitlines():
+        if line:
+            changed.add(line[3:].strip().strip('"'))
+    conflicts = sorted(protected & changed)
+    if conflicts:
+        sys.exit('Uncommitted changes to updater output files: ' + ', '.join(conflicts) + '. Commit or back up these files before running.')
     git('fetch', 'origin', 'main')
     if git('rev-parse', 'HEAD') != git('rev-parse', 'origin/main'):
         sys.exit('Local HEAD differs from origin/main. Run git pull --ff-only origin main.')
