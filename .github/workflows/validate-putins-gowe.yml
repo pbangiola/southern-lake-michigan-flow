@@ -1,0 +1,25 @@
+name: Validate tiny Des Plaines launch search
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/validate_putins_gowe.py'
+      - '.github/workflows/validate-putins-gowe.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test launch-name matching on a tiny OSM map
+        run: python3 -u scripts/validate_putins_gowe.py
+      - name: Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gowe-launch-validation
+          path: data/putins_validation_gowe.json
+          if-no-files-found: warn
