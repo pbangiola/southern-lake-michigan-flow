@@ -91,6 +91,18 @@ function palette(p){
  if(t<=.75)return blend('#299b59','#e8cf44',(t-.45)/.30);
  return blend('#e8cf44','#d93b32',(t-.75)/.25);
 }
+// River colors use graph-nearest gauge attribution, not verified flow direction.
+function colorRiverNetwork(segments,gauges){
+ const bySite=new Map(gauges.map(f=>[siteId(f.properties.site),f.properties]));
+ const colorFor=id=>{const p=bySite.get(siteId(id));return p?palette(p):'#88929b';};
+ for(const feature of segments.features){
+  const p=feature.properties||(feature.properties={});
+  const a=siteId(p.from_gauge||p.site),b=siteId(p.to_gauge||p.site);
+  p.stage_color=a===b?colorFor(a):blend(colorFor(a),colorFor(b),0.5);
+  p.stage_gauge_a=a;p.stage_gauge_b=b;
+ }
+ return segments;
+}
 map.on('load',async()=>{
  try{
   const [gaugesResponse,minimaResponse]=await Promise.all([
@@ -117,9 +129,10 @@ map.on('load',async()=>{
    if(response.ok){
     const segments=await response.json();
     if(segments.type!=='FeatureCollection'||!Array.isArray(segments.features))throw new Error('Invalid river segments GeoJSON');
+    colorRiverNetwork(segments,gaugeFeatures);
     map.addSource('river-segments',{type:'geojson',data:segments});
     map.addLayer({id:'river-segments',type:'line',source:'river-segments',paint:{
-     'line-color':'#1789bd','line-width':['interpolate',['linear'],['zoom'],6,1.5,10,3,13,5],
+     'line-color':['get','stage_color'],'line-width':['interpolate',['linear'],['zoom'],6,1.5,10,3,13,5],
      'line-opacity':0.8
     }},'gauges');
     map.on('click','river-segments',e=>{
@@ -127,8 +140,9 @@ map.on('load',async()=>{
      const p=e.features[0].properties;
      new maplibregl.Popup().setLngLat(e.lngLat)
       .setText('Nearby gauge: '+(p.gauge_name||p.site||'unknown')+
-       '\\nGauge proximity: '+(p.gauge_distance_m??'unknown')+' m'+
-       '\\nUnverified association; river conditions not classified.')
+       '\\nAssociated gauges: '+(p.stage_gauge_a||'unknown')+
+       (p.stage_gauge_b!==p.stage_gauge_a?' / '+p.stage_gauge_b:'')+
+       '\\nColor reflects associated gauge stage; direction and paddling safety unverified.')
       .addTo(map);
     });
     console.info('Loaded',segments.features.length,'gauge-associated river segments');
