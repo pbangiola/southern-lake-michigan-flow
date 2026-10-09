@@ -148,6 +148,26 @@ map.on('load',async()=>{
     console.info('Loaded',segments.features.length,'gauge-associated river segments');
    }
   }catch(e){console.warn('Optional river segments unavailable:',e);}
+  // Provisional put-ins; candidates require review before relying on access.
+  try{
+   const response=await fetch('data/putins.geojson',{cache:'no-store'});
+   if(response.ok){
+    const putins=await response.json();
+    if(putins.type==='FeatureCollection'&&Array.isArray(putins.features)){
+     map.addSource('putins',{type:'geojson',data:putins});
+     map.addLayer({id:'putins',type:'circle',source:'putins',paint:{
+      'circle-radius':5,'circle-color':'#f3a13b','circle-stroke-color':'#4e2b12','circle-stroke-width':1.5
+     }});
+     map.on('click','putins',e=>{
+      if(reportButton.getAttribute('aria-pressed')==='true')return;
+      const p=e.features[0].properties;
+      new maplibregl.Popup().setLngLat(e.lngLat)
+       .setText((p.name||'Put-in candidate')+'\\nUnverified location and access; check before visiting.')
+       .addTo(map);
+     });
+    }
+   }
+  }catch(e){console.warn('Put-in candidates unavailable:',e);}
   // Routes traced from the user's KML; not independently verified for navigation.
   try {
    const routesResponse=await fetch('data/paddling_routes.geojson',{cache:'no-store'});
