@@ -46,7 +46,7 @@ def main():
         if 'lon' not in center or 'lat' not in center:continue
         # Broad name/sport matches can be clubs or stores, not actual launches.
         strong=tags.get('leisure')=='slipway' or tags.get('waterway')=='access_point'
-        if not strong and tags.get('shop') or tags.get('access') in ('private','no'):
+        if (not strong and tags.get('shop')) or tags.get('access') in ('private','no'):
             continue
         name=tags.get('name') or f'OSM {kind} {osm_id}'
         features.append({'type':'Feature','geometry':{'type':'Point','coordinates':[center['lon'],center['lat']]},
