@@ -93,12 +93,12 @@ def extract_rows(text, filename, add, counters):
             continue
         if parametercols and str(cells[parametercols[0]]).strip().zfill(5) != '00065':
             continue
-        if statcols and str(cells[statcols[0]]).strip().zfill(5) not in ('00002',):
+        if statcols and str(cells[statcols[0]]).strip().zfill(5) not in ('00002', '00011'):
             continue
         if legacycols:
             candidates = [(i, 'daily' if kinds[i] == 'minimum' else 'instant') for i in legacycols]
         else:
-            candidates = [(i, 'daily' if statcols else 'unknown') for i in valuecols]
+            candidates = [(i, 'daily' if statcols and str(cells[statcols[0]]).strip().zfill(5) == '00002' else 'instant') for i in valuecols]
         for i, kind in candidates:
             v = number(cells[i])
             if v is not None:
@@ -178,7 +178,7 @@ def main():
             print('Skipped', path.name, ':', e)
 
     def quality(sid):
-        dates = sorted(d for d, types in values[sid].items() if 'daily' in types or 'unknown' in types)
+        dates = sorted(d for d, types in values[sid].items() if types)
         # 75% overall, observations in every quarter, and no gap longer than 45 days.
         quarter_counts = [0,0,0,0]
         for d in dates:
@@ -246,10 +246,11 @@ def main():
                'complete_year':len(dates)/args.days >= .95,
                'daily_coverage_days':n_daily,'daily_coverage_fraction':round(n_daily/args.days,3),
                'daily_quarter_counts':quarters,'longest_daily_gap_days':max_gap,
-               'daily_adequate_75pct_distributed':adequate,
+               'daily_adequate_75pct_distributed':adequate and n_daily >= .75 * args.days,
+               'observed_adequate_75pct_distributed':adequate,
                'daily_minimum_ft':min(daily) if daily else None,
                'instantaneous_sample_minimum_ft':min(instant) if instant else None,
-               'daily_count':n_daily,'continuous_count':sum('instant' in v for v in values[sid].values()),
+               'daily_count':sum('daily' in v for v in values[sid].values()),'continuous_count':sum('instant' in v for v in values[sid].values()),
                'first_observation':dates[0].isoformat() if dates else None,
                'last_observation':dates[-1].isoformat() if dates else None}
         stations[sid] = rec
@@ -259,7 +260,7 @@ def main():
     output = {'metadata':{'retrieved_at':datetime.now().astimezone().isoformat(),
                           'start_date':start.isoformat(),'end_date':args.end.isoformat(),
                           'method':'Published daily gage-height minima (00065/00002), supplemented by available instantaneous observations',
-                          'coverage_note':'Adequate daily: >=75% of days, >=20 days in each quarter, longest gap <=45 days; instantaneous samples are not complete daily minima.'},
+                          'coverage_note':'Adequate observed coverage: >=75% of days, >=20 days in each quarter, longest gap <=45 days; instantaneous samples are not published daily minima.'},
               'stations':stations,'failures':{sid:'Inadequate distributed daily coverage' for sid in deficient}}
     args.out.parent.mkdir(parents=True,exist_ok=True)
     tmp=args.out.with_suffix('.tmp')
@@ -268,12 +269,12 @@ def main():
     report = args.out.with_name('stage_minima_audit.csv')
     with report.open('w',newline='') as f:
         writer=csv.writer(f)
-        writer.writerow(['site','daily_days','daily_fraction','quarter_counts','longest_daily_gap','daily_adequate','observed_min_ft','published_daily_min_ft','instant_sample_min_ft'])
+        writer.writerow(['site','observed_days','observed_fraction','quarter_counts','longest_observed_gap','observed_adequate','published_daily_days','observed_min_ft','published_daily_min_ft','instant_sample_min_ft'])
         for sid,r in stations.items():
-            writer.writerow([sid,r['daily_coverage_days'],r['daily_coverage_fraction'],'/'.join(map(str,r['daily_quarter_counts'])),r['longest_daily_gap_days'],r['daily_adequate_75pct_distributed'],r['minimum_ft'],r['daily_minimum_ft'],r['instantaneous_sample_minimum_ft']])
+            writer.writerow([sid,r['coverage_days'],r['coverage_fraction'],'/'.join(map(str,r['daily_quarter_counts'])),r['longest_daily_gap_days'],r['observed_adequate_75pct_distributed'],r['daily_count'],r['minimum_ft'],r['daily_minimum_ft'],r['instantaneous_sample_minimum_ft']])
     print('\nParsed',len(counters),'data files:',sum(counters.values()),'records in requested window')
     print('Expected:',len(expected),'| with observations:',sum(bool(values[s]) for s in expected),
-          '| adequate daily coverage:',len(expected)-len(deficient),'| needing review:',len(deficient))
+          '| adequate observed coverage:',len(expected)-len(deficient),'| needing review:',len(deficient))
     print('Output:',args.out,'| audit:',report)
     if not counters:
         print('WARNING: No supported data files parsed. Check your download format and directory.')
