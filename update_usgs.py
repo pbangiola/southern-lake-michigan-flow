@@ -14,7 +14,7 @@ import json
 import subprocess
 import sys
 import time
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
@@ -51,7 +51,7 @@ def main():
     if not target.exists():
         sys.exit('Missing data/stage_minima.json')
     last = date.fromisoformat(json.loads(target.read_text())['metadata']['end_date'])
-    today = date.today()
+    today = datetime.now(timezone.utc).date()
     start = last + timedelta(days=1)
     print('Last dataset:', last, '| today:', today, '| new dates:', start, 'to', today, flush=True)
     if today < last:
