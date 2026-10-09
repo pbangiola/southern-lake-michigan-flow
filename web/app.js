@@ -1,4 +1,4 @@
-const map = new maplibregl.Map({container:'map',style:'https://tiles.openfreemap.org/styles/liberty',center:[-87.3,41.85],zoom:8});
+const map = new maplibregl.Map({container:'map',style:'https://tiles.openfreemap.org/styles/liberty',center:[-87.85,41.85],zoom:8});
 map.addControl(new maplibregl.NavigationControl());
 document.getElementById('print').onclick=()=>window.print();
 const REPO='pbangiola/southern-lake-michigan-flow';
@@ -7,7 +7,7 @@ const status=document.getElementById('status');
 const reportButton=document.getElementById('report-condition');
 const reportDialog=document.getElementById('report-dialog');
 const reportForm=document.getElementById('report-form');
-let gaugeFeatures=[], communityReports=[], reportPoint=null;
+let gaugeFeatures=[], communityReports=[], reportPoint=null, routeCount=0;
 const finite=v=>v!==null&&v!==undefined&&v!==''&&Number.isFinite(Number(v))?Number(v):null;
 const fmt=v=>Number(v).toFixed(6);
 const siteId=v=>String(v??'').replace(/^USGS-/i,'').trim();
@@ -111,12 +111,12 @@ map.on('load',async()=>{
    if(!routesResponse.ok)throw new Error('HTTP '+routesResponse.status);
    const routes=await routesResponse.json();
    if(routes.type!=='FeatureCollection'||!Array.isArray(routes.features))throw new Error('Invalid route GeoJSON');
+   routeCount=routes.features.length;
    map.addSource('paddling-routes',{type:'geojson',data:routes});
    map.addLayer({id:'paddling-routes',type:'line',source:'paddling-routes',paint:{
-    'line-color':'#7b4cb0',
-    'line-width':['interpolate',['linear'],['zoom'],6,2,10,4,13,6],
-    'line-opacity':0.78,
-    'line-dasharray':[2,1.5]
+    'line-color':'#a329db',
+    'line-width':['interpolate',['linear'],['zoom'],6,3.5,10,6,13,8],
+    'line-opacity':0.95,
    }},'gauges');
    map.on('click','paddling-routes',e=>{
     if(reportButton.getAttribute('aria-pressed')==='true')return;
@@ -163,7 +163,7 @@ map.on('load',async()=>{
    });
   }
   const adequate=gaugeFeatures.filter(f=>f.properties.atlas_minimum_adequate).length;
-  status.textContent=gaugeFeatures.length+' gauges; '+adequate+' with observed annual minima; '+communityReports.length+' community reports. Gray = insufficient data. Colors show relative stage, not paddling safety.';
+  status.textContent=gaugeFeatures.length+' gauges; '+adequate+' with observed annual minima; '+communityReports.length+' community reports; '+routeCount+' mapped river routes. Gray = insufficient data. Colors show relative stage, not paddling safety.';
  }catch(error){console.error(error);status.textContent=error.message;}
 });
 function beginReport(lngLat,gauge=null){
