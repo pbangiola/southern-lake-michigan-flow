@@ -7,57 +7,28 @@ on:
       - '.github/workflows/discover-putins.yml'
   workflow_dispatch:
     inputs:
-      extract_version:
-        description: 'Cache version (leave v1 to reuse downloads; change to v2 to refresh all source files)'
+      batch:
+        description: 'Stream rectangle batch (0, 1, 2, ...)'
         required: true
-        default: 'v1'
+        default: '0'
         type: string
 permissions:
   contents: write
+concurrency:
+  group: discover-putins
+  cancel-in-progress: false
 jobs:
   discover:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 30
+    env:
+      DISCOVERY_BATCH: ${{ inputs.batch || '0' }}
+      DISCOVERY_BATCH_SIZE: '20'
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Install OSM parser
-        run: python -m pip install osmium requests
-      - name: Restore OSM source cache
-        id: osm-cache
-        uses: actions/cache/restore@v4
-        with:
-          path: tmp/osm
-          key: osm-geofabrik-four-states-${{ inputs.extract_version || 'v1' }}
-      - name: Download regional state extracts
-        if: steps.osm-cache.outputs.cache-hit != 'true'
-        run: |
-          mkdir -p tmp/osm
-          python - <<'PY'
-          import requests
-          from pathlib import Path
-          for state in ('illinois','indiana','michigan','wisconsin'):
-              url=f'https://download.geofabrik.de/north-america/us/{state}-latest.osm.pbf'
-              path=Path('tmp/osm')/f'{state}-latest.osm.pbf'
-              print('Downloading',url,flush=True)
-              with requests.get(url,stream=True,timeout=(30,180)) as r:
-                  r.raise_for_status()
-                  with path.open('wb') as f:
-                      for chunk in r.iter_content(chunk_size=1024*1024):
-                          if chunk:f.write(chunk)
-              print(state,round(path.stat().st_size/1e6),'MB',flush=True)
-          PY
-      - name: Save OSM source cache
-        if: steps.osm-cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v4
-        with:
-          path: tmp/osm
-          key: osm-geofabrik-four-states-${{ inputs.extract_version }}
-      - name: Discover named launch candidates
-        run: python -u scripts/discover_putins.py
-      - name: Upload discovery coverage report
+      - name: Discover launches in stream rectangles
+        run: python3 -u scripts/discover_putins.py
+      - name: Upload coverage report
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -70,7 +41,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/putins_osm_candidates.geojson data/putins_discovery_coverage.json
           if ! git diff --cached --quiet; then
-            git commit -m "Update regional named launch candidates"
+            git commit -m "Discover put-ins in stream rectangle batch"
             git pull --rebase origin main
             git push origin HEAD:main
           fi
