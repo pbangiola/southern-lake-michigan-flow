@@ -2,7 +2,7 @@
   "type": "FeatureCollection",
   "metadata": {
     "source": "OSM map API stream corridor rectangles",
-    "note": "Incremental unverified launch candidates; regional coverage incomplete"
+    "note": "Incremental unverified candidates"
   },
   "features": [
     {
@@ -29,6 +29,381 @@
         "description": null,
         "match_type": "launch_name"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.929279,
+          42.4286129
+        ]
+      },
+      "properties": {
+        "id": "osm-node-1887768201",
+        "name": "Sedge Meadow Canoe Launch",
+        "source": "OpenStreetMap",
+        "source_url": "https://www.openstreetmap.org/node/1887768201",
+        "verification": "candidate_review",
+        "access": "unknown",
+        "waterway": null,
+        "leisure": null,
+        "canoe": null,
+        "kayak": null,
+        "sport": null,
+        "description": null,
+        "match_type": "launch_name"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9297015,
+          42.4284805
+        ]
+      },
+      "properties": {
+        "id": "osm-node-1887780300",
+        "name": "Sedge Meadow Canoe Launch",
+        "source": "OpenStreetMap",
+        "source_url": "https://www.openstreetmap.org/node/1887780300",
+        "verification": "candidate_review",
+        "access": "yes",
+        "waterway": null,
+        "leisure": "slipway",
+        "canoe": null,
+        "kayak": null,
+        "sport": null,
+        "description": null,
+        "match_type": "launch_name"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9355391,
+          42.3536337
+        ]
+      },
+      "properties": {
+        "id": "osm-node-12396353833",
+        "name": "Lake Carina Car-Top Boat Launch",
+        "source": "OpenStreetMap",
+        "source_url": "https://www.openstreetmap.org/node/12396353833",
+        "verification": "candidate_review",
+        "access": "yes",
+        "waterway": null,
+        "leisure": "slipway",
+        "canoe": null,
+        "kayak": null,
+        "sport": null,
+        "description": null,
+        "match_type": "launch_name"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9450763,
+          42.4727399
+        ]
+      },
+      "properties": {
+        "id": "osm-node-4330284526",
+        "name": "Sterlink Lake Boat Launch",
+        "source": "OpenStreetMap",
+        "source_url": "https://www.openstreetmap.org/node/4330284526",
+        "verification": "candidate_review",
+        "access": "yes",
+        "waterway": null,
+        "leisure": "slipway",
+        "canoe": null,
+        "kayak": null,
+        "sport": null,
+        "description": null,
+        "match_type": "launch_name"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9379045,
+          42.2884762
+        ]
+      },
+      "properties": {
+        "id": "osm-node-802883669",
+        "name": "Oak Spring Canoe Launch Lot",
+        "source": "OpenStreetMap",
+        "source_url": "https://www.openstreetmap.org/node/802883669",
+        "verification": "candidate_review",
+        "access": "yes",
+        "waterway": null,
+        "leisure": null,
+        "canoe": null,
+        "kayak": null,
+        "sport": null,
+        "description": null,
+        "match_type": "launch_name"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.941132,
+          42.289919
+        ]
+      },
+      "properties": {
+        "id": "osm-node-6970393989",
+        "name": "osm-node-6970393989",
+        "source": "OpenStreetMap",
+        "source_url": "https://www.openstreetmap.org/node/6970393989",
+        "verification": "candidate_review",
+        "access": "unknown",
+        "waterway": null,
+        "leisure": "slipway",
+        "canoe": null,
+        "kayak": null,
+        "sport": null,
+        "description": null,
+        "match_type": "access_tag"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9376321,
+          42.2886086
+        ]
+      },
+      "properties": {
+        "id": "osm-node-12396099498",
+        "name": "Oak Spring Canoe Launch",
+        "source": "OpenStreetMap",
+        "source_url": "https://www.openstreetmap.org/node/12396099498",
+        "verification": "candidate_review",
+        "access": "yes",
+        "waterway": null,
+        "leisure": "slipway",
+        "canoe": null,
+        "kayak": null,
+        "sport": null,
+        "description": null,
+        "match_type": "launch_name"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.954658725,
+          42.315189675
+        ]
+      },
+      "properties": {
+        "id": "osm-way-61015562",
+        "name": "osm-way-61015562",
+        "source": "OpenStreetMap",
+        "source_url": "https://www.openstreetmap.org/way/61015562",
+        "verification": "candidate_review",
+        "access": "unknown",
+        "waterway": null,
+        "leisure": "slipway",
+        "canoe": null,
+        "kayak": null,
+        "sport": null,
+        "description": null,
+        "match_type": "access_tag"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.95349815,
+          42.309186350000004
+        ]
+      },
+      "properties": {
+        "id": "osm-way-598418297",
+        "name": "osm-way-598418297",
+        "source": "OpenStreetMap",
+        "source_url": "https://www.openstreetmap.org/way/598418297",
+        "verification": "candidate_review",
+        "access": "unknown",
+        "waterway": null,
+        "leisure": "slipway",
+        "canoe": null,
+        "kayak": null,
+        "sport": null,
+        "description": null,
+        "match_type": "access_tag"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9251738,
+          42.4890844
+        ]
+      },
+      "properties": {
+        "id": "osm-node-12396011623",
+        "name": "Van Patten Woods Canoe Launch",
+        "source": "OpenStreetMap",
+        "source_url": "https://www.openstreetmap.org/node/12396011623",
+        "verification": "candidate_review",
+        "access": "yes",
+        "waterway": null,
+        "leisure": "slipway",
+        "canoe": null,
+        "kayak": null,
+        "sport": null,
+        "description": null,
+        "match_type": "launch_name"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.0141863,
+          42.3746351
+        ]
+      },
+      "properties": {
+        "id": "osm-node-8526247933",
+        "name": "osm-node-8526247933",
+        "source": "OpenStreetMap",
+        "source_url": "https://www.openstreetmap.org/node/8526247933",
+        "verification": "candidate_review",
+        "access": "unknown",
+        "waterway": null,
+        "leisure": "slipway",
+        "canoe": null,
+        "kayak": null,
+        "sport": null,
+        "description": null,
+        "match_type": "access_tag"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.0105802,
+          42.3669268
+        ]
+      },
+      "properties": {
+        "id": "osm-node-10852984849",
+        "name": "osm-node-10852984849",
+        "source": "OpenStreetMap",
+        "source_url": "https://www.openstreetmap.org/node/10852984849",
+        "verification": "candidate_review",
+        "access": "unknown",
+        "waterway": null,
+        "leisure": "slipway",
+        "canoe": null,
+        "kayak": null,
+        "sport": null,
+        "description": null,
+        "match_type": "access_tag"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.0105524,
+          42.36691535
+        ]
+      },
+      "properties": {
+        "id": "osm-way-598407945",
+        "name": "osm-way-598407945",
+        "source": "OpenStreetMap",
+        "source_url": "https://www.openstreetmap.org/way/598407945",
+        "verification": "candidate_review",
+        "access": "unknown",
+        "waterway": null,
+        "leisure": "slipway",
+        "canoe": null,
+        "kayak": null,
+        "sport": null,
+        "description": null,
+        "match_type": "access_tag"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.01926165,
+          42.371487099999996
+        ]
+      },
+      "properties": {
+        "id": "osm-way-598407947",
+        "name": "osm-way-598407947",
+        "source": "OpenStreetMap",
+        "source_url": "https://www.openstreetmap.org/way/598407947",
+        "verification": "candidate_review",
+        "access": "unknown",
+        "waterway": null,
+        "leisure": "slipway",
+        "canoe": null,
+        "kayak": null,
+        "sport": null,
+        "description": null,
+        "match_type": "access_tag"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.04374562222222,
+          42.392524300000005
+        ]
+      },
+      "properties": {
+        "id": "osm-way-690781641",
+        "name": "Lake Miltmore Boat Launch",
+        "source": "OpenStreetMap",
+        "source_url": "https://www.openstreetmap.org/way/690781641",
+        "verification": "candidate_review",
+        "access": "unknown",
+        "waterway": "dock",
+        "leisure": null,
+        "canoe": null,
+        "kayak": null,
+        "sport": null,
+        "description": "Parking lot and boat launch gate",
+        "match_type": "launch_name"
+      }
     }
   ]
-}
+}\n

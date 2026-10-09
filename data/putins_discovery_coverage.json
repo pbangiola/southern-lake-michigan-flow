@@ -1,14 +1,43 @@
 {
   "method": "OSM map API stream corridor rectangles",
-  "batch": 0,
-  "batch_size": 20,
   "total_rectangles": 3071,
-  "attempted_rectangles": 21,
-  "failed_rectangles": [],
-  "complete_batch": true,
-  "gowe_validation_enabled": true,
+  "completed_rectangles": 17,
+  "remaining_rectangles": 3054,
+  "attempted_this_run": 21,
+  "failed_this_run": [
+    {
+      "rectangle": [
+        -2199,
+        1059
+      ],
+      "error": "HTTP Error 400: Bad Request"
+    },
+    {
+      "rectangle": [
+        -2200,
+        1058
+      ],
+      "error": "HTTP Error 400: Bad Request"
+    },
+    {
+      "rectangle": [
+        -2197,
+        1057
+      ],
+      "error": "HTTP Error 400: Bad Request"
+    },
+    {
+      "rectangle": [
+        -2200,
+        1057
+      ],
+      "error": "HTTP Error 400: Bad Request"
+    }
+  ],
+  "unresolved_failures": 4,
   "gowe_found_in_current_run": true,
-  "bytes_downloaded": 18090121,
-  "candidate_count": 1,
-  "warning": "Candidates are not verified public or navigable access. Entire region is not complete until all batches are run."
-}
+  "bytes_downloaded": 107588734,
+  "candidate_count": 16,
+  "complete_region": false,
+  "warning": "Unverified OSM access candidates; river navigability and public access not established"
+}\n
