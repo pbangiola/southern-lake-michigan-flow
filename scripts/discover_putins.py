@@ -13,13 +13,11 @@ SERVERS=('https://overpass-api.de/api/interpreter',
          'https://overpass.kumi.systems/api/interpreter')
 # Small, indexed tag searches; avoid a broad name regex across all OSM objects.
 FILTERS={
-    'slipway':'["leisure"="slipway"]',
-    'water_access':'["waterway"="access_point"]',
-    'canoe':'["canoe"="yes"]',
-    'kayak':'["kayak"="yes"]',
-    'canoe_sport':'["sport"="canoe"]',
-    'kayak_sport':'["sport"="kayak"]',
+    'canoe_launch':'["name"~"canoe launch",i]',
+    'kayak_launch':'["name"~"kayak launch",i]',
+    'boat_launch':'["name"~"boat launch",i]',
 }
+
 OUT=Path('data/putins_osm_candidates.geojson')
 REPORT=Path('data/putins_discovery_coverage.json')
 def request(tag,south,west,north,east):
@@ -46,7 +44,7 @@ def main():
     found={}
     failures=[]
     succeeded=0
-    # Twelve modest tiles; each tag searched independently.
+    # Twelve modest tiles; only the three requested launch-name searches.
     for y in range(3):
         for x in range(4):
             s=south+(north-south)*y/3;n=south+(north-south)*(y+1)/3
