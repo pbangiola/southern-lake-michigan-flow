@@ -33,11 +33,10 @@ def cells():
                     selected.add((math.floor(x/CELL),math.floor(y/CELL)))
     # Start near the validated Des Plaines launch, then expand outward.
     return sorted(selected,key=lambda p:((p[0]*CELL-GOWE_COORD[0])**2+(p[1]*CELL-GOWE_COORD[1])**2,p[1],p[0]))
-def query(cell):
+def query(cell, bounds=None):
     x,y=cell
     # Small padding includes nearby launches without requesting a whole county.
-    w,s=x*CELL-.004,y*CELL-.004
-    e,n=(x+1)*CELL+.004,(y+1)*CELL+.004
+    w,s,e,n=bounds if bounds is not None else (x*CELL-.004,y*CELL-.004,(x+1)*CELL+.004,(y+1)*CELL+.004)
     url='https://api.openstreetmap.org/api/0.6/map?bbox='+','.join(f'{v:.5f}' for v in (w,s,e,n))
     req=urllib.request.Request(url,headers={'User-Agent':'SouthernLakeMichiganFlowAtlas/0.5 (GitHub Actions)'})
     with urllib.request.urlopen(req,timeout=90) as response:
@@ -70,6 +69,25 @@ def query(cell):
                 'sport':tags.get('sport'),'description':tags.get('description'),
                 'match_type':'launch_name' if named else 'access_tag'}}
     return found,len(payload)
+def query_adaptive(cell, bounds=None, depth=0):
+    try:
+        return query(cell,bounds)
+    except urllib.error.HTTPError as exc:
+        if exc.code not in (400,413,429) or depth>=3:
+            raise
+        if exc.code==429:
+            raise  # Respect server rate limiting rather than multiplying requests.
+        x,y=cell
+        w,s,e,n=bounds if bounds is not None else (x*CELL-.004,y*CELL-.004,(x+1)*CELL+.004,(y+1)*CELL+.004)
+        mx,my=(w+e)/2,(s+n)/2
+        print(f\'Splitting rejected rectangle {cell} at depth {depth+1}\',flush=True)
+        combined={};total=0
+        for b in ((w,s,mx,my),(mx,s,e,my),(w,my,mx,n),(mx,my,e,n)):
+            features,size=query_adaptive(cell,b,depth+1)
+            combined.update(features);total+=size
+            time.sleep(1)
+        return combined,total
+
 def main():
     tiles=cells()
     progress=json.loads(PROGRESS.read_text()) if PROGRESS.exists() else {'completed':[],'failures':{}}
@@ -91,7 +109,7 @@ def main():
         key=f'{cell[0]},{cell[1]}'
         attempted.append(cell)
         try:
-            found,size=query(cell)
+            found,size=query_adaptive(cell)
             if cell==gowe_cell and GOWE_ID not in found:
                 raise ValueError('Known Gowe Park launch not found')
             if GOWE_ID in found:gowe_found=True
