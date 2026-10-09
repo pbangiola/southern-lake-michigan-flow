@@ -8,7 +8,7 @@ No third-party dependencies. Input files are never modified.
 """
 import argparse, csv, io, json, re, sys, time, zipfile
 from collections import defaultdict
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -30,6 +30,12 @@ def day(s):
     if not m:
         return None
     try:
+        # Normalize timestamped observations to UTC before grouping by day.
+        # Date-only USGS published daily statistics retain their published date.
+        if 'T' in s or re.search(r'\\d{2}:\\d{2}', s):
+            dt = datetime.fromisoformat(s.replace('Z', '+00:00'))
+            if dt.tzinfo is not None:
+                return dt.astimezone(timezone.utc).date()
         return date.fromisoformat(m.group())
     except ValueError:
         return None
@@ -138,7 +144,7 @@ def main():
     parser.add_argument('--ids', type=Path, default=Path('usgs_gauge_ids.txt'))
     parser.add_argument('--out', type=Path, default=Path('data/stage_minima.json'))
     parser.add_argument('--days', type=int, default=365)
-    parser.add_argument('--end', type=date.fromisoformat, default=date.today())
+    parser.add_argument('--end', type=date.fromisoformat, default=datetime.now(timezone.utc).date())
     parser.add_argument('--fill', action='store_true', help='Fetch daily gaps and targeted instantaneous fallback via USGS; stop on rate limit')
     parser.add_argument('--max-fallback', type=int, default=20, help='Maximum stations for instantaneous fallback per run')
     args = parser.parse_args()
