@@ -1,0 +1,25 @@
+name: Resolve put-ins
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Resolve catalog locations
+        env:
+          NOMINATIM_CONTACT: ${{ secrets.NOMINATIM_CONTACT }}
+        run: |
+          test -n "$NOMINATIM_CONTACT" || { echo "Set the NOMINATIM_CONTACT repository secret first."; exit 1; }
+          python3 scripts/resolve_putins.py
+      - name: Save generated results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/putins.geojson data/putins_review.json data/putins_geocode_cache.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update candidate put-ins from geocoding"
+            git push
+          fi
