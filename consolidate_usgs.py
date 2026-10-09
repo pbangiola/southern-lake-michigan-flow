@@ -150,6 +150,7 @@ def main():
         sys.exit('Missing gauge IDs. Put usgs_gauge_ids.txt beside this script or run inside the atlas repository.')
     start = args.end - timedelta(days=args.days - 1)
     values = defaultdict(lambda: defaultdict(dict))
+    daily_sums = defaultdict(lambda: defaultdict(lambda: [0.0, 0]))
     counters = {}
     def add(sid, d, v, kind):
         if sid not in expected or not start <= d <= args.end:
@@ -157,6 +158,9 @@ def main():
         # Keep the smallest value for a day, but distinguish published daily minima from instantaneous samples.
         old = values[sid][d].get(kind)
         values[sid][d][kind] = min(old, v) if old is not None else v
+        if kind == 'instant':
+            daily_sums[sid][d][0] += v
+            daily_sums[sid][d][1] += 1
 
     paths = sorted(args.downloads.iterdir()) if args.downloads.exists() else []
     for path in paths:
@@ -241,7 +245,11 @@ def main():
         # Never claim instantaneous samples are published daily minima.
         observed = daily + instant
         dates = sorted(values[sid])
+        # Equal weight to each observed day, rather than overweighting days with more samples.
+        day_means = [total / count for total, count in daily_sums[sid].values() if count]
         rec = {'minimum_ft': min(observed) if observed else None,
+               'mean_stage_12mo_ft':round(sum(day_means)/len(day_means), 3) if day_means else None,
+               'mean_observed_days':len(day_means),
                'coverage_days':len(dates), 'coverage_fraction':round(len(dates)/args.days,3),
                'complete_year':len(dates)/args.days >= .95,
                'daily_coverage_days':n_daily,'daily_coverage_fraction':round(n_daily/args.days,3),
@@ -259,7 +267,7 @@ def main():
 
     output = {'metadata':{'retrieved_at':datetime.now().astimezone().isoformat(),
                           'start_date':start.isoformat(),'end_date':args.end.isoformat(),
-                          'method':'Published daily gage-height minima (00065/00002), supplemented by available instantaneous observations',
+                          'method':'Annual minimum from available USGS stage observations; mean is the average of observed daily means from continuous stage readings',
                           'coverage_note':'Adequate observed coverage: >=75% of days, >=20 days in each quarter, longest gap <=45 days; instantaneous samples are not published daily minima.'},
               'stations':stations,'failures':{sid:'Inadequate distributed daily coverage' for sid in deficient}}
     args.out.parent.mkdir(parents=True,exist_ok=True)
