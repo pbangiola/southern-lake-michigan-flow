@@ -10,6 +10,9 @@ REPORT=Path('data/putins_discovery_coverage.json')
 CELL=0.04
 BATCH=int(os.environ.get('DISCOVERY_BATCH','0'))
 BATCH_SIZE=int(os.environ.get('DISCOVERY_BATCH_SIZE','20'))
+VALIDATE_GOWE=os.environ.get('DISCOVERY_VALIDATE_GOWE','1')=='1'
+GOWE_ID='osm-node-12396073908'
+GOWE_COORD=(-87.9177405,42.3686995)
 PATTERN=re.compile(r'\b(canoe|kayak|boat)\s+launch\b',re.I)
 def lines(geom):
     if geom['type']=='LineString':return [geom['coordinates']]
@@ -69,16 +72,22 @@ def main():
     tiles=cells()
     start=BATCH*BATCH_SIZE
     subset=tiles[start:start+BATCH_SIZE]
+    if VALIDATE_GOWE:
+        gowe_cell=(math.floor(GOWE_COORD[0]/CELL),math.floor(GOWE_COORD[1]/CELL))
+        if gowe_cell not in subset:subset=[gowe_cell]+subset
+        print('Validating known Gowe Park launch in rectangle',gowe_cell,flush=True)
     if not subset:raise SystemExit(f'Batch {BATCH} beyond {len(tiles)} stream rectangles')
     previous={}
     if OUT.exists():
         for f in json.loads(OUT.read_text()).get('features',[]):
             previous[f['properties']['id']]=f
     failures=[];bytes_downloaded=0
+    gowe_found=False
     for idx,cell in enumerate(subset,start+1):
         try:
             found,size=query(cell)
             previous.update(found);bytes_downloaded+=size
+            if GOWE_ID in found:gowe_found=True
             print(f'OK rectangle {idx}/{len(tiles)}: {len(found)} candidates, {size} bytes',flush=True)
         except (urllib.error.URLError,ValueError,ET.ParseError,TimeoutError) as exc:
             failures.append({'rectangle':cell,'error':str(exc)})
@@ -88,10 +97,15 @@ def main():
     REPORT.write_text(json.dumps({'method':'OSM map API stream corridor rectangles',
         'batch':BATCH,'batch_size':BATCH_SIZE,'total_rectangles':len(tiles),
         'attempted_rectangles':len(subset),'failed_rectangles':failures,
-        'complete_batch':not failures,'bytes_downloaded':bytes_downloaded,
+        'complete_batch':not failures and (not VALIDATE_GOWE or gowe_found),
+        'gowe_validation_enabled':VALIDATE_GOWE,'gowe_found_in_current_run':gowe_found,
+        'bytes_downloaded':bytes_downloaded,
         'candidate_count':len(previous),
         'warning':'Candidates are not verified public or navigable access. Entire region is not complete until all batches are run.'},indent=2)+'\n')
     if failures:raise SystemExit('Some rectangles failed; existing candidates preserved; see coverage report')
+    if VALIDATE_GOWE and not gowe_found:
+        raise SystemExit('VALIDATION FAILED: Gowe Park canoe launch not discovered; existing candidates preserved')
+    if VALIDATE_GOWE:print('PASS: Gowe Park launch discovered by production rectangle parser',flush=True)
     OUT.write_text(json.dumps({'type':'FeatureCollection','metadata':{
         'source':'OSM map API stream corridor rectangles',
         'note':'Incremental unverified launch candidates; regional coverage incomplete'},
