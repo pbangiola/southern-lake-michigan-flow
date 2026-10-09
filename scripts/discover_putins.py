@@ -11,7 +11,7 @@ from pathlib import Path
 import osmium
 
 BBOX=(-88.7,40.9,-85.4,43.2)
-PATTERN=re.compile(r'\\b(canoe|kayak|boat)\\s+launch\\b',re.I)
+PATTERN=re.compile(r'\b(canoe|kayak|boat)\s+launch\b',re.I)
 OUT=Path('data/putins_osm_candidates.geojson')
 REPORT=Path('data/putins_discovery_coverage.json')
 
