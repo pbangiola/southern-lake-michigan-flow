@@ -1,0 +1,8 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "source": "OSM map API stream corridor rectangles",
+    "note": "Incremental unverified launch candidates; regional coverage incomplete"
+  },
+  "features": []
+}

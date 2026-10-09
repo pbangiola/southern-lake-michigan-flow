@@ -1,0 +1,12 @@
+{
+  "method": "OSM map API stream corridor rectangles",
+  "batch": 0,
+  "batch_size": 20,
+  "total_rectangles": 3071,
+  "attempted_rectangles": 20,
+  "failed_rectangles": [],
+  "complete_batch": true,
+  "bytes_downloaded": 10122069,
+  "candidate_count": 0,
+  "warning": "Candidates are not verified public or navigable access. Entire region is not complete until all batches are run."
+}
