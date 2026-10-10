@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Audit NOAA gauge proximity to EDNA lines; proximity is NOT hydrological validation."""
 import csv, json, math, sqlite3
+from decimal import Decimal
 from pathlib import Path
 import ijson
 from shapely.geometry import shape, Point
@@ -29,7 +30,7 @@ def main():
                 index+=1
                 minx,miny,maxx,maxy=geom.bounds
                 db.execute("INSERT INTO segments VALUES (?,?,?,?,?)",(index,minx,maxx,miny,maxy))
-                db.execute("INSERT INTO metadata VALUES (?,?,?,?)",(index,feature.get("properties",{}).get("segment_id",""),src["name"],json.dumps(feature["geometry"],separators=(",",":"))))
+                db.execute("INSERT INTO metadata VALUES (?,?,?,?)",(index,feature.get("properties",{}).get("segment_id",""),src["name"],json.dumps(feature["geometry"],separators=(",",":"),default=float)))
         db.commit()
         print("Indexed",src["name"],"total",index,flush=True)
     counts={str(x):0 for x in RADII}
@@ -40,7 +41,7 @@ def main():
             coords=(feature.get("geometry") or {}).get("coordinates")
             lid=p.get("noaa_lid")
             if not coords or len(coords)<2:continue
-            lon,lat=coords[:2]
+            lon,lat=map(float,coords[:2])
             if not all(isinstance(v,(float,int)) and math.isfinite(v) for v in (lon,lat)):continue
             point=Point(lon,lat)
             # Expand until candidates are available; nearest is then selected geodesically.
