@@ -102,7 +102,7 @@ def run(data, snap_m=5):
         name=p['established_name'] or (names[main].most_common(1)[0][0] if names[main] else '')
         # Preserve mainstem continuity for unnamed reaches, and split known
         # downstream renames by name. This may require local review.
-        suffix=':'+name.casefold() if p['established_name'] else ''
+        suffix=':'+name.casefold() if len(names[main])>1 and name else ''
         p['river_id']='3dhp:'+main+suffix
         p['river_name']=name or 'Unidentified waterway'
         p['filter_river']=name or p['river_id']
