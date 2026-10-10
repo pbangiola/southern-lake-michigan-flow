@@ -63,7 +63,16 @@ def tiles():
 class QuotaMonitor:
     def __init__(self,delay):
         self.delay=delay
-        self.stats=json.loads(METRICS.read_text()) if METRICS.exists() else {"requests":0,"successes":0,"http_429":0,"errors":0}
+        if METRICS.exists():
+            raw=METRICS.read_text()
+            try:
+                self.stats=json.loads(raw)
+            except json.JSONDecodeError:
+                # Older versions wrote a literal backslash-n after the JSON object.
+                self.stats=json.loads(raw.rstrip().removesuffix(r'\\n'))
+                METRICS.write_text(json.dumps(self.stats,indent=2)+"\\n")
+        else:
+            self.stats={"requests":0,"successes":0,"http_429":0,"errors":0}
         self.next_at=0.0
 
     def before(self):
@@ -95,7 +104,7 @@ class QuotaMonitor:
             try:wait=max(60,float(retry))
             except (TypeError,ValueError):wait=60
             self.next_at=max(self.next_at,time.time()+wait)
-        METRICS.write_text(json.dumps(stats,indent=2)+"\\n")
+        METRICS.write_text(json.dumps(stats,indent=2)+"\n")
         if stats["requests"]%25==0 or status==429:
             print("USGS requests=%s, 429s=%s, remaining=%s, limit=%s"%(
                 stats["requests"],stats["http_429"],stats.get("remaining"),stats.get("limit")),flush=True)
