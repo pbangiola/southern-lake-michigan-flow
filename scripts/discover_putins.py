@@ -14,7 +14,7 @@ BATCH_SIZE=int(os.environ.get('DISCOVERY_BATCH_SIZE','20'))
 VALIDATE_GOWE=os.environ.get('DISCOVERY_VALIDATE_GOWE','1')=='1'
 GOWE_ID='osm-node-12396073908'
 GOWE_COORD=(-87.9177405,42.3686995)
-PATTERN=re.compile(r'\b(canoe|kayak|boat)\s+launch\b',re.I)
+PATTERN=re.compile(r'\b(?:(?:canoe|kayak|boat)\s+launch|landings?)\b',re.I)
 def lines(geom):
     if geom['type']=='LineString':return [geom['coordinates']]
     if geom['type']=='MultiLineString':return geom['coordinates']
