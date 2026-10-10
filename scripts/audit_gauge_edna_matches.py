@@ -10,12 +10,13 @@ from pyproj import Geod
 ROOT=Path("data/edna_watersheds")
 OUT=Path("data/gauge_match_audit")
 GEOD=Geod(ellps="WGS84")
-RADII=(100,250,500,1000,2000,5000,10000)
+RADII=(25,50,100,250,500,1000,2000,5000,10000)
 def main():
     OUT.mkdir(parents=True,exist_ok=True)
     manifest=json.loads((ROOT/"manifest.json").read_text())
     assert manifest["complete"]
-    db=sqlite3.connect(":memory:")
+    db=sqlite3.connect(str(OUT/"spatial_index.sqlite"))
+    db.execute("DROP TABLE IF EXISTS metadata"); db.execute("DROP TABLE IF EXISTS segments")
     db.execute("CREATE VIRTUAL TABLE segments USING rtree(id,minx,maxx,miny,maxy)")
     db.execute("CREATE TABLE metadata(id INTEGER PRIMARY KEY, segment_id TEXT, source TEXT, geometry TEXT)")
     index=0
@@ -44,7 +45,7 @@ def main():
             point=Point(lon,lat)
             # Expand until candidates are available; nearest is then selected geodesically.
             best=None
-            for radius in (1000,5000,20000,100000):
+            for radius in (25,50,100,250,500,1000,2000,5000,10000):
                 dy=radius/110574
                 dx=radius/(111320*max(.1,abs(math.cos(math.radians(lat)))))
                 candidates=db.execute("SELECT m.segment_id,m.source,m.geometry FROM segments s JOIN metadata m ON m.id=s.id WHERE s.minx<=? AND s.maxx>=? AND s.miny<=? AND s.maxy>=?",(lon+dx,lon-dx,lat+dy,lat-dy)).fetchall()
@@ -57,9 +58,11 @@ def main():
             for threshold in RADII:
                 if dist is not None and dist<=threshold:counts[str(threshold)]+=1
             rows.append({"noaa_lid":lid,"name":p.get("name"),"state":p.get("state"),"lon":lon,"lat":lat,"nearest_m":dist,"edna_segment_id":best[1] if best else "","edna_source":best[2] if best else "","has_stage":p.get("stage") is not None,"has_flood_stage":p.get("flood_stage_ft") is not None,"has_low_stage":p.get("low_water_stage_ft") is not None})
+    db.close()
+    (OUT/"spatial_index.sqlite").unlink(missing_ok=True)
     with (OUT/"matches.csv").open("w",newline="") as f:
         w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
-    summary={"total_edna_segments":index,"gauges_with_valid_coordinates":len(rows),"within_meters":counts,"with_current_stage":sum(r["has_stage"] for r in rows),"with_flood_stage":sum(r["has_flood_stage"] for r in rows),"with_low_stage":sum(r["has_low_stage"] for r in rows),"note":"Nearest geometric feature only; no river-name or network-connectivity validation."}
+    summary={"total_edna_segments":index,"gauges_with_valid_coordinates":len(rows),"within_meters":counts,"with_current_stage":sum(r["has_stage"] for r in rows),"with_flood_stage":sum(r["has_flood_stage"] for r in rows),"with_low_stage":sum(r["has_low_stage"] for r in rows),"note":"50 m diameter gauge circle overlaps a river iff nearest distance <=25 m. This is exact continuous-geometry overlap (no bitmap aliasing). Nearest geometric feature only; no river-name or connectivity validation."}
     (OUT/"summary.json").write_text(json.dumps(summary,indent=2))
     print(json.dumps(summary,indent=2),flush=True)
 if __name__=="__main__":main()
