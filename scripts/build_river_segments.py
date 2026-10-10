@@ -61,11 +61,12 @@ def main():
     p.add_argument('kmz',nargs='+',type=Path)
     p.add_argument('--gauges',type=Path,default=Path('data/gauges.geojson'))
     p.add_argument('--output',type=Path,default=Path('data/river_segments.geojson'))
-    p.add_argument('--discovered-gauges',type=Path,default=Path('data/gauges_expansion.geojson'))
+    p.add_argument('--discovered-gauges',type=Path,default=Path('local/gauges_us.geojson'))
     p.add_argument('--max-distance-m',type=float,default=MAX_DISTANCE_M)
     a=p.parse_args()
     gauges=json.loads(a.gauges.read_text())['features']
-    discovered=json.loads(a.discovered_gauges.read_text()).get('features',[]) if a.discovered_gauges.exists() else []
+    discovered_path=a.discovered_gauges if a.discovered_gauges.exists() else Path('data/gauges_expansion.geojson')
+    discovered=json.loads(discovered_path.read_text()).get('features',[]) if discovered_path.exists() else []
     by_site={}
     for f in gauges+discovered:
         props=f.get('properties') or {}
