@@ -61,14 +61,22 @@ def main():
     p.add_argument('kmz',nargs='+',type=Path)
     p.add_argument('--gauges',type=Path,default=Path('data/gauges.geojson'))
     p.add_argument('--output',type=Path,default=Path('data/river_segments.geojson'))
+    p.add_argument('--discovered-gauges',type=Path,default=Path('data/gauges_expansion.geojson'))
     p.add_argument('--max-distance-m',type=float,default=MAX_DISTANCE_M)
     a=p.parse_args()
     gauges=json.loads(a.gauges.read_text())['features']
+    discovered=json.loads(a.discovered_gauges.read_text()).get('features',[]) if a.discovered_gauges.exists() else []
+    by_site={}
+    for f in gauges+discovered:
+        props=f.get('properties') or {}
+        site=str(props.get('site') or props.get('site_no') or '').removeprefix('USGS-')
+        if site and site not in by_site:
+            by_site[site]=f
     stations=[]
-    for f in gauges:
+    for f in by_site.values():
         pt=f.get('geometry',{}).get('coordinates')
         props=f.get('properties',{})
-        if pt and props.get('site') and props.get('stage') is not None:
+        if pt and props.get('site') and f.get('geometry',{}).get('type')=='Point':
             stations.append((str(props['site']),pt[:2],props.get('name','')))
     lat=(BBOX[1]+BBOX[3])/2
     gauge_points=[Point(metric(pt,lat)) for _,pt,_ in stations]
@@ -174,7 +182,7 @@ def main():
         'max_distance_m':a.max_distance_m,'endpoint_snap_m':snap_m,
         'source_files':[p.name for p in a.kmz],
         'source_lines':len(lines),'matched_gauges':len(seed),
-        'between_gauge_edges':between,'duplicate_source_lines_skipped':duplicates_skipped,'duplicate_output_segments_skipped':duplicate_segments,'river_name_method':'inferred from controlling USGS station; may not name tributaries','flow_direction_verified':False},'features':output}
+        'between_gauge_edges':between,'inventory_primary':len(gauges),'inventory_discovered':len(discovered),'inventory_unique':len(by_site),'duplicate_source_lines_skipped':duplicates_skipped,'duplicate_output_segments_skipped':duplicate_segments,'river_name_method':'inferred from controlling USGS station; may not name tributaries','flow_direction_verified':False},'features':output}
     a.output.parent.mkdir(parents=True,exist_ok=True)
     a.output.write_text(json.dumps(result,separators=(',',':')))
     print(f'Skipped {duplicates_skipped} duplicate source lines and {duplicate_segments} duplicate output segments',flush=True)
