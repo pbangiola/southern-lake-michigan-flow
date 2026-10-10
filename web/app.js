@@ -173,15 +173,15 @@ map.on('load',async()=>{
     console.info('Loaded',segments.features.length,'gauge-associated river segments');
    }
   }catch(e){console.warn('Optional river segments unavailable:',e);}
-  // Provisional put-ins; candidates require review before relying on access.
+  // Publish all unverified OSM launch candidates as provisional map markers.
   try{
-   const response=await fetch('data/putins.geojson',{cache:'no-store'});
+   const response=await fetch('data/putins_osm_candidates.geojson',{cache:'no-store'});
    if(response.ok){
     const putins=await response.json();
     if(putins.type==='FeatureCollection'&&Array.isArray(putins.features)){
      map.addSource('putins',{type:'geojson',data:putins});
      map.addLayer({id:'putins',type:'circle',source:'putins',paint:{
-      'circle-radius':5,'circle-color':'#f3a13b','circle-stroke-color':'#4e2b12','circle-stroke-width':1.5
+      'circle-radius':['interpolate',['linear'],['zoom'],6,3,11,5], 'circle-color':'#f3a13b','circle-stroke-color':'#4e2b12','circle-stroke-width':1.2
      }});
      map.on('click','putins',e=>{
       if(reportButton.getAttribute('aria-pressed')==='true')return;
