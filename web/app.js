@@ -9,11 +9,12 @@ const riverToggle=document.getElementById('show-rivers');
 const routeToggle=document.getElementById('show-routes');
 const legend=document.getElementById('map-legend');
 function setLayerVisibility(id,visible){if(map.getLayer(id))map.setLayoutProperty(id,'visibility',visible?'visible':'none');}
-riverToggle.addEventListener('change',()=>setLayerVisibility('river-segments',riverToggle.checked));
+riverToggle.addEventListener('change',()=>{setLayerVisibility('river-segments',riverToggle.checked);setLayerVisibility('expanded-rivers',riverToggle.checked);});
 routeToggle.addEventListener('change',()=>setLayerVisibility('paddling-routes',routeToggle.checked));
 window.addEventListener('resize',()=>map.resize());
 gaugeToggle.addEventListener('change',()=>{
  if(map.getLayer('gauges'))map.setLayoutProperty('gauges','visibility',gaugeToggle.checked?'visible':'none');
+ setLayerVisibility('expanded-gauges',gaugeToggle.checked);
 });
 const reportButton=document.getElementById('report-condition');
 const reportDialog=document.getElementById('report-dialog');
@@ -224,6 +225,20 @@ putinFilter.addEventListener('change',updatePutins);
      }
      }
      putinCount.textContent='Loaded '+putinFeatures.length+' launch candidates; rendering map markers…';
+     // Small, incrementally published discovery tiles are optional.
+     try{
+      const expansionResponse=await fetch('data/putins_expansion.geojson',{cache:'no-store'});
+      if(expansionResponse.ok){
+       const expansion=await expansionResponse.json();
+       const known=new Set(putinFeatures.map(f=>f.properties?.id).filter(Boolean));
+       for(const feature of expansion.features||[]){
+        const id=feature.properties?.id;
+        if(id&&!known.has(id)&&feature.geometry?.type==='Point'){
+         putinFeatures.push(feature);known.add(id);
+        }
+       }
+      }
+     }catch(error){console.warn('Incremental launch layer unavailable:',error);}
      map.addSource('putins',{type:'geojson',data:{type:'FeatureCollection',features:putinFeatures},cluster:true,clusterRadius:45,clusterMaxZoom:12});
      map.addLayer({id:'putin-clusters',type:'circle',source:'putins',filter:['has','point_count'],paint:{'circle-color':'#269b58','circle-radius':['step',['get','point_count'],13,10,18,50,24],'circle-stroke-color':'#fff','circle-stroke-width':1.5}});
      map.addLayer({id:'putin-counts',type:'symbol',source:'putins',filter:['has','point_count'],layout:{'text-field':['get','point_count_abbreviated'],'text-size':12},paint:{'text-color':'#fff'}});
@@ -298,6 +313,34 @@ map.on('load',async()=>{
     console.info('Loaded',segments.features.length,'gauge-associated river segments');
    }
   }catch(e){console.warn('Optional river segments unavailable:',e);}
+  // Optional low-bandwidth expansion: neutral rivers and station-only gauges.
+  // These do not claim to have live stage measurements.
+  try{
+   const [riverResponse,stationResponse]=await Promise.all([
+    fetch('data/river_expansion.geojson',{cache:'no-store'}),
+    fetch('data/gauges_expansion.geojson',{cache:'no-store'})
+   ]);
+   if(riverResponse.ok){
+    const rivers=await riverResponse.json();
+    if(rivers.features?.length){
+     map.addSource('expanded-rivers',{type:'geojson',data:rivers});
+     map.addLayer({id:'expanded-rivers',type:'line',source:'expanded-rivers',
+      paint:{'line-color':'#88929b','line-width':1.5,'line-opacity':0.65}},'gauges');
+     setLayerVisibility('expanded-rivers',riverToggle.checked);
+    }
+   }
+   if(stationResponse.ok){
+    const stations=await stationResponse.json();
+    const known=new Set(gaugeFeatures.map(f=>String(f.properties?.site)));
+    const newStations=(stations.features||[]).filter(f=>!known.has(String(f.properties?.site)));
+    if(newStations.length){
+     map.addSource('expanded-gauges',{type:'geojson',data:{type:'FeatureCollection',features:newStations}});
+     map.addLayer({id:'expanded-gauges',type:'circle',source:'expanded-gauges',
+      paint:{'circle-radius':3,'circle-color':'#88929b','circle-stroke-color':'white','circle-stroke-width':1}},'gauges');
+     setLayerVisibility('expanded-gauges',gaugeToggle.checked);
+    }
+   }
+  }catch(error){console.warn('Optional atlas expansion unavailable:',error);}
   // Routes traced from the user's KML; not independently verified for navigation.
   try {
    const routesResponse=await fetch('data/paddling_routes.geojson',{cache:'no-store'});
