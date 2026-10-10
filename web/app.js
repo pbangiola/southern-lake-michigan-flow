@@ -187,7 +187,7 @@ function qualifiesPutin(f){
 function updatePutins(){
  const filtered=putinFeatures.filter(qualifiesPutin);
  if(map.getSource('putins'))map.getSource('putins').setData({type:'FeatureCollection',features:filtered});
- for(const id of ['putin-clusters','putin-counts','putins'])setLayerVisibility(id,putinToggle.checked);
+ for(const id of ['putin-clusters','putin-counts','putins','putin-paddles'])setLayerVisibility(id,putinToggle.checked);
  putinCount.textContent=filtered.length+' of '+putinFeatures.length+' unverified candidates';
 }
 putinToggle.addEventListener('change',updatePutins);
@@ -243,11 +243,17 @@ putinFilter.addEventListener('change',updatePutins);
      map.addImage('crossed-canoe-paddles',ctx.getImageData(0,0,64,64),{pixelRatio:2});
      map.addLayer({id:'putin-clusters',type:'circle',source:'putins',filter:['has','point_count'],paint:{'circle-color':'#269b58','circle-radius':['step',['get','point_count'],13,10,18,50,24],'circle-stroke-color':'#fff','circle-stroke-width':1.5}});
      map.addLayer({id:'putin-counts',type:'symbol',source:'putins',filter:['has','point_count'],layout:{'text-field':['get','point_count_abbreviated'],'text-size':12},paint:{'text-color':'#fff'}});
-     map.addLayer({id:'putins',type:'symbol',source:'putins',filter:['!',['has','point_count']],layout:{
+     // A circle layer guarantees visible markers even when custom icon rendering fails.
+     map.addLayer({id:'putins',type:'circle',source:'putins',filter:['!',['has','point_count']],paint:{
+      'circle-radius':['interpolate',['linear'],['zoom'],6,6,11,9],
+      'circle-color':'#269b58','circle-stroke-color':'#ffffff','circle-stroke-width':2
+     }});
+     map.addLayer({id:'putin-paddles',type:'symbol',source:'putins',filter:['!',['has','point_count']],layout:{
       'icon-image':'crossed-canoe-paddles','icon-size':['interpolate',['linear'],['zoom'],6,0.75,11,1.15],
       'icon-allow-overlap':true,'icon-ignore-placement':true
      }});
      updatePutins();
+     console.info('Launch map layers loaded:',putinFeatures.length,'candidates');
      map.on('click','putin-clusters',e=>{const cluster=e.features[0];map.getSource('putins').getClusterExpansionZoom(cluster.properties.cluster_id,(err,zoom)=>{if(!err)map.easeTo({center:cluster.geometry.coordinates,zoom});});});
      map.on('click','putins',e=>{
       if(reportButton.getAttribute('aria-pressed')==='true')return;
