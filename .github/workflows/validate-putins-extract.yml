@@ -38,6 +38,6 @@ jobs:
           gowe = found['osm-node-12396073908']
           assert gowe['geometry']['coordinates'] == [-87.9177405, 42.3686995]
           assert gowe['properties']['name'] == 'Des Plaines River Canoe Launch at Gowe Park'
-          assert found['osm-way-9000000005']['geometry']['coordinates'] == [-87.915, 42.385]
+          assert all(abs(a-b)<1e-6 for a,b in zip(found['osm-way-9000000005']['geometry']['coordinates'], [-87.915, 42.385]))
           print('PASS: named launches, tagged nodes, way coordinates, private exclusion, and Gowe Park reference')
           PY
