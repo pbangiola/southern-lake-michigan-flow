@@ -1,4 +1,4 @@
-name: 01 · Illinois — Map River Branches from Grafton
+name: MAP 1 - Trace Illinois River branches from Grafton
 on:
   workflow_dispatch:
   schedule:
