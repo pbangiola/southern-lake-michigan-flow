@@ -1,5 +1,7 @@
 const map = new maplibregl.Map({container:'map',style:'https://tiles.openfreemap.org/styles/liberty',center:[-87.85,41.85],zoom:8});
 map.addControl(new maplibregl.NavigationControl());
+const ILLINOIS_BOUNDS=[[-91.55,36.95],[-87.0,42.55]];
+window.addEventListener('DOMContentLoaded',()=>{document.getElementById('view-illinois')?.addEventListener('click',()=>map.fitBounds(ILLINOIS_BOUNDS,{padding:30,maxZoom:8}));document.getElementById('view-region')?.addEventListener('click',()=>map.fitBounds([[-88.7,40.9],[-85.4,43.2]],{padding:30}));});
 document.getElementById('print').onclick=()=>window.print();
 const REPO='pbangiola/southern-lake-michigan-flow';
 const reportTypes=['Too shallow','Too high / strong current','Navigable'];
