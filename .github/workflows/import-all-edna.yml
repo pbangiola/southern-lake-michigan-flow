@@ -4,8 +4,6 @@ on:
   push:
     paths:
       - '.github/workflows/import-all-edna.yml'
-  schedule:
-    - cron: '11 * * * *'
 permissions:
   contents: write
 concurrency:
