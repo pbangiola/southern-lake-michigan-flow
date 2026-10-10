@@ -173,13 +173,33 @@ map.on('load',async()=>{
     console.info('Loaded',segments.features.length,'gauge-associated river segments');
    }
   }catch(e){console.warn('Optional river segments unavailable:',e);}
-  // Publish all unverified OSM launch candidates as provisional map markers.
+  const putinToggle=document.getElementById('show-putins');
+const putinFilter=document.getElementById('putin-filter');
+const putinCount=document.getElementById('putin-count');
+let putinFeatures=[];
+function qualifiesPutin(f){
+ const p=f.properties||{},mode=putinFilter.value;
+ if(mode==='public')return ['yes','public','designated'].includes(String(p.access||'').toLowerCase());
+ if(mode==='paddling')return p.canoe==='yes'||p.kayak==='yes'||/canoe|kayak/i.test(p.name||'');
+ if(mode==='named')return Boolean(p.name)&&!/^osm-(node|way)-/i.test(p.name);
+ return true;
+}
+function updatePutins(){
+ const filtered=putinFeatures.filter(qualifiesPutin);
+ if(map.getSource('putins'))map.getSource('putins').setData({type:'FeatureCollection',features:filtered});
+ for(const id of ['putin-clusters','putin-counts','putins'])setLayerVisibility(id,putinToggle.checked);
+ putinCount.textContent=filtered.length+' of '+putinFeatures.length+' unverified candidates';
+}
+putinToggle.addEventListener('change',updatePutins);
+putinFilter.addEventListener('change',updatePutins);
+// Publish all unverified OSM launch candidates as provisional map markers.
   try{
    const response=await fetch('data/putins_osm_candidates.geojson',{cache:'no-store'});
    if(response.ok){
     const putins=await response.json();
     if(putins.type==='FeatureCollection'&&Array.isArray(putins.features)){
-     map.addSource('putins',{type:'geojson',data:putins});
+     putinFeatures=putins.features;
+     map.addSource('putins',{type:'geojson',data:putins,cluster:true,clusterRadius:45,clusterMaxZoom:12});
      // Crossed canoe paddles, rendered as a scalable green map symbol.
      const paddleCanvas=document.createElement('canvas');
      paddleCanvas.width=64;paddleCanvas.height=64;
@@ -192,10 +212,14 @@ map.on('load',async()=>{
       ctx.restore();
      }
      map.addImage('crossed-canoe-paddles',ctx.getImageData(0,0,64,64),{pixelRatio:2});
-     map.addLayer({id:'putins',type:'symbol',source:'putins',layout:{
+     map.addLayer({id:'putin-clusters',type:'circle',source:'putins',filter:['has','point_count'],paint:{'circle-color':'#269b58','circle-radius':['step',['get','point_count'],13,10,18,50,24],'circle-stroke-color':'#fff','circle-stroke-width':1.5}});
+     map.addLayer({id:'putin-counts',type:'symbol',source:'putins',filter:['has','point_count'],layout:{'text-field':['get','point_count_abbreviated'],'text-size':12},paint:{'text-color':'#fff'}});
+     map.addLayer({id:'putins',type:'symbol',source:'putins',filter:['!',['has','point_count']],layout:{
       'icon-image':'crossed-canoe-paddles','icon-size':['interpolate',['linear'],['zoom'],6,0.75,11,1.15],
       'icon-allow-overlap':true,'icon-ignore-placement':true
      }});
+     updatePutins();
+     map.on('click','putin-clusters',e=>{const cluster=e.features[0];map.getSource('putins').getClusterExpansionZoom(cluster.properties.cluster_id,(err,zoom)=>{if(!err)map.easeTo({center:cluster.geometry.coordinates,zoom});});});
      map.on('click','putins',e=>{
       if(reportButton.getAttribute('aria-pressed')==='true')return;
       const p=e.features[0].properties;
