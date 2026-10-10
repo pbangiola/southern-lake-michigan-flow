@@ -194,6 +194,22 @@ map.on('load',async()=>{
 // Keep the nationwide import on disk; display it only after a tiled/vector-data pipeline is available.
 // Existing regional layers remain available for local navigation.
 window.ednaWatershedLayerIds=[];
+map.on('load',async()=>{
+ try{
+  const response=await fetch('data/edna_tiles/manifest.json',{cache:'no-store'});
+  if(!response.ok)return;
+  const manifest=await response.json();
+  if(manifest.complete!==true)return;
+  map.addSource('edna-national-tiles',{type:'vector',
+   tiles:[new URL('data/edna_tiles/{z}/{x}/{y}.pbf',document.baseURI).href],
+   minzoom:0,maxzoom:manifest.maxzoom||12});
+  map.addLayer({id:'edna-national-rivers',type:'line',source:'edna-national-tiles',
+   'source-layer':manifest.layer||'edna',
+   paint:{'line-color':'#527d94','line-width':['interpolate',['linear'],['zoom'],3,0.5,8,1.25,13,2.5],'line-opacity':0.72}});
+  window.ednaWatershedLayerIds=['edna-national-rivers'];
+  applyRiverFilters();
+ }catch(error){console.warn('National EDNA tiles unavailable:',error);}
+});
 // Load launch markers independently of gauge and river data; gauge failures must not hide launches.
 map.on('load',async()=>{
   const putinToggle=document.getElementById('show-putins');
