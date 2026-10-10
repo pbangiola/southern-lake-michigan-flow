@@ -1,0 +1,57 @@
+{
+  "layers": {
+    "launches": {
+      "next_tile": 0,
+      "delay_seconds": 11,
+      "successes": 0,
+      "failures": 1
+    },
+    "rivers": {
+      "next_tile": 0,
+      "delay_seconds": 11,
+      "successes": 0,
+      "failures": 1
+    },
+    "gauges": {
+      "next_tile": 0,
+      "delay_seconds": 11,
+      "successes": 0,
+      "failures": 1
+    }
+  },
+  "history": [
+    {
+      "layer": "launches",
+      "tile": 0,
+      "seconds": 1.05,
+      "bytes": 0,
+      "features": 0,
+      "added": 0,
+      "result": "HTTP Error 500: Internal Server Error"
+    },
+    {
+      "layer": "rivers",
+      "tile": 0,
+      "seconds": 0.33,
+      "bytes": 0,
+      "features": 0,
+      "added": 0,
+      "result": "HTTP Error 500: Internal Server Error"
+    },
+    {
+      "layer": "gauges",
+      "tile": 0,
+      "seconds": 0.3,
+      "bytes": 0,
+      "features": 0,
+      "added": 0,
+      "result": "HTTP Error 404: "
+    }
+  ],
+  "last_run": {
+    "requests": 3,
+    "bytes": 0,
+    "elapsed_seconds": 16.7,
+    "probe": false
+  }
+}

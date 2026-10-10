@@ -1,0 +1,49 @@
+{
+  "offset": 778,
+  "batch": 400,
+  "delay": 1.2282499999999998,
+  "success_streak": 5,
+  "done": true,
+  "history": [
+    {
+      "status": "ok",
+      "batch": 100,
+      "features": 100,
+      "added": 100,
+      "bytes": 353395,
+      "seconds": 0.34
+    },
+    {
+      "status": "ok",
+      "batch": 100,
+      "features": 100,
+      "added": 100,
+      "bytes": 305221,
+      "seconds": 0.28
+    },
+    {
+      "status": "ok",
+      "batch": 200,
+      "features": 200,
+      "added": 200,
+      "bytes": 443932,
+      "seconds": 0.34
+    },
+    {
+      "status": "ok",
+      "batch": 300,
+      "features": 300,
+      "added": 300,
+      "bytes": 679283,
+      "seconds": 0.41
+    },
+    {
+      "status": "ok",
+      "batch": 300,
+      "features": 78,
+      "added": 78,
+      "bytes": 239656,
+      "seconds": 1.42
+    }
+  ]
+}
