@@ -3,6 +3,7 @@
 Publish only after all source downloads and parses succeed.
 """
 import json, re, urllib.request, urllib.parse, tempfile, time
+from html.parser import HTMLParser
 from pathlib import Path
 from traverse_edna_graph import streams, edge_key
 from shapely.geometry import box, mapping
@@ -12,8 +13,20 @@ BBOX=(-93.0, 37.0, -84.0, 45.0)
 OUT=Path("data/edna_watersheds")
 def main():
     html=urllib.request.urlopen(INDEX,timeout=90).read().decode("utf-8","replace")
-    urls=sorted(set(urllib.parse.urljoin(INDEX, x.replace("&amp;","&")) for x in re.findall(r'href=["\\\']([^"\\\']+\\.kmz)["\\\']',html,re.I)))
-    if not urls: raise RuntimeError("No EDNA KMZ links found; refusing to publish")
+    class Links(HTMLParser):
+        def __init__(self):
+            super().__init__();self.hrefs=[]
+        def handle_starttag(self,tag,attrs):
+            if tag.lower()=='a':
+                for key,value in attrs:
+                    if key.lower()=='href' and value:self.hrefs.append(value)
+    parser=Links();parser.feed(html)
+    urls=sorted(set(urllib.parse.urljoin(INDEX,href) for href in parser.hrefs
+                    if '.kmz' in urllib.parse.urlsplit(href).path.lower()))
+    print('Index links:',len(parser.hrefs),'KMZ sources:',len(urls),flush=True)
+    if not urls:
+        print('Sample links:',parser.hrefs[:12],flush=True)
+        raise RuntimeError('No EDNA KMZ links found; refusing to publish')
     OUT.mkdir(parents=True,exist_ok=True)
     manifest={"type":"edna-watershed-import-v1","source_index":INDEX,"bbox":BBOX,"sources":[],"complete":False}
     seen=set()
