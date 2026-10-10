@@ -106,8 +106,9 @@ function colorRiverNetwork(segments,gauges){
   const p=feature.properties||(feature.properties={});
   const a=siteId(p.from_gauge||p.site),b=siteId(p.to_gauge||p.site);
   const ca=colorFor(a),cb=colorFor(b);
-  // Never interpolate an unknown reading into a seemingly meaningful stage color.
-  p.stage_color=ca==='#88929b'||cb==='#88929b'?'#88929b':a===b?ca:blend(ca,cb,0.5);
+  // Use the available endpoint when its partner lacks calibrated stage data.
+  // Only a reach with no usable associated gauge stays gray.
+  p.stage_color=ca==='#88929b'?cb:cb==='#88929b'?ca:a===b?ca:blend(ca,cb,0.5);
   p.stage_gauge_a=a;p.stage_gauge_b=b;
  }
  return segments;
