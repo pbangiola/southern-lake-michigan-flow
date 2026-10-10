@@ -107,7 +107,7 @@ function applyRiverFilters(){
  for(const id of ['river-segments','river-3dhp-review','expanded-rivers','illinois-network',...(window.ednaWatershedLayerIds||[])]){
   if(!map.getLayer(id))continue;
   setLayerVisibility(id,riverToggle.checked&&riverMode!=='none');
-  map.setFilter(id,riverMode==='only'?['==',['get','filter_river'],focusRiver]:riverMode==='exclude'?['!=',['get','filter_river'],focusRiver]:null);
+  if(id!=='edna-national-rivers')map.setFilter(id,riverMode==='only'?['==',['get','filter_river'],focusRiver]:riverMode==='exclude'?['!=',['get','filter_river'],focusRiver]:null);
  }
 }
 function registerRivers(names){
@@ -207,7 +207,12 @@ map.on('load',async()=>{
    'source-layer':manifest.layer||'edna',
    paint:{'line-color':'#527d94','line-width':['interpolate',['linear'],['zoom'],3,0.5,8,1.25,13,2.5],'line-opacity':0.72}});
   window.ednaWatershedLayerIds=['edna-national-rivers'];
-  applyRiverFilters();
+  // National tiles have no filter_river property. Do not apply the regional
+  // river-name filter to this layer or MapLibre will hide every feature.
+  setLayerVisibility('edna-national-rivers',riverToggle.checked&&riverMode!=='none');
+  const source=map.getSource('edna-national-tiles');
+  if(source)console.info('National EDNA vector source ready',source);
+
  }catch(error){console.warn('National EDNA tiles unavailable:',error);}
 });
 // Load launch markers independently of gauge and river data; gauge failures must not hide launches.
