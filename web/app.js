@@ -143,6 +143,14 @@ map.on('load',async()=>{
 const putinFilter=document.getElementById('putin-filter');
 const putinCount=document.getElementById('putin-count');
 let putinFeatures=[];
+let verifiedLaunches=new Set();
+const launchKey=f=>String(f.properties?.id||f.properties?.osm_id||'').trim();
+const isVerifiedLaunch=f=>Boolean(launchKey(f)&&verifiedLaunches.has(launchKey(f)));
+function verificationLink(f){
+ const p=f.properties||{},xy=f.geometry?.coordinates||[];
+ const body=['ATLAS_LAUNCH_VERIFICATION_V1','', '**Launch ID:** '+(launchKey(f)||'No stable ID'), '**Name:** '+(p.name||'Unnamed launch'), '**Coordinates:** '+xy.join(', '),'**Map:** https://www.openstreetmap.org/?mlat='+xy[1]+'&mlon='+xy[0]+'#map=16/'+xy[1]+'/'+xy[0],'','**Evidence of a real, accessible launch (required):** ','','**Source URL or first-hand visit date:** ','','**Access restrictions, parking, and launch conditions:** ','','Verification requests are reviewed before being added to the published verified-launch registry. Submission alone does not verify a launch.'].join('\n');
+ return 'https://github.com/'+REPO+'/issues/new?'+new URLSearchParams({title:'Verify launch: '+(p.name||launchKey(f)||'unnamed'),body});
+}
 let launchDomMarkers=[];
 function renderLaunchDomMarkers(){
  for(const marker of launchDomMarkers)marker.remove();
@@ -160,13 +168,14 @@ function renderLaunchDomMarkers(){
   const count=group.features.length,xy=map.unproject([group.x/count,group.y/count]);
   const el=document.createElement('button');
   el.type='button';
-  el.title=count===1?(group.features[0].properties?.name||'Unverified launch candidate'):count+' nearby launch candidates';
+  const verified=count===1&&isVerifiedLaunch(group.features[0]);
+  el.title=count===1?(group.features[0].properties?.name||'Launch candidate')+(verified?' (verified)':' (unverified)'):count+' nearby launch candidates';
   el.setAttribute('aria-label',el.title);
   if(count===1){
-   el.style.cssText='width:19px;height:19px;padding:0;margin:0;border:1.5px solid white;border-radius:50%;background:#168447 url(https://static.thenounproject.com/png/canoe-paddles-icon-731096-512.png) center/13px 13px no-repeat;box-shadow:0 1px 4px #0008;cursor:pointer;';
+   el.style.cssText='width:19px;height:19px;padding:0;margin:0;border:1.5px solid white;border-radius:50%;background:'+(verified?'#168447':'#e0ad24')+' url(https://static.thenounproject.com/png/canoe-paddles-icon-731096-512.png) center/13px 13px no-repeat;box-shadow:0 1px 4px #0008;cursor:pointer;';
   }else{
    el.textContent=String(count);
-   el.style.cssText='width:27px;height:27px;padding:0;margin:0;border:2px solid white;border-radius:50%;background:#168447;color:white;font:bold 11px system-ui;box-shadow:0 1px 5px #0008;cursor:pointer;';
+   el.style.cssText='width:27px;height:27px;padding:0;margin:0;border:2px solid white;border-radius:50%;background:#e0ad24;color:#17252c;font:bold 11px system-ui;box-shadow:0 1px 5px #0008;cursor:pointer;';
   }
   el.addEventListener('click',event=>{
    event.stopPropagation();
@@ -177,7 +186,10 @@ function renderLaunchDomMarkers(){
     if(extent.getNorthEast().distanceTo(extent.getSouthWest())<50)map.easeTo({center:xy,zoom:Math.min(map.getZoom()+2,16)});
     else map.fitBounds(extent,{padding:75,maxZoom:16,duration:550});
    }else{
-    new maplibregl.Popup().setLngLat(xy).setText(el.title+' — unverified; confirm access before visiting.').addTo(map);
+    const node=document.createElement('div'),heading=document.createElement('strong'),info=document.createElement('p'),link=document.createElement('a');
+    heading.textContent=el.title;info.textContent=verified?'Verified in the atlas registry. Check current conditions and access before visiting.':'Unverified candidate; access and suitability not confirmed.';
+    link.textContent=verified?'Report outdated verification':'Request verification';link.href=verificationLink(group.features[0]);link.target='_blank';link.rel='noopener noreferrer';
+    node.append(heading,info,link);new maplibregl.Popup().setLngLat(xy).setDOMContent(node).addTo(map);
    }
   });
   launchDomMarkers.push(new maplibregl.Marker({element:el,anchor:'center'}).setLngLat(xy).addTo(map));
@@ -196,13 +208,14 @@ function updatePutins(){
  if(map.getSource('putins'))map.getSource('putins').setData({type:'FeatureCollection',features:filtered});
  // DOM markers provide both individual icons and clustering; hide duplicate WebGL layers.
  for(const id of ['putin-clusters','putin-counts','putins'])setLayerVisibility(id,false);
- putinCount.textContent=filtered.length+' of '+putinFeatures.length+' unverified candidates';
+ putinCount.textContent=filtered.length+' of '+putinFeatures.length+' launch candidates · '+filtered.filter(isVerifiedLaunch).length+' verified';
  renderLaunchDomMarkers();
 }
 putinToggle.addEventListener('change',updatePutins);
 putinFilter.addEventListener('change',updatePutins);
 // Publish all unverified OSM launch candidates as provisional map markers.
   try{
+   try{const registryResponse=await fetch('data/verified_launches.json',{cache:'no-store'});if(registryResponse.ok){const registry=await registryResponse.json();verifiedLaunches=new Set((registry.verified_ids||[]).map(String));}}catch(error){console.warn('Launch verification registry unavailable:',error);}
    const response=await fetch('data/putins_osm_candidates.geojson',{cache:'no-store'});
    if(response.ok){
     const putins=await response.json();
