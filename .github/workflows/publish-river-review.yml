@@ -1,0 +1,62 @@
+name: Publish gauge-linked 3DHP review layer
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/publish-river-review.yml
+
+permissions:
+  actions: read
+  contents: write
+
+concurrency:
+  group: river-review-publication
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Download tested compact candidate
+        uses: actions/download-artifact@v4
+        with:
+          name: compact-stage-review
+          run-id: 38069242067
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: local
+      - name: Verify candidate
+        run: |
+          python - <<'PY'
+          import json,os
+          source='local/stage_matched_review.geojson'
+          d=json.load(open(source))
+          n=len(d['features'])
+          assert 20000<=n<=30000, f'Unexpected feature count {n}'
+          assert all(f['geometry']['type']=='LineString' for f in d['features'])
+          assert all(f['properties'].get('river_id') for f in d['features'])
+          assert all(f['properties'].get('site') or f['properties'].get('from_gauge') for f in d['features'])
+          assert os.stat(source).st_size<25000000, 'Layer too large for browser delivery'
+          print(f'Validated {n} reaches, {os.stat(source).st_size:,} bytes')
+          PY
+      - name: Publish candidate as separate review layer
+        run: |
+          cp local/stage_matched_review.geojson data/river_segments_3dhp_review.geojson
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/river_segments_3dhp_review.geojson
+          if git diff --cached --quiet; then
+            echo 'Candidate already published'
+          else
+            git commit -m 'Publish compact 3DHP gauge-associated river review layer'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
