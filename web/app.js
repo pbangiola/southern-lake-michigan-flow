@@ -224,7 +224,19 @@ map.on('load',async()=>{
     'Reading: '+(p.stage_time??'unknown'),
     'Observed stage is not water depth or a paddling safety rating.'
    ].join('\n');
-   new maplibregl.Popup().setLngLat(event.lngLat).setText(description).addTo(map);
+   const node=document.createElement('div');
+   node.style.whiteSpace='pre-line';
+   node.textContent=description;
+   const id=siteId(p.site??p.site_no??p.id);
+   if(/^\\d{7,15}$/.test(id)){
+    const link=document.createElement('a');
+    link.href='https://waterdata.usgs.gov/monitoring-location/'+encodeURIComponent(id)+'/';
+    link.target='_blank';link.rel='noopener noreferrer';
+    link.textContent='View this gauge at USGS ↗';
+    link.style.display='block';link.style.marginTop='10px';
+    node.appendChild(link);
+   }
+   new maplibregl.Popup().setLngLat(event.lngLat).setDOMContent(node).addTo(map);
   });
   if(communityReports.length){
    map.addSource('community-reports',{type:'geojson',data:{type:'FeatureCollection',features:communityReports.map(r=>({type:'Feature',geometry:{type:'Point',coordinates:[r.lon,r.lat]},properties:{type:r.type,stage:r.stage,url:r.url}}))}});
