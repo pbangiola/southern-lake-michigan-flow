@@ -5,11 +5,35 @@ This treats connected stream lines as an undirected graph, oriented by distance
 from a selected outlet. Cycles and ambiguous snapping are reported, not silently
 declared true hydrological flow directions.
 """
-import argparse, collections, hashlib, json, math
+import argparse, collections, hashlib, json, math, zipfile
+from lxml import etree
 from pathlib import Path
 from shapely.geometry import Point, box, LineString, mapping
 from shapely.ops import nearest_points
-from build_river_segments import streams
+def streams(kmz,bounds):
+    with zipfile.ZipFile(kmz) as archive:
+        for filename in archive.namelist():
+            if not filename.lower().endswith(".kml"):continue
+            with archive.open(filename) as handle:
+                for _,elem in etree.iterparse(handle,events=("end",),tag="{*}LineString",recover=True,huge_tree=True):
+                    coords_node=elem.find("{*}coordinates")
+                    if coords_node is not None and coords_node.text:
+                        coords=[]
+                        for token in coords_node.text.split():
+                            try:
+                                lon,lat=map(float,token.split(",")[:2])
+                                coords.append((lon,lat))
+                            except (ValueError,IndexError):continue
+                        if len(coords)>1:
+                            line=LineString(coords)
+                            if line.intersects(bounds):
+                                clipped=line.intersection(bounds)
+                                if clipped.geom_type=="LineString" and clipped.length:yield clipped
+                                elif clipped.geom_type=="MultiLineString":
+                                    yield from (part for part in clipped.geoms if part.length)
+                    elem.clear()
+                    while elem.getprevious() is not None:del elem.getparent()[0]
+
 
 MOUTH=(-90.62,38.97)  # Approximate confluence; verify selected seed against map.
 BBOX=(-93.0,37.0,-86.0,44.0)
