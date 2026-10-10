@@ -9,7 +9,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: discover-putins-extract
+  group: launch-data-writers
   cancel-in-progress: false
 jobs:
   extract:
@@ -50,13 +50,30 @@ jobs:
           name: putin-extract-report
           path: data/putins_extract_report.json
           if-no-files-found: warn
-      - name: Commit discovered put-ins
+      - name: Publish extraction with conflict-safe retry
         run: |
+          set -euo pipefail
+          # Preserve the freshly extracted files separately from the checkout.
+          cp data/putins_osm_candidates.geojson /tmp/fresh-putins.geojson
+          cp data/putins_extract_report.json /tmp/fresh-putins-report.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/putins_osm_candidates.geojson data/putins_extract_report.json
-          if ! git diff --cached --quiet; then
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/fresh-putins.geojson data/putins_osm_candidates.geojson
+            cp /tmp/fresh-putins-report.json data/putins_extract_report.json
+            git add data/putins_osm_candidates.geojson data/putins_extract_report.json
+            if git diff --cached --quiet; then
+              echo "Extracted data already published."
+              exit 0
+            fi
             git commit -m "Discover put-ins from regional OSM extracts"
-            git pull --rebase origin main
-            git push origin HEAD:main
-          fi
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Concurrent update detected; retrying publication ($attempt/5)"
+            sleep 3
+          done
+          echo "::error::Could not publish after five attempts"
+          exit 1
