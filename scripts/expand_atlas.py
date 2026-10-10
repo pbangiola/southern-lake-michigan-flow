@@ -103,32 +103,50 @@ def extract_osm(elements):
                 "kayak":tags.get("kayak"),"verification":"candidate_review"}})
     return launches,rivers
 
-def usgs_tile(s,w,n,e):
-    """Discover USGS stream stations via the modern OGC API, following cursors."""
+def usgs_tile(s,w,n,e,depth=0):
+    """Discover stations; subdivide a tile if the upstream API repeats pagination."""
     base="https://api.waterdata.usgs.gov/ogcapi/v1/collections/monitoring-locations/items"
     params={"f":"json","bbox":f"{w},{s},{e},{n}","site_type_code":"ST","agency_code":"USGS","limit":100}
     url=base+"?"+urllib.parse.urlencode(params)
     result=[]
     visited=set()
-    while url:
-        if url in visited:raise RuntimeError("USGS pagination loop")
-        visited.add(url)
-        payload=json.loads(request(url))
-        if payload.get("type")!="FeatureCollection":raise ValueError("Unexpected USGS response")
-        for feature in payload.get("features",[]):
-            props=feature.get("properties") or {}
-            geom=feature.get("geometry") or {}
-            if geom.get("type")!="Point" or not geom.get("coordinates"):continue
-            if props.get("site_type_code")!="ST" or props.get("agency_code")!="USGS":continue
-            site=props.get("monitoring_location_number")
-            if not site:continue
-            result.append({"type":"Feature","geometry":geom,
-              "properties":{"site":site,"name":props.get("monitoring_location_name") or site,
-                "stage":None,"stage_time":None,"discharge":None,
-                "verification":"station_discovery_only","source":"USGS Monitoring Locations OGC API"}})
-        url=next((link.get("href") for link in payload.get("links",[]) if link.get("rel")=="next"),None)
-        if len(visited)>100:raise RuntimeError("USGS tile exceeds 100 pages; split geographic tile")
-    return result
+    try:
+        while url:
+            if url in visited:
+                raise RuntimeError("USGS pagination loop")
+            visited.add(url)
+            payload=json.loads(request(url))
+            if payload.get("type")!="FeatureCollection":
+                raise ValueError("Unexpected USGS response")
+            for feature in payload.get("features",[]):
+                props=feature.get("properties") or {}
+                geom=feature.get("geometry") or {}
+                if geom.get("type")!="Point" or not geom.get("coordinates"):
+                    continue
+                if props.get("site_type_code")!="ST" or props.get("agency_code")!="USGS":
+                    continue
+                site=props.get("monitoring_location_number")
+                if not site:
+                    continue
+                result.append({"type":"Feature","geometry":geom,
+                  "properties":{"site":site,"name":props.get("monitoring_location_name") or site,
+                    "stage":None,"stage_time":None,"discharge":None,
+                    "verification":"station_discovery_only","source":"USGS Monitoring Locations OGC API"}})
+            url=next((link.get("href") for link in payload.get("links",[]) if link.get("rel")=="next"),None)
+            if len(visited)>100:
+                raise RuntimeError("USGS tile exceeds 100 pages")
+    except RuntimeError as exc:
+        if "pagination loop" not in str(exc) and "100 pages" not in str(exc):
+            raise
+        if depth>=8 or e-w<0.03 or n-s<0.03:
+            raise RuntimeError(f"Cannot resolve pagination at bbox {w},{s},{e},{n}") from exc
+        midx=(w+e)/2
+        midy=(s+n)/2
+        print(f"Subdividing dense USGS tile ({w},{s},{e},{n}), level {depth+1}",flush=True)
+        result=[]
+        for sw,ss,se,sn in ((w,s,midx,midy),(midx,s,e,midy),(w,midy,midx,n),(midx,midy,e,n)):
+            result.extend(usgs_tile(ss,sw,sn,se,depth+1))
+    return list({f["properties"]["site"]:f for f in result}.values())
 
 def main():
     parser=argparse.ArgumentParser()
