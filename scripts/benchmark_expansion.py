@@ -12,7 +12,7 @@ import urllib.error
 from pathlib import Path
 import expand_atlas as atlas
 
-LAYERS=("launches",)  # Esri handles rivers; USGS legacy site endpoint returns 404.
+LAYERS=("launches","gauges")  # Esri handles rivers; USGS OGC handles station discovery.
 PROGRESS=Path("data/expansion_pace.json")
 TOTAL=atlas.NX*atlas.NY
 
