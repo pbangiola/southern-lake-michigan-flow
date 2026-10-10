@@ -81,25 +81,53 @@ def run(data, snap_m=5):
     features=prepare(data,snap_m)
     accepted=[]
     rejected=[]
-    for group in components(features):
-        subset=[features[i] for i in group]
+    # 3DHP mainstemid is an authoritative network identity, when populated.
+    # A changed established GNIS name marks a new identity as requested.
+    direct=[]
+    unresolved=[]
+    for f in features:
+        p=f['properties']
+        if p.get('mainstemid'):
+            direct.append(f)
+        else:
+            unresolved.append(f)
+    names=collections.defaultdict(collections.Counter)
+    for f in direct:
+        p=f['properties']
+        if p['established_name']:
+            names[str(p['mainstemid'])][p['established_name']]+=1
+    for f in direct:
+        p=f['properties']
+        main=str(p['mainstemid'])
+        name=p['established_name'] or (names[main].most_common(1)[0][0] if names[main] else '')
+        # Preserve mainstem continuity for unnamed reaches, and split known
+        # downstream renames by name. This may require local review.
+        suffix=':'+name.casefold() if p['established_name'] else ''
+        p['river_id']='3dhp:'+main+suffix
+        p['river_name']=name or 'Unidentified waterway'
+        p['filter_river']=name or p['river_id']
+        p['identity_method']='3dhp_mainstemid'
+        accepted.append(f)
+    for group in components(unresolved):
+        subset=[unresolved[i] for i in group]
         try:
             assign(subset)
         except ValueError as exc:
             rejected.append({'segments':len(group),'reason':str(exc),
-                             'sample_segment_ids':[features[i]['properties'].get('segment_id',i) for i in group[:5]]})
+                             'sample_segment_ids':[unresolved[i]['properties'].get('segment_id',i) for i in group[:5]]})
             continue
-        # Assign returns per-component IDs starting at 1. Make globally unique.
         prefix=f'component-{len(accepted)+1:06d}-'
         for f in subset:
             p=f['properties']
             p['river_id']=prefix+p['river_id']
+            p['identity_method']='directed_topology'
             if p['filter_river'].startswith('river-'):
                 p['filter_river']=p['river_id']
         accepted.extend(subset)
     result={'type':'FeatureCollection','metadata':{
         'direction_source':'USGS 3DHP flowdirection 1/2 when present; otherwise verified downstream coordinate order',
         'input_segments':len(features),'accepted_segments':len(accepted),
+        'mainstem_segments':len(direct),
         'rejected_segments':sum(x['segments'] for x in rejected),
         'rejected_components':rejected,
         'note':'Do not feed EDNA stream geometry without independently verified direction.'
