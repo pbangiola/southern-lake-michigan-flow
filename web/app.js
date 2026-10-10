@@ -180,6 +180,7 @@ putinFilter.addEventListener('change',updatePutins);
       }
      }
      }
+     putinCount.textContent='Loaded '+putinFeatures.length+' launch candidates; rendering map markers…';
      map.addSource('putins',{type:'geojson',data:{type:'FeatureCollection',features:putinFeatures},cluster:true,clusterRadius:45,clusterMaxZoom:12});
      map.addLayer({id:'putin-clusters',type:'circle',source:'putins',filter:['has','point_count'],paint:{'circle-color':'#269b58','circle-radius':['step',['get','point_count'],13,10,18,50,24],'circle-stroke-color':'#fff','circle-stroke-width':1.5}});
      map.addLayer({id:'putin-counts',type:'symbol',source:'putins',filter:['has','point_count'],layout:{'text-field':['get','point_count_abbreviated'],'text-size':12},paint:{'text-color':'#fff'}});
