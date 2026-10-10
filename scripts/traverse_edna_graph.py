@@ -73,7 +73,6 @@ def traverse(edges,adj,mouth,limit,state,existing):
                                          "orientation":"outlet-rooted graph traversal; not verified hydrologic flow",
                                          "source_kmz":e["source"]}})
             if other not in seen_nodes:queue.append(other)
-            if len(output)>=limit:break
     result={"type":"FeatureCollection","features":output,"metadata":{
         "root":list(root),"root_distance_degrees":distance,
         "new_segments":len(output),"total_processed_edges":len(seen_edges),
