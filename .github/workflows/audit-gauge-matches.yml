@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - scripts/audit_gauge_edna_matches.py
+      - scripts/test_gauge_scale_error.py
 permissions:
   contents: read
 jobs:
@@ -13,9 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install matching dependencies
-        run: python -m pip install shapely pyproj ijson
+        run: python -m pip install shapely pyproj ijson numpy
       - name: Calculate gauge-to-river distances
         run: python -u scripts/audit_gauge_edna_matches.py
+      - name: Test radial and directional scale errors
+        run: python -u scripts/test_gauge_scale_error.py
       - name: Upload matching report
         uses: actions/upload-artifact@v4
         with:
