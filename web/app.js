@@ -199,7 +199,13 @@ putinFilter.addEventListener('change',updatePutins);
     const putins=await response.json();
     if(putins.type==='FeatureCollection'&&Array.isArray(putins.features)){
      putinFeatures=putins.features;
-     map.addSource('putins',{type:'geojson',data:putins,cluster:true,clusterRadius:45,clusterMaxZoom:12});
+     const extra=await fetch('data/regional_launches.geojson').then(r=>r.ok?r.json():null);
+     if(extra&&Array.isArray(extra.features)){
+      for(const feature of extra.features){
+       if(!putinFeatures.some(existing=>JSON.stringify(existing.geometry?.coordinates)===JSON.stringify(feature.geometry?.coordinates)))putinFeatures.push(feature);
+      }
+     }
+     map.addSource('putins',{type:'geojson',data:{type:'FeatureCollection',features:putinFeatures},cluster:true,clusterRadius:45,clusterMaxZoom:12});
      // Crossed canoe paddles, rendered as a scalable green map symbol.
      const paddleCanvas=document.createElement('canvas');
      paddleCanvas.width=64;paddleCanvas.height=64;
