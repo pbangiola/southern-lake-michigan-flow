@@ -148,13 +148,25 @@ const launchKey=f=>String(f.properties?.id||f.properties?.osm_id||'').trim();
 const isVerifiedLaunch=f=>Boolean(launchKey(f)&&verifiedLaunches.has(launchKey(f)));
 const LOCAL_VERIFICATIONS_KEY='atlas-verified-launches-v1';
 try{for(const id of JSON.parse(localStorage.getItem(LOCAL_VERIFICATIONS_KEY)||'[]'))verifiedLaunches.add(String(id));}catch(error){console.warn('Could not read local launch verifications:',error);}
-function toggleLaunchVerification(f){
+async function toggleLaunchVerification(f){
  const id=launchKey(f);
- if(!id){alert('This launch has no stable ID, so verification cannot be saved.');return;}
- if(verifiedLaunches.has(id))verifiedLaunches.delete(id);else verifiedLaunches.add(id);
- try{localStorage.setItem(LOCAL_VERIFICATIONS_KEY,JSON.stringify([...verifiedLaunches]));}
- catch(error){console.warn('Launch verification could not be saved:',error);}
+ if(!id){alert('This launch has no stable ID, so verification cannot be saved.');return false;}
+ const verified=!verifiedLaunches.has(id),endpoint=window.LAUNCH_VERIFICATION_API;
+ if(endpoint){
+  try{
+   const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id,verified})});
+   if(!response.ok)throw new Error('HTTP '+response.status);
+  }catch(error){alert('Shared verification could not be saved. Please try again. ('+error.message+')');return false;}
+ }else{
+  try{
+   const saved=new Set(JSON.parse(localStorage.getItem(LOCAL_VERIFICATIONS_KEY)||'[]').map(String));
+   if(verified)saved.add(id);else saved.delete(id);
+   localStorage.setItem(LOCAL_VERIFICATIONS_KEY,JSON.stringify([...saved]));
+  }catch(error){alert('Could not save launch verification locally.');return false;}
+ }
+ if(verified)verifiedLaunches.add(id);else verifiedLaunches.delete(id);
  updatePutins();
+ return true;
 }
 
 let launchDomMarkers=[];
@@ -194,10 +206,10 @@ function renderLaunchDomMarkers(){
    }else{
     const feature=group.features[0],node=document.createElement('div'),heading=document.createElement('strong'),info=document.createElement('p'),button=document.createElement('button');
     heading.textContent=el.title;
-    info.textContent=verified?'Marked verified in this browser. Check current access before visiting.':'Unverified launch candidate.';
+    info.textContent=verified?'Marked verified. Check current access before visiting.':'Unverified launch candidate.';
     button.type='button';button.textContent=verified?'Unverify launch':'Verify launch';
     button.style.margin='6px 0';
-    button.onclick=()=>{toggleLaunchVerification(feature);popup.remove();};
+    button.onclick=async()=>{button.disabled=true;button.textContent='Saving…';if(await toggleLaunchVerification(feature))popup.remove();else{button.disabled=false;button.textContent=verified?'Unverify launch':'Verify launch';}};
     node.append(heading,info,button);
     const popup=new maplibregl.Popup().setLngLat(xy).setDOMContent(node).addTo(map);
    }
