@@ -66,7 +66,7 @@ def main():
     a.add_argument("--nationwide",action="store_true",help="Scan CONUS in bounded geographic cells (discovery only)")
     a.add_argument("--illinois-basin",action="store_true",help="Prioritize Illinois River basin discovery grid; not a watershed boundary")
     args=a.parse_args()
-    network=load(args.network);features=network.get("features",[])[:args.max_features]
+    features=[] if (args.nationwide or args.illinois_basin) else load(args.network).get("features",[])[:args.max_features]
     statepath=Path(args.state)
     state=json.loads(statepath.read_text()) if statepath.exists() else {"cursor":0}
     cursor=state.get("cursor",0);boxes=[]
