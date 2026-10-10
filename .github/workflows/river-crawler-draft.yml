@@ -1,4 +1,4 @@
-name: 02 · Illinois — Find Gauges & Boat Launches
+name: DATA 2 - Discover river gauges and boat launches
 on:
   workflow_dispatch:
   schedule:
