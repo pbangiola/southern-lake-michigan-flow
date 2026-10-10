@@ -139,7 +139,7 @@ function qualifiesPutin(f){
 function updatePutins(){
  const filtered=putinFeatures.filter(qualifiesPutin);
  if(map.getSource('putins'))map.getSource('putins').setData({type:'FeatureCollection',features:filtered});
- for(const id of ['putin-clusters','putin-counts','putins','putin-paddles'])setLayerVisibility(id,putinToggle.checked);
+ for(const id of ['putin-clusters','putin-counts','putins'])setLayerVisibility(id,putinToggle.checked);
  putinCount.textContent=filtered.length+' of '+putinFeatures.length+' unverified candidates';
 }
 putinToggle.addEventListener('change',updatePutins);
@@ -162,7 +162,7 @@ putinFilter.addEventListener('change',updatePutins);
        }
       }
      }catch(error){console.warn('Consolidated launch layer unavailable:',error);}
-     if(consolidated?.type==='FeatureCollection'&&Array.isArray(consolidated.features)){
+     if(consolidated?.type==='FeatureCollection'&&Array.isArray(consolidated.features)&&consolidated.features.length>0){
       putinFeatures=consolidated.features;
      }else{
      let extra=null;
@@ -181,28 +181,12 @@ putinFilter.addEventListener('change',updatePutins);
      }
      }
      map.addSource('putins',{type:'geojson',data:{type:'FeatureCollection',features:putinFeatures},cluster:true,clusterRadius:45,clusterMaxZoom:12});
-     // Crossed canoe paddles, rendered as a scalable green map symbol.
-     const paddleCanvas=document.createElement('canvas');
-     paddleCanvas.width=64;paddleCanvas.height=64;
-     const ctx=paddleCanvas.getContext('2d');
-     ctx.strokeStyle='#176c3b';ctx.fillStyle='#269b58';ctx.lineCap='round';
-     for(const angle of [-Math.PI/4,Math.PI/4]){
-      ctx.save();ctx.translate(32,32);ctx.rotate(angle);
-      ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(0,-22);ctx.lineTo(0,14);ctx.stroke();
-      ctx.beginPath();ctx.moveTo(-5,13);ctx.quadraticCurveTo(-8,24,0,27);ctx.quadraticCurveTo(8,24,5,13);ctx.closePath();ctx.fill();ctx.lineWidth=2;ctx.stroke();
-      ctx.restore();
-     }
-     map.addImage('crossed-canoe-paddles',ctx.getImageData(0,0,64,64),{pixelRatio:2});
      map.addLayer({id:'putin-clusters',type:'circle',source:'putins',filter:['has','point_count'],paint:{'circle-color':'#269b58','circle-radius':['step',['get','point_count'],13,10,18,50,24],'circle-stroke-color':'#fff','circle-stroke-width':1.5}});
      map.addLayer({id:'putin-counts',type:'symbol',source:'putins',filter:['has','point_count'],layout:{'text-field':['get','point_count_abbreviated'],'text-size':12},paint:{'text-color':'#fff'}});
      // A circle layer guarantees visible markers even when custom icon rendering fails.
      map.addLayer({id:'putins',type:'circle',source:'putins',filter:['!',['has','point_count']],paint:{
       'circle-radius':['interpolate',['linear'],['zoom'],6,6,11,9],
       'circle-color':'#269b58','circle-stroke-color':'#ffffff','circle-stroke-width':2
-     }});
-     map.addLayer({id:'putin-paddles',type:'symbol',source:'putins',filter:['!',['has','point_count']],layout:{
-      'icon-image':'crossed-canoe-paddles','icon-size':['interpolate',['linear'],['zoom'],6,0.75,11,1.15],
-      'icon-allow-overlap':true,'icon-ignore-placement':true
      }});
      updatePutins();
      console.info('Launch map layers loaded:',putinFeatures.length,'candidates');
@@ -216,7 +200,7 @@ putinFilter.addEventListener('change',updatePutins);
      });
     }
    }
-  }catch(e){console.warn('Put-in candidates unavailable:',e);}
+  }catch(e){console.error('Put-in candidates unavailable:',e);putinCount.textContent='Launch loading error: '+e.message;}
 
 });
 
