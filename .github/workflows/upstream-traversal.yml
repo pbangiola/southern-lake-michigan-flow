@@ -21,8 +21,8 @@ jobs:
         shell: bash
         run: |
           if [ ! -f data/directed_reaches.geojson ]; then
-            echo "::notice::Awaiting export of authoritative reaches with reach_id, downstream_id and terminal_type; no direction is fabricated."
-            exit 0
+            echo "::error::Missing data/directed_reaches.geojson: directed hydrography must be imported before traversal can run."
+            exit 1
           fi
           python scripts/traverse_upstream.py --network data/directed_reaches.geojson --limit 1000
       - name: Persist progress
