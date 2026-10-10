@@ -53,17 +53,25 @@ def main():
                 for segment_id,source,geo in candidates:
                     near=nearest_points(point,shape(json.loads(geo)))[1]
                     distance=GEOD.inv(lon,lat,near.x,near.y)[2]
-                    if best is None or distance<best[0]:best=(distance,segment_id,source)
+                    if best is None or distance<best[0]:best=(distance,segment_id,source,float(near.x),float(near.y))
                 if best and best[0]<=radius:break
             dist=round(best[0],1) if best else None
+            azimuth,_,_=GEOD.inv(lon,lat,best[3],best[4]) if best else (None,None,None)
+            east_m=round(best[0]*math.sin(math.radians(azimuth)),1) if best else None
+            north_m=round(best[0]*math.cos(math.radians(azimuth)),1) if best else None
             for threshold in RADII:
                 if dist is not None and dist<=threshold:counts[str(threshold)]+=1
-            rows.append({"noaa_lid":lid,"name":p.get("name"),"state":p.get("state"),"lon":lon,"lat":lat,"nearest_m":dist,"edna_segment_id":best[1] if best else "","edna_source":best[2] if best else "","has_stage":p.get("stage") is not None,"has_flood_stage":p.get("flood_stage_ft") is not None,"has_low_stage":p.get("low_water_stage_ft") is not None})
+            rows.append({"noaa_lid":lid,"name":p.get("name"),"state":p.get("state"),"lon":lon,"lat":lat,"nearest_m":dist,"river_lon":best[3] if best else None,"river_lat":best[4] if best else None,"river_east_of_gauge_m":east_m,"river_north_of_gauge_m":north_m,"edna_segment_id":best[1] if best else "","edna_source":best[2] if best else "","has_stage":p.get("stage") is not None,"has_flood_stage":p.get("flood_stage_ft") is not None,"has_low_stage":p.get("low_water_stage_ft") is not None})
     db.close()
     (OUT/"spatial_index.sqlite").unlink(missing_ok=True)
     with (OUT/"matches.csv").open("w",newline="") as f:
         w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
-    summary={"total_edna_segments":index,"gauges_with_valid_coordinates":len(rows),"within_meters":counts,"with_current_stage":sum(r["has_stage"] for r in rows),"with_flood_stage":sum(r["has_flood_stage"] for r in rows),"with_low_stage":sum(r["has_low_stage"] for r in rows),"note":"50 m diameter gauge circle overlaps a river iff nearest distance <=25 m. This is exact continuous-geometry overlap (no bitmap aliasing). Nearest geometric feature only; no river-name or connectivity validation."}
+    directional=[r for r in rows if r["nearest_m"] is not None and r["nearest_m"]<=1000]
+    directional.sort(key=lambda r:r["river_east_of_gauge_m"])
+    east=[r["river_east_of_gauge_m"] for r in directional]
+    north=sorted(r["river_north_of_gauge_m"] for r in directional)
+    directional_summary={"gauges_within_1km":len(directional),"mean_river_east_of_gauge_m":round(sum(east)/len(east),1) if east else None,"mean_river_north_of_gauge_m":round(sum(north)/len(north),1) if north else None,"median_river_east_of_gauge_m":east[len(east)//2] if east else None,"median_river_north_of_gauge_m":north[len(north)//2] if north else None,"river_east_of_gauge_count":sum(x>0 for x in east),"river_west_of_gauge_count":sum(x<0 for x in east)}
+    summary={"directional_offsets":directional_summary,"total_edna_segments":index,"gauges_with_valid_coordinates":len(rows),"within_meters":counts,"with_current_stage":sum(r["has_stage"] for r in rows),"with_flood_stage":sum(r["has_flood_stage"] for r in rows),"with_low_stage":sum(r["has_low_stage"] for r in rows),"note":"50 m diameter gauge circle overlaps a river iff nearest distance <=25 m. This is exact continuous-geometry overlap (no bitmap aliasing). Nearest geometric feature only; no river-name or connectivity validation."}
     (OUT/"summary.json").write_text(json.dumps(summary,indent=2))
     print(json.dumps(summary,indent=2),flush=True)
 if __name__=="__main__":main()
