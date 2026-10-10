@@ -98,6 +98,10 @@ function palette(p){
  if(t<=.75)return blend('#299b59','#e8cf44',(t-.45)/.30);
  return blend('#e8cf44','#d93b32',(t-.75)/.25);
 }
+function riverName(raw){const m=String(raw||'').match(/^(.+?\\b(?:RIVER|CREEK|BROOK|CANAL|DITCH|BRANCH|FORK|RUN))\\b/i);return m?m[1].toLowerCase().replace(/\\b[a-z]/g,x=>x.toUpperCase()):'Unidentified waterway';}
+const selectedRivers=new Set();let riverNames=[];
+function applyRiverFilters(){for(const id of ['river-segments','paddling-routes'])if(map.getLayer(id))map.setFilter(id,['in',['get','river_name'],['literal',[...selectedRivers]]]);}
+function registerRivers(names){const root=document.getElementById('river-list');if(!root)return;for(const name of names)if(!selectedRivers.has(name)&&!riverNames.includes(name)){selectedRivers.add(name);riverNames.push(name);}riverNames.sort();root.replaceChildren();for(const name of riverNames){const label=document.createElement('label'),input=document.createElement('input');input.type='checkbox';input.checked=selectedRivers.has(name);input.onchange=()=>{if(input.checked)selectedRivers.add(name);else selectedRivers.delete(name);applyRiverFilters();};label.append(input,document.createTextNode(' '+name));root.append(label);}applyRiverFilters();}
 // River colors use graph-nearest gauge attribution, not verified flow direction.
 function colorRiverNetwork(segments,gauges){
  const bySite=new Map(gauges.map(f=>[siteId(f.properties.site),f.properties]));
@@ -110,6 +114,7 @@ function colorRiverNetwork(segments,gauges){
   // Only a reach with no usable associated gauge stays gray.
   p.stage_color=ca==='#88929b'?cb:cb==='#88929b'?ca:a===b?ca:blend(ca,cb,0.5);
   p.stage_gauge_a=a;p.stage_gauge_b=b;
+  p.river_name=riverName(bySite.get(a)?.name||bySite.get(b)?.name);
  }
  return segments;
 }
@@ -140,6 +145,7 @@ map.on('load',async()=>{
     const segments=await response.json();
     if(segments.type!=='FeatureCollection'||!Array.isArray(segments.features))throw new Error('Invalid river segments GeoJSON');
     colorRiverNetwork(segments,gaugeFeatures);
+    registerRivers(segments.features.map(f=>f.properties.river_name));
     map.addSource('river-segments',{type:'geojson',data:segments});
     map.addLayer({id:'river-segments',type:'line',source:'river-segments',paint:{
      'line-color':['get','stage_color'],'line-width':['interpolate',['linear'],['zoom'],6,1.5,10,3,13,5],
@@ -186,6 +192,8 @@ map.on('load',async()=>{
    const routes=await routesResponse.json();
    if(routes.type!=='FeatureCollection'||!Array.isArray(routes.features))throw new Error('Invalid route GeoJSON');
    routeCount=routes.features.length;
+   for(const f of routes.features){f.properties=f.properties||{};f.properties.river_name=riverName(f.properties.name);}
+   registerRivers(routes.features.map(f=>f.properties.river_name));
    map.addSource('paddling-routes',{type:'geojson',data:routes});
    map.addLayer({id:'paddling-routes',type:'line',source:'paddling-routes',paint:{
     'line-color':'#a329db',
