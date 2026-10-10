@@ -20,7 +20,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Discover river-adjacent gauge and launch candidates
-        run: python scripts/river_crawler.py --network data/river_segments_3dhp_review.geojson --max-boxes 3
+        run: |\n          mkdir -p local\n          if [ -f data/river_crawler_state.json ]; then cp data/river_crawler_state.json local/river_crawler_state.json; fi\n          python scripts/river_crawler.py --network data/river_segments_3dhp_review.geojson --max-boxes 3
       - name: Validate and publish candidate map data
         run: python scripts/publish_crawler_candidates.py
       - name: Persist crawler cursor and validated candidates
