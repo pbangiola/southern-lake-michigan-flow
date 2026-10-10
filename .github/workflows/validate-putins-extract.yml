@@ -1,0 +1,43 @@
+name: Validate put-in extraction (tiny sample)
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/validate-putins-extract.yml'
+permissions:
+  contents: read
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install OSM parser
+        run: python3 -m pip install --user osmium
+      - name: Validate tagged node, named node, tagged way and exclusion rules
+        run: |
+          cat > /tmp/putins-smoke.osm <<'OSM'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <osm version="0.6" generator="atlas-smoke-test">
+            <node id="12396073908" lat="42.3686995" lon="-87.9177405" version="1"><tag k="name" v="Des Plaines River Canoe Launch at Gowe Park"/><tag k="canoe" v="yes"/><tag k="leisure" v="slipway"/><tag k="access" v="yes"/></node>
+            <node id="9000000001" lat="42.37" lon="-87.91" version="1"><tag k="name" v="Example Kayak Landing"/></node>
+            <node id="9000000002" lat="42.37" lon="-87.90" version="1"><tag k="name" v="Private Boat Launch"/><tag k="access" v="private"/></node>
+            <node id="9000000003" lat="42.38" lon="-87.91" version="1"/>
+            <node id="9000000004" lat="42.39" lon="-87.92" version="1"/>
+            <way id="9000000005" version="1"><nd ref="9000000003"/><nd ref="9000000004"/><tag k="waterway" v="access_point"/></way>
+          </osm>
+          OSM
+          python3 - <<'PY'
+          import sys
+          sys.path.insert(0, 'scripts')
+          from discover_putins_extract import scan, PATTERN
+          assert PATTERN.search('Example Kayak Landing'), 'Named-launch regex is broken'
+          found = scan('illinois', '/tmp/putins-smoke.osm')
+          assert set(found) == {'osm-node-12396073908', 'osm-node-9000000001', 'osm-way-9000000005'}, list(found)
+          gowe = found['osm-node-12396073908']
+          assert gowe['geometry']['coordinates'] == [-87.9177405, 42.3686995]
+          assert gowe['properties']['name'] == 'Des Plaines River Canoe Launch at Gowe Park'
+          assert found['osm-way-9000000005']['geometry']['coordinates'] == [-87.915, 42.385]
+          print('PASS: named launches, tagged nodes, way coordinates, private exclusion, and Gowe Park reference')
+          PY
