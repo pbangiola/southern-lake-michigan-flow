@@ -24,6 +24,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/noaa_gauges.geojson
-          git commit -m "Publish national NOAA priority gauge data"
-          git pull --rebase origin main
-          git push origin HEAD:main
+          if git diff --cached --quiet; then
+            echo "NOAA gauge dataset unchanged; nothing to commit."
+          else
+            git commit -m "Publish national NOAA priority gauge data"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
