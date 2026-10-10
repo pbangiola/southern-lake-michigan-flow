@@ -7,7 +7,7 @@ Run from repository root:
 
 This intentionally does NOT infer paddling safety or hydraulic conditions.
 """
-import argparse, heapq, json, math, zipfile
+import argparse, heapq, json, math, re, zipfile
 from pathlib import Path
 from lxml import etree
 from shapely.geometry import LineString, Point, box, mapping
@@ -45,6 +45,17 @@ def streams(kmz,bbox):
                 elem.clear()
                 while elem.getprevious() is not None:del elem.getparent()[0]
 
+def river_name(description):
+    """Best-effort waterway name from a USGS station title; never assert for tributaries."""
+    text=str(description or '').upper()
+    m=re.match(r"^(.+?\\b(?:RIVER|CREEK|BROOK|CANAL|DITCH|BRANCH|FORK|RUN))\\b",text)
+    return m.group(1).title() if m else "Unidentified waterway"
+
+def geometry_key(coords):
+    """Canonicalize both directions to remove exact overlapping EDNA lines."""
+    points=tuple((round(x,7),round(y,7)) for x,y in coords)
+    return min(points,points[::-1])
+
 def main():
     p=argparse.ArgumentParser()
     p.add_argument('kmz',nargs='+',type=Path)
@@ -70,11 +81,16 @@ def main():
     def node(xy):
         x,y=metric(xy,lat)
         return ('n',round(x*1000/snap_m),round(y*1000/snap_m))
-    lines=[];projected=[];ends=[]
+    lines=[];projected=[];ends=[];seen_lines=set();duplicates_skipped=0
     for kmz in a.kmz:
         count=0
         for line in streams(kmz,bbox):
             if line.length==0:continue
+            key=geometry_key(line.coords)
+            if key in seen_lines:
+                duplicates_skipped+=1
+                continue
+            seen_lines.add(key)
             u,v=node(line.coords[0]),node(line.coords[-1])
             if u==v:continue
             lines.append((line,kmz.name))
@@ -131,7 +147,7 @@ def main():
             if nd<dist.get(v,float('inf'))-1e-9:
                 dist[v]=nd;owner[v]=gidx
                 heapq.heappush(queue,(nd,gidx,v))
-    output=[];between=0
+    output=[];between=0;seen_segments=set();duplicate_segments=0
     for i,k,u,v,coords in edges:
         if u not in owner and v not in owner:continue
         left=owner.get(u);right=owner.get(v)
@@ -140,8 +156,13 @@ def main():
         if left!=right:between+=1
         chosen=left if dist.get(u,float('inf'))<=dist.get(v,float('inf')) else right
         sid,_,name=stations[chosen]
+        key=geometry_key(coords)
+        if key in seen_segments:
+            duplicate_segments+=1
+            continue
+        seen_segments.add(key)
         output.append({'type':'Feature','geometry':mapping(LineString(coords)),'properties':{
-            'site':sid,'gauge_name':name,
+            'site':sid,'gauge_name':name,'river_name':river_name(name),
             'from_gauge':stations[left][0],
             'to_gauge':stations[right][0],
             'between_gauges':left!=right,
@@ -153,9 +174,10 @@ def main():
         'max_distance_m':a.max_distance_m,'endpoint_snap_m':snap_m,
         'source_files':[p.name for p in a.kmz],
         'source_lines':len(lines),'matched_gauges':len(seed),
-        'between_gauge_edges':between},'features':output}
+        'between_gauge_edges':between,'duplicate_source_lines_skipped':duplicates_skipped,'duplicate_output_segments_skipped':duplicate_segments,'river_name_method':'inferred from controlling USGS station; may not name tributaries','flow_direction_verified':False},'features':output}
     a.output.parent.mkdir(parents=True,exist_ok=True)
     a.output.write_text(json.dumps(result,separators=(',',':')))
+    print(f'Skipped {duplicates_skipped} duplicate source lines and {duplicate_segments} duplicate output segments',flush=True)
     print(f'Wrote {len(output)} connected stream segments; {between} between-gauge edges; {len(seed)} matched gauges to {a.output}')
 
 if __name__=='__main__':main()
