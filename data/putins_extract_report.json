@@ -1,0 +1,24 @@
+{
+  "method": "Geofabrik state PBF streamed with pyosmium",
+  "states": {
+    "illinois": {
+      "matches": 772,
+      "new_ids": 759
+    },
+    "indiana": {
+      "matches": 155,
+      "new_ids": 131
+    },
+    "michigan": {
+      "matches": 336,
+      "new_ids": 321
+    },
+    "wisconsin": {
+      "matches": 304,
+      "new_ids": 282
+    }
+  },
+  "new_candidates": 0,
+  "candidate_count": 1509,
+  "warning": "Candidates are unverified; motorboat slipways and nonpublic access may be present."
+}
