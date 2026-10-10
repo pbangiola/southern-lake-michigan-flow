@@ -179,8 +179,8 @@ const putinCount=document.getElementById('putin-count');
 let putinFeatures=[];
 function qualifiesPutin(f){
  const p=f.properties||{},mode=putinFilter.value;
- if(mode==='public')return ['yes','public','designated'].includes(String(p.access||'').toLowerCase());
- if(mode==='paddling')return p.canoe==='yes'||p.kayak==='yes'||/canoe|kayak/i.test(p.name||'');
+ if(mode==='public')return ['yes','public','designated'].includes(String(p.access||'').toLowerCase()); // Regional list has no explicit access=public tag.
+ if(mode==='paddling')return p.canoe==='yes'||p.kayak==='yes'||/canoe|kayak/i.test((p.name||'')+' '+(p.allowed_watercraft||''));
  if(mode==='named')return Boolean(p.name)&&!/^osm-(node|way)-/i.test(p.name);
  return true;
 }
@@ -199,10 +199,18 @@ putinFilter.addEventListener('change',updatePutins);
     const putins=await response.json();
     if(putins.type==='FeatureCollection'&&Array.isArray(putins.features)){
      putinFeatures=putins.features;
-     const extra=await fetch('data/regional_launches.geojson').then(r=>r.ok?r.json():null);
-     if(extra&&Array.isArray(extra.features)){
+     let extra=null;
+     try{
+      const extraResponse=await fetch('data/regional_launches.geojson',{cache:'no-store'});
+      if(extraResponse.ok)extra=await extraResponse.json();
+     }catch(error){console.warn('Regional launch list unavailable:',error);}
+     if(extra?.type==='FeatureCollection'&&Array.isArray(extra.features)){
+      const coordinateKey=f=>JSON.stringify(f.geometry?.coordinates);
+      const seen=new Set(putinFeatures.map(coordinateKey));
       for(const feature of extra.features){
-       if(!putinFeatures.some(existing=>JSON.stringify(existing.geometry?.coordinates)===JSON.stringify(feature.geometry?.coordinates)))putinFeatures.push(feature);
+       if(feature.geometry?.type!=='Point'||!Array.isArray(feature.geometry.coordinates))continue;
+       const key=coordinateKey(feature);
+       if(!seen.has(key)){putinFeatures.push(feature);seen.add(key);}
       }
      }
      map.addSource('putins',{type:'geojson',data:{type:'FeatureCollection',features:putinFeatures},cluster:true,clusterRadius:45,clusterMaxZoom:12});
