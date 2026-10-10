@@ -44,10 +44,12 @@ def assign(features):
         node=q.popleft()
         parents=incoming[node]
         # Continue the longest upstream river, not the longest individual reach.
-        winner=max(parents,key=lambda i:(best_length[i],-i)) if parents else None
         for i in outgoing[node]:
             f=features[i];p=f['properties']
             explicit=str(p.get('established_name') or '').strip()
+            matching=[j for j in parents if explicit and names.get(identity[j],'').casefold()==explicit.casefold()]
+            candidates=matching or parents
+            winner=max(candidates,key=lambda j:(best_length[j],-j)) if candidates else None
             inherited=identity.get(winner)
             parent_name=names.get(inherited,'') if inherited else ''
             if explicit and explicit.casefold()!=parent_name.casefold():
