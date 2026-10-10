@@ -1,0 +1,62 @@
+name: Illinois confluence graph pilot
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '47 * * * *'
+permissions:
+  contents: write
+concurrency:
+  group: illinois-confluence-pilot
+  cancel-in-progress: false
+jobs:
+  traverse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install stream geometry dependencies
+        run: python -m pip install shapely lxml
+      - name: Fetch Mississippi watershed KMZ
+        run: |
+          mkdir -p local/edna
+          python - <<'PY'
+          import urllib.request
+          url="https://edna.usgs.gov/watersheds/sheds/mississippi/mississippi.kmz"
+          urllib.request.urlretrieve(url,"local/edna/mississippi.kmz")
+          PY
+      - name: Traverse connected EDNA lines from Illinois mouth
+        run: |
+          python scripts/traverse_edna_graph.py local/edna/mississippi.kmz --limit 1000
+      - name: Commit checkpoint and discovered segments
+        run: |
+          python - <<'PY'
+          import json,pathlib
+          src=pathlib.Path("local/illinois_graph_batch.geojson")
+          if not src.exists():raise SystemExit("No batch was produced")
+          batch=json.loads(src.read_text())
+          if batch["features"]:
+              state=json.loads(pathlib.Path("data/illinois_graph_state.json").read_text())
+              dest=pathlib.Path("data/illinois_batches")
+              dest.mkdir(parents=True,exist_ok=True)
+              filename=dest/("batch_%08d.geojson"%state["processed"])
+              filename.write_text(src.read_text())
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/illinois_graph_state.json data/illinois_batches/
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish Illinois confluence traversal batch"
+            git push
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: illinois-confluence-diagnostics
+          path: |
+            local/illinois_graph_batch.geojson
+          if-no-files-found: ignore
