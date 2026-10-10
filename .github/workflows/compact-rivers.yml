@@ -1,0 +1,50 @@
+name: Compact statewide river review layer
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/compact-rivers.yml
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  compact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'shapely>=2,<3' ijson
+      - name: Reuse completed authoritative build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: statewide-river-candidate
+          run-id: 38060674591
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: local
+      - name: Export compact stage-associated review layer
+        run: |
+          python scripts/export_stage_review.py \
+            local/named_rivers_with_stage.geojson \
+            --output local/stage_matched_review.geojson
+      - name: Validate size and coverage
+        run: |
+          python - <<'PY'
+          import json,os
+          p='local/stage_matched_review.geojson'
+          d=json.load(open(p))
+          assert d['features'], 'Review layer unexpectedly empty'
+          assert all('river_id' in f['properties'] for f in d['features'])
+          print('Features:',len(d['features']))
+          print('Bytes:',os.stat(p).st_size)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: compact-stage-review
+          path: local/stage_matched_review.geojson
+          retention-days: 14
