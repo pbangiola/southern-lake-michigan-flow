@@ -13,6 +13,7 @@ const legend=document.getElementById('map-legend');
 function setLayerVisibility(id,visible){if(map.getLayer(id))map.setLayoutProperty(id,'visibility',visible?'visible':'none');}
 window.addEventListener('resize',()=>map.resize());
 gaugeToggle.addEventListener('change',()=>{
+ setLayerVisibility('noaa-national-gauges',gaugeToggle.checked);
  if(map.getLayer('gauges'))map.setLayoutProperty('gauges','visibility',gaugeToggle.checked?'visible':'none');
  setLayerVisibility('expanded-gauges',gaugeToggle.checked);
 });
@@ -210,6 +211,53 @@ map.on('load',async()=>{
 
  }catch(error){console.warn('National EDNA tiles unavailable:',error);}
 });
+
+// Nationwide NOAA NWPS gauges, independent of regional USGS gauge loading.
+map.on('load',async()=>{
+ try{
+  const response=await fetch('data/noaa_gauges.geojson',{cache:'no-store'});
+  if(!response.ok)throw new Error('NOAA gauges HTTP '+response.status);
+  const data=await response.json();
+  if(data.type!=='FeatureCollection'||!Array.isArray(data.features))throw new Error('Invalid NOAA gauge GeoJSON');
+  const valid=data.features.filter(f=>f.geometry?.type==='Point'&&Array.isArray(f.geometry.coordinates)&&f.geometry.coordinates.length>=2&&f.geometry.coordinates.slice(0,2).every(Number.isFinite));
+  let colored=0;
+  for(const f of valid){
+   const p=f.properties||(f.properties={});
+   // NOAA fields: stage, flood_stage_ft, low_water_stage_ft.
+   // Without a defensible mean, color by flood and low thresholds only.
+   const stage=finite(p.stage),flood=finite(p.flood_stage_ft),low=finite(p.low_water_stage_ft);
+   p.noaa_color=stage===null?'#88929b':
+    flood!==null&&stage>=flood?'#d3232f':
+    low!==null&&stage<=low?'#24150c':
+    flood!==null?'#1768c5':'#88929b';
+   if(p.noaa_color!=='#88929b')colored++;
+  }
+  map.addSource('noaa-national-gauges',{type:'geojson',data:{type:'FeatureCollection',features:valid}});
+  map.addLayer({id:'noaa-national-gauges',type:'circle',source:'noaa-national-gauges',
+   paint:{'circle-radius':['interpolate',['linear'],['zoom'],3,3,7,4.5,11,6],
+    'circle-color':['get','noaa_color'],'circle-stroke-color':'#ffffff','circle-stroke-width':1,'circle-opacity':0.9}});
+  setLayerVisibility('noaa-national-gauges',gaugeToggle.checked);
+  map.on('click','noaa-national-gauges',event=>{
+   if(reportButton.getAttribute('aria-pressed')==='true')return;
+   const p=event.features[0].properties||{};
+   const node=document.createElement('div');node.style.whiteSpace='pre-line';
+   node.textContent=[p.name||'NOAA NWPS gauge',
+    'Station: '+(p.noaa_lid||'unknown'),
+    'Stage: '+(p.stage??'unavailable')+' ft',
+    'Flood stage: '+(p.flood_stage_ft??'unavailable')+' ft',
+    'Low-water threshold: '+(p.low_water_stage_ft??'unavailable')+' ft',
+    'Color is threshold-based, not a navigation safety assessment.'].join('\\n');
+   if(p.noaa_lid){
+    const a=document.createElement('a');a.href='https://water.noaa.gov/gauges/'+encodeURIComponent(p.noaa_lid);
+    a.target='_blank';a.rel='noopener noreferrer';a.textContent='View NOAA gauge ↗';
+    a.style.display='block';a.style.marginTop='8px';node.append(a);
+   }
+   new maplibregl.Popup().setLngLat(event.lngLat).setDOMContent(node).addTo(map);
+  });
+  console.info('NOAA nationwide gauges:',valid.length,'with threshold-based colors:',colored);
+ }catch(error){console.warn('National NOAA gauge layer unavailable:',error);}
+});
+
 // Load launch markers independently of gauge and river data; gauge failures must not hide launches.
 map.on('load',async()=>{
   const putinToggle=document.getElementById('show-putins');
