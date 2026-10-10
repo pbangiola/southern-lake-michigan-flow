@@ -72,7 +72,7 @@ def main():
     cursor=state.get("cursor",0);boxes=[]
     if args.illinois_basin:
         # Approximate Illinois River drainage search extent; features still need HUC validation.
-        cells=[[-92+x*.5,39+y*.5,-91.5+x*.5,39.5+y*.5] for y in range(9) for x in range(11)]
+        cells=[[-93+x*.5,37+y*.5,-92.5+x*.5,37.5+y*.5] for y in range(14) for x in range(14)]
         boxes=cells[cursor:cursor+args.max_boxes]
         consumed=len(boxes)
     elif args.nationwide:
@@ -90,14 +90,20 @@ def main():
         if bb and bb[2]-bb[0]<.25 and bb[3]-bb[1]<.25:boxes.append(bb)
         if len(boxes)>=args.max_boxes:break
     output=Path(args.output);output.mkdir(parents=True,exist_ok=True)
+    failures=[]
     for name,fn in (("gauges",discover_gauges),("launches",discover_launches)):
         path=output/(name+"_candidates.geojson");existing=load(path);found=[]
         for bb in boxes:
             try:found.extend(fn(bb))
-            except Exception as error:print(f"{name} discovery deferred for {bb}: {error}")
+            except Exception as error:
+                failures.append({"source":name,"bbox":bb,"error":str(error)})
+                print(f"{name} discovery deferred for {bb}: {error}")
         save(path,merge(existing,found))
         print(name,len(found),"newly observed",len(load(path)["features"]),"total candidates")
     total=len(cells) if (args.nationwide or args.illinois_basin) else len(features)
+    if failures:
+        save(output/"failed_requests.json",failures)
+        raise SystemExit(f"{len(failures)} source requests failed; refusing to advance cursor")
     state["cursor"]=min(total,cursor+consumed)
     state["complete"]=state["cursor"]>=total
     state["scope"]="Illinois River basin approximate discovery grid" if args.illinois_basin else "CONUS discovery grid" if args.nationwide else "river network review"
