@@ -29,7 +29,7 @@ jobs:
       - name: Install tippecanoe
         run: |
           sudo apt-get update
-          sudo apt-get install -y tippecanoe
+          sudo apt-get install -y tippecanoe || { git clone --depth 1 https://github.com/felt/tippecanoe.git /tmp/tippecanoe && make -C /tmp/tippecanoe -j2 && sudo make -C /tmp/tippecanoe install; }
       - name: Generate national vector tiles
         run: python -u scripts/build_edna_tiles.py
       - name: Publish tile pyramid
