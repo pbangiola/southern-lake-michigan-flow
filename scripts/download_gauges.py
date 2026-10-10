@@ -16,6 +16,7 @@ import expand_atlas as atlas
 
 DEST=Path("local/gauges_us.geojson")
 CHECKPOINT=Path("local/gauge_download_us_progress.json")
+METRICS=Path("local/gauge_api_metrics.json")
 # Region envelopes include contiguous US, Alaska/Aleutians, Hawaii and US Pacific/
 # Caribbean territories. Only agency_code=USGS, site_type_code=ST are retained.
 REGIONS=[
@@ -58,6 +59,47 @@ def tiles():
                 lon+=STEP
             lat+=STEP
 
+
+class QuotaMonitor:
+    def __init__(self,delay):
+        self.delay=delay
+        self.stats=json.loads(METRICS.read_text()) if METRICS.exists() else {"requests":0,"successes":0,"http_429":0,"errors":0}
+        self.next_at=0.0
+
+    def before(self):
+        remaining=self.next_at-time.time()
+        if remaining>0:
+            if remaining>=5:print("Quota pacing: waiting %.0f seconds"%remaining,flush=True)
+            time.sleep(remaining)
+
+    def after(self,status,headers):
+        stats=self.stats
+        stats["requests"]+=1
+        if 200<=status<300:stats["successes"]+=1
+        elif status==429:stats["http_429"]+=1
+        else:stats["errors"]+=1
+        for header,key in (("X-RateLimit-Limit","limit"),("X-RateLimit-Remaining","remaining"),("X-RateLimit-Reset","reset")):
+            value=headers.get(header) if headers else None
+            if value is not None:stats[key]=value
+        self.next_at=time.time()+self.delay
+        try:
+            remaining=int(stats.get("remaining"))
+            limit=int(stats.get("limit"))
+            if limit>0 and remaining/limit<=0.02:
+                self.next_at=max(self.next_at,time.time()+60)
+            elif limit>0 and remaining/limit<=0.10:
+                self.next_at=max(self.next_at,time.time()+10)
+        except (TypeError,ValueError):pass
+        if status==429:
+            retry=headers.get("Retry-After") if headers else None
+            try:wait=max(60,float(retry))
+            except (TypeError,ValueError):wait=60
+            self.next_at=max(self.next_at,time.time()+wait)
+        METRICS.write_text(json.dumps(stats,indent=2)+"\\n")
+        if stats["requests"]%25==0 or status==429:
+            print("USGS requests=%s, 429s=%s, remaining=%s, limit=%s"%(
+                stats["requests"],stats["http_429"],stats.get("remaining"),stats.get("limit")),flush=True)
+
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--delay",type=float,default=2.0)
@@ -68,6 +110,9 @@ def main():
     DEST.parent.mkdir(parents=True,exist_ok=True)
     state={"next_tile":0}
     if CHECKPOINT.exists() and not a.reset:state=json.loads(CHECKPOINT.read_text())
+    monitor=QuotaMonitor(a.delay)
+    atlas.USGS_REQUEST_BEFORE=monitor.before
+    atlas.USGS_REQUEST_AFTER=monitor.after
     all_tiles=list(tiles())
     skipped=skip_tile_ids(all_tiles)
     print(f"Skipping {len(skipped)} of {len(all_tiles)} tiles outside conservative US region envelopes",flush=True)
@@ -100,7 +145,7 @@ def main():
                     wait=min(90,3*(2**attempt))
                 print(f"Retry tile {idx} in {wait}s: {exc}",flush=True)
                 time.sleep(wait)
-        time.sleep(a.delay)
+        # Per-request pacing is handled by the monitor, including paginated calls.
     print(f"Complete: {len(atlas.read_collection(DEST)['features'])} unique USGS stream stations in {DEST}")
     print("Next: python3 Watershed.py --offline")
 
