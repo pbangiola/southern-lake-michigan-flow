@@ -100,7 +100,23 @@ def main():
     print("Building gauge-linked segments from",len(kmzs),"KMZ archives",flush=True)
     subprocess.run(cmd,cwd=ROOT,check=True)
     obj=json.loads(OUTPUT.read_text())
-    print("Built",len(obj.get("features",[])),"river segments")
+    features=obj.get("features",[])
+    ids=[f.get("properties",{}).get("segment_id") for f in features]
+    geometries=[f.get("geometry",{}) for f in features]
+    keys=[]
+    for geom in geometries:
+        if geom.get("type")!="LineString" or len(geom.get("coordinates",[]))<2:
+            raise SystemExit("Validation failed: invalid line geometry")
+        pts=tuple(tuple(round(float(v),7) for v in xy[:2]) for xy in geom["coordinates"])
+        if len(set(pts))<2:
+            raise SystemExit("Validation failed: zero-length line")
+        keys.append(min(pts,pts[::-1]))
+    if len(set(ids))!=len(ids) or len(set(keys))!=len(keys):
+        raise SystemExit("Validation failed: duplicate segment IDs or geometries")
+    if any(not f.get("properties",{}).get("river_name") for f in features):
+        raise SystemExit("Validation failed: missing river_name")
+    print("Validated",len(features),"segments; no duplicate geometries or IDs")
+    print("River names are inferred from gauge titles; flow direction is NOT verified.")
     print("Review data/river_segments.geojson, then commit only that derived file:")
     print("  git add data/river_segments.geojson && git commit -m 'Build gauge-linked river network' && git push")
     print("Raw source archives remain local; no downloads are duplicated in GitHub Actions.")
