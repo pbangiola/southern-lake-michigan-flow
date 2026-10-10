@@ -68,9 +68,12 @@ class QuotaMonitor:
             try:
                 self.stats=json.loads(raw)
             except json.JSONDecodeError:
-                # Older versions wrote a literal backslash-n after the JSON object.
-                self.stats=json.loads(raw.rstrip().removesuffix(r'\\n'))
-                METRICS.write_text(json.dumps(self.stats,indent=2)+"\\n")
+                # Older versions appended literal backslash-n outside the JSON object.
+                cleaned=raw.rstrip()
+                if not cleaned.endswith(chr(92)+"n"):
+                    raise
+                self.stats=json.loads(cleaned[:-2])
+                METRICS.write_text(json.dumps(self.stats,indent=2)+chr(10))
         else:
             self.stats={"requests":0,"successes":0,"http_429":0,"errors":0}
         self.next_at=0.0
