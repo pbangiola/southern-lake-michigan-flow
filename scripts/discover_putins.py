@@ -125,7 +125,7 @@ def main():
         time.sleep(1)
     PROGRESS.parent.mkdir(exist_ok=True)
     PROGRESS.write_text(json.dumps({'completed':[list(c) for c in sorted(completed)],
-        'failures':failures,'total_rectangles':len(tiles)},indent=2)+'\\n')
+        'failures':failures,'total_rectangles':len(tiles)},indent=2)+'\n')
     REPORT.write_text(json.dumps({'method':'OSM map API stream corridor rectangles',
         'total_rectangles':len(tiles),'completed_rectangles':len(completed),
         'remaining_rectangles':len(set(tiles)-completed),
@@ -133,11 +133,11 @@ def main():
         'unresolved_failures':len(failures),'gowe_found_in_current_run':gowe_found,
         'bytes_downloaded':bytes_downloaded,'candidate_count':len(previous),
         'complete_region':set(tiles)<=completed,
-        'warning':'Unverified OSM access candidates; river navigability and public access not established'},indent=2)+'\\n')
+        'warning':'Unverified OSM access candidates; river navigability and public access not established'},indent=2)+'\n')
     OUT.write_text(json.dumps({'type':'FeatureCollection','metadata':{
         'source':'OSM map API stream corridor rectangles',
         'note':'Incremental unverified candidates'},
-        'features':list(previous.values())},indent=2)+'\\n')
+        'features':list(previous.values())},indent=2)+'\n')
     if failed_now:raise SystemExit(f'{len(failed_now)} rectangle(s) failed; progress preserved for retry')
     print(f'Progress: {len(completed)}/{len(tiles)} rectangles, {len(previous)} candidates',flush=True)
 if __name__=='__main__':main()
