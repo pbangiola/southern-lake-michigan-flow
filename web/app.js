@@ -602,3 +602,70 @@ reportForm.addEventListener('submit',event=>{
  window.open('https://github.com/'+REPO+'/issues/new?'+new URLSearchParams({title:'River report: '+type+' — '+location,body}), '_blank','noopener,noreferrer');
  reportDialog.close();
 });
+
+
+/* NOAA gauge-name graph from the exported KML's construction rule:
+   same name before at/near, minimum spanning tree, maximum 150 km per edge.
+   Each segment color is the RGB mean of its two endpoint gauge colors. */
+map.on('load',async()=>{
+ try{
+  const response=await fetch('data/noaa_gauges.geojson');
+  if(!response.ok)throw new Error('NOAA gauge data HTTP '+response.status);
+  const data=await response.json(),groups=new Map();
+  const haversine=(a,b)=>{
+   const rad=Math.PI/180,p1=a[1]*rad,p2=b[1]*rad,dp=(b[1]-a[1])*rad,dl=(b[0]-a[0])*rad;
+   return 12742*Math.asin(Math.min(1,Math.sqrt(Math.sin(dp/2)**2+Math.cos(p1)*Math.cos(p2)*Math.sin(dl/2)**2)));
+  };
+  const avgHex=(a,b)=>{
+   const aa=a.slice(1).match(/../g),bb=b.slice(1).match(/../g);
+   return '#'+aa.map((v,i)=>Math.round((parseInt(v,16)+parseInt(bb[i],16))/2).toString(16).padStart(2,'0')).join('');
+  };
+  const gaugeColor=p=>{
+   const stage=finite(p.stage),flood=finite(p.flood_stage_ft),low=finite(p.low_water_stage_ft);
+   return stage===null?'#88929b':flood!==null&&stage>=flood?'#d3232f':low!==null&&stage<=low?'#24150c':flood!==null?'#1768c5':'#88929b';
+  };
+  for(const f of data.features||[]){
+   const p=f.properties||{},m=String(p.name||'').trim().match(/^(.+?)\s+(?:at|near)\s+(.+)$/i),xy=f.geometry?.coordinates;
+   if(!m||f.geometry?.type!=='Point'||!Array.isArray(xy)||!xy.slice(0,2).every(Number.isFinite))continue;
+   const key=m[1].trim().replace(/\s+/g,' ').toUpperCase();
+   if(!groups.has(key))groups.set(key,[]);
+   groups.get(key).push({xy,p});
+  }
+  const lines=[];
+  for(const [name,points] of groups){
+   if(points.length<2)continue;
+   const used=new Uint8Array(points.length),best=new Float64Array(points.length).fill(Infinity),parent=new Int32Array(points.length).fill(-1);
+   best[0]=0;
+   for(let n=0;n<points.length;n++){
+    let pick=-1,min=Infinity;
+    for(let i=0;i<points.length;i++)if(!used[i]&&best[i]<min){min=best[i];pick=i;}
+    if(pick<0)break;
+    used[pick]=1;
+    if(parent[pick]>=0&&min<=150){
+     const a=points[parent[pick]],b=points[pick];
+     lines.push({type:'Feature',geometry:{type:'LineString',coordinates:[a.xy,b.xy]},
+      properties:{water_body:name,from:a.p.name,to:b.p.name,distance_km:Math.round(min*10)/10,
+       stage_color:avgHex(gaugeColor(a.p),gaugeColor(b.p))}});
+    }
+    for(let j=0;j<points.length;j++)if(!used[j]){
+     const d=haversine(points[pick].xy,points[j].xy);
+     if(d<best[j]){best[j]=d;parent[j]=pick;}
+    }
+   }
+  }
+  map.addSource('noaa-name-graph',{type:'geojson',data:{type:'FeatureCollection',features:lines}});
+  map.addLayer({id:'noaa-name-graph',type:'line',source:'noaa-name-graph',
+   paint:{'line-color':['get','stage_color'],'line-width':['interpolate',['linear'],['zoom'],3,2,9,4],'line-opacity':0.85}},
+   map.getLayer('noaa-national-gauges')?'noaa-national-gauges':undefined);
+  setLayerVisibility('noaa-name-graph',document.getElementById('show-name-graph')?.checked!==false);
+  document.getElementById('show-name-graph')?.addEventListener('change',e=>setLayerVisibility('noaa-name-graph',e.target.checked));
+  map.on('click','noaa-name-graph',e=>{
+   if(reportButton.getAttribute('aria-pressed')==='true')return;
+   const p=e.features[0].properties;
+   new maplibregl.Popup().setLngLat(e.lngLat).setText(
+    p.water_body+'\n'+p.from+' → '+p.to+'\n'+p.distance_km+' km straight line\nColor = mean of endpoint gauge colors; not a traced river.'
+   ).addTo(map);
+  });
+  console.info('NOAA name-graph edges loaded:',lines.length);
+ }catch(error){console.warn('NOAA name graph unavailable:',error);}
+});
