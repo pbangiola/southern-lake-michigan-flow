@@ -1,17 +1,18 @@
-name: MAP 1 - Trace Illinois River branches from Grafton
+name: MAP 1 - Build Illinois river network (one time)
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '47 * * * *'
+  push:
+    paths:
+      - '.github/workflows/illinois-confluence-pilot.yml'
 permissions:
   contents: write
 concurrency:
-  group: illinois-confluence-pilot
+  group: illinois-network-build
   cancel-in-progress: false
 jobs:
   traverse:
     runs-on: ubuntu-latest
-    timeout-minutes: 50
+    timeout-minutes: 360
     steps:
       - uses: actions/checkout@v4
         with:
@@ -19,46 +20,45 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install stream geometry dependencies
+      - name: Install geometry dependencies
         run: python -m pip install shapely lxml
-      - name: Test fork traversal and checkpointing
+      - name: Test traversal
         run: python scripts/test_traverse_edna_graph.py
-      - name: Fetch Mississippi watershed KMZ
+      - name: Fetch source stream geometry
         run: |
           mkdir -p local/edna
           python - <<'PY'
           import urllib.request
-          url="https://edna.usgs.gov/watersheds/sheds/mississippi/mississippi.kmz"
-          urllib.request.urlretrieve(url,"local/edna/mississippi.kmz")
+          urllib.request.urlretrieve("https://edna.usgs.gov/watersheds/sheds/mississippi/mississippi.kmz", "local/edna/mississippi.kmz")
           PY
-      - name: Traverse connected EDNA lines from Illinois mouth
+      - name: Traverse all reachable branches
         run: |
-          python scripts/traverse_edna_graph.py local/edna/mississippi.kmz --limit 1000
-      - name: Commit checkpoint and discovered segments
-        run: |
+          python scripts/traverse_edna_graph.py local/edna/mississippi.kmz --limit 100000000 --output data/illinois_river_network.geojson
           python - <<'PY'
-          import json,pathlib
-          src=pathlib.Path("local/illinois_graph_batch.geojson")
-          if not src.exists():raise SystemExit("No batch was produced")
-          batch=json.loads(src.read_text())
-          if batch["features"]:
-              state=json.loads(pathlib.Path("data/illinois_graph_state.json").read_text())
-              dest=pathlib.Path("data/illinois_batches")
-              dest.mkdir(parents=True,exist_ok=True)
-              filename=dest/("batch_%08d.geojson"%state["processed"])
-              filename.write_text(src.read_text())
+          import json
+          from pathlib import Path
+          state=json.loads(Path("data/illinois_graph_state.json").read_text())
+          if not state.get("complete"):
+              raise SystemExit("Traversal incomplete: refusing to publish partial network as complete")
+          network=json.loads(Path("data/illinois_river_network.geojson").read_text())
+          print("New segments:",len(network["features"]))
+          print("Total processed edges:",state["processed"])
           PY
+      - name: Publish completed network
+        run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/illinois_graph_state.json data/illinois_batches/
+          git add data/illinois_graph_state.json data/illinois_river_network.geojson
           if ! git diff --cached --quiet; then
-            git commit -m "Publish Illinois confluence traversal batch"
-            git push
+            git commit -m "Publish completed Illinois river network"
+            git pull --rebase origin main
+            git push origin HEAD:main
           fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: illinois-confluence-diagnostics
+          name: illinois-network-build-diagnostics
           path: |
-            local/illinois_graph_batch.geojson
+            data/illinois_graph_state.json
+            data/illinois_river_network.geojson
           if-no-files-found: ignore
