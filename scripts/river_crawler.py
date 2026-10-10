@@ -56,9 +56,9 @@ def main():
     a.add_argument("--network",default="data/river_segments_3dhp_review.geojson")
     a.add_argument("--state",default="local/river_crawler_state.json")
     a.add_argument("--output",default="local/river_crawler")
-    a.add_argument("--max-boxes",type=int,default=2)
+    a.add_argument("--max-boxes",type=int,default=2)\n    a.add_argument("--max-features",type=int,default=15000)
     args=a.parse_args()
-    network=load(args.network);features=network.get("features",[])
+    network=load(args.network);features=network.get("features",[])[:args.max_features]
     statepath=Path(args.state)
     state=json.loads(statepath.read_text()) if statepath.exists() else {"cursor":0}
     cursor=state.get("cursor",0);boxes=[]
