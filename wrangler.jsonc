@@ -1,0 +1,5 @@
+{
+  "name": "flow-launch-verification",
+  "main": "worker/launch-verification.js",
+  "compatibility_date": "2026-10-10"
+}
