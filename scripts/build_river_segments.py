@@ -169,7 +169,7 @@ def main():
         left=owner.get(u);right=owner.get(v)
         if left is None:left=right
         if right is None:right=left
-        if left!=right:between+=1
+        if left!=right:between+=1\n        left_distance=dist.get(u,0.0);right_distance=dist.get(v,0.0)\n        fraction=(left_distance/(left_distance+right_distance)) if left!=right and left_distance+right_distance>0 else None
         chosen=left if dist.get(u,float('inf'))<=dist.get(v,float('inf')) else right
         sid,_,name=stations[chosen]
         # Match Watershed.py's 7-decimal precision validation before emitting.
@@ -185,7 +185,7 @@ def main():
             'site':sid,'gauge_name':name,'river_name':river_name(name),
             'from_gauge':stations[left][0],
             'to_gauge':stations[right][0],
-            'between_gauges':left!=right,
+            'between_gauges':left!=right,\n            'gauge_fraction':fraction,\n            'bounding_gauges_verified':False,
             'association':'shortest connected stream-network distance to gauge',
             'condition':'unclassified','source_kmz':lines[i][1],
             'segment_id':f'network-{i}-{k}'}})
