@@ -16,7 +16,7 @@ def request(url):
     req=urllib.request.Request(url,headers={"User-Agent":"southern-lake-michigan-flow/river-crawler (GitHub project)"})
     with urllib.request.urlopen(req,timeout=45) as response:return json.load(response)
 def bounds(features,padding=.025):
-    xy=[p for f in features for p in (f.get("geometry",{}).get("coordinates") or []) if isinstance(p,list) and len(p)>1 and isinstance(p[0],(int,float))]
+    xy=[]\n    for f in features:\n        coords=f.get("geometry",{}).get("coordinates") or []\n        if f.get("geometry",{}).get("type")=="Point": coords=[coords]\n        for p in coords:\n            if isinstance(p,(list,tuple)) and len(p)>1 and isinstance(p[0],(int,float)): xy.append(p)
     if not xy:return None
     return [min(p[0] for p in xy)-padding,min(p[1] for p in xy)-padding,max(p[0] for p in xy)+padding,max(p[1] for p in xy)+padding]
 def discover_gauges(bbox):
@@ -63,7 +63,7 @@ def main():
     state=json.loads(statepath.read_text()) if statepath.exists() else {"cursor":0}
     cursor=state.get("cursor",0);boxes=[]
     # Fixed-size bounded batches avoid broad Overpass/NWIS queries.
-    for f in features[cursor:]:
+    consumed=0\n    for f in features[cursor:]:\n        consumed+=1
         geom=f.get("geometry",{})
         if geom.get("type")!="LineString":continue
         bb=bounds([f],.01)
@@ -77,7 +77,7 @@ def main():
             except Exception as error:print(f"{name} discovery deferred for {bb}: {error}")
         save(path,merge(existing,found))
         print(name,len(found),"newly observed",len(load(path)["features"]),"total candidates")
-    state["cursor"]=min(len(features),cursor+max(1,len(boxes)))
+    state["cursor"]=min(len(features),cursor+max(1,consumed))
     if state["cursor"]>=len(features):state["cursor"]=0
     save(statepath,state)
 if __name__=="__main__":main()
