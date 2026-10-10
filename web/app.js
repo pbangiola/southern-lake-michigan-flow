@@ -121,6 +121,29 @@ document.getElementById('river-all').addEventListener('click',()=>{riverToggle.c
 document.getElementById('river-none').addEventListener('click',()=>{riverMode='none';document.getElementById('river-mode').value='none';applyRiverFilters();});
 riverToggle.addEventListener('change',applyRiverFilters);
 // River colors use graph-nearest gauge attribution, not verified flow direction.
+// Stable categorical colors reveal which USGS reaches share an associated gauge.
+// These are NOT water-level or paddling-safety colors.
+const segmentPalette=['#6f42c1','#008b8b','#d97706','#2563eb','#be185d','#16a34a','#a855f7','#b45309','#dc2626','#0f766e','#4338ca','#c026d3'];
+function segmentColor(raw){
+ const key=siteId(raw);
+ if(!key)return '#88929b';
+ let hash=2166136261;
+ for(let i=0;i<key.length;i++)hash=Math.imul(hash^key.charCodeAt(i),16777619)>>>0;
+ return segmentPalette[hash%segmentPalette.length];
+}
+let riverColorMode='stage';
+function applyRiverColorMode(){
+ for(const id of ['river-segments','river-3dhp-review']){
+  if(!map.getLayer(id))continue;
+  map.setPaintProperty(id,'line-color',['get',riverColorMode==='segments'?'segment_color':'stage_color']);
+ }
+ const label=document.getElementById('river-color-note');
+ if(label)label.textContent=riverColorMode==='segments'?'Different colors identify gauge-associated segments; not water levels.':'Water stage colors require calibrated gauge readings; gray means unavailable.';
+}
+document.getElementById('river-color-mode')?.addEventListener('change',e=>{
+ riverColorMode=e.target.value;
+ applyRiverColorMode();
+});
 function colorRiverNetwork(segments,gauges){
  const bySite=new Map(gauges.map(f=>[siteId(f.properties.site),f.properties]));
  const colorFor=id=>{const p=bySite.get(siteId(id));return p?palette(p):'#88929b';};
@@ -132,6 +155,7 @@ function colorRiverNetwork(segments,gauges){
   // Only a reach with no usable associated gauge stays gray.
   p.stage_color=ca==='#88929b'?cb:cb==='#88929b'?ca:a===b?ca:blend(ca,cb,0.5);
   p.stage_gauge_a=a;p.stage_gauge_b=b;
+  p.segment_color=segmentColor(a||b);
   p.river_name=p.river_name||riverName(bySite.get(a)?.name||bySite.get(b)?.name);
   p.filter_river=p.filter_river||(p.river_name==='Unidentified waterway'?riverName(bySite.get(a)?.name||bySite.get(b)?.name):p.river_name);
  }
@@ -349,6 +373,7 @@ map.on('load',async()=>{
     }},'gauges');
     setLayerVisibility('river-segments',riverToggle.checked);
     applyRiverFilters();
+    applyRiverColorMode();
     map.on('click','river-segments',e=>{
      if(reportButton.getAttribute('aria-pressed')==='true')return;
      const p=e.features[0].properties;
@@ -376,6 +401,8 @@ map.on('load',async()=>{
       paint:{'line-color':['get','stage_color'],'line-width':['interpolate',['linear'],['zoom'],6,1.7,10,3.5,13,5],
       'line-opacity':0.9}},'gauges');
     setLayerVisibility('river-3dhp-review',riverToggle.checked);
+    applyRiverFilters();
+    applyRiverColorMode();
     map.on('click','river-3dhp-review',e=>{
      if(reportButton.getAttribute('aria-pressed')==='true')return;
      const p=e.features[0].properties;
