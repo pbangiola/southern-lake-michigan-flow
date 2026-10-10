@@ -6,11 +6,8 @@ const reportTypes=['Too shallow','Too high / strong current','Navigable'];
 const status=document.getElementById('status');
 const gaugeToggle=document.getElementById('show-gauges');
 const riverToggle=document.getElementById('show-rivers');
-const routeToggle=document.getElementById('show-routes');
 const legend=document.getElementById('map-legend');
 function setLayerVisibility(id,visible){if(map.getLayer(id))map.setLayoutProperty(id,'visibility',visible?'visible':'none');}
-riverToggle.addEventListener('change',()=>{setLayerVisibility('river-segments',riverToggle.checked);setLayerVisibility('expanded-rivers',riverToggle.checked);});
-routeToggle.addEventListener('change',()=>setLayerVisibility('paddling-routes',routeToggle.checked));
 window.addEventListener('resize',()=>map.resize());
 gaugeToggle.addEventListener('change',()=>{
  if(map.getLayer('gauges'))map.setLayoutProperty('gauges','visibility',gaugeToggle.checked?'visible':'none');
@@ -51,9 +48,11 @@ async function loadReports(){
  }
  return items.sort((a,b)=>a.created.localeCompare(b.created)||a.number-b.number);
 }
-function applyMinima(data,atlas){
- const stations=atlas.stations||{};
+function applyMinima(data,atlas,floodData={}){
+ const stations=atlas.stations||{},floodStations=floodData.stations||{};
  for(const f of data.features){
+  const official=finite(floodStations[siteId(f.properties.site??f.properties.site_no??f.properties.id)]?.flood_stage_ft);
+  if(official!==null)f.properties.flood_stage_ft=official;
   const p=f.properties,sid=siteId(p.site??p.site_no??p.id),rec=stations[sid];
   const adequate=rec?.observed_adequate_75pct_distributed===true ||
    (rec?.daily_adequate_75pct_distributed===true&&rec?.coverage_fraction>=0.75);
@@ -85,6 +84,7 @@ function calibrate(data,reports){
 function palette(p){
  const stage=finite(p.stage),minimum=finite(p.atlas_minimum_ft);
  const mean=finite(p.atlas_mean_ft),flood=finite(p.flood_stage_ft);
+ if(stage!==null&&flood!==null&&stage>=flood)return '#d3232f';
  if(stage===null||!p.atlas_minimum_adequate||minimum===null||mean===null||flood===null||!(minimum<mean&&mean<flood))return '#88929b';
  const green=mean+0.25*(flood-mean);
  if(stage<=minimum)return '#24150c';
@@ -99,9 +99,27 @@ function riverName(raw){
  const m=value.match(/^(.+?\b(?:RIVER|CREEK|BROOK|CANAL|DITCH|BRANCH|FORK|RUN))\b/i);
  return m?m[1].toLowerCase().replace(/\b[a-z]/g,x=>x.toUpperCase()):'Unidentified waterway';
 }
-const selectedRivers=new Set();let riverNames=[];
-function applyRiverFilters(){for(const id of ['river-segments','paddling-routes'])if(map.getLayer(id))map.setFilter(id,['in',['get','river_name'],['literal',[...selectedRivers]]]);}
-function registerRivers(names){const root=document.getElementById('river-list');if(!root)return;for(const name of names)if(!selectedRivers.has(name)&&!riverNames.includes(name)){selectedRivers.add(name);riverNames.push(name);}riverNames.sort();root.replaceChildren();for(const name of riverNames){const label=document.createElement('label'),input=document.createElement('input');input.type='checkbox';input.checked=selectedRivers.has(name);input.onchange=()=>{if(input.checked)selectedRivers.add(name);else selectedRivers.delete(name);applyRiverFilters();};label.append(input,document.createTextNode(' '+name));root.append(label);}applyRiverFilters();}
+let riverNames=[],riverMode='all',focusRiver='';
+function applyRiverFilters(){
+ for(const id of ['river-segments','expanded-rivers']){
+  if(!map.getLayer(id))continue;
+  setLayerVisibility(id,riverToggle.checked&&riverMode!=='none');
+  map.setFilter(id,riverMode==='only'?['==',['get','filter_river'],focusRiver]:riverMode==='exclude'?['!=',['get','filter_river'],focusRiver]:null);
+ }
+}
+function registerRivers(names){
+ const picker=document.getElementById('river-focus');if(!picker)return;
+ for(const name of names)if(name&&name!=='Unidentified waterway'&&!riverNames.includes(name))riverNames.push(name);
+ riverNames.sort();picker.replaceChildren();
+ for(const name of riverNames){const opt=document.createElement('option');opt.value=name;opt.textContent=name;picker.append(opt);}
+ if(!riverNames.includes(focusRiver))focusRiver=riverNames[0]||'';
+ picker.value=focusRiver;applyRiverFilters();
+}
+document.getElementById('river-mode').addEventListener('change',e=>{riverMode=e.target.value;applyRiverFilters();});
+document.getElementById('river-focus').addEventListener('change',e=>{focusRiver=e.target.value;applyRiverFilters();});
+document.getElementById('river-all').addEventListener('click',()=>{riverToggle.checked=true;riverMode='all';document.getElementById('river-mode').value='all';applyRiverFilters();});
+document.getElementById('river-none').addEventListener('click',()=>{riverMode='none';document.getElementById('river-mode').value='none';applyRiverFilters();});
+riverToggle.addEventListener('change',applyRiverFilters);
 // River colors use graph-nearest gauge attribution, not verified flow direction.
 function colorRiverNetwork(segments,gauges){
  const bySite=new Map(gauges.map(f=>[siteId(f.properties.site),f.properties]));
@@ -115,6 +133,7 @@ function colorRiverNetwork(segments,gauges){
   p.stage_color=ca==='#88929b'?cb:cb==='#88929b'?ca:a===b?ca:blend(ca,cb,0.5);
   p.stage_gauge_a=a;p.stage_gauge_b=b;
   p.river_name=p.river_name||riverName(bySite.get(a)?.name||bySite.get(b)?.name);
+  p.filter_river=p.river_name==='Unidentified waterway'?riverName(bySite.get(a)?.name||bySite.get(b)?.name):p.river_name;
  }
  return segments;
 }
@@ -259,9 +278,10 @@ putinFilter.addEventListener('change',updatePutins);
 
 map.on('load',async()=>{
  try{
-  const [gaugesResponse,minimaResponse]=await Promise.all([
+  const [gaugesResponse,minimaResponse,floodResponse]=await Promise.all([
    fetch('data/gauges.geojson',{cache:'no-store'}),
-   fetch('data/stage_minima.json',{cache:'no-store'})
+   fetch('data/stage_minima.json',{cache:'no-store'}),
+    fetch('data/flood_stages_il.json',{cache:'no-store'})
   ]);
   if(!gaugesResponse.ok)throw new Error('Gauge data unavailable: data/gauges.geojson (HTTP '+gaugesResponse.status+'). Generate and commit this file.');
   if(!minimaResponse.ok)throw new Error('Stage minima unavailable: HTTP '+minimaResponse.status);
@@ -269,7 +289,7 @@ map.on('load',async()=>{
   gaugeFeatures=data.features||[];
   // Populate the selector immediately, even if later network/route fetches fail.
   registerRivers(gaugeFeatures.map(f=>riverName(f.properties?.name)).filter(n=>n!=='Unidentified waterway'));
-  applyMinima(data,atlas);
+  applyMinima(data,atlas,floodResponse.ok?await floodResponse.json():{});
   try{communityReports=await loadReports();}catch(e){console.warn(e);}
   calibrate(data,communityReports);
   for(const f of gaugeFeatures)f.properties.level_color=palette(f.properties);
@@ -335,37 +355,6 @@ map.on('load',async()=>{
     }
    }
   }catch(error){console.warn('Optional atlas expansion unavailable:',error);}
-  // Routes traced from the user's KML; not independently verified for navigation.
-  try {
-   const routesResponse=await fetch('data/paddling_routes.geojson',{cache:'no-store'});
-   if(!routesResponse.ok)throw new Error('HTTP '+routesResponse.status);
-   const routes=await routesResponse.json();
-   if(routes.type!=='FeatureCollection'||!Array.isArray(routes.features))throw new Error('Invalid route GeoJSON');
-   routeCount=routes.features.length;
-   for(const f of routes.features){f.properties=f.properties||{};f.properties.river_name=riverName(f.properties.name);}
-   registerRivers(routes.features.map(f=>f.properties.river_name));
-   map.addSource('paddling-routes',{type:'geojson',data:routes});
-   map.addLayer({id:'paddling-routes',type:'line',source:'paddling-routes',paint:{
-    'line-color':'#a329db',
-    'line-width':['interpolate',['linear'],['zoom'],6,3.5,10,6,13,8],
-    'line-opacity':0.95,
-   }},'gauges');
-   setLayerVisibility('paddling-routes',routeToggle.checked);
-   applyRiverFilters();
-   map.on('click','paddling-routes',e=>{
-    if(reportButton.getAttribute('aria-pressed')==='true')return;
-    const p=e.features[0].properties;
-    new maplibregl.Popup().setLngLat(e.lngLat)
-     .setText((p.name||'Mapped river route')+'\\nMapped route only; navigability has not been verified.')
-     .addTo(map);
-   });
-   map.on('mouseenter','paddling-routes',()=>{
-    if(reportButton.getAttribute('aria-pressed')!=='true')map.getCanvas().style.cursor='pointer';
-   });
-   map.on('mouseleave','paddling-routes',()=>{
-    if(reportButton.getAttribute('aria-pressed')!=='true')map.getCanvas().style.cursor='';
-   });
-  }catch(e){console.warn('River routes could not load:',e);}
   map.on('click','gauges',event=>{
    if(reportButton.getAttribute('aria-pressed')==='true')return;
    const p=event.features[0].properties;
