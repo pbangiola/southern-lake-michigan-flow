@@ -60,7 +60,7 @@ def run():
                     dest=atlas.GAUGES
                     key=lambda f:f["properties"]["site"]
                 else:
-                    elements=atlas.osm_tile(s,w,n,e)
+                    elements=atlas.osm_tile(s,w,n,e,layer)
                     launches,rivers=atlas.extract_osm(elements)
                     features=launches if layer=="launches" else rivers
                     dest=atlas.LAUNCHES if layer=="launches" else atlas.RIVERS
