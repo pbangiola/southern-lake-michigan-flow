@@ -134,21 +134,37 @@ function renderLaunchDomMarkers(){
  for(const marker of launchDomMarkers)marker.remove();
  launchDomMarkers=[];
  if(!putinToggle.checked)return;
- const bounds=map.getBounds(), visible=putinFeatures.filter(f=>{
-  const xy=f.geometry?.coordinates;
-  return f.geometry?.type==='Point'&&Array.isArray(xy)&&bounds.contains(xy)&&qualifiesPutin(f);
- });
- // Keep the DOM overlay responsive on mobile. MapLibre's clustered layer handles the full dataset.
- const limit=160, stride=Math.max(1,Math.ceil(visible.length/limit));
- for(let i=0;i<visible.length;i+=stride){
-  const feature=visible[i],xy=feature.geometry.coordinates;
+ const bounds=map.getBounds(),cellSize=44,groups=new Map();
+ for(const feature of putinFeatures){
+  const xy=feature.geometry?.coordinates;
+  if(feature.geometry?.type!=='Point'||!Array.isArray(xy)||!bounds.contains(xy)||!qualifiesPutin(feature))continue;
+  const pixel=map.project(xy),key=Math.floor(pixel.x/cellSize)+':'+Math.floor(pixel.y/cellSize);
+  if(!groups.has(key))groups.set(key,{features:[],x:0,y:0});
+  const group=groups.get(key);group.features.push(feature);group.x+=pixel.x;group.y+=pixel.y;
+ }
+ for(const group of groups.values()){
+  const count=group.features.length,xy=map.unproject([group.x/count,group.y/count]);
   const el=document.createElement('button');
-  el.type='button';el.title=(feature.properties?.name||'Unverified launch candidate');
+  el.type='button';
+  el.title=count===1?(group.features[0].properties?.name||'Unverified launch candidate'):count+' nearby launch candidates';
   el.setAttribute('aria-label',el.title);
-  el.style.cssText='width:28px;height:28px;padding:4px;margin:0;border:2px solid white;border-radius:50%;background:#168447 url(https://static.thenounproject.com/png/canoe-paddles-icon-731096-512.png) center/19px 19px no-repeat;box-shadow:0 1px 5px #0008;cursor:pointer;';
+  if(count===1){
+   el.style.cssText='width:19px;height:19px;padding:0;margin:0;border:1.5px solid white;border-radius:50%;background:#168447 url(https://static.thenounproject.com/png/canoe-paddles-icon-731096-512.png) center/13px 13px no-repeat;box-shadow:0 1px 4px #0008;cursor:pointer;';
+  }else{
+   el.textContent=String(count);
+   el.style.cssText='width:27px;height:27px;padding:0;margin:0;border:2px solid white;border-radius:50%;background:#168447;color:white;font:bold 11px system-ui;box-shadow:0 1px 5px #0008;cursor:pointer;';
+  }
   el.addEventListener('click',event=>{
    event.stopPropagation();
-   new maplibregl.Popup().setLngLat(xy).setText(el.title+' — unverified; confirm access before visiting.').addTo(map);
+   if(count>1){
+    const coordinates=group.features.map(f=>f.geometry.coordinates);
+    const extent=new maplibregl.LngLatBounds(coordinates[0],coordinates[0]);
+    for(const coord of coordinates)extent.extend(coord);
+    if(extent.getNorthEast().distanceTo(extent.getSouthWest())<50)map.easeTo({center:xy,zoom:Math.min(map.getZoom()+2,16)});
+    else map.fitBounds(extent,{padding:75,maxZoom:16,duration:550});
+   }else{
+    new maplibregl.Popup().setLngLat(xy).setText(el.title+' — unverified; confirm access before visiting.').addTo(map);
+   }
   });
   launchDomMarkers.push(new maplibregl.Marker({element:el,anchor:'center'}).setLngLat(xy).addTo(map));
  }
@@ -164,7 +180,8 @@ function qualifiesPutin(f){
 function updatePutins(){
  const filtered=putinFeatures.filter(qualifiesPutin);
  if(map.getSource('putins'))map.getSource('putins').setData({type:'FeatureCollection',features:filtered});
- for(const id of ['putin-clusters','putin-counts','putins'])setLayerVisibility(id,putinToggle.checked);
+ // DOM markers provide both individual icons and clustering; hide duplicate WebGL layers.
+ for(const id of ['putin-clusters','putin-counts','putins'])setLayerVisibility(id,false);
  putinCount.textContent=filtered.length+' of '+putinFeatures.length+' unverified candidates';
  renderLaunchDomMarkers();
 }
