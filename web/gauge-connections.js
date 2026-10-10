@@ -3,8 +3,8 @@ const map=new maplibregl.Map({container:'map',style:'https://tiles.openfreemap.o
 map.addControl(new maplibregl.NavigationControl());
 const $=id=>document.getElementById(id);
 const empty=()=>({type:'FeatureCollection',features:[]});
-const pattern=/^(.+?)\\s+(?:at|near)\\s+(.+)$/i;
-const cleanName=s=>String(s||'').trim().replace(/\\s+/g,' ').replace(/\\s+(?:river|creek|branch|fork)\\s*$/i,m=>m).toUpperCase();
+const pattern=/^(.+?)\s+(?:at|near)\s+(.+)$/i;
+const cleanName=s=>String(s||'').trim().replace(/\s+/g,' ').replace(/\s+(?:river|creek|branch|fork)\s*$/i,m=>m).toUpperCase();
 const color=s=>{let h=2166136261;for(const c of s)h=Math.imul(h^c.charCodeAt(0),16777619)>>>0;return 'hsl('+h%360+',65%,43%)';};
 const distance=(a,b)=>{const rad=Math.PI/180,lat1=a[1]*rad,lat2=b[1]*rad,dy=(b[1]-a[1])*rad,dx=(b[0]-a[0])*rad;const h=Math.sin(dy/2)**2+Math.cos(lat1)*Math.cos(lat2)*Math.sin(dx/2)**2;return 12742*Math.asin(Math.min(1,Math.sqrt(h)));};
 let groups=new Map(),allPoints=empty(),totalMatched=0;
@@ -37,7 +37,7 @@ function connections(limit){
 }
 function popup(p,coordinates){
  const node=document.createElement('div');node.style.whiteSpace='pre-line';
- node.textContent=[p.name||p.water_body||'Gauge',p.noaa_lid?'NOAA: '+p.noaa_lid:null,p.distance_km!==undefined?'Connection: '+p.distance_km+' km':null,p.stage!==undefined?'Stage: '+p.stage+' ft':null].filter(Boolean).join('\\n');
+ node.textContent=[p.name||p.water_body||'Gauge',p.noaa_lid?'NOAA: '+p.noaa_lid:null,p.distance_km!==undefined?'Connection: '+p.distance_km+' km':null,p.stage!==undefined?'Stage: '+p.stage+' ft':null].filter(Boolean).join('\n');
  if(p.noaa_lid){const a=document.createElement('a');a.href='https://water.noaa.gov/gauges/'+encodeURIComponent(p.noaa_lid);a.target='_blank';a.rel='noopener noreferrer';a.textContent='Open NOAA station ↗';node.append(document.createElement('br'),a);}
  new maplibregl.Popup().setLngLat(coordinates).setDOMContent(node).addTo(map);
 }
