@@ -101,7 +101,7 @@ function riverName(raw){
 }
 let riverNames=[],riverMode='all',focusRiver='';
 function applyRiverFilters(){
- for(const id of ['river-segments','expanded-rivers']){
+ for(const id of ['river-segments','river-3dhp-review','expanded-rivers']){
   if(!map.getLayer(id))continue;
   setLayerVisibility(id,riverToggle.checked&&riverMode!=='none');
   map.setFilter(id,riverMode==='only'?['==',['get','filter_river'],focusRiver]:riverMode==='exclude'?['!=',['get','filter_river'],focusRiver]:null);
@@ -362,6 +362,33 @@ map.on('load',async()=>{
     console.info('Loaded',segments.features.length,'gauge-associated river segments');
    }
   }catch(e){console.warn('Optional river segments unavailable:',e);}
+  // Published 3DHP review layer: authoritative river identities with nearby
+  // gauge-stage association. Separate from the legacy network pending QA.
+  try{
+   const response=await fetch('data/river_segments_3dhp_review.geojson',{cache:'no-store'});
+   if(response.ok){
+    const candidate=await response.json();
+    if(candidate.type!=='FeatureCollection'||!Array.isArray(candidate.features))throw new Error('Invalid 3DHP review layer');
+    colorRiverNetwork(candidate,gaugeFeatures);
+    registerRivers(candidate.features.map(f=>f.properties.river_name));
+    map.addSource('river-3dhp-review',{type:'geojson',data:candidate});
+    map.addLayer({id:'river-3dhp-review',type:'line',source:'river-3dhp-review',
+      paint:{'line-color':['get','stage_color'],'line-width':['interpolate',['linear'],['zoom'],6,1.7,10,3.5,13,5],
+      'line-opacity':0.9}},'gauges');
+    setLayerVisibility('river-3dhp-review',riverToggle.checked);
+    map.on('click','river-3dhp-review',e=>{
+     if(reportButton.getAttribute('aria-pressed')==='true')return;
+     const p=e.features[0].properties;
+     new maplibregl.Popup().setLngLat(e.lngLat).setText(
+      (p.river_name||'Unidentified waterway')+
+      '\\nUSGS 3DHP mainstem: '+(p.river_id||'unknown')+
+      '\\nAssociated gauge: '+(p.site||p.from_gauge||'none')+
+      '\\nStage color uses nearby gauge; flow conditions are not safety guidance.'
+     ).addTo(map);
+    });
+    console.info('Loaded',candidate.features.length,'3DHP gauge-associated review reaches');
+   }
+  }catch(e){console.warn('3DHP review layer unavailable:',e);}
   // Optional low-bandwidth expansion: neutral rivers and station-only gauges.
   // These do not claim to have live stage measurements.
   try{
