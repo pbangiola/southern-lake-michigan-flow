@@ -8,6 +8,7 @@ import argparse
 import json
 import math
 import os
+import re
 import time
 import urllib.parse
 import urllib.request
@@ -88,6 +89,8 @@ node["waterway"="access_point"]({s},{w},{n},{e});
 way["waterway"="access_point"]({s},{w},{n},{e});
 node["canoe"="yes"]({s},{w},{n},{e});
 way["canoe"="yes"]({s},{w},{n},{e});
+node["name"~"(^|[[:space:]])landing(s)?($|[[:space:]])",i]({s},{w},{n},{e});
+way["name"~"(^|[[:space:]])landing(s)?($|[[:space:]])",i]({s},{w},{n},{e});
 way["waterway"~"^(river|stream|canal)$"]({s},{w},{n},{e});
 );out center geom;"""
     if layer=='launches':
@@ -108,7 +111,8 @@ def extract_osm(elements):
             if len(coords)>1:
                 rivers.append({"type":"Feature","geometry":{"type":"LineString","coordinates":coords},
                   "properties":{"id":ident,"river_name":tags.get("name") or "Unnamed waterway","source":"OpenStreetMap","verification":"unverified"}})
-        if tags.get("leisure")=="slipway" or tags.get("waterway")=="access_point" or tags.get("canoe")=="yes":
+        landing_name=bool(re.search(r"\blandings?\b",tags.get("name",""),re.IGNORECASE))
+        if tags.get("leisure")=="slipway" or tags.get("waterway")=="access_point" or tags.get("canoe")=="yes" or landing_name:
             lon=el.get("lon",el.get("center",{}).get("lon"))
             lat=el.get("lat",el.get("center",{}).get("lat"))
             if lon is None or lat is None or tags.get("access") in ("no","private"):
@@ -117,7 +121,8 @@ def extract_osm(elements):
               "properties":{"id":ident,"name":tags.get("name") or ident,"source":"OpenStreetMap",
                 "source_url":f"https://www.openstreetmap.org/{typ}/{el['id']}",
                 "access":tags.get("access","unknown"),"canoe":tags.get("canoe"),
-                "kayak":tags.get("kayak"),"verification":"candidate_review"}})
+                "kayak":tags.get("kayak"),"discovery_reason":"landing_name" if landing_name else "access_tags",
+                "verification":"candidate_review"}})
     return launches,rivers
 
 def usgs_tile(s,w,n,e,depth=0):
