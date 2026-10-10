@@ -180,8 +180,21 @@ map.on('load',async()=>{
     const putins=await response.json();
     if(putins.type==='FeatureCollection'&&Array.isArray(putins.features)){
      map.addSource('putins',{type:'geojson',data:putins});
-     map.addLayer({id:'putins',type:'circle',source:'putins',paint:{
-      'circle-radius':['interpolate',['linear'],['zoom'],6,3,11,5], 'circle-color':'#f3a13b','circle-stroke-color':'#4e2b12','circle-stroke-width':1.2
+     // Crossed canoe paddles, rendered as a scalable green map symbol.
+     const paddleCanvas=document.createElement('canvas');
+     paddleCanvas.width=64;paddleCanvas.height=64;
+     const ctx=paddleCanvas.getContext('2d');
+     ctx.strokeStyle='#176c3b';ctx.fillStyle='#269b58';ctx.lineCap='round';
+     for(const angle of [-Math.PI/4,Math.PI/4]){
+      ctx.save();ctx.translate(32,32);ctx.rotate(angle);
+      ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(0,-22);ctx.lineTo(0,14);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(-5,13);ctx.quadraticCurveTo(-8,24,0,27);ctx.quadraticCurveTo(8,24,5,13);ctx.closePath();ctx.fill();ctx.lineWidth=2;ctx.stroke();
+      ctx.restore();
+     }
+     map.addImage('crossed-canoe-paddles',ctx.getImageData(0,0,64,64),{pixelRatio:2});
+     map.addLayer({id:'putins',type:'symbol',source:'putins',layout:{
+      'icon-image':'crossed-canoe-paddles','icon-size':['interpolate',['linear'],['zoom'],6,0.75,11,1.15],
+      'icon-allow-overlap':true,'icon-ignore-placement':true
      }});
      map.on('click','putins',e=>{
       if(reportButton.getAttribute('aria-pressed')==='true')return;
