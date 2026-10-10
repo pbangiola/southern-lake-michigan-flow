@@ -32,13 +32,22 @@ def prepare(data, snap_m=5):
         if geom.get('type') != 'LineString' or len(geom.get('coordinates', [])) < 2:
             continue
         p = dict(f.get('properties') or {})
+        # USGS 3DHP flowdirection: 1=digitized downstream, 2=digitized upstream,
+        # 0=unknown. Explicitly exclude unknowns instead of guessing.
+        direction = p.get('flowdirection')
+        if direction is not None:
+            if direction not in (1, 2):
+                continue
+            if direction == 2:
+                geom = dict(geom)
+                geom['coordinates'] = list(reversed(geom['coordinates']))
         a = snap(geom['coordinates'][0], latitude, snap_m)
         b = snap(geom['coordinates'][-1], latitude, snap_m)
         if a == b:
             continue
         p['from_node'] = f'{a[0]}:{a[1]}'
         p['to_node'] = f'{b[0]}:{b[1]}'
-        p['established_name'] = next((str(p[k]).strip() for k in ('GNIS_Name','gnis_name','GNIS_NAME','name') if p.get(k)), '')
+        p['established_name'] = next((str(p[k]).strip() for k in ('gnisidlabel','GNIS_Name','gnis_name','GNIS_NAME','name') if p.get(k)), '')
         features.append({'type':'Feature','geometry':geom,'properties':p})
     return features
 
@@ -89,7 +98,7 @@ def run(data, snap_m=5):
                 p['filter_river']=p['river_id']
         accepted.extend(subset)
     result={'type':'FeatureCollection','metadata':{
-        'direction_source':'authoritative upstream-to-downstream coordinate order (required input contract)',
+        'direction_source':'USGS 3DHP flowdirection 1/2 when present; otherwise verified downstream coordinate order',
         'input_segments':len(features),'accepted_segments':len(accepted),
         'rejected_segments':sum(x['segments'] for x in rejected),
         'rejected_components':rejected,
@@ -106,10 +115,12 @@ def main():
     p.add_argument('--confirm-downstream-geometry',action='store_true',
                    help='Explicit acknowledgement that input geometry is downstream-oriented')
     args=p.parse_args()
-    if not args.confirm_downstream_geometry:
-        p.error('Refusing to infer flow direction: pass --confirm-downstream-geometry only for documented downstream-oriented data')
+    data=json.loads(args.input.read_text())
+    has_flowdir=all('flowdirection' in (f.get('properties') or {}) for f in data['features'])
+    if not has_flowdir and not args.confirm_downstream_geometry:
+        p.error('Flow direction missing: pass --confirm-downstream-geometry only for documented downstream-oriented data')
     if args.snap_m<=0:p.error('--snap-m must be positive')
-    result=run(json.loads(args.input.read_text()),args.snap_m)
+    result=run(data,args.snap_m)
     args.output.parent.mkdir(parents=True,exist_ok=True)
     args.output.write_text(json.dumps(result,separators=(',',':')))
     print(json.dumps({k:v for k,v in result['metadata'].items() if k!='rejected_components'},indent=2))
