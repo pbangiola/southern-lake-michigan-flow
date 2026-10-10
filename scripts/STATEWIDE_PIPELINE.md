@@ -8,11 +8,11 @@ The existing map continues to use `data/river_segments.geojson`.
 ## Data provenance and prerequisites
 
 Use **authoritative directed flowlines** from USGS 3DHP or NHDPlus HR.
-Confirm the exact downloaded layer's **geometry coordinate order** is
-upstream-to-downstream in the source documentation or from its network
-attributes. Some NHD layers contain digitized geometries that are not
-downstream-oriented; do **not** simply rename an EDNA file or blindly set
-`--confirm-downstream-geometry`.
+The USGS 3DHP Flowline service provides `flowdirection`: 1 means digitized
+in downstream direction, 2 means digitized upstream (the pipeline reverses
+it), and 0 means unknown (the pipeline excludes it). For other sources,
+confirm the exact layer's **geometry coordinate order** is upstream-to-
+downstream; do **not** rename EDNA data or blindly pass the confirmation flag.
 
 USGS access:
 - https://www.usgs.gov/3d-hydrography-program/access-3dhp-data-products
@@ -29,11 +29,13 @@ Mississippi drainage, and review engineered Chicago diversions separately.
 2. `scripts/orient_river_outlets.py`: orient *acyclic* EDNA components only
    when an exact verified outlet endpoint is supplied. It does **not** orient
    the giant cyclic component, and its partial output is **not** publishable.
-3. `scripts/prepare_authoritative_rivers.py`: given verified downstream-
-   oriented authoritative GeoJSON, derive directed junctions, apply
-   established names, and run the one-river-per-segment identity algorithm.
-   Reject cycles and divergences component by component.
-4. `scripts/attach_stage_gauges.py`: transfer EDNA gauge associations for
+3. `scripts/download_3dhp_flowlines.py`: download paginated USGS 3DHP
+   flowlines with authoritative direction and GNIS attributes.
+4. `scripts/prepare_authoritative_rivers.py`: orient using USGS direction
+   codes, derive junctions and river identities. Prefer source mainstem IDs
+   where available; otherwise reject ambiguous cycles/divergences.
+   Source GNIS names can change along a mainstem and require review.
+5. `scripts/attach_stage_gauges.py`: transfer EDNA gauge associations for
    coloring only, using a 100-meter maximum separation. This does not change
    names or directions.
 
@@ -49,9 +51,11 @@ python3 -m unittest discover -s scripts -p 'test_*.py' -v
 python3 scripts/audit_river_topology.py \
   local/illinois_river_segments.geojson
 
+python3 scripts/download_3dhp_flowlines.py \
+  --output local/usgs_3dhp_flowlines.geojson
+
 python3 scripts/prepare_authoritative_rivers.py \
-  local/authoritative_downstream_flowlines.geojson \
-  --confirm-downstream-geometry \
+  local/usgs_3dhp_flowlines.geojson \
   --output local/authoritative_named_rivers.geojson
 
 python3 scripts/attach_stage_gauges.py \
@@ -75,3 +79,10 @@ The scripts deliberately do **not** overwrite `data/river_segments.geojson`.
 **Known limitation:** The present source files alone cannot establish true
 flow direction. No script can reliably recover engineered reversals from
 undirected EDNA geometry and gauge proximity alone.
+
+## Cloud execution
+
+The GitHub Actions workflow `statewide-rivers.yml` downloads the USGS data,
+processes identities and stage gauges, and uploads an **unpublished** candidate
+artifact. The workflow `river-tests.yml` runs unit tests. Neither workflow
+modifies the published river layer automatically.
