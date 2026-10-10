@@ -84,20 +84,14 @@ function calibrate(data,reports){
 }
 function palette(p){
  const stage=finite(p.stage),minimum=finite(p.atlas_minimum_ft);
- if(stage===null||!p.atlas_minimum_adequate||minimum===null)return '#88929b';
- const low=finite(p.paddling_low_ft)??minimum;
- const mean=finite(p.atlas_mean_ft),high=finite(p.paddling_high_ft)??finite(p.flood_stage_ft);
- if(stage<=low)return '#80502f';
- if(mean===null||mean<=low){
-  // Without an observed annual mean, don't invent a flood-risk color gradient.
-  return '#88929b';
- }
- if(stage<=mean)return blend('#80502f','#168ed0',(stage-low)/(mean-low));
- if(high===null||high<=mean)return '#168ed0';
- const t=Math.max(0,Math.min(1,(stage-mean)/(high-mean)));
- if(t<=.45)return blend('#168ed0','#299b59',t/.45);
- if(t<=.75)return blend('#299b59','#e8cf44',(t-.45)/.30);
- return blend('#e8cf44','#d93b32',(t-.75)/.25);
+ const mean=finite(p.atlas_mean_ft),flood=finite(p.flood_stage_ft);
+ if(stage===null||!p.atlas_minimum_adequate||minimum===null||mean===null||flood===null||!(minimum<mean&&mean<flood))return '#88929b';
+ const green=mean+0.25*(flood-mean);
+ if(stage<=minimum)return '#24150c';
+ if(stage<=mean)return blend('#24150c','#1768c5',(stage-minimum)/(mean-minimum));
+ if(stage<=green)return blend('#1768c5','#159447',(stage-mean)/(green-mean));
+ if(stage<flood)return blend('#159447','#d3232f',(stage-green)/(flood-green));
+ return '#d3232f';
 }
 function riverName(raw){
  const value=String(raw||'').trim();
