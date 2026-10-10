@@ -31,17 +31,25 @@ def build(features):
         down=str(down)
         if down in reaches:upstream[down].append(rid)
     return reaches,upstream,sorted(roots)
-def run(network,state_path,output_path,limit):
+def run(network,state_path,output_path,limit,start_reach=None,stop_ids=None):
     reaches,upstream,roots=build(read(network)["features"])
-    state=read(state_path) if Path(state_path).exists() else {"queue":roots,"seen":[],"network":str(network)}
+    initial=[start_reach] if start_reach else roots
+    if start_reach and start_reach not in reaches:raise ValueError("confluence reach not found: "+start_reach)
+    state=read(state_path) if Path(state_path).exists() else {"queue":initial,"seen":[],"network":str(network),"start_reach":start_reach}
+    if state.get("start_reach")!=start_reach:raise ValueError("checkpoint start reach differs; use a separate state file")
     if state.get("network")!=str(network):raise ValueError("checkpoint belongs to another network")
-    queue=collections.deque(state["queue"]);seen=set(state["seen"]);batch=[]
+    queue=collections.deque(state["queue"]);seen=set(state["seen"]);batch=[];intersections=[]
+    stop_ids=stop_ids or set()
     while queue and len(batch)<limit:
         rid=queue.popleft()
         if rid in seen:continue
-        seen.add(rid);batch.append(reaches[rid])
+        seen.add(rid)
+        if rid in stop_ids:
+            intersections.append(rid)
+            continue
+        batch.append(reaches[rid])
         queue.extend(child for child in upstream[rid] if child not in seen)
-    save(output_path,{"type":"FeatureCollection","features":batch,"metadata":{"processed":len(seen),"remaining_queue":len(queue),"total_reaches":len(reaches)}})
+    save(output_path,{"type":"FeatureCollection","features":batch,"metadata":{"processed":len(seen),"remaining_queue":len(queue),"total_reaches":len(reaches),"intersections":intersections}})
     save(state_path,{"network":str(network),"queue":list(queue),"seen":sorted(seen),"complete":not queue,"total_reaches":len(reaches),"processed":len(seen)})
     print(f"Processed {len(batch)} reaches; {len(seen)}/{len(reaches)} total; queued {len(queue)}")
     if not roots:print("WARNING: no verified ocean/Great Lakes terminal reaches in source")
@@ -52,7 +60,10 @@ def main():
     p.add_argument("--state",default="data/upstream_traversal_state.json")
     p.add_argument("--output",default="local/upstream_batch.geojson")
     p.add_argument("--limit",type=int,default=1000)
+    p.add_argument("--start-reach",help="Verified Illinois River reach at Mississippi confluence")
+    p.add_argument("--stop-ids",help="Text file of already mapped reach IDs, one per line")
     a=p.parse_args()
     if a.limit<1: p.error("--limit must be positive")
-    run(a.network,a.state,a.output,a.limit)
+    stop_ids={line.strip() for line in Path(a.stop_ids).read_text().splitlines() if line.strip()} if a.stop_ids else set()
+    run(a.network,a.state,a.output,a.limit,a.start_reach,stop_ids)
 if __name__=="__main__":main()
