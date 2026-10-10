@@ -1,0 +1,8 @@
+{
+  "status": "blocked_missing_directed_network",
+  "processed": 0,
+  "complete": false,
+  "confluence": "Illinois River at Mississippi River near Grafton, Illinois",
+  "verified_start_reach": null,
+  "network": "data/directed_reaches.geojson"
+}
