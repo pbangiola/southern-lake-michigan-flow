@@ -1,0 +1,31 @@
+name: Consolidate launch candidates
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/putins_osm_candidates.geojson'
+      - 'data/regional_launches.geojson'
+      - 'scripts/consolidate_putins.py'
+permissions:
+  contents: write
+concurrency:
+  group: consolidate-launches
+  cancel-in-progress: false
+jobs:
+  consolidate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build consolidated launch layer
+        run: python3 scripts/consolidate_putins.py
+      - name: Commit derived layer and review report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/putins_consolidated.geojson data/putins_duplicate_review.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh consolidated launch candidates"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
