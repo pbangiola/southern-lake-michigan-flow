@@ -75,7 +75,7 @@ def main():
         region,w,s,e,n=all_tiles[idx]
         if idx+1 in skipped:
             state["next_tile"]=idx+1
-            CHECKPOINT.write_text(json.dumps(state,indent=2)+"\\n")
+            CHECKPOINT.write_text(json.dumps(state,indent=2)+"\n")
             print(f"{idx+1}/{len(all_tiles)} {region}: SKIP non-US tile",flush=True)
             continue
         for attempt in range(a.retry):
