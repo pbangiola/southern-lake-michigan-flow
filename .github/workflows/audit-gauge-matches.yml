@@ -1,0 +1,20 @@
+name: Audit NOAA gauge to EDNA river matching
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install matching dependencies
+        run: python -m pip install shapely pyproj ijson
+      - name: Calculate gauge-to-river distances
+        run: python -u scripts/audit_gauge_edna_matches.py
+      - name: Upload matching report
+        uses: actions/upload-artifact@v4
+        with:
+          name: noaa-edna-match-audit
+          path: data/gauge_match_audit/
