@@ -127,17 +127,11 @@ def main():
         if not isinstance(categories, dict):
             unresolved.append(code)
             continue
-        minor = categories.get("minor")
-        # Stage thresholds must be explicitly identified as feet; avoid treating cfs as feet.
-        if isinstance(minor, dict):
-            unit = str(minor.get("unit") or minor.get("units") or "").lower()
-            minor = minor.get("stage") if unit in ("ft", "feet", "foot") else None
-        else:
-            # Scalar NOAA flood categories use stage units, but only accept when
-            # the metadata explicitly specifies stage rather than flow.
-            unit = str(flood.get("unit") or flood.get("units") or flood.get("primary") or "").lower()
-            if unit not in ("ft", "feet", "foot", "stage"):
-                minor = None
+        # NOAA specifies the units on the flood object, not each category.
+        # The stage field is in feet only when flood.stageUnits says so.
+        stage_unit = str(flood.get("stageUnits") or "").lower()
+        minor_record = categories.get("minor")
+        minor = minor_record.get("stage") if isinstance(minor_record, dict) and stage_unit in ("ft", "feet", "foot") else None
         value = number(minor)
         if not usgs or value is None:
             unresolved.append(code)
