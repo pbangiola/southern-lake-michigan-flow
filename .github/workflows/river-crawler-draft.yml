@@ -2,7 +2,7 @@ name: Incremental river crawler
 on:
   workflow_dispatch:
   schedule:
-    - cron: '19 7 * * 2,5'
+    - cron: '19 */6 * * *'
 permissions:
   contents: write
 concurrency:
@@ -20,7 +20,10 @@ jobs:
         with:
           python-version: '3.11'
       - name: Discover river-adjacent gauge and launch candidates
-        run: |\n          mkdir -p local\n          if [ -f data/river_crawler_state.json ]; then cp data/river_crawler_state.json local/river_crawler_state.json; fi\n          python scripts/river_crawler.py --network data/river_segments_3dhp_review.geojson --max-boxes 3
+        run: |
+          mkdir -p local
+          if [ -f data/river_crawler_state.json ]; then cp data/river_crawler_state.json local/river_crawler_state.json; fi
+          python scripts/river_crawler.py --nationwide --max-boxes 2
       - name: Validate and publish candidate map data
         run: python scripts/publish_crawler_candidates.py
       - name: Persist crawler cursor and validated candidates
@@ -29,7 +32,10 @@ jobs:
           cp local/river_crawler_state.json data/river_crawler_state.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A data/river_crawler_state.json\n          for file in data/gauges_expansion.geojson data/putins_expansion.geojson; do\n            if [ -f "$file" ]; then git add "$file"; fi\n          done
+          git add -A data/river_crawler_state.json
+          for file in data/gauges_expansion.geojson data/putins_expansion.geojson; do
+            if [ -f "$file" ]; then git add "$file"; fi
+          done
           if ! git diff --cached --quiet; then
             git commit -m "Publish validated incremental river discoveries"
             git push
