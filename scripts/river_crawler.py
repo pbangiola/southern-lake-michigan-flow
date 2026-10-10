@@ -16,7 +16,12 @@ def request(url):
     req=urllib.request.Request(url,headers={"User-Agent":"southern-lake-michigan-flow/river-crawler (GitHub project)"})
     with urllib.request.urlopen(req,timeout=45) as response:return json.load(response)
 def bounds(features,padding=.025):
-    xy=[]\n    for f in features:\n        coords=f.get("geometry",{}).get("coordinates") or []\n        if f.get("geometry",{}).get("type")=="Point": coords=[coords]\n        for p in coords:\n            if isinstance(p,(list,tuple)) and len(p)>1 and isinstance(p[0],(int,float)): xy.append(p)
+    xy=[]
+    for f in features:
+        coords=f.get("geometry",{}).get("coordinates") or []
+        if f.get("geometry",{}).get("type")=="Point": coords=[coords]
+        for p in coords:
+            if isinstance(p,(list,tuple)) and len(p)>1 and isinstance(p[0],(int,float)): xy.append(p)
     if not xy:return None
     return [min(p[0] for p in xy)-padding,min(p[1] for p in xy)-padding,max(p[0] for p in xy)+padding,max(p[1] for p in xy)+padding]
 def discover_gauges(bbox):
@@ -56,14 +61,23 @@ def main():
     a.add_argument("--network",default="data/river_segments_3dhp_review.geojson")
     a.add_argument("--state",default="local/river_crawler_state.json")
     a.add_argument("--output",default="local/river_crawler")
-    a.add_argument("--max-boxes",type=int,default=2)\n    a.add_argument("--max-features",type=int,default=15000)
+    a.add_argument("--max-boxes",type=int,default=2)
+    a.add_argument("--max-features",type=int,default=15000)
+    a.add_argument("--nationwide",action="store_true",help="Scan CONUS in bounded geographic cells (discovery only)")
     args=a.parse_args()
     network=load(args.network);features=network.get("features",[])[:args.max_features]
     statepath=Path(args.state)
     state=json.loads(statepath.read_text()) if statepath.exists() else {"cursor":0}
     cursor=state.get("cursor",0);boxes=[]
+    if args.nationwide:
+        # Geographic coverage grid, not a connected river network. Includes lower 48 only.
+        cells=[[-125+x,24+y,-124+x,25+y] for y in range(26) for x in range(59)]
+        boxes=cells[cursor:cursor+args.max_boxes]
+        consumed=len(boxes)
     # Fixed-size bounded batches avoid broad Overpass/NWIS queries.
-    consumed=0\n    for f in features[cursor:]:\n        consumed+=1
+    consumed=0 if not args.nationwide else consumed
+    for f in ([] if args.nationwide else features[cursor:]):
+        consumed+=1
         geom=f.get("geometry",{})
         if geom.get("type")!="LineString":continue
         bb=bounds([f],.01)
@@ -77,7 +91,10 @@ def main():
             except Exception as error:print(f"{name} discovery deferred for {bb}: {error}")
         save(path,merge(existing,found))
         print(name,len(found),"newly observed",len(load(path)["features"]),"total candidates")
-    state["cursor"]=min(len(features),cursor+max(1,consumed))
-    if state["cursor"]>=len(features):state["cursor"]=0
+    total=len(cells) if args.nationwide else len(features)
+    state["cursor"]=min(total,cursor+consumed)
+    state["complete"]=state["cursor"]>=total
+    state["scope"]="CONUS discovery grid" if args.nationwide else "river network review"
+    # Completed scans remain complete; reset only when explicitly requested.
     save(statepath,state)
 if __name__=="__main__":main()
