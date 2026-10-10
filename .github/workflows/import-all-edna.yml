@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - '.github/workflows/import-all-edna.yml'
+      - 'scripts/import_all_edna.py'
 permissions:
   contents: write
 concurrency:
