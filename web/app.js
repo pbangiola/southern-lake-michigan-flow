@@ -103,7 +103,7 @@ function riverName(raw){
 }
 let riverNames=[],riverMode='all',focusRiver='';
 function applyRiverFilters(){
- for(const id of ['river-segments','river-3dhp-review','expanded-rivers','illinois-network']){
+ for(const id of ['river-segments','river-3dhp-review','expanded-rivers','illinois-network',...(window.ednaWatershedLayerIds||[])]){
   if(!map.getLayer(id))continue;
   setLayerVisibility(id,riverToggle.checked&&riverMode!=='none');
   map.setFilter(id,riverMode==='only'?['==',['get','filter_river'],focusRiver]:riverMode==='exclude'?['!=',['get','filter_river'],focusRiver]:null);
@@ -188,6 +188,27 @@ map.on('load',async()=>{
   });
   console.info('Illinois EDNA network loaded:',network.features.length,'segments');
  }catch(error){console.warn('Illinois network unavailable:',error);}
+});
+// EDNA watershed imports appear only after the entire index has completed.
+map.on('load',async()=>{
+ try{
+  const response=await fetch('data/edna_watersheds/manifest.json',{cache:'no-store'});
+  if(!response.ok)return;
+  const manifest=await response.json();
+  if(manifest.complete!==true||!Array.isArray(manifest.sources))return;
+  const sources=manifest.sources.filter(x=>x.features>0);
+  for(const entry of sources){
+   const res=await fetch(entry.file,{cache:'force-cache'});
+   if(!res.ok)throw new Error('Missing watershed: '+entry.file);
+   const data=await res.json();
+   const id='edna-'+entry.name.replace(/[^a-z0-9_-]/g,'-');
+   map.addSource(id,{type:'geojson',data});
+   map.addLayer({id,type:'line',source:id,paint:{'line-color':'#527d94','line-width':['interpolate',['linear'],['zoom'],5,0.65,9,1.5,13,2.5],'line-opacity':0.72}});
+   setLayerVisibility(id,riverToggle.checked&&riverMode!=='none');
+  }
+  window.ednaWatershedLayerIds=sources.map(x=>'edna-'+x.name.replace(/[^a-z0-9_-]/g,'-'));
+  console.info('Imported EDNA watershed layers:',sources.length,'segments:',manifest.total_features);
+ }catch(error){console.warn('EDNA watershed overlay unavailable:',error);}
 });
 // Load launch markers independently of gauge and river data; gauge failures must not hide launches.
 map.on('load',async()=>{
