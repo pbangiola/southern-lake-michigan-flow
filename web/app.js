@@ -199,6 +199,15 @@ putinFilter.addEventListener('change',updatePutins);
     const putins=await response.json();
     if(putins.type==='FeatureCollection'&&Array.isArray(putins.features)){
      putinFeatures=putins.features;
+     // Prefer the automatically consolidated dataset when the workflow has generated it.
+     let consolidated=null;
+     try{
+      const mergedResponse=await fetch('data/putins_consolidated.geojson',{cache:'no-store'});
+      if(mergedResponse.ok)consolidated=await mergedResponse.json();
+     }catch(error){console.warn('Consolidated launch layer unavailable:',error);}
+     if(consolidated?.type==='FeatureCollection'&&Array.isArray(consolidated.features)){
+      putinFeatures=consolidated.features;
+     }else{
      let extra=null;
      try{
       const extraResponse=await fetch('data/regional_launches.geojson',{cache:'no-store'});
@@ -212,6 +221,7 @@ putinFilter.addEventListener('change',updatePutins);
        const key=coordinateKey(feature);
        if(!seen.has(key)){putinFeatures.push(feature);seen.add(key);}
       }
+     }
      }
      map.addSource('putins',{type:'geojson',data:{type:'FeatureCollection',features:putinFeatures},cluster:true,clusterRadius:45,clusterMaxZoom:12});
      // Crossed canoe paddles, rendered as a scalable green map symbol.
