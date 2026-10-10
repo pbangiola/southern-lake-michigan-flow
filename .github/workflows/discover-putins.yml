@@ -1,5 +1,7 @@
 name: Discover regional put-ins
 on:
+  schedule:
+    - cron: '41 11 * * 2,5'
   push:
     branches: [main]
     paths:
