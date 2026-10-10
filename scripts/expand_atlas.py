@@ -11,6 +11,7 @@ import os
 import time
 import urllib.parse
 import urllib.request
+import urllib.error
 from pathlib import Path
 
 ROOT = Path("data")
@@ -24,22 +25,38 @@ NX = math.ceil((EAST-WEST)/STEP)
 NY = math.ceil((NORTH-SOUTH)/STEP)
 MAX_BYTES = 1_500_000
 USER_AGENT = "southern-lake-michigan-flow-atlas/1.0 (incremental public-data discovery)"
+USGS_REQUEST_BEFORE = None  # Optional local downloader hook
+USGS_REQUEST_AFTER = None   # (status, response headers); never receives credentials
 
 def request(url, body=None):
+    is_usgs=urllib.parse.urlsplit(url).hostname == "api.waterdata.usgs.gov"
+    if is_usgs and USGS_REQUEST_BEFORE:
+        USGS_REQUEST_BEFORE()
     headers={"User-Agent":USER_AGENT, "Accept-Encoding":"identity"}
-    if urllib.parse.urlsplit(url).hostname == "api.waterdata.usgs.gov":
+    if is_usgs:
         key=os.getenv("USGS_API_KEY")
         if key:
             headers["X-API-Key"]=key
-    req = urllib.request.Request(url, data=body, headers=headers)
-    with urllib.request.urlopen(req, timeout=55) as response:
-        size = response.headers.get("Content-Length")
-        if size and int(size)>MAX_BYTES:
-            raise ValueError("Remote response exceeds 1.5 MB limit")
-        data = response.read(MAX_BYTES+1)
-        if len(data)>MAX_BYTES:
-            raise ValueError("Remote response exceeded 1.5 MB limit")
-        return data.decode("utf-8")
+    req=urllib.request.Request(url,data=body,headers=headers)
+    try:
+        with urllib.request.urlopen(req,timeout=55) as response:
+            if is_usgs and USGS_REQUEST_AFTER:
+                USGS_REQUEST_AFTER(response.status,response.headers)
+            size=response.headers.get("Content-Length")
+            if size and int(size)>MAX_BYTES:
+                raise ValueError("Remote response exceeds 1.5 MB limit")
+            data=response.read(MAX_BYTES+1)
+            if len(data)>MAX_BYTES:
+                raise ValueError("Remote response exceeded 1.5 MB limit")
+            return data.decode("utf-8")
+    except urllib.error.HTTPError as exc:
+        if is_usgs and USGS_REQUEST_AFTER:
+            USGS_REQUEST_AFTER(exc.code,exc.headers)
+        raise
+    except (OSError,ValueError):
+        if is_usgs and USGS_REQUEST_AFTER:
+            USGS_REQUEST_AFTER(0,{})
+        raise
 
 def read_collection(path):
     if not path.exists() or not path.stat().st_size:
