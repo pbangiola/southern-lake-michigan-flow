@@ -12,7 +12,7 @@ import urllib.error
 from pathlib import Path
 import expand_atlas as atlas
 
-LAYERS=("launches","rivers","gauges")
+LAYERS=("launches",)  # Esri handles rivers; USGS legacy site endpoint returns 404.
 PROGRESS=Path("data/expansion_pace.json")
 TOTAL=atlas.NX*atlas.NY
 
@@ -72,7 +72,10 @@ def run():
                 outcome="ok"
             except Exception as exc:
                 info["failures"]+=1
-                info["delay_seconds"]=min(120,info["delay_seconds"]*2+5)
+                if isinstance(exc, urllib.error.HTTPError) and exc.code in (400,404,500,501):
+                    info["endpoint_error"]=str(exc)
+                else:
+                    info["delay_seconds"]=min(120,info["delay_seconds"]*2+5)
                 blocked.add(layer)
                 outcome=str(exc)[:160]
                 features=[];added=0
