@@ -1,0 +1,1557 @@
+{
+  "source": "NOAA NWPS",
+  "retrieved_utc": "2026-10-10T12:35:55.826912+00:00",
+  "illinois_noaa_gauges": 251,
+  "details_cached": 251,
+  "flood_stage_records": 221,
+  "unresolved_count": 28,
+  "stations": {
+    "05550001": {
+      "usgs_id": "05550001",
+      "noaa_id": "AFBI2",
+      "flood_stage_ft": 9.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/AFBI2"
+    },
+    "05550000": {
+      "usgs_id": "05550000",
+      "noaa_id": "ALGI2",
+      "flood_stage_ft": 3.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/ALGI2"
+    },
+    "05587541": {
+      "usgs_id": "05587541",
+      "noaa_id": "ALNI2",
+      "flood_stage_ft": 21.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/ALNI2"
+    },
+    "05587498": {
+      "usgs_id": "05587498",
+      "noaa_id": "ALOI2",
+      "flood_stage_ft": 21.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/ALOI2"
+    },
+    "05547000": {
+      "usgs_id": "05547000",
+      "noaa_id": "ANCI2",
+      "flood_stage_ft": 6.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/ANCI2"
+    },
+    "05419000": {
+      "usgs_id": "05419000",
+      "noaa_id": "APRI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/APRI2"
+    },
+    "05590800": {
+      "usgs_id": "05590800",
+      "noaa_id": "ATWI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/ATWI2"
+    },
+    "05551675": {
+      "usgs_id": "05551675",
+      "noaa_id": "BBMI2",
+      "flood_stage_ft": 10.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/BBMI2"
+    },
+    "03338780": {
+      "usgs_id": "03338780",
+      "noaa_id": "BISI2",
+      "flood_stage_ft": 10.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/BISI2"
+    },
+    "05551330": {
+      "usgs_id": "05551330",
+      "noaa_id": "BMCI2",
+      "flood_stage_ft": 6.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/BMCI2"
+    },
+    "05580950": {
+      "usgs_id": "05580950",
+      "noaa_id": "BMII2",
+      "flood_stage_ft": 11.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/BMII2"
+    },
+    "05595700": {
+      "usgs_id": "05595700",
+      "noaa_id": "BMMI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/BMMI2"
+    },
+    "05540250": {
+      "usgs_id": "05540250",
+      "noaa_id": "BOLI2",
+      "flood_stage_ft": 20.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/BOLI2"
+    },
+    "05595860": {
+      "usgs_id": "05595860",
+      "noaa_id": "BONI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/BONI2"
+    },
+    "03378000": {
+      "usgs_id": "03378000",
+      "noaa_id": "BROI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/BROI2"
+    },
+    "05595765": {
+      "usgs_id": "05595765",
+      "noaa_id": "BSII2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/BSII2"
+    },
+    "05438500": {
+      "usgs_id": "05438500",
+      "noaa_id": "BVDI2",
+      "flood_stage_ft": 9.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/BVDI2"
+    },
+    "05532000": {
+      "usgs_id": "05532000",
+      "noaa_id": "BWDI2",
+      "flood_stage_ft": 9.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/BWDI2"
+    },
+    "03337000": {
+      "usgs_id": "03337000",
+      "noaa_id": "BYAI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/BYAI2"
+    },
+    "03337100": {
+      "usgs_id": "03337100",
+      "noaa_id": "BYBI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/BYBI2"
+    },
+    "03336998": {
+      "usgs_id": "03336998",
+      "noaa_id": "BYDI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/BYDI2"
+    },
+    "05440700": {
+      "usgs_id": "05440700",
+      "noaa_id": "BYRI2",
+      "flood_stage_ft": 13.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/BYRI2"
+    },
+    "03381495": {
+      "usgs_id": "03381495",
+      "noaa_id": "CARI2",
+      "flood_stage_ft": 27.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/CARI2"
+    },
+    "05592990": {
+      "usgs_id": "05592990",
+      "noaa_id": "CAYI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/CAYI2"
+    },
+    "05536235": {
+      "usgs_id": "05536235",
+      "noaa_id": "CDCI2",
+      "flood_stage_ft": 10.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/CDCI2"
+    },
+    "05595820": {
+      "usgs_id": "05595820",
+      "noaa_id": "CFMI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/CFMI2"
+    },
+    "05526000": {
+      "usgs_id": "05526000",
+      "noaa_id": "CHBI2",
+      "flood_stage_ft": 16.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/CHBI2"
+    },
+    "07020500": {
+      "usgs_id": "07020500",
+      "noaa_id": "CHSI2",
+      "flood_stage_ft": 27.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/CHSI2"
+    },
+    "03379500": {
+      "usgs_id": "03379500",
+      "noaa_id": "CLAI2",
+      "flood_stage_ft": 18.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/CLAI2"
+    },
+    "05579500": {
+      "usgs_id": "05579500",
+      "noaa_id": "CLFI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/CLFI2"
+    },
+    "05584500": {
+      "usgs_id": "05584500",
+      "noaa_id": "CLMI2",
+      "flood_stage_ft": 20.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/CLMI2"
+    },
+    "03343400": {
+      "usgs_id": "03343400",
+      "noaa_id": "CMGI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/CMGI2"
+    },
+    "05590050": {
+      "usgs_id": "05590050",
+      "noaa_id": "CMII2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/CMII2"
+    },
+    "05443500": {
+      "usgs_id": "05443500",
+      "noaa_id": "CMOI2",
+      "flood_stage_ft": 12.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/CMOI2"
+    },
+    "05567500": {
+      "usgs_id": "05567500",
+      "noaa_id": "CNGI2",
+      "flood_stage_ft": 13.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/CNGI2"
+    },
+    "05591200": {
+      "usgs_id": "05591200",
+      "noaa_id": "COKI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/COKI2"
+    },
+    "05542000": {
+      "usgs_id": "05542000",
+      "noaa_id": "COLI2",
+      "flood_stage_ft": 12.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/COLI2"
+    },
+    "05568615": {
+      "usgs_id": "05568615",
+      "noaa_id": "COPI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/COPI2"
+    },
+    "05536162": {
+      "usgs_id": "05536162",
+      "noaa_id": "CPCI2",
+      "flood_stage_ft": 14.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/CPCI2"
+    },
+    "05593000": {
+      "usgs_id": "05593000",
+      "noaa_id": "KCAI2",
+      "flood_stage_ft": 16.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/KCAI2"
+    },
+    "03382100": {
+      "usgs_id": "03382100",
+      "noaa_id": "CRRI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/CRRI2"
+    },
+    "05536137": {
+      "usgs_id": "05536137",
+      "noaa_id": "CSWI2",
+      "flood_stage_ft": 4.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/CSWI2"
+    },
+    "05590950": {
+      "usgs_id": "05590950",
+      "noaa_id": "CTVI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/CTVI2"
+    },
+    "05592100": {
+      "usgs_id": "05592100",
+      "noaa_id": "CWDI2",
+      "flood_stage_ft": 15.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/CWDI2"
+    },
+    "05552500": {
+      "usgs_id": "05552500",
+      "noaa_id": "DAYI2",
+      "flood_stage_ft": 12.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/DAYI2"
+    },
+    "05573540": {
+      "usgs_id": "05573540",
+      "noaa_id": "DCRI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/DCRI2"
+    },
+    "05540160": {
+      "usgs_id": "05540160",
+      "noaa_id": "DEBI2",
+      "flood_stage_ft": 14.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/DEBI2"
+    },
+    "05439000": {
+      "usgs_id": "05439000",
+      "noaa_id": "DEKI2",
+      "flood_stage_ft": 10.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/DEKI2"
+    },
+    "05578250": {
+      "usgs_id": "05578250",
+      "noaa_id": "DEWI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/DEWI2"
+    },
+    "05530100": {
+      "usgs_id": "05530100",
+      "noaa_id": "DMPI2",
+      "flood_stage_ft": 13.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/DMPI2"
+    },
+    "03339000": {
+      "usgs_id": "03339000",
+      "noaa_id": "DNVI2",
+      "flood_stage_ft": 18.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/DNVI2"
+    },
+    "05534500": {
+      "usgs_id": "05534500",
+      "noaa_id": "DRFI2",
+      "flood_stage_ft": 9.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/DRFI2"
+    },
+    "05535400": {
+      "usgs_id": "05535400",
+      "noaa_id": "DRWI2",
+      "flood_stage_ft": 13.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/DRWI2"
+    },
+    "05529000": {
+      "usgs_id": "05529000",
+      "noaa_id": "DSPI2",
+      "flood_stage_ft": 15.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/DSPI2"
+    },
+    "05442300": {
+      "usgs_id": "05442300",
+      "noaa_id": "DXRI2",
+      "flood_stage_ft": 16.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/DXRI2"
+    },
+    "05540228": {
+      "usgs_id": "05540228",
+      "noaa_id": "EBDI2",
+      "flood_stage_ft": 13.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/EBDI2"
+    },
+    "03384450": {
+      "usgs_id": "03384450",
+      "noaa_id": "EDDI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/EDDI2"
+    },
+    "03378635": {
+      "usgs_id": "03378635",
+      "noaa_id": "EFFI2",
+      "flood_stage_ft": 16.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/EFFI2"
+    },
+    "05531300": {
+      "usgs_id": "05531300",
+      "noaa_id": "EMHI2",
+      "flood_stage_ft": 11.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/EMHI2"
+    },
+    "415356087575000": {
+      "usgs_id": "415356087575000",
+      "noaa_id": "EMQI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/EMQI2"
+    },
+    "05550500": {
+      "usgs_id": "05550500",
+      "noaa_id": "EPCI2",
+      "flood_stage_ft": 5.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/EPCI2"
+    },
+    "05550300": {
+      "usgs_id": "05550300",
+      "noaa_id": "ETCI2",
+      "flood_stage_ft": 8.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/ETCI2"
+    },
+    "05531045": {
+      "usgs_id": "05531045",
+      "noaa_id": "EVGI2",
+      "flood_stage_ft": 17.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/EVGI2"
+    },
+    "05590520": {
+      "usgs_id": "05590520",
+      "noaa_id": "FCKI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/FCKI2"
+    },
+    "05561500": {
+      "usgs_id": "05561500",
+      "noaa_id": "FDCI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/FDCI2"
+    },
+    "05439500": {
+      "usgs_id": "05439500",
+      "noaa_id": "FDLI2",
+      "flood_stage_ft": 9.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/FDLI2"
+    },
+    "05435500": {
+      "usgs_id": "05435500",
+      "noaa_id": "FEEI2",
+      "flood_stage_ft": 13.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/FEEI2"
+    },
+    "05570910": {
+      "usgs_id": "05570910",
+      "noaa_id": "FISI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/FISI2"
+    },
+    "05536255": {
+      "usgs_id": "05536255",
+      "noaa_id": "FLSI2",
+      "flood_stage_ft": 9.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/FLSI2"
+    },
+    "05420400": {
+      "usgs_id": "05420400",
+      "noaa_id": "FLTI2",
+      "flood_stage_ft": 16.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/FLTI2"
+    },
+    "05547500": {
+      "usgs_id": "05547500",
+      "noaa_id": "FLVI2",
+      "flood_stage_ft": 6.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/FLVI2"
+    },
+    "05578100": {
+      "usgs_id": "05578100",
+      "noaa_id": "FMCI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/FMCI2"
+    },
+    "05560500": {
+      "usgs_id": "05560500",
+      "noaa_id": "FMDI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/FMDI2"
+    },
+    "03612000": {
+      "usgs_id": "03612000",
+      "noaa_id": "FMNI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/FMNI2"
+    },
+    "05447500": {
+      "usgs_id": "05447500",
+      "noaa_id": "GENI2",
+      "flood_stage_ft": 15.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/GENI2"
+    },
+    "05536215": {
+      "usgs_id": "05536215",
+      "noaa_id": "GLWI2",
+      "flood_stage_ft": 8.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/GLWI2"
+    },
+    "05568000": {
+      "usgs_id": "05568000",
+      "noaa_id": "GNVI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/GNVI2"
+    },
+    "03384500": {
+      "usgs_id": "03384500",
+      "noaa_id": "GOLI2",
+      "flood_stage_ft": 40.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/GOLI2"
+    },
+    "05582000": {
+      "usgs_id": "05582000",
+      "noaa_id": "GREI2",
+      "flood_stage_ft": 16.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/GREI2"
+    },
+    "05587450": {
+      "usgs_id": "05587450",
+      "noaa_id": "GRFI2",
+      "flood_stage_ft": 20.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/GRFI2"
+    },
+    "05528000": {
+      "usgs_id": "05528000",
+      "noaa_id": "GUNI2",
+      "flood_stage_ft": 7.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/GUNI2"
+    },
+    "05587060": {
+      "usgs_id": "05587060",
+      "noaa_id": "HARI2",
+      "flood_stage_ft": 25.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/HARI2"
+    },
+    "05579725": {
+      "usgs_id": "05579725",
+      "noaa_id": "HEYI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/HEYI2"
+    },
+    "05535070": {
+      "usgs_id": "05535070",
+      "noaa_id": "HIPI2",
+      "flood_stage_ft": 9.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/HIPI2"
+    },
+    "05558300": {
+      "usgs_id": "05558300",
+      "noaa_id": "HNYI2",
+      "flood_stage_ft": 23.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/HNYI2"
+    },
+    "03382200": {
+      "usgs_id": "03382200",
+      "noaa_id": "HRBI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/HRBI2"
+    },
+    "03341910": {
+      "usgs_id": "03341910",
+      "noaa_id": "HUTI2",
+      "flood_stage_ft": 16.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/HUTI2"
+    },
+    "05525000": {
+      "usgs_id": "05525000",
+      "noaa_id": "IRQI2",
+      "flood_stage_ft": 18.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/IRQI2"
+    },
+    "05539000": {
+      "usgs_id": "05539000",
+      "noaa_id": "JHCI2",
+      "flood_stage_ft": 16.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/JHCI2"
+    },
+    "05548500": {
+      "usgs_id": "05548500",
+      "noaa_id": "JHNI2",
+      "flood_stage_ft": 6.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/JHNI2"
+    },
+    "05538020": {
+      "usgs_id": "05538020",
+      "noaa_id": "JOLI2",
+      "flood_stage_ft": 507.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/JOLI2"
+    },
+    "05446500": {
+      "usgs_id": "05446500",
+      "noaa_id": "JOSI2",
+      "flood_stage_ft": 12.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/JOSI2"
+    },
+    "05537980": {
+      "usgs_id": "05537980",
+      "noaa_id": "JRSI2",
+      "flood_stage_ft": 541.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/JRSI2"
+    },
+    "05568500": {
+      "usgs_id": "05568500",
+      "noaa_id": "KNGI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/KNGI2"
+    },
+    "412320088154101": {
+      "usgs_id": "412320088154101",
+      "noaa_id": "KRDI2",
+      "flood_stage_ft": 508.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/KRDI2"
+    },
+    "05535000": {
+      "usgs_id": "05535000",
+      "noaa_id": "LAFI2",
+      "flood_stage_ft": 6.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/LAFI2"
+    },
+    "05437610": {
+      "usgs_id": "05437610",
+      "noaa_id": "LATI2",
+      "flood_stage_ft": 9.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/LATI2"
+    },
+    "03346500": {
+      "usgs_id": "03346500",
+      "noaa_id": "LAWI2",
+      "flood_stage_ft": 30.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/LAWI2"
+    },
+    "04087440": {
+      "usgs_id": "04087440",
+      "noaa_id": "LCRI2",
+      "flood_stage_ft": 4.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/LCRI2"
+    },
+    "05536890": {
+      "usgs_id": "05536890",
+      "noaa_id": "LCSI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/LCSI2"
+    },
+    "05536265": {
+      "usgs_id": "05536265",
+      "noaa_id": "LDLI2",
+      "flood_stage_ft": 7.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/LDLI2"
+    },
+    "05528100": {
+      "usgs_id": "05528100",
+      "noaa_id": "LDRI2",
+      "flood_stage_ft": 12.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/LDRI2"
+    },
+    "05533600": {
+      "usgs_id": "05533600",
+      "noaa_id": "LEMI2",
+      "flood_stage_ft": 10.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/LEMI2"
+    },
+    "05540195": {
+      "usgs_id": "05540195",
+      "noaa_id": "LISI2",
+      "flood_stage_ft": 11.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/LISI2"
+    },
+    "05537500": {
+      "usgs_id": "05537500",
+      "noaa_id": "LLCI2",
+      "flood_stage_ft": 6.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/LLCI2"
+    },
+    "05533400": {
+      "usgs_id": "05533400",
+      "noaa_id": "LMTI2",
+      "flood_stage_ft": 14.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/LMTI2"
+    },
+    "05569500": {
+      "usgs_id": "05569500",
+      "noaa_id": "LNMI2",
+      "flood_stage_ft": 15.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/LNMI2"
+    },
+    "05555300": {
+      "usgs_id": "05555300",
+      "noaa_id": "LNRI2",
+      "flood_stage_ft": 16.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/LNRI2"
+    },
+    "05537000": {
+      "usgs_id": "05537000",
+      "noaa_id": "LOKI2",
+      "flood_stage_ft": 541.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/LOKI2"
+    },
+    "411925089063901": {
+      "usgs_id": "411925089063901",
+      "noaa_id": "LSLI2",
+      "flood_stage_ft": 20.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/LSLI2"
+    },
+    "05532600": {
+      "usgs_id": "05532600",
+      "noaa_id": "LYNI2",
+      "flood_stage_ft": 18.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/LYNI2"
+    },
+    "05549000": {
+      "usgs_id": "05549000",
+      "noaa_id": "MBNI2",
+      "flood_stage_ft": 7.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/MBNI2"
+    },
+    "05529500": {
+      "usgs_id": "05529500",
+      "noaa_id": "MCDI2",
+      "flood_stage_ft": 5.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/MCDI2"
+    },
+    "05597500": {
+      "usgs_id": "05597500",
+      "noaa_id": "MCOI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/MCOI2"
+    },
+    "03377500": {
+      "usgs_id": "03377500",
+      "noaa_id": "MCRI2",
+      "flood_stage_ft": 19.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/MCRI2"
+    },
+    "05536343": {
+      "usgs_id": "05536343",
+      "noaa_id": "MDNI2",
+      "flood_stage_ft": 8.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/MDNI2"
+    },
+    "05414820": {
+      "usgs_id": "05414820",
+      "noaa_id": "MENI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/MENI2"
+    },
+    "05549501": {
+      "usgs_id": "05549501",
+      "noaa_id": "MHYI2",
+      "flood_stage_ft": 4.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/MHYI2"
+    },
+    "05525500": {
+      "usgs_id": "05525500",
+      "noaa_id": "MILI2",
+      "flood_stage_ft": 18.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/MILI2"
+    },
+    "05536310": {
+      "usgs_id": "05536310",
+      "noaa_id": "MKHI2",
+      "flood_stage_ft": 10.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/MKHI2"
+    },
+    "05448000": {
+      "usgs_id": "05448000",
+      "noaa_id": "MLNI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/MLNI2"
+    },
+    "05551540": {
+      "usgs_id": "05551540",
+      "noaa_id": "MNGI2",
+      "flood_stage_ft": 13.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/MNGI2"
+    },
+    "05572000": {
+      "usgs_id": "05572000",
+      "noaa_id": "MNTI2",
+      "flood_stage_ft": 13.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/MNTI2"
+    },
+    "05520500": {
+      "usgs_id": "05520500",
+      "noaa_id": "MOMI2",
+      "flood_stage_ft": 5.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/MOMI2"
+    },
+    "05542500": {
+      "usgs_id": "05542500",
+      "noaa_id": "MORI2",
+      "flood_stage_ft": 16.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/MORI2"
+    },
+    "05541710": {
+      "usgs_id": "05541710",
+      "noaa_id": "MOXI2",
+      "flood_stage_ft": 11.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/MOXI2"
+    },
+    "05438170": {
+      "usgs_id": "05438170",
+      "noaa_id": "MRGI2",
+      "flood_stage_ft": 12.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/MRGI2"
+    },
+    "05585500": {
+      "usgs_id": "05585500",
+      "noaa_id": "MROI2",
+      "flood_stage_ft": 17.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/MROI2"
+    },
+    "05543500": {
+      "usgs_id": "05543500",
+      "noaa_id": "MRSI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/MRSI2"
+    },
+    "05594600": {
+      "usgs_id": "05594600",
+      "noaa_id": "MTHI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/MTHI2"
+    },
+    "05599490": {
+      "usgs_id": "05599490",
+      "noaa_id": "MURI2",
+      "flood_stage_ft": 22.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/MURI2"
+    },
+    "05595000": {
+      "usgs_id": "05595000",
+      "noaa_id": "NASI2",
+      "flood_stage_ft": 79.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/NASI2"
+    },
+    "05540130": {
+      "usgs_id": "05540130",
+      "noaa_id": "NAWI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/NAWI2"
+    },
+    "05536123": {
+      "usgs_id": "05536123",
+      "noaa_id": "NBCI2",
+      "flood_stage_ft": 3.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/NBCI2"
+    },
+    "05536118": {
+      "usgs_id": "05536118",
+      "noaa_id": "NBGI2",
+      "flood_stage_ft": 3.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/NBGI2"
+    },
+    "05536085": {
+      "usgs_id": "05536085",
+      "noaa_id": "NBPI2",
+      "flood_stage_ft": 18.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/NBPI2"
+    },
+    "05535500": {
+      "usgs_id": "05535500",
+      "noaa_id": "NBRI2",
+      "flood_stage_ft": 7.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/NBRI2"
+    },
+    "05540290": {
+      "usgs_id": "05540290",
+      "noaa_id": "NDRI2",
+      "flood_stage_ft": 12.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/NDRI2"
+    },
+    "414702088104801": {
+      "usgs_id": "414702088104801",
+      "noaa_id": "NFDI2",
+      "flood_stage_ft": 686.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/NFDI2"
+    },
+    "05548000": {
+      "usgs_id": "05548000",
+      "noaa_id": "NFLI2",
+      "flood_stage_ft": 6.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/NFLI2"
+    },
+    "05536000": {
+      "usgs_id": "05536000",
+      "noaa_id": "NILI2",
+      "flood_stage_ft": 10.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/NILI2"
+    },
+    "05548280": {
+      "usgs_id": "05548280",
+      "noaa_id": "NIPI2",
+      "flood_stage_ft": 11.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/NIPI2"
+    },
+    "05585100": {
+      "usgs_id": "05585100",
+      "noaa_id": "NLGI2",
+      "flood_stage_ft": 23.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/NLGI2"
+    },
+    "414613088091000": {
+      "usgs_id": "414613088091000",
+      "noaa_id": "NPVI2",
+      "flood_stage_ft": 667.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/NPVI2"
+    },
+    "05466500": {
+      "usgs_id": "05466500",
+      "noaa_id": "NWBI2",
+      "flood_stage_ft": 17.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/NWBI2"
+    },
+    "05536340": {
+      "usgs_id": "05536340",
+      "noaa_id": "OAKI2",
+      "flood_stage_ft": 6.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/OAKI2"
+    },
+    "05531410": {
+      "usgs_id": "05531410",
+      "noaa_id": "OBKI2",
+      "flood_stage_ft": 54.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/OBKI2"
+    },
+    "03346000": {
+      "usgs_id": "03346000",
+      "noaa_id": "OBLI2",
+      "flood_stage_ft": 19.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/OBLI2"
+    },
+    "05583000": {
+      "usgs_id": "05583000",
+      "noaa_id": "OKFI2",
+      "flood_stage_ft": 471.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/OKFI2"
+    },
+    "03336645": {
+      "usgs_id": "03336645",
+      "noaa_id": "OKWI2",
+      "flood_stage_ft": 10.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/OKWI2"
+    },
+    "03612600": {
+      "usgs_id": "03612600",
+      "noaa_id": "OLTI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/OLTI2"
+    },
+    "05527950": {
+      "usgs_id": "05527950",
+      "noaa_id": "OMCI2",
+      "flood_stage_ft": 11.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/OMCI2"
+    },
+    "05469000": {
+      "usgs_id": "05469000",
+      "noaa_id": "OQUI2",
+      "flood_stage_ft": 21.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/OQUI2"
+    },
+    "05466000": {
+      "usgs_id": "05466000",
+      "noaa_id": "ORII2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/ORII2"
+    },
+    "05467000": {
+      "usgs_id": "05467000",
+      "noaa_id": "PCKI2",
+      "flood_stage_ft": 24.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/PCKI2"
+    },
+    "05444000": {
+      "usgs_id": "05444000",
+      "noaa_id": "PENI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/PENI2"
+    },
+    "05578000": {
+      "usgs_id": "05578000",
+      "noaa_id": "PETI2",
+      "flood_stage_ft": 23.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/PETI2"
+    },
+    "05556500": {
+      "usgs_id": "05556500",
+      "noaa_id": "PINI2",
+      "flood_stage_ft": 14.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/PINI2"
+    },
+    "05597000": {
+      "usgs_id": "05597000",
+      "noaa_id": "PLMI2",
+      "flood_stage_ft": 20.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/PLMI2"
+    },
+    "05554500": {
+      "usgs_id": "05554500",
+      "noaa_id": "PNTI2",
+      "flood_stage_ft": 14.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/PNTI2"
+    },
+    "05440000": {
+      "usgs_id": "05440000",
+      "noaa_id": "PRYI2",
+      "flood_stage_ft": 12.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/PRYI2"
+    },
+    "05536500": {
+      "usgs_id": "05536500",
+      "noaa_id": "PSPI2",
+      "flood_stage_ft": 9.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/PSPI2"
+    },
+    "05437641": {
+      "usgs_id": "05437641",
+      "noaa_id": "RABI2",
+      "flood_stage_ft": 6.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/RABI2"
+    },
+    "05576022": {
+      "usgs_id": "05576022",
+      "noaa_id": "RCSI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/RCSI2"
+    },
+    "05437645": {
+      "usgs_id": "05437645",
+      "noaa_id": "RFDI2",
+      "flood_stage_ft": 4.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/RFDI2"
+    },
+    "05585000": {
+      "usgs_id": "05585000",
+      "noaa_id": "RIPI2",
+      "flood_stage_ft": 22.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/RIPI2"
+    },
+    "05578500": {
+      "usgs_id": "05578500",
+      "noaa_id": "RLLI2",
+      "flood_stage_ft": 15.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/RLLI2"
+    },
+    "05576000": {
+      "usgs_id": "05576000",
+      "noaa_id": "ROCI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/ROCI2"
+    },
+    "05437500": {
+      "usgs_id": "05437500",
+      "noaa_id": "ROKI2",
+      "flood_stage_ft": 10.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/ROKI2"
+    },
+    "05530990": {
+      "usgs_id": "05530990",
+      "noaa_id": "ROLI2",
+      "flood_stage_ft": 8.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/ROLI2"
+    },
+    "05536995": {
+      "usgs_id": "05536995",
+      "noaa_id": "ROMI2",
+      "flood_stage_ft": 30.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/ROMI2"
+    },
+    "05527800": {
+      "usgs_id": "05527800",
+      "noaa_id": "RUSI2",
+      "flood_stage_ft": 7.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/RUSI2"
+    },
+    "05530750": {
+      "usgs_id": "05530750",
+      "noaa_id": "RVFI2",
+      "flood_stage_ft": 16.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/RVFI2"
+    },
+    "05532500": {
+      "usgs_id": "05532500",
+      "noaa_id": "RVRI2",
+      "flood_stage_ft": 7.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/RVRI2"
+    },
+    "05576500": {
+      "usgs_id": "05576500",
+      "noaa_id": "RVTI2",
+      "flood_stage_ft": 23.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/RVTI2"
+    },
+    "03337570": {
+      "usgs_id": "03337570",
+      "noaa_id": "SBUI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/SBUI2"
+    },
+    "05551200": {
+      "usgs_id": "05551200",
+      "noaa_id": "SCHI2",
+      "flood_stage_ft": 6.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/SCHI2"
+    },
+    "414745087484901": {
+      "usgs_id": "414745087484901",
+      "noaa_id": "SCOI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/SCOI2"
+    },
+    "05551000": {
+      "usgs_id": "05551000",
+      "noaa_id": "SELI2",
+      "flood_stage_ft": 14.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/SELI2"
+    },
+    "05570000": {
+      "usgs_id": "05570000",
+      "noaa_id": "SEVI2",
+      "flood_stage_ft": 22.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/SEVI2"
+    },
+    "05536290": {
+      "usgs_id": "05536290",
+      "noaa_id": "SHLI2",
+      "flood_stage_ft": 16.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/SHLI2"
+    },
+    "03381700": {
+      "usgs_id": "03381700",
+      "noaa_id": "SHNI2",
+      "flood_stage_ft": 33.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/SHNI2"
+    },
+    "05437050": {
+      "usgs_id": "05437050",
+      "noaa_id": "SIRI2",
+      "flood_stage_ft": 12.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/SIRI2"
+    },
+    "05592000": {
+      "usgs_id": "05592000",
+      "noaa_id": "SLVI2",
+      "flood_stage_ft": 549.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/SLVI2"
+    },
+    "03399800": {
+      "usgs_id": "03399800",
+      "noaa_id": "SMLI2",
+      "flood_stage_ft": 40.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/SMLI2"
+    },
+    "05543010": {
+      "usgs_id": "05543010",
+      "noaa_id": "SNAI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/SNAI2"
+    },
+    "05540500": {
+      "usgs_id": "05540500",
+      "noaa_id": "SORI2",
+      "flood_stage_ft": 15.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/SORI2"
+    },
+    "05577500": {
+      "usgs_id": "05577500",
+      "noaa_id": "SPFI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/SPFI2"
+    },
+    "05540275": {
+      "usgs_id": "05540275",
+      "noaa_id": "SPGI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/SPGI2"
+    },
+    "05592050": {
+      "usgs_id": "05592050",
+      "noaa_id": "SRCI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/SRCI2"
+    },
+    "05553700": {
+      "usgs_id": "05553700",
+      "noaa_id": "SRDI2",
+      "flood_stage_ft": 450.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/SRDI2"
+    },
+    "05576900": {
+      "usgs_id": "05576900",
+      "noaa_id": "SRSI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/SRSI2"
+    },
+    "03336890": {
+      "usgs_id": "03336890",
+      "noaa_id": "SSJI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/SSJI2"
+    },
+    "05536580": {
+      "usgs_id": "05536580",
+      "noaa_id": "STCI2",
+      "flood_stage_ft": 31.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/STCI2"
+    },
+    "05536140": {
+      "usgs_id": "05536140",
+      "noaa_id": "STII2",
+      "flood_stage_ft": 6.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/STII2"
+    },
+    "03336900": {
+      "usgs_id": "03336900",
+      "noaa_id": "STJI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/STJI2"
+    },
+    "03345500": {
+      "usgs_id": "03345500",
+      "noaa_id": "STMI2",
+      "flood_stage_ft": 19.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/STMI2"
+    },
+    "05576250": {
+      "usgs_id": "05576250",
+      "noaa_id": "SUGI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/SUGI2"
+    },
+    "07022000": {
+      "usgs_id": "07022000",
+      "noaa_id": "THBI2",
+      "flood_stage_ft": 33.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/THBI2"
+    },
+    "05536275": {
+      "usgs_id": "05536275",
+      "noaa_id": "THNI2",
+      "flood_stage_ft": 9.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/THNI2"
+    },
+    "05586100": {
+      "usgs_id": "05586100",
+      "noaa_id": "VALI2",
+      "flood_stage_ft": 14.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/VALI2"
+    },
+    "05592500": {
+      "usgs_id": "05592500",
+      "noaa_id": "VNDI2",
+      "flood_stage_ft": 18.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/VNDI2"
+    },
+    "05580000": {
+      "usgs_id": "05580000",
+      "noaa_id": "WAYI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/WAYI2"
+    },
+    "05539900": {
+      "usgs_id": "05539900",
+      "noaa_id": "WBDI2",
+      "flood_stage_ft": 7.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/WBDI2"
+    },
+    "05551545": {
+      "usgs_id": "05551545",
+      "noaa_id": "WBOI2",
+      "flood_stage_ft": 12.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/WBOI2"
+    },
+    "05531175": {
+      "usgs_id": "05531175",
+      "noaa_id": "WDSI2",
+      "flood_stage_ft": 12.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/WDSI2"
+    },
+    "05591550": {
+      "usgs_id": "05591550",
+      "noaa_id": "WHCI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/WHCI2"
+    },
+    "05528500": {
+      "usgs_id": "05528500",
+      "noaa_id": "WHEI2",
+      "flood_stage_ft": 5.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/WHEI2"
+    },
+    "05527500": {
+      "usgs_id": "05527500",
+      "noaa_id": "WLMI2",
+      "flood_stage_ft": 6.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/WLMI2"
+    },
+    "05530000": {
+      "usgs_id": "05530000",
+      "noaa_id": "WLRI2",
+      "flood_stage_ft": 9.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/WLRI2"
+    },
+    "05533000": {
+      "usgs_id": "05533000",
+      "noaa_id": "WLSI2",
+      "flood_stage_ft": 10.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/WLSI2"
+    },
+    "05548105": {
+      "usgs_id": "05548105",
+      "noaa_id": "WNNI2",
+      "flood_stage_ft": 9.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/WNNI2"
+    },
+    "05591700": {
+      "usgs_id": "05591700",
+      "noaa_id": "WORI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/WORI2"
+    },
+    "05595730": {
+      "usgs_id": "05595730",
+      "noaa_id": "WRCI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/WRCI2"
+    },
+    "05540095": {
+      "usgs_id": "05540095",
+      "noaa_id": "WRNI2",
+      "flood_stage_ft": 12.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/WRNI2"
+    },
+    "05540060": {
+      "usgs_id": "05540060",
+      "noaa_id": "WSCI2",
+      "flood_stage_ft": 6.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/WSCI2"
+    },
+    "05531500": {
+      "usgs_id": "05531500",
+      "noaa_id": "WSPI2",
+      "flood_stage_ft": 7.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/WSPI2"
+    },
+    "05568800": {
+      "usgs_id": "05568800",
+      "noaa_id": "WYGI2",
+      "flood_stage_ft": -9999.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/WYGI2"
+    },
+    "03380500": {
+      "usgs_id": "03380500",
+      "noaa_id": "WYNI2",
+      "flood_stage_ft": 15.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/WYNI2"
+    },
+    "05551580": {
+      "usgs_id": "05551580",
+      "noaa_id": "YKVI2",
+      "flood_stage_ft": 15.5,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/YKVI2"
+    },
+    "05551700": {
+      "usgs_id": "05551700",
+      "noaa_id": "YRKI2",
+      "flood_stage_ft": 7.0,
+      "source": "NOAA NWPS",
+      "source_url": "https://api.water.noaa.gov/nwps/v1/gauges/YRKI2"
+    }
+  }
+}
