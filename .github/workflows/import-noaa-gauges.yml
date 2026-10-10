@@ -1,0 +1,29 @@
+name: NOAA - Import national priority gauges
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/import-noaa-gauges.yml'
+permissions:
+  contents: write
+concurrency:
+  group: noaa-gauge-import
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Fetch NOAA NWPS inventory and observations
+        run: python -u scripts/import_noaa_gauges.py
+      - name: Publish completed national NOAA dataset
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/noaa_gauges.geojson
+          git commit -m "Publish national NOAA priority gauge data"
+          git pull --rebase origin main
+          git push origin HEAD:main
