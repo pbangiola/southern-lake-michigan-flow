@@ -1,4 +1,4 @@
-name: Illinois confluence graph pilot
+name: 01 · Illinois — Map River Branches from Grafton
 on:
   workflow_dispatch:
   schedule:
