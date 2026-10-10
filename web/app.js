@@ -203,7 +203,12 @@ putinFilter.addEventListener('change',updatePutins);
      let consolidated=null;
      try{
       const mergedResponse=await fetch('data/putins_consolidated.geojson',{cache:'no-store'});
-      if(mergedResponse.ok)consolidated=await mergedResponse.json();
+      if(mergedResponse.ok){
+       const raw=await mergedResponse.text();
+       if(raw.trim()){
+        try{consolidated=JSON.parse(raw);}catch(error){console.warn('Invalid consolidated launch JSON; using source datasets:',error);}
+       }
+      }
      }catch(error){console.warn('Consolidated launch layer unavailable:',error);}
      if(consolidated?.type==='FeatureCollection'&&Array.isArray(consolidated.features)){
       putinFeatures=consolidated.features;
