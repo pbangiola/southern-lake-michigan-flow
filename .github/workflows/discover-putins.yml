@@ -21,6 +21,8 @@ jobs:
       DISCOVERY_BATCH_SIZE: '20'
     steps:
       - uses: actions/checkout@v4
+      - name: Check discovery Python syntax
+        run: python3 -m py_compile scripts/discover_putins.py
       - name: Discover launches in stream rectangles
         id: scan
         continue-on-error: true
