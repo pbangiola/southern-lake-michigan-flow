@@ -98,7 +98,12 @@ function palette(p){
  if(t<=.75)return blend('#299b59','#e8cf44',(t-.45)/.30);
  return blend('#e8cf44','#d93b32',(t-.75)/.25);
 }
-function riverName(raw){const m=String(raw||'').match(/^(.+?\\b(?:RIVER|CREEK|BROOK|CANAL|DITCH|BRANCH|FORK|RUN))\\b/i);return m?m[1].toLowerCase().replace(/\\b[a-z]/g,x=>x.toUpperCase()):'Unidentified waterway';}
+function riverName(raw){
+ const value=String(raw||'').trim();
+ // Gauge descriptions typically look like "DES PLAINES RIVER AT RIVERSIDE, IL".
+ const m=value.match(/^(.+?\b(?:RIVER|CREEK|BROOK|CANAL|DITCH|BRANCH|FORK|RUN))\b/i);
+ return m?m[1].toLowerCase().replace(/\b[a-z]/g,x=>x.toUpperCase()):'Unidentified waterway';
+}
 const selectedRivers=new Set();let riverNames=[];
 function applyRiverFilters(){for(const id of ['river-segments','paddling-routes'])if(map.getLayer(id))map.setFilter(id,['in',['get','river_name'],['literal',[...selectedRivers]]]);}
 function registerRivers(names){const root=document.getElementById('river-list');if(!root)return;for(const name of names)if(!selectedRivers.has(name)&&!riverNames.includes(name)){selectedRivers.add(name);riverNames.push(name);}riverNames.sort();root.replaceChildren();for(const name of riverNames){const label=document.createElement('label'),input=document.createElement('input');input.type='checkbox';input.checked=selectedRivers.has(name);input.onchange=()=>{if(input.checked)selectedRivers.add(name);else selectedRivers.delete(name);applyRiverFilters();};label.append(input,document.createTextNode(' '+name));root.append(label);}applyRiverFilters();}
@@ -128,6 +133,8 @@ map.on('load',async()=>{
   if(!minimaResponse.ok)throw new Error('Stage minima unavailable: HTTP '+minimaResponse.status);
   const data=await gaugesResponse.json(),atlas=await minimaResponse.json();
   gaugeFeatures=data.features||[];
+  // Populate the selector immediately, even if later network/route fetches fail.
+  registerRivers(gaugeFeatures.map(f=>riverName(f.properties?.name)).filter(n=>n!=='Unidentified waterway'));
   applyMinima(data,atlas);
   try{communityReports=await loadReports();}catch(e){console.warn(e);}
   calibrate(data,communityReports);
@@ -152,6 +159,7 @@ map.on('load',async()=>{
      'line-opacity':0.8
     }},'gauges');
     setLayerVisibility('river-segments',riverToggle.checked);
+    applyRiverFilters();
     map.on('click','river-segments',e=>{
      if(reportButton.getAttribute('aria-pressed')==='true')return;
      const p=e.features[0].properties;
@@ -201,6 +209,7 @@ map.on('load',async()=>{
     'line-opacity':0.95,
    }},'gauges');
    setLayerVisibility('paddling-routes',routeToggle.checked);
+   applyRiverFilters();
    map.on('click','paddling-routes',e=>{
     if(reportButton.getAttribute('aria-pressed')==='true')return;
     const p=e.features[0].properties;
