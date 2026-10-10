@@ -133,7 +133,7 @@ function colorRiverNetwork(segments,gauges){
   p.stage_color=ca==='#88929b'?cb:cb==='#88929b'?ca:a===b?ca:blend(ca,cb,0.5);
   p.stage_gauge_a=a;p.stage_gauge_b=b;
   p.river_name=p.river_name||riverName(bySite.get(a)?.name||bySite.get(b)?.name);
-  p.filter_river=p.river_name==='Unidentified waterway'?riverName(bySite.get(a)?.name||bySite.get(b)?.name):p.river_name;
+  p.filter_river=p.filter_river||(p.river_name==='Unidentified waterway'?riverName(bySite.get(a)?.name||bySite.get(b)?.name):p.river_name);
  }
  return segments;
 }
