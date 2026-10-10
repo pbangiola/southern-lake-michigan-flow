@@ -149,7 +149,7 @@ function colorRiverNetwork(segments,gauges){
  const colorFor=id=>{const p=bySite.get(siteId(id));return p?palette(p):'#88929b';};
  for(const feature of segments.features){
   const p=feature.properties||(feature.properties={});
-  const a=siteId(p.from_gauge||p.site),b=siteId(p.to_gauge||p.site);
+  const a=siteId(p.upstream_gauge||p.from_gauge||p.site),b=siteId(p.downstream_gauge||p.to_gauge||p.site);
   const ca=colorFor(a),cb=colorFor(b);
   // Use the available endpoint when its partner lacks calibrated stage data.
   // Only a reach with no usable associated gauge stays gray.
