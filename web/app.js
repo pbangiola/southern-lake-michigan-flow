@@ -171,13 +171,41 @@ function colorRiverNetwork(segments,gauges){
 }
 // National vector tiles replace the legacy Illinois EDNA GeoJSON overlay.
 // National EDNA river geometry is loaded as viewport vector tiles.
+// Surface tile-delivery failures instead of silently showing an empty map.
+const riverTileHealth=document.createElement('div');
+riverTileHealth.id='river-tile-health';
+riverTileHealth.style.cssText='padding:4px 10px;font-size:13px;background:#fff4d6;color:#563d0b;display:none';
+document.getElementById('map')?.before(riverTileHealth);
+function riverTileNotice(message){
+ riverTileHealth.textContent=message;
+ riverTileHealth.style.display='block';
+ console.warn(message);
+}
+map.on('error',event=>{
+ const message=String(event.error?.message||event.error||'');
+ if(/edna_tiles|edna-national|\.pbf|vector tile/i.test(message))
+  riverTileNotice('National river tiles failed to load: '+message);
+});
 window.ednaWatershedLayerIds=[];
 map.on('load',async()=>{
  try{
   const response=await fetch('data/edna_tiles/manifest.json',{cache:'no-store'});
   if(!response.ok)return;
   const manifest=await response.json();
-  if(manifest.complete!==true)return;
+  if(manifest.complete!==true){riverTileNotice('National river tile manifest is incomplete.');return;}
+  // Check the actual static asset separately from the build manifest.
+  const probe=new URL('data/edna_tiles/0/0/0.pbf',document.baseURI).href;
+  try{
+   const tileResponse=await fetch(probe,{cache:'no-store'});
+   if(!tileResponse.ok)throw new Error('HTTP '+tileResponse.status);
+   const bytes=new Uint8Array(await tileResponse.arrayBuffer());
+   if(bytes.length===0)throw new Error('empty tile');
+   if(bytes[0]===0x1f&&bytes[1]===0x8b)throw new Error('gzip-compressed PBF without Content-Encoding');
+   console.info('EDNA tile probe OK:',bytes.length,'bytes');
+  }catch(error){
+   riverTileNotice('National tiles are not being served by GitHub Pages ('+error.message+'). Build success does not imply Pages deployment.');
+   return;
+  }
   map.addSource('edna-national-tiles',{type:'vector',
    tiles:[new URL('data/edna_tiles/{z}/{x}/{y}.pbf',document.baseURI).href],
    minzoom:0,maxzoom:manifest.maxzoom||12});
