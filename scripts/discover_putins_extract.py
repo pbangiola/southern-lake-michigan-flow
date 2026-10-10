@@ -18,8 +18,8 @@ def is_candidate(tags):
     paddling = tags.get("canoe") == "yes" or tags.get("kayak") == "yes"
     return (named or tagged or paddling) and tags.get("access") not in ("no", "private") and not tags.get("shop")
 
-def scan(state):
-    path = Path("/tmp") / f"{state}-latest.osm.pbf"
+def scan(state, path_override=None):
+    path = Path(path_override) if path_override else Path("/tmp") / f"{state}-latest.osm.pbf"
     if not path.exists():
         raise FileNotFoundError(f"Missing extract: {path}")
     found = {}
