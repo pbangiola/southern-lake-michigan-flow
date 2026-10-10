@@ -2,7 +2,7 @@ name: Incremental river crawler
 on:
   workflow_dispatch:
   schedule:
-    - cron: '19 */6 * * *'
+    - cron: '19 * * * *'
 permissions:
   contents: write
 concurrency:
@@ -23,7 +23,7 @@ jobs:
         run: |
           mkdir -p local
           if [ -f data/river_crawler_state.json ]; then cp data/river_crawler_state.json local/river_crawler_state.json; fi
-          python scripts/river_crawler.py --nationwide --max-boxes 2
+          python scripts/river_crawler.py --illinois-basin --max-boxes 12
       - name: Validate and publish candidate map data
         run: python scripts/publish_crawler_candidates.py
       - name: Persist crawler cursor and validated candidates
