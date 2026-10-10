@@ -41,6 +41,9 @@ def scan(state):
                 continue
             coords = [sum(n.lon for n in locations)/len(locations), sum(n.lat for n in locations)/len(locations)]
             kind = "way"
+        # Only publish features in the southern Lake Michigan atlas area.
+        if not (-88.7 <= coords[0] <= -85.4 and 40.9 <= coords[1] <= 43.2):
+            continue
         key = f"osm-{kind}-{obj.id}"
         found[key] = {"type":"Feature", "geometry":{"type":"Point","coordinates":coords},
             "properties":{"id":key,"name":tags.get("name",key),
@@ -55,8 +58,19 @@ def scan(state):
 def main():
     previous = {}
     if OUT.exists():
-        for feature in json.loads(OUT.read_text()).get("features",[]):
-            previous[feature["properties"]["id"]] = feature
+        raw = OUT.read_text().strip()
+        # An older writer accidentally stored a literal \\n after the JSON object.
+        # Parse the first complete document and preserve its candidates.
+        try:
+            existing, end = json.JSONDecoder().raw_decode(raw)
+            if raw[end:].strip() not in ("", r"\n"):
+                print("Warning: ignoring unexpected trailing text in existing candidates", flush=True)
+            for feature in existing.get("features", []):
+                key = feature.get("properties", {}).get("id")
+                if key:
+                    previous[key] = feature
+        except (json.JSONDecodeError, AttributeError) as exc:
+            raise RuntimeError("Existing candidate file cannot be recovered safely") from exc
     report = {"method":"Geofabrik state PBF streamed with pyosmium", "states":{}, "new_candidates":0}
     for state in STATES:
         before = len(previous)
