@@ -1,4 +1,4 @@
-name: Incremental river crawler
+name: 02 · Illinois — Find Gauges & Boat Launches
 on:
   workflow_dispatch:
   schedule:
