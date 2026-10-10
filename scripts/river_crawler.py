@@ -64,19 +64,25 @@ def main():
     a.add_argument("--max-boxes",type=int,default=2)
     a.add_argument("--max-features",type=int,default=15000)
     a.add_argument("--nationwide",action="store_true",help="Scan CONUS in bounded geographic cells (discovery only)")
+    a.add_argument("--illinois-basin",action="store_true",help="Prioritize Illinois River basin discovery grid; not a watershed boundary")
     args=a.parse_args()
     network=load(args.network);features=network.get("features",[])[:args.max_features]
     statepath=Path(args.state)
     state=json.loads(statepath.read_text()) if statepath.exists() else {"cursor":0}
     cursor=state.get("cursor",0);boxes=[]
-    if args.nationwide:
+    if args.illinois_basin:
+        # Approximate Illinois River drainage search extent; features still need HUC validation.
+        cells=[[-92+x*.5,39+y*.5,-91.5+x*.5,39.5+y*.5] for y in range(9) for x in range(11)]
+        boxes=cells[cursor:cursor+args.max_boxes]
+        consumed=len(boxes)
+    elif args.nationwide:
         # Geographic coverage grid, not a connected river network. Includes lower 48 only.
         cells=[[-125+x,24+y,-124+x,25+y] for y in range(26) for x in range(59)]
         boxes=cells[cursor:cursor+args.max_boxes]
         consumed=len(boxes)
     # Fixed-size bounded batches avoid broad Overpass/NWIS queries.
-    consumed=0 if not args.nationwide else consumed
-    for f in ([] if args.nationwide else features[cursor:]):
+    consumed=0 if not (args.nationwide or args.illinois_basin) else consumed
+    for f in ([] if (args.nationwide or args.illinois_basin) else features[cursor:]):
         consumed+=1
         geom=f.get("geometry",{})
         if geom.get("type")!="LineString":continue
@@ -91,10 +97,10 @@ def main():
             except Exception as error:print(f"{name} discovery deferred for {bb}: {error}")
         save(path,merge(existing,found))
         print(name,len(found),"newly observed",len(load(path)["features"]),"total candidates")
-    total=len(cells) if args.nationwide else len(features)
+    total=len(cells) if (args.nationwide or args.illinois_basin) else len(features)
     state["cursor"]=min(total,cursor+consumed)
     state["complete"]=state["cursor"]>=total
-    state["scope"]="CONUS discovery grid" if args.nationwide else "river network review"
+    state["scope"]="Illinois River basin approximate discovery grid" if args.illinois_basin else "CONUS discovery grid" if args.nationwide else "river network review"
     # Completed scans remain complete; reset only when explicitly requested.
     save(statepath,state)
 if __name__=="__main__":main()
