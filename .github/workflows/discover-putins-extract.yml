@@ -1,11 +1,11 @@
 name: Discover put-ins from OSM extracts
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/discover_putins_extract.py'
-      - '.github/workflows/discover-putins-extract.yml'
+    inputs:
+      allow_download:
+        description: 'Download state extracts only if they are not cached (about 1.1 GB)'
+        type: boolean
+        default: false
 permissions:
   contents: write
 concurrency:
@@ -19,13 +19,27 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install streaming OSM parser
         run: python3 -m pip install --user osmium
-      - name: Download four state extracts
+      - name: Restore cached OSM extracts
+        uses: actions/cache@v4
+        with:
+          path: /tmp/*-latest.osm.pbf
+          key: osm-state-extracts-v1
+      - name: Use cached extracts; download only with explicit permission
+        env:
+          ALLOW_DOWNLOAD: ${{ inputs.allow_download }}
         run: |
           set -euo pipefail
           for state in illinois indiana michigan wisconsin; do
-            echo "Downloading $state"
-            curl --fail --location --retry 3 --retry-delay 10 --output "/tmp/${state}-latest.osm.pbf" "https://download.geofabrik.de/north-america/us/${state}-latest.osm.pbf"
-            ls -lh "/tmp/${state}-latest.osm.pbf"
+            file="/tmp/${state}-latest.osm.pbf"
+            if test -s "$file"; then
+              echo "Reusing cached $state extract"
+            elif test "$ALLOW_DOWNLOAD" = true; then
+              echo "Downloading missing $state extract"
+              curl --fail --location --retry 3 --retry-delay 10 --output "$file" "https://download.geofabrik.de/north-america/us/${state}-latest.osm.pbf"
+            else
+              echo "::error::No cached $state extract. Previous runner downloads are ephemeral. No download attempted."
+              exit 1
+            fi
           done
       - name: Extract launch coordinates
         run: python3 -u scripts/discover_putins_extract.py
