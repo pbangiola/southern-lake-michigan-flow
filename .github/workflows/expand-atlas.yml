@@ -31,7 +31,10 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             cp /tmp/atlas-expansion/* data/
-            git add data/expansion_progress.json data/putins_expansion.geojson data/river_expansion.geojson data/gauges_expansion.geojson
+            git add data/expansion_progress.json
+            for f in data/putins_expansion.geojson data/river_expansion.geojson data/gauges_expansion.geojson; do
+              if test -f "$f"; then git add "$f"; fi
+            done
             if git diff --cached --quiet; then exit 0; fi
             git commit -m "Expand atlas by one small geographic tile"
             if git push origin HEAD:main; then exit 0; fi
