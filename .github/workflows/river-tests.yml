@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - .github/workflows/river-tests.yml
+      - 'scripts/*.py'
 
 permissions:
   contents: read
