@@ -63,6 +63,18 @@ class AuthoritativePipelineTests(unittest.TestCase):
         f['properties']['flowdirection']=0
         self.assertEqual(prepare({'type':'FeatureCollection','features':[f]}),[])
 
+    def test_usgs_mainstem_survives_divergence(self):
+        a=feature((-90,40),(-90,39.9),'','a')
+        b=feature((-90,39.9),(-90,39.8),'','b')
+        c=feature((-90,39.9),(-89.9,39.8),'','c')
+        for f in (a,b,c):
+            f['properties']['mainstemid']='M1'
+            f['properties']['flowdirection']=1
+            f['properties']['gnisidlabel']='Des Plaines River'
+        result=run({'type':'FeatureCollection','features':[a,b,c]})
+        self.assertEqual(result['metadata']['accepted_segments'],3)
+        self.assertEqual(len({f['properties']['river_id'] for f in result['features']}),1)
+
     def test_divergence_is_withheld(self):
         data={'type':'FeatureCollection','features':[
             feature((-90,40),(-90,39.9),'','a'),
