@@ -19,7 +19,10 @@ class GraphTraversalTest(unittest.TestCase):
             second=traverse(edges,adj,root,1,state,set())
             self.assertEqual(len(second["features"]),2)
             self.assertEqual(second["metadata"]["total_processed_edges"],3)
-            self.assertEqual(second["metadata"]["queue_remaining"],0)
+            self.assertEqual(second["metadata"]["queue_remaining"],2)
+            third=traverse(edges,adj,root,1,state,set())
+            self.assertEqual(third["metadata"]["queue_remaining"],0)
+            self.assertEqual(third["metadata"]["new_segments"],0)
     def test_existing_branch_is_not_expanded(self):
         root=(-90.62,38.97);a=(-90.62,39.0)
         edges={"e":{"a":root,"b":a,"coords":[root,a],"source":"synthetic"}}
