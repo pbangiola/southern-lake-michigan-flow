@@ -193,19 +193,8 @@ map.on('load',async()=>{
   if(!response.ok)return;
   const manifest=await response.json();
   if(manifest.complete!==true){riverTileNotice('National river tile manifest is incomplete.');return;}
-  // Check the actual static asset separately from the build manifest.
-  const probe=new URL('data/edna_tiles/0/0/0.pbf',document.baseURI).href;
-  try{
-   const tileResponse=await fetch(probe,{cache:'no-store'});
-   if(!tileResponse.ok)throw new Error('HTTP '+tileResponse.status);
-   const bytes=new Uint8Array(await tileResponse.arrayBuffer());
-   if(bytes.length===0)throw new Error('empty tile');
-   if(bytes[0]===0x1f&&bytes[1]===0x8b)throw new Error('gzip-compressed PBF without Content-Encoding');
-   console.info('EDNA tile probe OK:',bytes.length,'bytes');
-  }catch(error){
-   riverTileNotice('National tiles are not being served by GitHub Pages ('+error.message+'). Build success does not imply Pages deployment.');
-   return;
-  }
+  // A root tile may be absent or empty even when visible-zoom tiles exist.
+  // Never block source registration on a single diagnostic request.
   map.addSource('edna-national-tiles',{type:'vector',
    tiles:[new URL('data/edna_tiles/{z}/{x}/{y}.pbf',document.baseURI).href],
    minzoom:0,maxzoom:manifest.maxzoom||12});
@@ -217,6 +206,7 @@ map.on('load',async()=>{
   // river-name filter to this layer or MapLibre will hide every feature.
   setLayerVisibility('edna-national-rivers',riverToggle.checked&&riverMode!=='none');
   console.info('National EDNA vector layer registered');
+  map.once('idle',()=>console.info('EDNA source status',map.isSourceLoaded('edna-national-tiles'),map.queryRenderedFeatures({layers:['edna-national-rivers']}).length));
 
  }catch(error){console.warn('National EDNA tiles unavailable:',error);}
 });
