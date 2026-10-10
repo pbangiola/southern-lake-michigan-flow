@@ -1,7 +1,7 @@
-name: Gradually expand atlas coverage
+name: Adaptive atlas expansion
 on:
   schedule:
-    - cron: '23 9 * * 2'
+    - cron: '23 9 * * *'
   workflow_dispatch:
 permissions:
   contents: write
@@ -16,13 +16,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
-      - name: Scan one small geographic tile
-        run: python3 scripts/expand_atlas.py --max-tiles 1
+      - name: Benchmark and expand each layer within download and time budgets
+        run: python3 scripts/benchmark_expansion.py --budget-seconds 240 --budget-mb 25 --max-requests 24
       - name: Publish incremental datasets
         run: |
           set -euo pipefail
           mkdir -p /tmp/atlas-expansion
-          for f in data/expansion_progress.json data/putins_expansion.geojson data/river_expansion.geojson data/gauges_expansion.geojson; do
+          for f in data/expansion_progress.json data/expansion_pace.json data/putins_expansion.geojson data/river_expansion.geojson data/gauges_expansion.geojson; do
             if test -f "$f"; then cp "$f" /tmp/atlas-expansion/; fi
           done
           git config user.name "github-actions[bot]"
@@ -31,7 +31,9 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             cp /tmp/atlas-expansion/* data/
-            git add data/expansion_progress.json
+            for f in data/expansion_progress.json data/expansion_pace.json; do
+              if test -f "$f"; then git add "$f"; fi
+            done
             for f in data/putins_expansion.geojson data/river_expansion.geojson data/gauges_expansion.geojson; do
               if test -f "$f"; then git add "$f"; fi
             done
