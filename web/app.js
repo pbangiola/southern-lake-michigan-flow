@@ -146,11 +146,17 @@ let putinFeatures=[];
 let verifiedLaunches=new Set();
 const launchKey=f=>String(f.properties?.id||f.properties?.osm_id||'').trim();
 const isVerifiedLaunch=f=>Boolean(launchKey(f)&&verifiedLaunches.has(launchKey(f)));
-function verificationLink(f){
- const p=f.properties||{},xy=f.geometry?.coordinates||[];
- const body=['ATLAS_LAUNCH_VERIFICATION_V1','', '**Launch ID:** '+(launchKey(f)||'No stable ID'), '**Name:** '+(p.name||'Unnamed launch'), '**Coordinates:** '+xy.join(', '),'**Map:** https://www.openstreetmap.org/?mlat='+xy[1]+'&mlon='+xy[0]+'#map=16/'+xy[1]+'/'+xy[0],'','**Evidence of a real, accessible launch (required):** ','','**Source URL or first-hand visit date:** ','','**Access restrictions, parking, and launch conditions:** ','','Verification requests are reviewed before being added to the published verified-launch registry. Submission alone does not verify a launch.'].join('\n');
- return 'https://github.com/'+REPO+'/issues/new?'+new URLSearchParams({title:'Verify launch: '+(p.name||launchKey(f)||'unnamed'),body});
+const LOCAL_VERIFICATIONS_KEY='atlas-verified-launches-v1';
+try{for(const id of JSON.parse(localStorage.getItem(LOCAL_VERIFICATIONS_KEY)||'[]'))verifiedLaunches.add(String(id));}catch(error){console.warn('Could not read local launch verifications:',error);}
+function toggleLaunchVerification(f){
+ const id=launchKey(f);
+ if(!id){alert('This launch has no stable ID, so verification cannot be saved.');return;}
+ if(verifiedLaunches.has(id))verifiedLaunches.delete(id);else verifiedLaunches.add(id);
+ try{localStorage.setItem(LOCAL_VERIFICATIONS_KEY,JSON.stringify([...verifiedLaunches]));}
+ catch(error){console.warn('Launch verification could not be saved:',error);}
+ updatePutins();
 }
+
 let launchDomMarkers=[];
 function renderLaunchDomMarkers(){
  for(const marker of launchDomMarkers)marker.remove();
@@ -186,10 +192,14 @@ function renderLaunchDomMarkers(){
     if(extent.getNorthEast().distanceTo(extent.getSouthWest())<50)map.easeTo({center:xy,zoom:Math.min(map.getZoom()+2,16)});
     else map.fitBounds(extent,{padding:75,maxZoom:16,duration:550});
    }else{
-    const node=document.createElement('div'),heading=document.createElement('strong'),info=document.createElement('p'),link=document.createElement('a');
-    heading.textContent=el.title;info.textContent=verified?'Verified in the atlas registry. Check current conditions and access before visiting.':'Unverified candidate; access and suitability not confirmed.';
-    link.textContent=verified?'Report outdated verification':'Request verification';link.href=verificationLink(group.features[0]);link.target='_blank';link.rel='noopener noreferrer';
-    node.append(heading,info,link);new maplibregl.Popup().setLngLat(xy).setDOMContent(node).addTo(map);
+    const feature=group.features[0],node=document.createElement('div'),heading=document.createElement('strong'),info=document.createElement('p'),button=document.createElement('button');
+    heading.textContent=el.title;
+    info.textContent=verified?'Marked verified in this browser. Check current access before visiting.':'Unverified launch candidate.';
+    button.type='button';button.textContent=verified?'Unverify launch':'Verify launch';
+    button.style.margin='6px 0';
+    button.onclick=()=>{toggleLaunchVerification(feature);popup.remove();};
+    node.append(heading,info,button);
+    const popup=new maplibregl.Popup().setLngLat(xy).setDOMContent(node).addTo(map);
    }
   });
   launchDomMarkers.push(new maplibregl.Marker({element:el,anchor:'center'}).setLngLat(xy).addTo(map));
@@ -215,7 +225,7 @@ putinToggle.addEventListener('change',updatePutins);
 putinFilter.addEventListener('change',updatePutins);
 // Publish all unverified OSM launch candidates as provisional map markers.
   try{
-   try{const registryResponse=await fetch('data/verified_launches.json',{cache:'no-store'});if(registryResponse.ok){const registry=await registryResponse.json();verifiedLaunches=new Set((registry.verified_ids||[]).map(String));}}catch(error){console.warn('Launch verification registry unavailable:',error);}
+   try{const registryResponse=await fetch('data/verified_launches.json',{cache:'no-store'});if(registryResponse.ok){const registry=await registryResponse.json();for(const id of registry.verified_ids||[])verifiedLaunches.add(String(id));}}catch(error){console.warn('Launch verification registry unavailable:',error);}
    const response=await fetch('data/putins_osm_candidates.geojson',{cache:'no-store'});
    if(response.ok){
     const putins=await response.json();
