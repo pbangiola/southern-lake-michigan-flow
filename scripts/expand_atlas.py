@@ -58,7 +58,7 @@ def merge(path, new, key):
         path.write_text(json.dumps(obj,separators=(",",":"))+"\n")
     return added
 
-def osm_tile(s,w,n,e):
+def osm_tile(s,w,n,e,layer='both'):
     query=f"""[out:json][timeout:35];(
 node["leisure"="slipway"]({s},{w},{n},{e});
 way["leisure"="slipway"]({s},{w},{n},{e});
@@ -68,6 +68,10 @@ node["canoe"="yes"]({s},{w},{n},{e});
 way["canoe"="yes"]({s},{w},{n},{e});
 way["waterway"~"^(river|stream|canal)$"]({s},{w},{n},{e});
 );out center geom;"""
+    if layer=='launches':
+        query=query.replace(f'way["waterway"~"^(river|stream|canal)$"]({s},{w},{n},{e});','')
+    elif layer=='rivers':
+        query=f'[out:json][timeout:35];(way["waterway"~"^(river|stream|canal)$"]({s},{w},{n},{e}););out center geom;'
     raw=request("https://overpass.kumi.systems/api/interpreter",urllib.parse.urlencode({"data":query}).encode())
     return json.loads(raw).get("elements",[])
 
