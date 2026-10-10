@@ -145,7 +145,7 @@ function renderLaunchDomMarkers(){
   const el=document.createElement('button');
   el.type='button';el.title=(feature.properties?.name||'Unverified launch candidate');
   el.setAttribute('aria-label',el.title);
-  el.style.cssText='width:15px;height:15px;padding:0;margin:0;border:2px solid white;border-radius:50%;background:#168447;box-shadow:0 1px 5px #0008;cursor:pointer;';
+  el.style.cssText='width:28px;height:28px;padding:4px;margin:0;border:2px solid white;border-radius:50%;background:#168447 url(https://static.thenounproject.com/png/canoe-paddles-icon-731096-512.png) center/19px 19px no-repeat;box-shadow:0 1px 5px #0008;cursor:pointer;';
   el.addEventListener('click',event=>{
    event.stopPropagation();
    new maplibregl.Popup().setLngLat(xy).setText(el.title+' — unverified; confirm access before visiting.').addTo(map);
