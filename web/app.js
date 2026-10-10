@@ -210,8 +210,7 @@ map.on('load',async()=>{
   // National tiles have no filter_river property. Do not apply the regional
   // river-name filter to this layer or MapLibre will hide every feature.
   setLayerVisibility('edna-national-rivers',riverToggle.checked&&riverMode!=='none');
-  const source=map.getSource('edna-national-tiles');
-  if(source)console.info('National EDNA vector source ready',source);
+  console.info('National EDNA vector layer registered');
 
  }catch(error){console.warn('National EDNA tiles unavailable:',error);}
 });
@@ -597,4 +596,6 @@ reportForm.addEventListener('submit',event=>{
  ].join('\n');
  window.open('https://github.com/'+REPO+'/issues/new?'+new URLSearchParams({title:'River report: '+type+' — '+location,body}), '_blank','noopener,noreferrer');
  reportDialog.close();
-});
+}); // Legacy Illinois EDNA GeoJSON is superseded by the national vector tiles.
+ // Avoid loading 35,000+ duplicate river features on every page visit.
+
