@@ -1,0 +1,1655 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.7702,
+          42.1135
+        ]
+      },
+      "properties": {
+        "id": "regional-001",
+        "name": "Tower Road Boat Launch",
+        "county": "Cook County, IL",
+        "waterway": "Skokie Lagoons",
+        "launch_type": "Trailered & Car-Top",
+        "allowed_watercraft": "Canoes, Kayaks, Rowboats, Electric Trolling Motors",
+        "address": "Tower Rd, west of Forestway Dr, Winnetka, IL",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.03,
+          42.0334
+        ]
+      },
+      "properties": {
+        "id": "regional-002",
+        "name": "Busse Lake Boating Center",
+        "county": "Cook County, IL",
+        "waterway": "Busse Reservoir",
+        "launch_type": "Trailered & Car-Top",
+        "allowed_watercraft": "Canoes, Kayaks, Rowboats, Electric Trolling Motors",
+        "address": "E Higgins Rd (Rt 72), east of Route 53, Elk Grove Village, IL",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.91,
+          41.7
+        ]
+      },
+      "properties": {
+        "id": "regional-003",
+        "name": "Saganashkee Slough Launch",
+        "county": "Cook County, IL",
+        "waterway": "Saganashkee Slough",
+        "launch_type": "Trailered & Car-Top",
+        "allowed_watercraft": "Canoes, Kayaks, Rowboats, Electric Trolling Motors",
+        "address": "107th St, west of 104th Ave / Willow Springs Rd, Willow Springs, IL",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.59,
+          41.65
+        ]
+      },
+      "properties": {
+        "id": "regional-004",
+        "name": "Beaubien Woods Boat Launch",
+        "county": "Cook County, IL",
+        "waterway": "Little Calumet River / Flatfoot Lake",
+        "launch_type": "Trailered & Car-Top",
+        "allowed_watercraft": "Motorboats, Jet Skis, Canoes, Kayaks",
+        "address": "E 132nd St, east of S Greenwood Ave, Chicago, IL",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.872,
+          41.636
+        ]
+      },
+      "properties": {
+        "id": "regional-005",
+        "name": "Tampier Lake Boating Center",
+        "county": "Cook County, IL",
+        "waterway": "Tampier Lake",
+        "launch_type": "Trailered & Car-Top",
+        "allowed_watercraft": "Canoes, Kayaks, Rowboats, Electric Trolling Motors",
+        "address": "W 131st St, west of Wolf Rd, Orland Park, IL",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.904,
+          42.0515
+        ]
+      },
+      "properties": {
+        "id": "regional-006",
+        "name": "Big Bend Lake",
+        "county": "Cook County, IL",
+        "waterway": "Des Plaines River",
+        "launch_type": "Trailered & Car-Top",
+        "allowed_watercraft": "Canoes, Kayaks, Non-motorized",
+        "address": "Bender Rd, south of Golf Rd, Des Plaines, IL",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.881,
+          42.049
+        ]
+      },
+      "properties": {
+        "id": "regional-007",
+        "name": "Beck Lake",
+        "county": "Cook County, IL",
+        "waterway": "Beck Lake",
+        "launch_type": "Trailered & Car-Top",
+        "allowed_watercraft": "Canoes, Kayaks, Non-motorized",
+        "address": "East River Rd & Central Rd, Des Plaines, IL",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.545,
+          41.631
+        ]
+      },
+      "properties": {
+        "id": "regional-008",
+        "name": "Powderhorn Lake",
+        "county": "Cook County, IL",
+        "waterway": "Powderhorn Lake",
+        "launch_type": "Trailered & Car-Top",
+        "allowed_watercraft": "Canoes, Kayaks, Non-motorized",
+        "address": "S Brainard Ave, east of Burnham Ave, Burnham, IL",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.822,
+          41.8385
+        ]
+      },
+      "properties": {
+        "id": "regional-009",
+        "name": "Plank Road Meadow",
+        "county": "Cook County, IL",
+        "waterway": "Des Plaines River",
+        "launch_type": "Trailered & Car-Top",
+        "allowed_watercraft": "Canoes, Kayaks, Non-motorized",
+        "address": "Ogden Ave, east of 1st Ave, Riverside, IL",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.653,
+          41.638
+        ]
+      },
+      "properties": {
+        "id": "regional-010",
+        "name": "Little Calumet Boat Launch",
+        "county": "Cook County, IL",
+        "waterway": "Little Calumet River",
+        "launch_type": "Trailered & Car-Top",
+        "allowed_watercraft": "Motorboats, Canoes, Kayaks",
+        "address": "Jackson St, east of S Ashland Ave, Riverdale, IL",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.886,
+          41.956
+        ]
+      },
+      "properties": {
+        "id": "regional-011",
+        "name": "Irving Park Road Canoe Landing",
+        "county": "Cook County, IL",
+        "waterway": "Des Plaines River",
+        "launch_type": "Carry-In Only",
+        "allowed_watercraft": "Canoes, Kayaks",
+        "address": "Des Plaines River Rd, north of Irving Park Rd, Schiller Park, IL",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.834,
+          41.881
+        ]
+      },
+      "properties": {
+        "id": "regional-012",
+        "name": "Maywood Grove",
+        "county": "Cook County, IL",
+        "waterway": "Des Plaines River",
+        "launch_type": "Carry-In Only",
+        "allowed_watercraft": "Canoes, Kayaks",
+        "address": "Ohio St & Des Plaines Ave, Maywood, IL",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.801,
+          41.808
+        ]
+      },
+      "properties": {
+        "id": "regional-013",
+        "name": "Stony Ford Canoe Landing",
+        "county": "Cook County, IL",
+        "waterway": "Des Plaines River",
+        "launch_type": "Carry-In Only",
+        "allowed_watercraft": "Canoes, Kayaks",
+        "address": "Joliet Ave / 43rd St, west of S Harlem Ave, Lyons, IL",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.892,
+          41.745
+        ]
+      },
+      "properties": {
+        "id": "regional-014",
+        "name": "Columbia Woods",
+        "county": "Cook County, IL",
+        "waterway": "Des Plaines River",
+        "launch_type": "Carry-In Only",
+        "allowed_watercraft": "Canoes, Kayaks",
+        "address": "Willow Springs Rd & Corcoran Rd, Willow Springs, IL",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.643,
+          41.626
+        ]
+      },
+      "properties": {
+        "id": "regional-015",
+        "name": "Kickapoo Woods",
+        "county": "Cook County, IL",
+        "waterway": "Little Calumet River",
+        "launch_type": "Carry-In Only",
+        "allowed_watercraft": "Canoes, Kayaks",
+        "address": "Halsted St, south of W 144th St, Riverdale, IL",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.854,
+          41.845
+        ]
+      },
+      "properties": {
+        "id": "regional-016",
+        "name": "Twenty-Sixth Street Woods-West",
+        "county": "Cook County, IL",
+        "waterway": "Salt Creek",
+        "launch_type": "Carry-In Only",
+        "allowed_watercraft": "Canoes, Kayaks",
+        "address": "26th St, east of S 25th Ave, La Grange Park, IL",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.893,
+          41.815
+        ]
+      },
+      "properties": {
+        "id": "regional-017",
+        "name": "Bemis Woods-North",
+        "county": "Cook County, IL",
+        "waterway": "Salt Creek",
+        "launch_type": "Carry-In Only",
+        "allowed_watercraft": "Canoes, Kayaks",
+        "address": "Ogden Ave (Rt 34), west of I-294, Western Springs, IL",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6335,
+          41.9302
+        ]
+      },
+      "properties": {
+        "id": "regional-018",
+        "name": "Diversey Harbor Boat Launch",
+        "county": "Cook County, IL",
+        "waterway": "Lake Michigan",
+        "launch_type": "Trailered Ramp",
+        "allowed_watercraft": "Powerboats, Sailboats, PWC, Kayaks",
+        "address": "2601 N Cannon Dr, Chicago, IL",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.608,
+          41.8383
+        ]
+      },
+      "properties": {
+        "id": "regional-019",
+        "name": "31st Street Harbor Boat Launch",
+        "county": "Cook County, IL",
+        "waterway": "Lake Michigan",
+        "launch_type": "Trailered Ramp",
+        "allowed_watercraft": "Powerboats, Sailboats, PWC, Kayaks",
+        "address": "3155 S Lake Shore Dr, Chicago, IL",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.5273,
+          41.7172
+        ]
+      },
+      "properties": {
+        "id": "regional-020",
+        "name": "Calumet Park Public Boat Ramp",
+        "county": "Cook County, IL",
+        "waterway": "Lake Michigan / Calumet Harbor",
+        "launch_type": "Trailered Ramp",
+        "allowed_watercraft": "Powerboats, Sailboats, PWC, Kayaks",
+        "address": "9801 S Avenue G, Chicago, IL",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6382,
+          41.9634
+        ]
+      },
+      "properties": {
+        "id": "regional-021",
+        "name": "Montrose Harbor Public Ramp",
+        "county": "Cook County, IL",
+        "waterway": "Lake Michigan",
+        "launch_type": "Trailered & Hand Ramp",
+        "allowed_watercraft": "Sailboats, Non-motorized, Small Powerboats",
+        "address": "601 W Montrose Ave, Chicago, IL",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.728,
+          42.1065
+        ]
+      },
+      "properties": {
+        "id": "regional-022",
+        "name": "Lloyd Beach Boat Launch",
+        "county": "Cook County, IL",
+        "waterway": "Lake Michigan",
+        "launch_type": "Trailered & Beach Launch",
+        "allowed_watercraft": "Motorboats, Sailboats, Kayaks, PWC",
+        "address": "799 Sheridan Rd, Winnetka, IL",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6853,
+          42.0792
+        ]
+      },
+      "properties": {
+        "id": "regional-023",
+        "name": "Wilmette Harbor Public Launch",
+        "county": "Cook County, IL",
+        "waterway": "Lake Michigan",
+        "launch_type": "Trailered Ramp",
+        "allowed_watercraft": "Powerboats, Sailboats, Kayaks",
+        "address": "20 Sheridan Rd, Wilmette, IL",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.671,
+          42.0409
+        ]
+      },
+      "properties": {
+        "id": "regional-024",
+        "name": "Dempster St. Launch Beach",
+        "county": "Cook County, IL",
+        "waterway": "Lake Michigan",
+        "launch_type": "Beach Hand Launch / Small Ramp",
+        "allowed_watercraft": "Sailboats, Kayaks, SUPs, PWC",
+        "address": "1251 Lake Shore Blvd, Evanston, IL",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6892,
+          41.9431
+        ]
+      },
+      "properties": {
+        "id": "regional-025",
+        "name": "Western Avenue Boat Launch",
+        "county": "Cook County, IL",
+        "waterway": "Chicago River (North Branch)",
+        "launch_type": "Trailered Ramp",
+        "allowed_watercraft": "Powerboats, Rowboats, Kayaks, Canoes",
+        "address": "3400 N Western Ave, Chicago, IL",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9255,
+          42.4891
+        ]
+      },
+      "properties": {
+        "id": "regional-026",
+        "name": "Sterling Lake (Van Patten Woods)",
+        "county": "Lake County, IL",
+        "waterway": "Sterling Lake",
+        "launch_type": "Trailered & Car-Top Ramp",
+        "allowed_watercraft": "Canoes, Kayaks, SUPs, Trolling Motors",
+        "address": "15838 W Russell Rd, Wadsworth, IL",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.915,
+          42.4883
+        ]
+      },
+      "properties": {
+        "id": "regional-027",
+        "name": "Van Patten Woods Canoe Launch",
+        "county": "Lake County, IL",
+        "waterway": "Des Plaines River",
+        "launch_type": "Carry-In Only",
+        "allowed_watercraft": "Canoes, Kayaks, SUPs",
+        "address": "Russell Rd, east of Rt 41, Zion, IL",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9212,
+          42.4338
+        ]
+      },
+      "properties": {
+        "id": "regional-028",
+        "name": "Sedge Meadow Canoe Launch",
+        "county": "Lake County, IL",
+        "waterway": "Des Plaines River",
+        "launch_type": "Carry-In Only",
+        "allowed_watercraft": "Canoes, Kayaks, SUPs",
+        "address": "15615 W Wadsworth Rd, Wadsworth, IL",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.8988,
+          42.3685
+        ]
+      },
+      "properties": {
+        "id": "regional-029",
+        "name": "Gowe Park / Des Plaines River Launch",
+        "county": "Lake County, IL",
+        "waterway": "Des Plaines River",
+        "launch_type": "Carry-In Only",
+        "allowed_watercraft": "Canoes, Kayaks, SUPs",
+        "address": "McClure Ave & O'Plaine Rd, Gurnee, IL",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9382,
+          42.3021
+        ]
+      },
+      "properties": {
+        "id": "regional-030",
+        "name": "Independence Grove Canoe Launch",
+        "county": "Lake County, IL",
+        "waterway": "Des Plaines River / Marina Lake",
+        "launch_type": "Carry-In / Hand Launch",
+        "allowed_watercraft": "Canoes, Kayaks, SUPs",
+        "address": "16400 W Buckley Rd, Libertyville, IL",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9351,
+          42.268
+        ]
+      },
+      "properties": {
+        "id": "regional-031",
+        "name": "Oak Spring Road (Wilmot Woods)",
+        "county": "Lake County, IL",
+        "waterway": "Des Plaines River",
+        "launch_type": "Carry-In Only",
+        "allowed_watercraft": "Canoes, Kayaks, SUPs",
+        "address": "Oak Spring Rd, west of St. Mary's Rd, Libertyville, IL",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9189,
+          42.2281
+        ]
+      },
+      "properties": {
+        "id": "regional-032",
+        "name": "Wright Woods Canoe Launch",
+        "county": "Lake County, IL",
+        "waterway": "Des Plaines River",
+        "launch_type": "Carry-In Only",
+        "allowed_watercraft": "Canoes, Kayaks, SUPs",
+        "address": "Rt 60, east of Milwaukee Ave, Vernon Hills, IL",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.0583,
+          42.4332
+        ]
+      },
+      "properties": {
+        "id": "regional-033",
+        "name": "Hastings Lake Launch",
+        "county": "Lake County, IL",
+        "waterway": "Hastings Lake",
+        "launch_type": "Carry-In / Hand Launch",
+        "allowed_watercraft": "Canoes, Kayaks, SUPs, Trolling Motors",
+        "address": "21155 W Gelden Rd, Lake Villa, IL",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.934,
+          42.3802
+        ]
+      },
+      "properties": {
+        "id": "regional-034",
+        "name": "Lake Carina Launch",
+        "county": "Lake County, IL",
+        "waterway": "Lake Carina",
+        "launch_type": "Carry-In / Hand Launch",
+        "allowed_watercraft": "Canoes, Kayaks, SUPs, Trolling Motors",
+        "address": "33883 N Milwaukee Ave, Gurnee, IL",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1345,
+          42.3621
+        ]
+      },
+      "properties": {
+        "id": "regional-035",
+        "name": "Long Lake Launch (Grant Woods)",
+        "county": "Lake County, IL",
+        "waterway": "Long Lake",
+        "launch_type": "Carry-In / Hand Launch",
+        "allowed_watercraft": "Canoes, Kayaks, SUPs, Trolling Motors",
+        "address": "Rollins Rd south entrance, Ingleside, IL",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1965,
+          42.2356
+        ]
+      },
+      "properties": {
+        "id": "regional-036",
+        "name": "Fox River Marina / Launch",
+        "county": "Lake County, IL",
+        "waterway": "Fox River",
+        "launch_type": "Trailered Ramp",
+        "allowed_watercraft": "Motorboats, PWC, Canoes, Kayaks",
+        "address": "28500 W Roberts Rd, Port Barrington, IL",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.156,
+          41.7915
+        ]
+      },
+      "properties": {
+        "id": "regional-037",
+        "name": "McDowell Grove Boat Launch",
+        "county": "DuPage County, IL",
+        "waterway": "West Branch DuPage River",
+        "launch_type": "Carry-In / Hand Launch",
+        "allowed_watercraft": "Canoes, Kayaks",
+        "address": "4S100 Raymond Dr, Naperville, IL",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1811,
+          41.8182
+        ]
+      },
+      "properties": {
+        "id": "regional-038",
+        "name": "Warrenville Grove Launch",
+        "county": "DuPage County, IL",
+        "waterway": "West Branch DuPage River",
+        "launch_type": "Carry-In / Hand Launch",
+        "allowed_watercraft": "Canoes, Kayaks",
+        "address": "3S010 Batavia Rd, Warrenville, IL",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1895,
+          41.8322
+        ]
+      },
+      "properties": {
+        "id": "regional-039",
+        "name": "Blackwell Forest Preserve (Silver Lake)",
+        "county": "DuPage County, IL",
+        "waterway": "Silver Lake",
+        "launch_type": "Trailered & Car-Top Ramp",
+        "allowed_watercraft": "Canoes, Kayaks, Rowboats, Trolling Motors",
+        "address": "Butterfield Rd, West Chicago, IL",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1481,
+          41.8214
+        ]
+      },
+      "properties": {
+        "id": "regional-040",
+        "name": "Herrick Lake Launch",
+        "county": "DuPage County, IL",
+        "waterway": "Herrick Lake",
+        "launch_type": "Carry-In / Hand Launch",
+        "allowed_watercraft": "Canoes, Kayaks, Rowboats",
+        "address": "3S580 Herrick Rd, Wheaton, IL",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1432,
+          41.9701
+        ]
+      },
+      "properties": {
+        "id": "regional-041",
+        "name": "Mallard Lake Boat Launch",
+        "county": "DuPage County, IL",
+        "waterway": "Mallard Lake",
+        "launch_type": "Trailered & Car-Top Ramp",
+        "allowed_watercraft": "Canoes, Kayaks, Trolling Motors",
+        "address": "Schick Rd, Hanover Park, IL",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.041,
+          41.8315
+        ]
+      },
+      "properties": {
+        "id": "regional-042",
+        "name": "Hidden Lake Forest Preserve Launch",
+        "county": "DuPage County, IL",
+        "waterway": "East Branch DuPage River / Eagle Lake",
+        "launch_type": "Carry-In / Hand Launch",
+        "allowed_watercraft": "Canoes, Kayaks",
+        "address": "Rt 53 & Butterfield Rd, Downers Grove, IL",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.0821,
+          41.796
+        ]
+      },
+      "properties": {
+        "id": "regional-043",
+        "name": "Lisle Community Park Boat Launch",
+        "county": "DuPage County, IL",
+        "waterway": "East Branch DuPage River",
+        "launch_type": "Carry-In / Low Ramp",
+        "allowed_watercraft": "Canoes, Kayaks",
+        "address": "1825 Short St, Lisle, IL",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.148,
+          41.7588
+        ]
+      },
+      "properties": {
+        "id": "regional-044",
+        "name": "Pioneer Park Boat Launch",
+        "county": "DuPage County, IL",
+        "waterway": "West Branch DuPage River",
+        "launch_type": "Carry-In / Hand Launch",
+        "allowed_watercraft": "Canoes, Kayaks",
+        "address": "1212 S Washington St, Naperville, IL",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.518,
+          41.6961
+        ]
+      },
+      "properties": {
+        "id": "regional-045",
+        "name": "Hammond Marina Boat Launch",
+        "county": "Lake County, IN",
+        "waterway": "Lake Michigan",
+        "launch_type": "Trailered Ramp",
+        "allowed_watercraft": "Powerboats, Sailboats, PWC, Kayaks",
+        "address": "701 Casino Center Dr, Hammond, IN",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.4895,
+          41.6882
+        ]
+      },
+      "properties": {
+        "id": "regional-046",
+        "name": "Whihala Beach Boat Launch",
+        "county": "Lake County, IN",
+        "waterway": "Lake Michigan",
+        "launch_type": "Trailered Ramp",
+        "allowed_watercraft": "Powerboats, Sailboats, PWC, Kayaks",
+        "address": "1561 Whihala Dr, Whiting, IN",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.2662,
+          41.619
+        ]
+      },
+      "properties": {
+        "id": "regional-047",
+        "name": "Marquette Park Launch",
+        "county": "Lake County, IN",
+        "waterway": "Grand Calumet River / Lake Michigan",
+        "launch_type": "Carry-In & Hand Ramp",
+        "allowed_watercraft": "Canoes, Kayaks, SUPs",
+        "address": "1 N Lake St, Gary, IN",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.4331,
+          41.3725
+        ]
+      },
+      "properties": {
+        "id": "regional-048",
+        "name": "Cedar Lake Public Boat Ramp",
+        "county": "Lake County, IN",
+        "waterway": "Cedar Lake",
+        "launch_type": "Trailered Ramp",
+        "allowed_watercraft": "Powerboats, PWC, Sailboats, Kayaks, Canoes",
+        "address": "7608 Lake Shore Dr, Cedar Lake, IN",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.4082,
+          41.3781
+        ]
+      },
+      "properties": {
+        "id": "regional-049",
+        "name": "Lemon Lake County Park",
+        "county": "Lake County, IN",
+        "waterway": "Lemon Lake",
+        "launch_type": "Carry-In / Hand Launch",
+        "allowed_watercraft": "Canoes, Kayaks, Non-motorized",
+        "address": "6322 W 133rd Ave, Crown Point, IN",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.161,
+          41.6218
+        ]
+      },
+      "properties": {
+        "id": "regional-050",
+        "name": "Portage Public Marina (Sammie L. Maletta)",
+        "county": "Porter County, IN",
+        "waterway": "Burns Waterway / Lake Michigan",
+        "launch_type": "Trailered Ramp",
+        "allowed_watercraft": "Powerboats, Sailboats, PWC, Kayaks",
+        "address": "1200 Marina Way, Portage, IN",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.0583,
+          41.662
+        ]
+      },
+      "properties": {
+        "id": "regional-051",
+        "name": "Indiana Dunes State Park Launch",
+        "county": "Porter County, IN",
+        "waterway": "Lake Michigan",
+        "launch_type": "Beach Hand Launch",
+        "allowed_watercraft": "Kayaks, Canoes, SUPs",
+        "address": "1600 N 25 E, Chesterton, IN",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.0892,
+          41.6205
+        ]
+      },
+      "properties": {
+        "id": "regional-052",
+        "name": "Dune Acres / East Arm Little Calumet Launch",
+        "county": "Porter County, IN",
+        "waterway": "East Branch Little Calumet River",
+        "launch_type": "Carry-In Only",
+        "allowed_watercraft": "Canoes, Kayaks",
+        "address": "Howe Rd & US-12, Porter, IN",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.9035,
+          41.7245
+        ]
+      },
+      "properties": {
+        "id": "regional-053",
+        "name": "Washington Park Marina & Public Ramp",
+        "county": "LaPorte County, IN",
+        "waterway": "Lake Michigan / Trail Creek",
+        "launch_type": "Trailered Ramp",
+        "allowed_watercraft": "Powerboats, Sailboats, PWC, Kayaks, Canoes",
+        "address": "100 Washington Park Dr, Michigan City, IN",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.892,
+          41.7132
+        ]
+      },
+      "properties": {
+        "id": "regional-054",
+        "name": "Hansen Park Boat Launch",
+        "county": "LaPorte County, IN",
+        "waterway": "Trail Creek",
+        "launch_type": "Carry-In & Trailered Ramp",
+        "allowed_watercraft": "Canoes, Kayaks, Small Powerboats",
+        "address": "100 E 11th St, Michigan City, IN",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.7215,
+          41.621
+        ]
+      },
+      "properties": {
+        "id": "regional-055",
+        "name": "Clear Lake Public Launch",
+        "county": "LaPorte County, IN",
+        "waterway": "Clear Lake",
+        "launch_type": "Trailered & Car-Top Ramp",
+        "allowed_watercraft": "Powerboats, Trolling Motors, Kayaks, Canoes",
+        "address": "Clear Lake Rd / Lake St, La Porte, IN",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.7452,
+          41.6328
+        ]
+      },
+      "properties": {
+        "id": "regional-056",
+        "name": "Pine Lake Public Boat Ramp",
+        "county": "LaPorte County, IN",
+        "waterway": "Pine Lake",
+        "launch_type": "Trailered Ramp",
+        "allowed_watercraft": "Powerboats, Sailboats, PWC, Kayaks",
+        "address": "Pine Lake Ave (US-35), La Porte, IN",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.5412,
+          41.7115
+        ]
+      },
+      "properties": {
+        "id": "regional-057",
+        "name": "Hudson Lake Public Launch",
+        "county": "LaPorte County, IN",
+        "waterway": "Hudson Lake",
+        "launch_type": "Trailered & Car-Top Ramp",
+        "allowed_watercraft": "Powerboats, Trolling Motors, Kayaks, Canoes",
+        "address": "Lake Shore Dr & Emery Rd, New Carlisle / Hudson Lake, IN",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.2514,
+          41.7582
+        ]
+      },
+      "properties": {
+        "id": "regional-058",
+        "name": "St. Patrick's County Park Canoe Launch",
+        "county": "St. Joseph County, IN",
+        "waterway": "St. Joseph River",
+        "launch_type": "Carry-In / Hand Launch",
+        "allowed_watercraft": "Canoes, Kayaks, SUPs",
+        "address": "50651 Laurel Rd, South Bend, IN",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.252,
+          41.7315
+        ]
+      },
+      "properties": {
+        "id": "regional-059",
+        "name": "Darden Road Bridge Boat Launch",
+        "county": "St. Joseph County, IN",
+        "waterway": "St. Joseph River",
+        "launch_type": "Trailered Ramp & Hand Launch",
+        "allowed_watercraft": "Powerboats, Canoes, Kayaks",
+        "address": "Darden Rd & St. Joseph River, South Bend, IN",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.2625,
+          41.7012
+        ]
+      },
+      "properties": {
+        "id": "regional-060",
+        "name": "Keller Park Public Boat Launch",
+        "county": "St. Joseph County, IN",
+        "waterway": "St. Joseph River",
+        "launch_type": "Trailered Ramp",
+        "allowed_watercraft": "Powerboats, Canoes, Kayaks",
+        "address": "1900 Riverside Dr, South Bend, IN",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.244,
+          41.6765
+        ]
+      },
+      "properties": {
+        "id": "regional-061",
+        "name": "Seitz Park / East Race Access",
+        "county": "St. Joseph County, IN",
+        "waterway": "St. Joseph River",
+        "launch_type": "Carry-In / Whitewater Access",
+        "allowed_watercraft": "Kayaks, Canoes, SUPs",
+        "address": "123 S Niles Ave, South Bend, IN",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.1795,
+          41.666
+        ]
+      },
+      "properties": {
+        "id": "regional-062",
+        "name": "Mishawaka Central Park Launch",
+        "county": "St. Joseph County, IN",
+        "waterway": "St. Joseph River",
+        "launch_type": "Trailered Ramp & Hand Launch",
+        "allowed_watercraft": "Powerboats, Canoes, Kayaks",
+        "address": "225 E Mishawaka Ave, Mishawaka, IN",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.1302,
+          41.6588
+        ]
+      },
+      "properties": {
+        "id": "regional-063",
+        "name": "Twin Branch Park Launch",
+        "county": "St. Joseph County, IN",
+        "waterway": "St. Joseph River",
+        "launch_type": "Trailered Ramp",
+        "allowed_watercraft": "Powerboats, Canoes, Kayaks",
+        "address": "3900 Lincolnway E, Mishawaka, IN",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.7485,
+          41.7962
+        ]
+      },
+      "properties": {
+        "id": "regional-064",
+        "name": "New Buffalo Public Boat Launch",
+        "county": "Berrien County, MI",
+        "waterway": "Galien River / Lake Michigan",
+        "launch_type": "Trailered Ramp",
+        "allowed_watercraft": "Powerboats, Sailboats, PWC, Kayaks, Canoes",
+        "address": "200 Marquette Dr, New Buffalo, MI",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.732,
+          41.8125
+        ]
+      },
+      "properties": {
+        "id": "regional-065",
+        "name": "Galien River County Park Kayak Launch",
+        "county": "Berrien County, MI",
+        "waterway": "Galien River",
+        "launch_type": "Carry-In / Accessible Kayak Dock",
+        "allowed_watercraft": "Canoes, Kayaks, SUPs",
+        "address": "13919 Red Arrow Hwy, New Buffalo, MI",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.5985,
+          41.912
+        ]
+      },
+      "properties": {
+        "id": "regional-066",
+        "name": "Warren Dunes State Park Beach Launch",
+        "county": "Berrien County, MI",
+        "waterway": "Lake Michigan",
+        "launch_type": "Beach Hand Launch",
+        "allowed_watercraft": "Kayaks, Canoes, SUPs",
+        "address": "12032 Red Arrow Hwy, Sawyer, MI",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.261,
+          41.848
+        ]
+      },
+      "properties": {
+        "id": "regional-067",
+        "name": "St. Joseph River Park Boat Launch",
+        "county": "Berrien County, MI",
+        "waterway": "St. Joseph River",
+        "launch_type": "Trailered Ramp",
+        "allowed_watercraft": "Powerboats, Canoes, Kayaks",
+        "address": "Niles-Buchanan Rd, Niles, MI",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.3528,
+          41.8312
+        ]
+      },
+      "properties": {
+        "id": "regional-068",
+        "name": "Buchanan Public Boat Launch",
+        "county": "Berrien County, MI",
+        "waterway": "St. Joseph River",
+        "launch_type": "Trailered Ramp",
+        "allowed_watercraft": "Powerboats, Canoes, Kayaks",
+        "address": "S Front St / E River Rd, Buchanan, MI",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.4801,
+          42.1022
+        ]
+      },
+      "properties": {
+        "id": "regional-069",
+        "name": "Riverham Municipal Boat Ramp",
+        "county": "Berrien County, MI",
+        "waterway": "St. Joseph River / Lake Michigan",
+        "launch_type": "Trailered Ramp",
+        "allowed_watercraft": "Powerboats, Sailboats, Kayaks",
+        "address": "1000 Riverham Dr, St. Joseph, MI",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.46,
+          42.115
+        ]
+      },
+      "properties": {
+        "id": "regional-070",
+        "name": "Benton Harbor Marina Boat Launch",
+        "county": "Berrien County, MI",
+        "waterway": "St. Joseph River / Paw Paw River",
+        "launch_type": "Trailered Ramp",
+        "allowed_watercraft": "Powerboats, Sailboats, Kayaks",
+        "address": "200 E Main St, Benton Harbor, MI",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.452,
+          42.1195
+        ]
+      },
+      "properties": {
+        "id": "regional-071",
+        "name": "Paw Paw River Kayak Launch (North Canal)",
+        "county": "Berrien County, MI",
+        "waterway": "Paw Paw River",
+        "launch_type": "Carry-In / Accessible Dock",
+        "allowed_watercraft": "Canoes, Kayaks, SUPs",
+        "address": "Graham Ave & Riverview Dr, Benton Harbor, MI",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.2755,
+          42.3995
+        ]
+      },
+      "properties": {
+        "id": "regional-072",
+        "name": "South Haven Municipal Marina Launch (South)",
+        "county": "Van Buren County, MI",
+        "waterway": "Black River / Lake Michigan",
+        "launch_type": "Trailered Ramp",
+        "allowed_watercraft": "Powerboats, Sailboats, PWC, Kayaks",
+        "address": "Water St & Broad St, South Haven, MI",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.269,
+          42.4082
+        ]
+      },
+      "properties": {
+        "id": "regional-073",
+        "name": "Black River Park Boat Ramp",
+        "county": "Van Buren County, MI",
+        "waterway": "Black River / Lake Michigan",
+        "launch_type": "Trailered Ramp",
+        "allowed_watercraft": "Powerboats, Sailboats, Kayaks, Canoes",
+        "address": "Wells St & N Shore Dr, South Haven, MI",
+        "trailer_access_candidate": true,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.312,
+          42.355
+        ]
+      },
+      "properties": {
+        "id": "regional-074",
+        "name": "Van Buren State Park Beach Launch",
+        "county": "Van Buren County, MI",
+        "waterway": "Lake Michigan",
+        "launch_type": "Beach Hand Launch",
+        "allowed_watercraft": "Kayaks, Canoes, SUPs",
+        "address": "23960 Ruggles Rd, South Haven, MI",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.115,
+          42.3115
+        ]
+      },
+      "properties": {
+        "id": "regional-075",
+        "name": "Bangor Township Park Black River Launch",
+        "county": "Van Buren County, MI",
+        "waterway": "Black River",
+        "launch_type": "Carry-In & Hand Launch",
+        "allowed_watercraft": "Canoes, Kayaks, SUPs",
+        "address": "CR 687 & Black River, Bangor, MI",
+        "trailer_access_candidate": false,
+        "source": "master_regional_watercraft_launches_v2.csv",
+        "verification": "unverified"
+      }
+    }
+  ]
+}
