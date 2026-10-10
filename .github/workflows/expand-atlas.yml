@@ -11,18 +11,20 @@ concurrency:
 jobs:
   discover:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
-      - name: Benchmark and expand each layer within download and time budgets
+      - name: Expand Esri rivers at service-measured pace
+        run: python3 scripts/expand_esri_rivers.py --seconds 180 --mb 20 --max-requests 30
+      - name: Benchmark and expand launch and gauge discovery
         run: python3 scripts/benchmark_expansion.py --budget-seconds 240 --budget-mb 25 --max-requests 24
       - name: Publish incremental datasets
         run: |
           set -euo pipefail
           mkdir -p /tmp/atlas-expansion
-          for f in data/expansion_progress.json data/expansion_pace.json data/putins_expansion.geojson data/river_expansion.geojson data/gauges_expansion.geojson; do
+          for f in data/expansion_progress.json data/expansion_pace.json data/esri_river_progress.json data/putins_expansion.geojson data/river_expansion.geojson data/gauges_expansion.geojson; do
             if test -f "$f"; then cp "$f" /tmp/atlas-expansion/; fi
           done
           git config user.name "github-actions[bot]"
@@ -31,7 +33,7 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             cp /tmp/atlas-expansion/* data/
-            for f in data/expansion_progress.json data/expansion_pace.json; do
+            for f in data/expansion_progress.json data/expansion_pace.json data/esri_river_progress.json; do
               if test -f "$f"; then git add "$f"; fi
             done
             for f in data/putins_expansion.geojson data/river_expansion.geojson data/gauges_expansion.geojson; do
