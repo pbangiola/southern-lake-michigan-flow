@@ -8,7 +8,7 @@ import osmium
 
 OUT = Path("data/putins_osm_candidates.geojson")
 REPORT = Path("data/putins_extract_report.json")
-PATTERN = re.compile(r"\\b(?:canoe|kayak|boat)\\s+(?:launch|landing|access|ramp)\\b", re.I)
+PATTERN = re.compile(r"\b(?:canoe|kayak|boat)\s+(?:launch|landing|access|ramp)\b", re.I)
 STATES = ("illinois", "indiana", "michigan", "wisconsin")
 
 def is_candidate(tags):
