@@ -1,0 +1,21 @@
+name: River crawler candidate discovery (draft)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Discover candidate gauges and launches
+        run: python scripts/river_crawler.py --max-boxes 3
+      - uses: actions/upload-artifact@v4
+        with:
+          name: river-crawler-candidates
+          path: local/river_crawler/
+          retention-days: 14
