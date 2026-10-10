@@ -1,6 +1,7 @@
 {
   "description": "Reviewed launch IDs. Add an ID only after checking evidence submitted through a verification issue. No launch is verified by default.",
   "verified_ids": [
-    "osm-node-12107026033"
+    "osm-node-12107026033",
+    "osm-node-4532869181"
   ]
 }
