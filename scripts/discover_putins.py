@@ -80,7 +80,7 @@ def query_adaptive(cell, bounds=None, depth=0):
         x,y=cell
         w,s,e,n=bounds if bounds is not None else (x*CELL-.004,y*CELL-.004,(x+1)*CELL+.004,(y+1)*CELL+.004)
         mx,my=(w+e)/2,(s+n)/2
-        print(f\'Splitting rejected rectangle {cell} at depth {depth+1}\',flush=True)
+        print(f'Splitting rejected rectangle {cell} at depth {depth+1}', flush=True)
         combined={};total=0
         for b in ((w,s,mx,my),(mx,s,e,my),(w,my,mx,n),(mx,my,e,n)):
             features,size=query_adaptive(cell,b,depth+1)
