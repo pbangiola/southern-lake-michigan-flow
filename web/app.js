@@ -129,6 +129,31 @@ map.on('load',async()=>{
 const putinFilter=document.getElementById('putin-filter');
 const putinCount=document.getElementById('putin-count');
 let putinFeatures=[];
+let launchDomMarkers=[];
+function renderLaunchDomMarkers(){
+ for(const marker of launchDomMarkers)marker.remove();
+ launchDomMarkers=[];
+ if(!putinToggle.checked)return;
+ const bounds=map.getBounds(), visible=putinFeatures.filter(f=>{
+  const xy=f.geometry?.coordinates;
+  return f.geometry?.type==='Point'&&Array.isArray(xy)&&bounds.contains(xy)&&qualifiesPutin(f);
+ });
+ // Keep the DOM overlay responsive on mobile. MapLibre's clustered layer handles the full dataset.
+ const limit=160, stride=Math.max(1,Math.ceil(visible.length/limit));
+ for(let i=0;i<visible.length;i+=stride){
+  const feature=visible[i],xy=feature.geometry.coordinates;
+  const el=document.createElement('button');
+  el.type='button';el.title=(feature.properties?.name||'Unverified launch candidate');
+  el.setAttribute('aria-label',el.title);
+  el.style.cssText='width:15px;height:15px;padding:0;margin:0;border:2px solid white;border-radius:50%;background:#168447;box-shadow:0 1px 5px #0008;cursor:pointer;';
+  el.addEventListener('click',event=>{
+   event.stopPropagation();
+   new maplibregl.Popup().setLngLat(xy).setText(el.title+' — unverified; confirm access before visiting.').addTo(map);
+  });
+  launchDomMarkers.push(new maplibregl.Marker({element:el,anchor:'center'}).setLngLat(xy).addTo(map));
+ }
+}
+map.on('moveend',renderLaunchDomMarkers);
 function qualifiesPutin(f){
  const p=f.properties||{},mode=putinFilter.value;
  if(mode==='public')return ['yes','public','designated'].includes(String(p.access||'').toLowerCase()); // Regional list has no explicit access=public tag.
@@ -141,6 +166,7 @@ function updatePutins(){
  if(map.getSource('putins'))map.getSource('putins').setData({type:'FeatureCollection',features:filtered});
  for(const id of ['putin-clusters','putin-counts','putins'])setLayerVisibility(id,putinToggle.checked);
  putinCount.textContent=filtered.length+' of '+putinFeatures.length+' unverified candidates';
+ renderLaunchDomMarkers();
 }
 putinToggle.addEventListener('change',updatePutins);
 putinFilter.addEventListener('change',updatePutins);
