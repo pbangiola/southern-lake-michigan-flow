@@ -103,7 +103,7 @@ function riverName(raw){
 }
 let riverNames=[],riverMode='all',focusRiver='';
 function applyRiverFilters(){
- for(const id of ['river-segments','river-3dhp-review','expanded-rivers']){
+ for(const id of ['river-segments','river-3dhp-review','expanded-rivers','illinois-network']){
   if(!map.getLayer(id))continue;
   setLayerVisibility(id,riverToggle.checked&&riverMode!=='none');
   map.setFilter(id,riverMode==='only'?['==',['get','filter_river'],focusRiver]:riverMode==='exclude'?['!=',['get','filter_river'],focusRiver]:null);
@@ -168,6 +168,27 @@ function colorRiverNetwork(segments,gauges){
  }
  return segments;
 }
+// One-time EDNA graph build: show as a neutral, independent overlay.
+// This is connected source geometry, not verified hydrological flow or gauge-calibrated stage.
+map.on('load',async()=>{
+ try{
+  const response=await fetch('data/illinois_river_network.geojson',{cache:'no-store'});
+  if(!response.ok)throw new Error('HTTP '+response.status);
+  const network=await response.json();
+  if(network.type!=='FeatureCollection'||!Array.isArray(network.features))throw new Error('Invalid network GeoJSON');
+  map.addSource('illinois-network',{type:'geojson',data:network});
+  map.addLayer({id:'illinois-network',type:'line',source:'illinois-network',
+   paint:{'line-color':'#527d94','line-width':['interpolate',['linear'],['zoom'],5,0.65,9,1.5,13,2.5],
+    'line-opacity':0.72}});
+  setLayerVisibility('illinois-network',riverToggle.checked&&riverMode!=='none');
+  map.on('click','illinois-network',e=>{
+   if(reportButton.getAttribute('aria-pressed')==='true')return;
+   const p=e.features[0].properties||{};
+   new maplibregl.Popup().setLngLat(e.lngLat).setText('Illinois connected river network\\nEDNA segment: '+(p.segment_id||'unknown')+'\\nFlow direction and navigability not verified.').addTo(map);
+  });
+  console.info('Illinois EDNA network loaded:',network.features.length,'segments');
+ }catch(error){console.warn('Illinois network unavailable:',error);}
+});
 // Load launch markers independently of gauge and river data; gauge failures must not hide launches.
 map.on('load',async()=>{
   const putinToggle=document.getElementById('show-putins');
