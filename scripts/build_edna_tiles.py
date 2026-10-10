@@ -4,6 +4,7 @@
 tippecanoe drops redundant detail at low zoom, preserving full geometry at high zoom.
 """
 import json
+import gzip
 import subprocess
 from pathlib import Path
 
@@ -21,6 +22,15 @@ def main():
          "--simplification=8","--no-feature-limit","--no-tile-size-limit",
          "--read-parallel"]+[str(p) for p in files]
     subprocess.run(cmd,check=True)
+    # GitHub Pages serves .pbf without Content-Encoding: gzip. Tippecanoe
+    # emits gzipped PBFs; decompress them for MapLibre's static-file loader.
+    count=0
+    for tile in OUT.rglob("*.pbf"):
+        raw=tile.read_bytes()
+        if raw.startswith(b"\\x1f\\x8b"):
+            tile.write_bytes(gzip.decompress(raw))
+            count+=1
+    print("Decompressed",count,"PBF tiles for GitHub Pages",flush=True)
     (OUT/"manifest.json").write_text(json.dumps({
         "complete":True,"source_bbox":manifest.get("bbox"),"source_features":manifest.get("total_features"),
         "tiles":"{z}/{x}/{y}.pbf","maxzoom":12,"layer":"edna"
