@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About · Southern Lake Michigan Flow Atlas</title>
+<style>
+:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#f7f8f5;color:#172b35;font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{background:#e9f0ee;border-bottom:1px solid #cad8d6;padding:16px max(20px,calc((100vw - 760px)/2))}
+nav{display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}a{color:#136185}a:hover{text-decoration-thickness:2px}
+main{max-width:800px;margin:auto;padding:32px 20px 64px}h1{font-size:clamp(28px,5vw,42px);line-height:1.15;margin:0 0 16px}h2{font-size:22px;margin:34px 0 8px}p{margin:0 0 16px}.lead{font-size:19px;color:#355260}.note{background:#e9f0ee;border-left:4px solid #427d8e;padding:15px 18px;border-radius:3px;margin:24px 0}.scale{display:grid;grid-template-columns:22px 1fr;gap:9px 12px;align-items:center;margin:16px 0}.swatch{width:18px;height:18px;border-radius:50%;border:1px solid #ffffff;box-shadow:0 0 0 1px #9caaaf}footer{border-top:1px solid #cad8d6;padding:20px;color:#52646d;font-size:14px}@media(max-width:500px){main{padding-top:24px}.lead{font-size:17px}}
+</style>
+</head>
+<body>
+<header><nav><strong>Southern Lake Michigan Flow Atlas</strong><a href="./">← Back to the map</a></nav></header>
+<main>
+<h1>About the Flow Atlas</h1>
+<p class="lead">Where might the rivers be running low, comfortably high, or unusually high today? This map is an attempt to make water-level information easier to explore—especially for people curious about paddling the rivers around southern Lake Michigan.</p>
+<p>Instead of opening a separate chart for every stream gauge, you can look at a map, see how recent measurements compare with each gauge’s own history, and follow links to the original USGS readings.</p>
+<h2>How the colors work</h2>
+<p>Many rivers have gauges that measure <strong>stage</strong>: the height of the water surface above a local reference point. Stage is <em>not</em> the depth of the water beneath a canoe, and a stage of 5 feet at one gauge is not necessarily comparable to 5 feet at another.</p>
+<p>The atlas compares a gauge’s recent stage with its own observed levels over roughly the past year. Brown marks the low end, blue is around the annual average, and colors progress toward green, yellow, and red as levels rise toward an available high-water threshold.</p>
+<div class="scale" aria-label="Stage color key">
+<span class="swatch" style="background:#80502f"></span><span><strong>Brown:</strong> near the observed low-water reference.</span>
+<span class="swatch" style="background:#168ed0"></span><span><strong>Blue:</strong> around the observed annual mean.</span>
+<span class="swatch" style="background:#299b59"></span><span><strong>Green:</strong> above the mean, moving toward a high threshold.</span>
+<span class="swatch" style="background:#e8cf44"></span><span><strong>Yellow:</strong> approaching the available high threshold.</span>
+<span class="swatch" style="background:#d93b32"></span><span><strong>Red:</strong> near that high threshold.</span>
+<span class="swatch" style="background:#88929b"></span><span><strong>Gray:</strong> not enough usable information to assign a color.</span>
+</div>
+<p>The low reference is based on the observed minimum, <em>not</em> a known minimum paddling depth. The atlas only uses that historical reference when the gauge has adequate coverage—at least 75% of days, distributed across seasons. A community-reported high-water limit can be used when available; otherwise the map uses an official flood-stage value, if one is available. If there is no usable high threshold, the scale cannot reliably progress into the higher colors.</p>
+<h2>How a gauge colors a river</h2>
+<p>The river network is assembled from USGS stream-line data. The software links nearby gauges to that network, then associates river segments with gauges by distance along connected stream lines. It is a useful approximation, not a hydraulic simulation or a verified map of which way water flows.</p>
+<p>If a segment is associated with two gauges, their <em>relative stage colors</em> are blended. If only one has usable readings, its color is carried across the segment rather than treating the river as if it vanished. If neither has usable data, the segment is gray. This does not mean the actual water level is identical all along the reach.</p>
+<h2>What about launch points and routes?</h2>
+<p>Potential put-ins are collected from public map information, including OpenStreetMap names and access tags. They are <strong>candidates</strong>, not confirmed legal or practical launch sites. The purple routes come from separately mapped KML lines; they are not verified paddling routes.</p>
+<h2>Can paddlers contribute?</h2>
+<p>Yes. The map’s <strong>Report river condition</strong> button lets someone record whether a place seemed too shallow, too high or fast, or navigable at a recent gauge reading. Reports are submitted as public GitHub issues. The current experimental method uses open reports to adjust local low- and high-water thresholds. Reports are not independently verified, and one report can change a threshold; they should not be treated as authoritative.</p>
+<div class="note"><strong>Important:</strong> This is a water-level visualization, <em>not</em> a navigation guide, depth chart, flood warning, or safety rating. Conditions can change quickly. Dams, strainers, obstructions, weather, access restrictions, and local currents may not appear here. Check official information and conditions before going out.</div>
+<h2>Sources and project</h2>
+<p>Gauge readings and stream-network data come from the <a href="https://waterdata.usgs.gov/" target="_blank" rel="noopener noreferrer">U.S. Geological Survey (USGS)</a>. Candidate launch information comes from <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>. The underlying map uses OpenFreeMap and MapLibre. The project was inspired by <a href="https://flows.bellingham.dev/about.html" target="_blank" rel="noopener noreferrer">Flow</a>.</p>
+<p>You can <a href="https://github.com/pbangiola/southern-lake-michigan-flow" target="_blank" rel="noopener noreferrer">see the code and data-processing methods on GitHub</a>, or <a href="./">return to the map</a>.</p>
+</main>
+<footer>Southern Lake Michigan Flow Atlas · Experimental, community-oriented water-level map</footer>
+</body></html>
