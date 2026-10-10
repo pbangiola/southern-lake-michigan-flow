@@ -10,7 +10,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: consolidate-launches
+  group: launch-data-writers
   cancel-in-progress: false
 jobs:
   consolidate:
