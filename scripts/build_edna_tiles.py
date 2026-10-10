@@ -27,7 +27,7 @@ def main():
     count=0
     for tile in OUT.rglob("*.pbf"):
         raw=tile.read_bytes()
-        if raw.startswith(b"\\x1f\\x8b"):
+        if raw.startswith(bytes([0x1f, 0x8b])):
             tile.write_bytes(gzip.decompress(raw))
             count+=1
     print("Decompressed",count,"PBF tiles for GitHub Pages",flush=True)
