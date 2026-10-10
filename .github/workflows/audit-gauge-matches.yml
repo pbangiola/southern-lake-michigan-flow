@@ -1,6 +1,9 @@
 name: Audit NOAA gauge to EDNA river matching
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - scripts/audit_gauge_edna_matches.py
 permissions:
   contents: read
 jobs:
