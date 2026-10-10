@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>River / Gauge Alignment Audit</title><link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet"><style>body{margin:0;font:14px system-ui;color:#172b36}header{padding:12px 16px;background:#f1f5f7}h1{font-size:20px;margin:0 0 5px}#status{font-size:13px}#map{height:calc(100dvh - 112px);min-height:420px}label{margin-right:15px;white-space:nowrap}button{margin-right:7px}#error{color:#9a2519;font-weight:600} .maplibregl-popup-content{max-width:300px;overflow-wrap:anywhere}</style></head><body><header><h1>River–gauge alignment audit</h1><div><button id="illinois">Illinois</button><button id="usa">USA</button><label><input id="rivers" type="checkbox" checked> EDNA rivers (blue)</label><label><input id="gauges" type="checkbox" checked> NOAA gauges (orange)</label></div><div id="status">Loading independent datasets…</div><div id="error"></div></header><div id="map"></div><script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script><script>
+const map=new maplibregl.Map({container:'map',style:'https://tiles.openfreemap.org/styles/liberty',center:[-89.4,40.1],zoom:6});
+map.addControl(new maplibregl.NavigationControl());
+const status=document.getElementById('status'),err=document.getElementById('error');
+const visible=(id,yes)=>{if(map.getLayer(id))map.setLayoutProperty(id,'visibility',yes?'visible':'none')};
+document.getElementById('illinois').onclick=()=>map.fitBounds([[-91.55,36.95],[-87,42.55]],{padding:25});
+document.getElementById('usa').onclick=()=>map.fitBounds([[-125,24],[-66,50]],{padding:25});
+document.getElementById('rivers').onchange=e=>visible('audit-rivers',e.target.checked);
+document.getElementById('gauges').onchange=e=>visible('audit-gauges',e.target.checked);
+map.on('error',e=>{let msg=String(e.error?.message||e.error||'');if(/edna|pbf|tile/i.test(msg)){err.textContent='River tile error: '+msg;console.error(e.error)}});
+map.on('load',async()=>{
+ // Neither layer depends on the other or on live observations.
+ const results=await Promise.allSettled([
+  (async()=>{
+   const res=await fetch('data/edna_tiles/manifest.json',{cache:'no-store'});
+   if(!res.ok)throw Error('manifest HTTP '+res.status);
+   const manifest=await res.json();
+   map.addSource('audit-edna',{type:'vector',tiles:[new URL('data/edna_tiles/{z}/{x}/{y}.pbf',document.baseURI).href],minzoom:0,maxzoom:manifest.maxzoom||12});
+   map.addLayer({id:'audit-rivers',type:'line',source:'audit-edna','source-layer':manifest.layer||'edna',paint:{'line-color':'#0065c8','line-width':['interpolate',['linear'],['zoom'],4,1.3,9,2.4,12,3],'line-opacity':0.9}});
+   return 'EDNA river tile layer registered';
+  })(),
+  (async()=>{
+   const res=await fetch('data/noaa_gauges.geojson',{cache:'no-store'});
+   if(!res.ok)throw Error('NOAA HTTP '+res.status);
+   const fc=await res.json();
+   if(fc.type!=='FeatureCollection')throw Error('Invalid NOAA GeoJSON');
+   map.addSource('audit-noaa',{type:'geojson',data:fc});
+   map.addLayer({id:'audit-gauges',type:'circle',source:'audit-noaa',paint:{'circle-radius':['interpolate',['linear'],['zoom'],4,3,9,5,13,7],'circle-color':'#ff7900','circle-stroke-color':'#fff','circle-stroke-width':1.2}});
+   map.on('click','audit-gauges',e=>{const p=e.features[0].properties;new maplibregl.Popup().setLngLat(e.lngLat).setText((p.name||p.noaa_lid)+' | NOAA '+p.noaa_lid+' | stage '+(p.stage??'unavailable')+' ft | '+(p.stage_time||'no reading time')).addTo(map)});
+   map.on('mouseenter','audit-gauges',()=>map.getCanvas().style.cursor='pointer');
+   map.on('mouseleave','audit-gauges',()=>map.getCanvas().style.cursor='');
+   return fc.features.length+' NOAA gauge points loaded';
+  })()
+ ]);
+ status.textContent=results.map((r,i)=>r.status==='fulfilled'?r.value:(i?'NOAA FAILED: ':'EDNA FAILED: ')+r.reason.message).join(' | ');
+});
+</script></body></html>
