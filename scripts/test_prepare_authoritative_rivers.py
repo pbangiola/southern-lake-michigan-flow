@@ -50,6 +50,19 @@ class AuthoritativePipelineTests(unittest.TestCase):
         p=[f['properties'] for f in run(data)['features']]
         self.assertNotEqual(p[0]['river_id'],p[1]['river_id'])
 
+    def test_usgs_reversed_digitization_is_corrected(self):
+        f=feature((-90,39.9),(-90,40),'','reverse')
+        f['properties']['flowdirection']=2
+        f['properties']['gnisidlabel']='Des Plaines River'
+        prepared=prepare({'type':'FeatureCollection','features':[f]})
+        self.assertEqual(prepared[0]['geometry']['coordinates'][0],[-90,40])
+        self.assertEqual(prepared[0]['properties']['established_name'],'Des Plaines River')
+
+    def test_unknown_flowdirection_is_excluded(self):
+        f=feature((-90,40),(-90,39.9),'','unknown')
+        f['properties']['flowdirection']=0
+        self.assertEqual(prepare({'type':'FeatureCollection','features':[f]}),[])
+
     def test_divergence_is_withheld(self):
         data={'type':'FeatureCollection','features':[
             feature((-90,40),(-90,39.9),'','a'),
