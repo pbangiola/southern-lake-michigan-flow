@@ -1,8 +1,6 @@
 name: MAP 1 - Build Illinois river network (one time)
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '47 * * * *'
   push:
     paths:
       - '.github/workflows/illinois-confluence-pilot.yml'
