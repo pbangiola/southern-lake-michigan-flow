@@ -1,0 +1,40 @@
+name: Gradually expand atlas coverage
+on:
+  schedule:
+    - cron: '23 9 * * 2'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: launch-data-writers
+  cancel-in-progress: false
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Scan one small geographic tile
+        run: python3 scripts/expand_atlas.py --max-tiles 1
+      - name: Publish incremental datasets
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/atlas-expansion
+          for f in data/expansion_progress.json data/putins_expansion.geojson data/river_expansion.geojson data/gauges_expansion.geojson; do
+            if test -f "$f"; then cp "$f" /tmp/atlas-expansion/; fi
+          done
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/atlas-expansion/* data/
+            git add data/expansion_progress.json data/putins_expansion.geojson data/river_expansion.geojson data/gauges_expansion.geojson
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m "Expand atlas by one small geographic tile"
+            if git push origin HEAD:main; then exit 0; fi
+            sleep 3
+          done
+          exit 1
