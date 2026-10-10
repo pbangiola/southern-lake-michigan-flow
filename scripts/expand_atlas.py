@@ -26,7 +26,12 @@ MAX_BYTES = 1_500_000
 USER_AGENT = "southern-lake-michigan-flow-atlas/1.0 (incremental public-data discovery)"
 
 def request(url, body=None):
-    req = urllib.request.Request(url, data=body, headers={"User-Agent":USER_AGENT, "Accept-Encoding":"identity"})
+    headers={"User-Agent":USER_AGENT, "Accept-Encoding":"identity"}
+    if urllib.parse.urlsplit(url).hostname == "api.waterdata.usgs.gov":
+        key=os.getenv("USGS_API_KEY")
+        if key:
+            headers["X-API-Key"]=key
+    req = urllib.request.Request(url, data=body, headers=headers)
     with urllib.request.urlopen(req, timeout=55) as response:
         size = response.headers.get("Content-Length")
         if size and int(size)>MAX_BYTES:
