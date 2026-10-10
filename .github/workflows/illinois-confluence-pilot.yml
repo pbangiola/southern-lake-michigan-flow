@@ -1,6 +1,8 @@
 name: MAP 1 - Build Illinois river network (one time)
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '47 * * * *'
   push:
     paths:
       - '.github/workflows/illinois-confluence-pilot.yml'
@@ -17,14 +19,27 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
+      - name: Check whether network has already been built
+        id: built
+        run: |
+          if [ -s data/illinois_river_network.geojson ]; then
+            echo 'complete=true' >> "$GITHUB_OUTPUT"
+            echo 'Network already published; skipping rebuild.'
+          else
+            echo 'complete=false' >> "$GITHUB_OUTPUT"
+          fi
       - uses: actions/setup-python@v5
+        if: steps.built.outputs.complete != 'true'
         with:
           python-version: '3.11'
       - name: Install geometry dependencies
+        if: steps.built.outputs.complete != 'true'
         run: python -m pip install shapely lxml
       - name: Test traversal
+        if: steps.built.outputs.complete != 'true'
         run: python scripts/test_traverse_edna_graph.py
       - name: Fetch source stream geometry
+        if: steps.built.outputs.complete != 'true'
         run: |
           mkdir -p local/edna
           python - <<'PY'
@@ -32,6 +47,7 @@ jobs:
           urllib.request.urlretrieve("https://edna.usgs.gov/watersheds/sheds/mississippi/mississippi.kmz", "local/edna/mississippi.kmz")
           PY
       - name: Traverse all reachable branches
+        if: steps.built.outputs.complete != 'true'
         run: |
           python scripts/traverse_edna_graph.py local/edna/mississippi.kmz --limit 100000000 --output data/illinois_river_network.geojson
           python - <<'PY'
@@ -45,6 +61,7 @@ jobs:
           print("Total processed edges:",state["processed"])
           PY
       - name: Publish completed network
+        if: steps.built.outputs.complete != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
