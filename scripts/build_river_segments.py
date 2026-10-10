@@ -15,6 +15,8 @@ from shapely.ops import substring
 from shapely.strtree import STRtree
 
 BBOX=(-88.7,40.9,-85.4,43.2)
+# Approximate Illinois extent with a small buffer; use --bbox for a custom area.
+ILLINOIS_BBOX=(-91.6,36.9,-87.0,42.6)
 MAX_DISTANCE_M=200
 KM_PER_DEG_LAT=111.2
 
@@ -63,7 +65,12 @@ def main():
     p.add_argument('--output',type=Path,default=Path('data/river_segments.geojson'))
     p.add_argument('--discovered-gauges',type=Path,default=Path('local/gauges_us.geojson'))
     p.add_argument('--max-distance-m',type=float,default=MAX_DISTANCE_M)
+    p.add_argument('--bbox',nargs=4,type=float,metavar=('WEST','SOUTH','EAST','NORTH'),default=BBOX,
+                   help='Geographic bounds in degrees; default is the original Chicago-region extent')
+    p.add_argument('--illinois',action='store_true',help='Use a buffered statewide Illinois bounding box')
     a=p.parse_args()
+    bounds=ILLINOIS_BBOX if a.illinois else tuple(a.bbox)
+    if bounds[0]>=bounds[2] or bounds[1]>=bounds[3]:p.error('Invalid bbox: west < east and south < north required')
     gauges=json.loads(a.gauges.read_text())['features']
     discovered_path=a.discovered_gauges if a.discovered_gauges.exists() else Path('data/gauges_expansion.geojson')
     discovered=json.loads(discovered_path.read_text()).get('features',[]) if discovered_path.exists() else []
@@ -79,10 +86,10 @@ def main():
         props=f.get('properties',{})
         if pt and props.get('site') and f.get('geometry',{}).get('type')=='Point':
             stations.append((str(props['site']),pt[:2],props.get('name','')))
-    lat=(BBOX[1]+BBOX[3])/2
+    lat=(bounds[1]+bounds[3])/2
     gauge_points=[Point(metric(pt,lat)) for _,pt,_ in stations]
     tree=STRtree(gauge_points)
-    bbox=box(*BBOX)
+    bbox=box(*bounds)
     # Every source line is an edge. Gauge projections become additional nodes.
     # Dijkstra propagates gauge ownership through intervening, ungauged edges.
     # This is a network attribution, not a claim about paddling conditions.
@@ -184,7 +191,7 @@ def main():
             'segment_id':f'network-{i}-{k}'}})
     result={'type':'FeatureCollection','metadata':{
         'note':'Gauge-connected network including intervening ungauged edges; no navigability classification',
-        'max_distance_m':a.max_distance_m,'endpoint_snap_m':snap_m,
+        'max_distance_m':a.max_distance_m,'endpoint_snap_m':snap_m,'bbox':list(bounds),
         'source_files':[p.name for p in a.kmz],
         'source_lines':len(lines),'matched_gauges':len(seed),
         'between_gauge_edges':between,'inventory_primary':len(gauges),'inventory_discovered':len(discovered),'inventory_unique':len(by_site),'duplicate_source_lines_skipped':duplicates_skipped,'duplicate_output_segments_skipped':duplicate_segments,'river_name_method':'inferred from controlling USGS station; may not name tributaries','flow_direction_verified':False},'features':output}
