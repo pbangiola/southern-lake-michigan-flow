@@ -9,7 +9,7 @@ from traverse_edna_graph import streams, edge_key
 from shapely.geometry import box, mapping
 
 INDEX="https://edna.usgs.gov/watersheds/kml_index.htm"
-BBOX=(-93.0, 37.0, -84.0, 45.0)
+BBOX=(-180.0, 18.0, -65.0, 72.0)
 OUT=Path("data/edna_watersheds")
 def main():
     html=urllib.request.urlopen(INDEX,timeout=90).read().decode("utf-8","replace")
