@@ -99,25 +99,30 @@ def extract_osm(elements):
     return launches,rivers
 
 def usgs_tile(s,w,n,e):
-    params=urllib.parse.urlencode({"format":"rdb","bBox":f"{w},{s},{e},{n}","siteType":"ST","siteStatus":"active"})
-    raw=request("https://waterservices.usgs.gov/nwis/site/?"+params)
-    lines=[line for line in raw.splitlines() if line and not line.startswith("#")]
-    if len(lines)<3:return []
-    columns=lines[0].split("\t")
+    """Discover USGS stream stations via the modern OGC API, following cursors."""
+    base="https://api.waterdata.usgs.gov/ogcapi/v1/collections/monitoring-locations/items"
+    params={"f":"json","bbox":f"{w},{s},{e},{n}","site_type_code":"ST","agency_code":"USGS","limit":100}
+    url=base+"?"+urllib.parse.urlencode(params)
     result=[]
-    for line in lines[2:]:
-        values=line.split("\t")
-        if len(values)!=len(columns):continue
-        row=dict(zip(columns,values))
-        try:
-            lat,lon=float(row["dec_lat_va"]),float(row["dec_long_va"])
-        except (KeyError,ValueError):continue
-        site=row.get("site_no")
-        if not site:continue
-        result.append({"type":"Feature","geometry":{"type":"Point","coordinates":[lon,lat]},
-          "properties":{"site":site,"name":row.get("station_nm",site),"stage":None,
-            "stage_time":None,"discharge":None,"verification":"station_discovery_only",
-            "source":"USGS NWIS site inventory"}})
+    visited=set()
+    while url:
+        if url in visited:raise RuntimeError("USGS pagination loop")
+        visited.add(url)
+        payload=json.loads(request(url))
+        if payload.get("type")!="FeatureCollection":raise ValueError("Unexpected USGS response")
+        for feature in payload.get("features",[]):
+            props=feature.get("properties") or {}
+            geom=feature.get("geometry") or {}
+            if geom.get("type")!="Point" or not geom.get("coordinates"):continue
+            if props.get("site_type_code")!="ST" or props.get("agency_code")!="USGS":continue
+            site=props.get("monitoring_location_number")
+            if not site:continue
+            result.append({"type":"Feature","geometry":geom,
+              "properties":{"site":site,"name":props.get("monitoring_location_name") or site,
+                "stage":None,"stage_time":None,"discharge":None,
+                "verification":"station_discovery_only","source":"USGS Monitoring Locations OGC API"}})
+        url=next((link.get("href") for link in payload.get("links",[]) if link.get("rel")=="next"),None)
+        if len(visited)>100:raise RuntimeError("USGS tile exceeds 100 pages; split geographic tile")
     return result
 
 def main():
