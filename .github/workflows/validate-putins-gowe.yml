@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/validate_putins_gowe.py'
+      - 'scripts/discover_putins.py'
       - '.github/workflows/validate-putins-gowe.yml'
 permissions:
   contents: read
