@@ -2,481 +2,481 @@
   "type": "edna-watershed-import-v1",
   "source_index": "https://edna.usgs.gov/watersheds/kml_index.htm",
   "bbox": [
-    -93.0,
-    37.0,
-    -84.0,
-    45.0
+    -180.0,
+    18.0,
+    -65.0,
+    72.0
   ],
   "sources": [
     {
       "name": "altamaha",
       "url": "https://edna.usgs.gov/watersheds/sheds/altamaha/altamaha.kmz",
       "file": "data/edna_watersheds/altamaha.geojson",
-      "features": 0
+      "features": 4373
     },
     {
       "name": "apalachicola",
       "url": "https://edna.usgs.gov/watersheds/sheds/apalachicola/apalachicola.kmz",
       "file": "data/edna_watersheds/apalachicola.geojson",
-      "features": 0
+      "features": 6247
     },
     {
       "name": "arkansas",
       "url": "https://edna.usgs.gov/watersheds/sheds/arkansas/arkansas.kmz",
       "file": "data/edna_watersheds/arkansas.geojson",
-      "features": 0
+      "features": 49721
     },
     {
       "name": "atchafalaya",
       "url": "https://edna.usgs.gov/watersheds/sheds/atchafalaya/atchafalaya.kmz",
       "file": "data/edna_watersheds/atchafalaya.geojson",
-      "features": 0
+      "features": 1728
     },
     {
       "name": "biloxi",
       "url": "https://edna.usgs.gov/watersheds/sheds/biloxi/biloxi.kmz",
       "file": "data/edna_watersheds/biloxi.geojson",
-      "features": 0
+      "features": 221
     },
     {
       "name": "black",
       "url": "https://edna.usgs.gov/watersheds/sheds/black/black.kmz",
       "file": "data/edna_watersheds/black.geojson",
-      "features": 0
+      "features": 581
     },
     {
       "name": "brazos",
       "url": "https://edna.usgs.gov/watersheds/sheds/brazos/brazos.kmz",
       "file": "data/edna_watersheds/brazos.geojson",
-      "features": 0
+      "features": 14475
     },
     {
       "name": "calcasieu",
       "url": "https://edna.usgs.gov/watersheds/sheds/calcasieu/calcasieu.kmz",
       "file": "data/edna_watersheds/calcasieu.geojson",
-      "features": 0
+      "features": 1200
     },
     {
       "name": "caloosahatchee",
       "url": "https://edna.usgs.gov/watersheds/sheds/caloosahatchee/caloosahatchee.kmz",
       "file": "data/edna_watersheds/caloosahatchee.geojson",
-      "features": 0
+      "features": 595
     },
     {
       "name": "capefear",
       "url": "https://edna.usgs.gov/watersheds/sheds/capefear/capefear.kmz",
       "file": "data/edna_watersheds/capefear.geojson",
-      "features": 0
+      "features": 2806
     },
     {
       "name": "chehalis",
       "url": "https://edna.usgs.gov/watersheds/sheds/chehalis/chehalis.kmz",
       "file": "data/edna_watersheds/chehalis.geojson",
-      "features": 0
+      "features": 726
     },
     {
       "name": "chesapeake",
       "url": "https://edna.usgs.gov/watersheds/sheds/chesapeake/chesapeake.kmz",
       "file": "data/edna_watersheds/chesapeake.geojson",
-      "features": 0
+      "features": 20612
     },
     {
       "name": "cheyenne",
       "url": "https://edna.usgs.gov/watersheds/sheds/cheyenne/cheyenne.kmz",
       "file": "data/edna_watersheds/cheyenne.geojson",
-      "features": 0
+      "features": 7828
     },
     {
       "name": "choctawhatchee",
       "url": "https://edna.usgs.gov/watersheds/sheds/choctawhatchee/choctawhatchee.kmz",
       "file": "data/edna_watersheds/choctawhatchee.geojson",
-      "features": 0
+      "features": 1727
     },
     {
       "name": "chowan",
       "url": "https://edna.usgs.gov/watersheds/sheds/chowan/chowan.kmz",
       "file": "data/edna_watersheds/chowan.geojson",
-      "features": 0
+      "features": 1464
     },
     {
       "name": "colorado",
       "url": "https://edna.usgs.gov/watersheds/sheds/colorado/colorado.kmz",
       "file": "data/edna_watersheds/colorado.geojson",
-      "features": 0
+      "features": 79734
     },
     {
       "name": "coloradotx",
       "url": "https://edna.usgs.gov/watersheds/sheds/coloradotx/coloradotx.kmz",
       "file": "data/edna_watersheds/coloradotx.geojson",
-      "features": 0
+      "features": 13200
     },
     {
       "name": "columbia",
       "url": "https://edna.usgs.gov/watersheds/sheds/columbia/columbia.kmz",
       "file": "data/edna_watersheds/columbia.geojson",
-      "features": 0
+      "features": 65695
     },
     {
       "name": "connecticut",
       "url": "https://edna.usgs.gov/watersheds/sheds/connecticut/connecticut.kmz",
       "file": "data/edna_watersheds/connecticut.geojson",
-      "features": 0
+      "features": 3419
     },
     {
       "name": "delaware",
       "url": "https://edna.usgs.gov/watersheds/sheds/delaware/delaware.kmz",
       "file": "data/edna_watersheds/delaware.geojson",
-      "features": 0
+      "features": 4128
     },
     {
       "name": "edisto",
       "url": "https://edna.usgs.gov/watersheds/sheds/edisto/edisto.kmz",
       "file": "data/edna_watersheds/edisto.geojson",
-      "features": 0
+      "features": 1172
     },
     {
       "name": "eel",
       "url": "https://edna.usgs.gov/watersheds/sheds/eel/eel.kmz",
       "file": "data/edna_watersheds/eel.geojson",
-      "features": 0
+      "features": 1155
     },
     {
       "name": "escambia",
       "url": "https://edna.usgs.gov/watersheds/sheds/escambia/escambia.kmz",
       "file": "data/edna_watersheds/escambia.geojson",
-      "features": 0
+      "features": 1359
     },
     {
       "name": "everglades",
       "url": "https://edna.usgs.gov/watersheds/sheds/everglades/everglades.kmz",
       "file": "data/edna_watersheds/everglades.geojson",
-      "features": 0
+      "features": 2143
     },
     {
       "name": "gavinspt",
       "url": "https://edna.usgs.gov/watersheds/sheds/gavinspt/gavinspt.kmz",
       "file": "data/edna_watersheds/gavinspt.geojson",
-      "features": 0
+      "features": 86046
     },
     {
       "name": "greatbasin",
       "url": "https://edna.usgs.gov/watersheds/sheds/greatbasin/greatbasin.kmz",
       "file": "data/edna_watersheds/greatbasin.geojson",
-      "features": 0
+      "features": 73150
     },
     {
       "name": "greatlakes",
       "url": "https://edna.usgs.gov/watersheds/sheds/greatlakes/greatlakes.kmz",
       "file": "data/edna_watersheds/greatlakes.geojson",
-      "features": 13937
+      "features": 38433
     },
     {
       "name": "hudson",
       "url": "https://edna.usgs.gov/watersheds/sheds/hudson/hudson.kmz",
       "file": "data/edna_watersheds/hudson.geojson",
-      "features": 0
+      "features": 4397
     },
     {
       "name": "kansas",
       "url": "https://edna.usgs.gov/watersheds/sheds/kansas/kansas.kmz",
       "file": "data/edna_watersheds/kansas.geojson",
-      "features": 0
+      "features": 18181
     },
     {
       "name": "kennebec",
       "url": "https://edna.usgs.gov/watersheds/sheds/kennebec/kennebec.kmz",
       "file": "data/edna_watersheds/kennebec.geojson",
-      "features": 0
+      "features": 3150
     },
     {
       "name": "klamath",
       "url": "https://edna.usgs.gov/watersheds/sheds/klamath/klamath.kmz",
       "file": "data/edna_watersheds/klamath.geojson",
-      "features": 0
+      "features": 4883
     },
     {
       "name": "lakechamplain",
       "url": "https://edna.usgs.gov/watersheds/sheds/lakechamplain/lakechamplain.kmz",
       "file": "data/edna_watersheds/lakechamplain.geojson",
-      "features": 0
+      "features": 2545
     },
     {
       "name": "merrimack",
       "url": "https://edna.usgs.gov/watersheds/sheds/merrimack/merrimack.kmz",
       "file": "data/edna_watersheds/merrimack.geojson",
-      "features": 0
+      "features": 1633
     },
     {
       "name": "mississippi",
       "url": "https://edna.usgs.gov/watersheds/sheds/mississippi/mississippi.kmz",
       "file": "data/edna_watersheds/mississippi.geojson",
-      "features": 63096
+      "features": 347214
     },
     {
       "name": "missouri",
       "url": "https://edna.usgs.gov/watersheds/sheds/missouri/missouri.kmz",
       "file": "data/edna_watersheds/missouri.geojson",
-      "features": 2487
+      "features": 86033
     },
     {
       "name": "mobile",
       "url": "https://edna.usgs.gov/watersheds/sheds/mobile/mobile.kmz",
       "file": "data/edna_watersheds/mobile.geojson",
-      "features": 0
+      "features": 13686
     },
     {
       "name": "navidad",
       "url": "https://edna.usgs.gov/watersheds/sheds/navidad/navidad.kmz",
       "file": "data/edna_watersheds/navidad.geojson",
-      "features": 0
+      "features": 1145
     },
     {
       "name": "neuse",
       "url": "https://edna.usgs.gov/watersheds/sheds/neuse/neuse.kmz",
       "file": "data/edna_watersheds/neuse.geojson",
-      "features": 0
+      "features": 1689
     },
     {
       "name": "nueces",
       "url": "https://edna.usgs.gov/watersheds/sheds/nueces/nueces.kmz",
       "file": "data/edna_watersheds/nueces.geojson",
-      "features": 0
+      "features": 10763
     },
     {
       "name": "ochlockonee",
       "url": "https://edna.usgs.gov/watersheds/sheds/ochlockonee/ochlockonee.kmz",
       "file": "data/edna_watersheds/ochlockonee.geojson",
-      "features": 0
+      "features": 873
     },
     {
       "name": "ogeechee",
       "url": "https://edna.usgs.gov/watersheds/sheds/ogeechee/ogeechee.kmz",
       "file": "data/edna_watersheds/ogeechee.geojson",
-      "features": 0
+      "features": 1416
     },
     {
       "name": "ohio",
       "url": "https://edna.usgs.gov/watersheds/sheds/ohio/ohio.kmz",
       "file": "data/edna_watersheds/ohio.geojson",
-      "features": 19633
+      "features": 59721
     },
     {
       "name": "pajaro",
       "url": "https://edna.usgs.gov/watersheds/sheds/pajaro/pajaro.kmz",
       "file": "data/edna_watersheds/pajaro.geojson",
-      "features": 0
+      "features": 395
     },
     {
       "name": "pamlico",
       "url": "https://edna.usgs.gov/watersheds/sheds/pamlico/pamlico.kmz",
       "file": "data/edna_watersheds/pamlico.geojson",
-      "features": 0
+      "features": 1026
     },
     {
       "name": "pascagoula",
       "url": "https://edna.usgs.gov/watersheds/sheds/pascagoula/pascagoula.kmz",
       "file": "data/edna_watersheds/pascagoula.geojson",
-      "features": 0
+      "features": 2965
     },
     {
       "name": "peace",
       "url": "https://edna.usgs.gov/watersheds/sheds/peace/peace.kmz",
       "file": "data/edna_watersheds/peace.geojson",
-      "features": 0
+      "features": 806
     },
     {
       "name": "pearl",
       "url": "https://edna.usgs.gov/watersheds/sheds/pearl/pearl.kmz",
       "file": "data/edna_watersheds/pearl.geojson",
-      "features": 0
+      "features": 5007
     },
     {
       "name": "peedee",
       "url": "https://edna.usgs.gov/watersheds/sheds/peedee/peedee.kmz",
       "file": "data/edna_watersheds/peedee.geojson",
-      "features": 0
+      "features": 4436
     },
     {
       "name": "penobscot",
       "url": "https://edna.usgs.gov/watersheds/sheds/penobscot/penobscot.kmz",
       "file": "data/edna_watersheds/penobscot.geojson",
-      "features": 0
+      "features": 2604
     },
     {
       "name": "platte",
       "url": "https://edna.usgs.gov/watersheds/sheds/platte/platte.kmz",
       "file": "data/edna_watersheds/platte.geojson",
-      "features": 0
+      "features": 22629
     },
     {
       "name": "pugetsound",
       "url": "https://edna.usgs.gov/watersheds/sheds/pugetsound/pugetsound.kmz",
       "file": "data/edna_watersheds/pugetsound.geojson",
-      "features": 0
+      "features": 4398
     },
     {
       "name": "rainy",
       "url": "https://edna.usgs.gov/watersheds/sheds/rainy/rainy.kmz",
       "file": "data/edna_watersheds/rainy.geojson",
-      "features": 0
+      "features": 6424
     },
     {
       "name": "red",
       "url": "https://edna.usgs.gov/watersheds/sheds/red/red.kmz",
       "file": "data/edna_watersheds/red.geojson",
-      "features": 0
+      "features": 23377
     },
     {
       "name": "redriver",
       "url": "https://edna.usgs.gov/watersheds/sheds/redriver/redriver.kmz",
       "file": "data/edna_watersheds/redriver.geojson",
-      "features": 0
+      "features": 12808
     },
     {
       "name": "riogrande",
       "url": "https://edna.usgs.gov/watersheds/sheds/riogrande/riogrande.kmz",
       "file": "data/edna_watersheds/riogrande.geojson",
-      "features": 0
+      "features": 36740
     },
     {
       "name": "roanoke",
       "url": "https://edna.usgs.gov/watersheds/sheds/roanoke/roanoke.kmz",
       "file": "data/edna_watersheds/roanoke.geojson",
-      "features": 0
+      "features": 3054
     },
     {
       "name": "rogue",
       "url": "https://edna.usgs.gov/watersheds/sheds/rogue/rogue.kmz",
       "file": "data/edna_watersheds/rogue.geojson",
-      "features": 0
+      "features": 1636
     },
     {
       "name": "sabine",
       "url": "https://edna.usgs.gov/watersheds/sheds/sabine/sabine.kmz",
       "file": "data/edna_watersheds/sabine.geojson",
-      "features": 0
+      "features": 6674
     },
     {
       "name": "sacrasan",
       "url": "https://edna.usgs.gov/watersheds/sheds/sacrasan/sacrasan.kmz",
       "file": "data/edna_watersheds/sacrasan.geojson",
-      "features": 0
+      "features": 19027
     },
     {
       "name": "saintjohn",
       "url": "https://edna.usgs.gov/watersheds/sheds/saintjohn/saintjohn.kmz",
       "file": "data/edna_watersheds/saintjohn.geojson",
-      "features": 0
+      "features": 4382
     },
     {
       "name": "saintjohns",
       "url": "https://edna.usgs.gov/watersheds/sheds/saintjohns/saintjohns.kmz",
       "file": "data/edna_watersheds/saintjohns.geojson",
-      "features": 0
+      "features": 2913
     },
     {
       "name": "salinas",
       "url": "https://edna.usgs.gov/watersheds/sheds/salinas/salinas.kmz",
       "file": "data/edna_watersheds/salinas.geojson",
-      "features": 0
+      "features": 1408
     },
     {
       "name": "sanfranciscobay",
       "url": "https://edna.usgs.gov/watersheds/sheds/sanfranciscobay/sanfranciscobay.kmz",
       "file": "data/edna_watersheds/sanfranciscobay.geojson",
-      "features": 0
+      "features": 607
     },
     {
       "name": "sangabriel",
       "url": "https://edna.usgs.gov/watersheds/sheds/sangabriel/sangabriel.kmz",
       "file": "data/edna_watersheds/sangabriel.geojson",
-      "features": 0
+      "features": 1023
     },
     {
       "name": "santamaria",
       "url": "https://edna.usgs.gov/watersheds/sheds/santamaria/santamaria.kmz",
       "file": "data/edna_watersheds/santamaria.geojson",
-      "features": 0
+      "features": 620
     },
     {
       "name": "santaynez",
       "url": "https://edna.usgs.gov/watersheds/sheds/santaynez/santaynez.kmz",
       "file": "data/edna_watersheds/santaynez.geojson",
-      "features": 0
+      "features": 280
     },
     {
       "name": "santee",
       "url": "https://edna.usgs.gov/watersheds/sheds/santee/santee.kmz",
       "file": "data/edna_watersheds/santee.geojson",
-      "features": 0
+      "features": 4746
     },
     {
       "name": "satilla",
       "url": "https://edna.usgs.gov/watersheds/sheds/satilla/satilla.kmz",
       "file": "data/edna_watersheds/satilla.geojson",
-      "features": 0
+      "features": 1075
     },
     {
       "name": "savannah",
       "url": "https://edna.usgs.gov/watersheds/sheds/savannah/savannah.kmz",
       "file": "data/edna_watersheds/savannah.geojson",
-      "features": 0
+      "features": 3326
     },
     {
       "name": "souris",
       "url": "https://edna.usgs.gov/watersheds/sheds/souris/souris.kmz",
       "file": "data/edna_watersheds/souris.geojson",
-      "features": 0
+      "features": 5241
     },
     {
       "name": "suwannee",
       "url": "https://edna.usgs.gov/watersheds/sheds/suwannee/suwannee.kmz",
       "file": "data/edna_watersheds/suwannee.geojson",
-      "features": 0
+      "features": 3161
     },
     {
       "name": "tampabay",
       "url": "https://edna.usgs.gov/watersheds/sheds/tampabay/tampabay.kmz",
       "file": "data/edna_watersheds/tampabay.geojson",
-      "features": 0
+      "features": 585
     },
     {
       "name": "trinity",
       "url": "https://edna.usgs.gov/watersheds/sheds/trinity/trinity.kmz",
       "file": "data/edna_watersheds/trinity.geojson",
-      "features": 0
+      "features": 7109
     },
     {
       "name": "umpqua",
       "url": "https://edna.usgs.gov/watersheds/sheds/umpqua/umpqua.kmz",
       "file": "data/edna_watersheds/umpqua.geojson",
-      "features": 0
+      "features": 1477
     },
     {
       "name": "waccamaw",
       "url": "https://edna.usgs.gov/watersheds/sheds/waccamaw/waccamaw.kmz",
       "file": "data/edna_watersheds/waccamaw.geojson",
-      "features": 0
+      "features": 531
     },
     {
       "name": "withlacoochee",
       "url": "https://edna.usgs.gov/watersheds/sheds/withlacoochee/withlacoochee.kmz",
       "file": "data/edna_watersheds/withlacoochee.geojson",
-      "features": 0
+      "features": 665
     },
     {
       "name": "yellow",
       "url": "https://edna.usgs.gov/watersheds/sheds/yellow/yellow.kmz",
       "file": "data/edna_watersheds/yellow.geojson",
-      "features": 0
+      "features": 697
     },
     {
       "name": "yellowstone",
       "url": "https://edna.usgs.gov/watersheds/sheds/yellowstone/yellowstone.kmz",
       "file": "data/edna_watersheds/yellowstone.geojson",
-      "features": 0
+      "features": 15228
     }
   ],
   "complete": true,
-  "total_features": 99153
+  "total_features": 1250347
 }
