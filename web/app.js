@@ -153,7 +153,12 @@ function colorRiverNetwork(segments,gauges){
   const ca=colorFor(a),cb=colorFor(b);
   // Use the available endpoint when its partner lacks calibrated stage data.
   // Only a reach with no usable associated gauge stays gray.
-  p.stage_color=ca==='#88929b'?cb:cb==='#88929b'?ca:a===b?ca:blend(ca,cb,0.5);
+  // Use two distinct bounding gauges when provided by the network builder.
+  // A single nearest-gauge attribution is not evidence of two boundaries.
+  const fraction=finite(p.gauge_fraction??p.fraction_from_upstream??p.relative_distance);
+  const t=fraction===null?0.5:Math.max(0,Math.min(1,fraction));
+  p.stage_color=ca==='#88929b'?cb:cb==='#88929b'?ca:a===b?ca:blend(ca,cb,t);
+  p.stage_color_method=a&&b&&a!==b?'two-gauge interpolation':a||b?'single associated gauge':'unavailable';
   p.stage_gauge_a=a;p.stage_gauge_b=b;
   p.segment_color=segmentColor(a||b);
   p.river_name=p.river_name||riverName(bySite.get(a)?.name||bySite.get(b)?.name);
@@ -410,7 +415,7 @@ map.on('load',async()=>{
       (p.river_name||'Unidentified waterway')+
       '\\nUSGS 3DHP mainstem: '+(p.river_id||'unknown')+
       '\\nAssociated gauge: '+(p.site||p.from_gauge||'none')+
-      '\\nStage color uses nearby gauge; flow conditions are not safety guidance.'
+      '\\nStage color method: '+(p.stage_color_method||'unavailable')+'\\nFlow conditions are not safety guidance.'
      ).addTo(map);
     });
     console.info('Loaded',candidate.features.length,'3DHP gauge-associated review reaches');
