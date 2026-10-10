@@ -1,0 +1,13 @@
+{
+  "complete": true,
+  "source_bbox": [
+    -180.0,
+    18.0,
+    -65.0,
+    72.0
+  ],
+  "source_features": 1250347,
+  "tiles": "{z}/{x}/{y}.pbf",
+  "maxzoom": 12,
+  "layer": "edna"
+}
