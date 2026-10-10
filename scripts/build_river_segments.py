@@ -165,6 +165,10 @@ def main():
         if left!=right:between+=1
         chosen=left if dist.get(u,float('inf'))<=dist.get(v,float('inf')) else right
         sid,_,name=stations[chosen]
+        # Match Watershed.py's 7-decimal precision validation before emitting.
+        # Gauge cuts very close to an endpoint can collapse to one coordinate.
+        if len(set((round(x,7),round(y,7)) for x,y in coords))<2:
+            continue
         key=geometry_key(coords)
         if key in seen_segments:
             duplicate_segments+=1
