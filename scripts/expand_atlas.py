@@ -72,7 +72,7 @@ way["waterway"~"^(river|stream|canal)$"]({s},{w},{n},{e});
         query=query.replace(f'way["waterway"~"^(river|stream|canal)$"]({s},{w},{n},{e});','')
     elif layer=='rivers':
         query=f'[out:json][timeout:35];(way["waterway"~"^(river|stream|canal)$"]({s},{w},{n},{e}););out center geom;'
-    raw=request("https://overpass.kumi.systems/api/interpreter",urllib.parse.urlencode({"data":query}).encode())
+    raw=request("https://overpass-api.de/api/interpreter",urllib.parse.urlencode({"data":query}).encode())
     return json.loads(raw).get("elements",[])
 
 def extract_osm(elements):
