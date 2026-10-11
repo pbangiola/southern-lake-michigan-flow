@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>EDNA Watershed Geometry — Standalone</title>
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+<style>html,body{height:100%;margin:0;font:14px system-ui}header{display:flex;gap:14px;align-items:center;padding:12px 16px;flex-wrap:wrap;background:#f5f7f8}h1{font-size:18px;margin:0}#status{padding:7px 16px;background:#e8eef3}#map{height:calc(100% - 100px)}a{color:#135e80}</style></head><body>
+<header><h1>EDNA watershed network — standalone</h1><a href="index.html">← Main atlas</a><label><input type="checkbox" id="basemap" checked> Basemap</label><label>Line width <input id="width" type="range" min="1" max="7" value="2"></label></header>
+<div id="status">Loading national EDNA tiles…</div><div id="map"></div>
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script><script src="web/edna-standalone.js?v=2"></script></body></html>
